@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.healthysmile.IconMethods;
 import com.example.healthysmile.R;
 import com.example.healthysmile.ConexionFirebaseDB;
 
@@ -38,6 +39,9 @@ public class Sign_Up_Paciente extends Fragment {
 
         // Configurar el botón de registro
         fragSignUpBtnRegistrarse.setOnClickListener(v -> registrarUsuario());
+
+        IconMethods icono = new IconMethods();
+        icono.setupPasswordVisibility(fragSignUpInputContrasena);
 
         return view;
     }

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.healthysmile.NavigationDrawerFragments;
 import com.example.healthysmile.R;
 import com.example.healthysmile.ConexionFirebaseDB;
+import com.example.healthysmile.IconMethods;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class LogIn extends AppCompatActivity {
@@ -25,15 +26,22 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        // Cambiar nombreUsuario por fragLogInInputCorreoUsuario para usar correo
         fragLogInInputCorreoUsuario = findViewById(R.id.fragLogInInputCorreoUsuario);
         fragLogInInputContrasenaUsuario = findViewById(R.id.fragLogInInputContrasenaUsuario);
         fragLogInBtnIniciarSesion = findViewById(R.id.fragLogInBtnIniciarSesion);
 
-        dbHelper = new ConexionFirebaseDB();  // Inicializa la clase de conexión
+        dbHelper = new ConexionFirebaseDB();
 
         fragLogInBtnIniciarSesion.setOnClickListener(v -> iniciarSesion());
+
+        IconMethods iconito = new IconMethods();
+        // Configura la visibilidad de la contraseña
+        iconito.setupPasswordVisibility(fragLogInInputContrasenaUsuario);
+
+        fragLogInBtnIniciarSesion.setOnClickListener(v -> iniciarSesion());
+
     }
+
 
     private void iniciarSesion() {
         String correoUsuario = fragLogInInputCorreoUsuario.getText().toString().trim(); // Usar correo en lugar de nombreUsuario

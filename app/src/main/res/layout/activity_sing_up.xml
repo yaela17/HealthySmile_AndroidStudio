@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/img_2"
+    android:background="@drawable/fondo_sign_up"
     tools:context=".ui.sign_up.Sing_Up">
 
     <FrameLayout

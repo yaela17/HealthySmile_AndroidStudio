@@ -32,13 +32,12 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/custom_edittext"
                 android:layout_marginTop="40dp"
-                android:padding="8dp"
                 android:hint="Nombre de usuario"
                 android:drawableLeft="@drawable/icon_person"
                 android:textColor="@color/color_text"
-                android:drawablePadding="8dp"
+                style="@style/formBasicInput"
+                android:inputType="textPersonName|textAutoCorrect|textAutoComplete"
                 android:id="@+id/SignUpEspecialistaInputNombre"/>
 
             <EditText
@@ -46,11 +45,11 @@
                 android:layout_height="50dp"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="20dp"
-                android:padding="8dp"
                 android:hint="Correo electronico"
                 android:drawableLeft="@drawable/icon_email"
                 android:textColor="@color/color_text"
-                android:drawablePadding="8dp"
+                style="@style/formBasicInput"
+                android:inputType="textWebEmailAddress|textAutoCorrect|textAutoComplete"
                 android:id="@+id/SignUpEspecialistaInputCorreo"/>
 
             <EditText
@@ -58,11 +57,13 @@
                 android:layout_height="50dp"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="20dp"
-                android:padding="8dp"
                 android:hint="Contraseña"
                 android:drawableLeft="@drawable/icon_lock"
+                android:drawableRight="@drawable/icon_visible_off"
                 android:textColor="@color/color_text"
-                android:drawablePadding="8dp"
+                style="@style/formBasicInput"
+                android:inputType="textPassword"
+                android:importantForAccessibility="yes"
                 android:id="@+id/SignUpEspecialistaInputContrasena"/>
 
             <EditText
@@ -70,11 +71,11 @@
                 android:layout_height="50dp"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="20dp"
-                android:padding="8dp"
                 android:hint="Cedula profesional"
                 android:drawableLeft="@drawable/icon_cedulaprofesional"
                 android:textColor="@color/color_text"
-                android:drawablePadding="8dp"
+                style="@style/formBasicInput"
+                android:inputType="textShortMessage|textAutoCorrect|textAutoComplete"
                 android:id="@+id/SignUpEspecialistaInputCedulaProfesional"/>
 
             <Spinner
@@ -82,7 +83,6 @@
                 android:layout_height="50dp"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="20dp"
-                android:padding="8dp"
                 android:textColor="@color/color_text"
                 android:drawablePadding="8dp"
                 android:id="@+id/SignUpEspecialistaComboEspecialidad"/>

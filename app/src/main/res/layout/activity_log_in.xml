@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/img_1"
+    android:background="@drawable/fondo_log_in"
     tools:context=".ui.login.LogIn">
 
     <androidx.cardview.widget.CardView
@@ -39,24 +39,27 @@
                 android:layout_height="50dp"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="40dp"
-                android:padding="8dp"
                 android:hint="Correo electronico"
                 android:drawableLeft="@drawable/icon_email"
                 android:textColor="@color/color_text"
-                android:drawablePadding="8dp"
+                style="@style/formBasicInput"
+                android:inputType="textWebEmailAddress|textAutoComplete|textAutoCorrect"
                 android:id="@+id/fragLogInInputCorreoUsuario"/>
 
             <EditText
+                android:id="@+id/fragLogInInputContrasenaUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="20dp"
-                android:padding="8dp"
                 android:hint="Contraseña"
                 android:drawableLeft="@drawable/icon_lock"
+                android:drawableRight="@drawable/icon_visible_off"
                 android:textColor="@color/color_text"
-                android:drawablePadding="8dp"
-                android:id="@+id/fragLogInInputContrasenaUsuario"/>
+                style="@style/formBasicInput"
+                android:inputType="textPassword"
+                android:importantForAccessibility="yes"/>
+
 
             <Button
                 android:layout_width="match_parent"
