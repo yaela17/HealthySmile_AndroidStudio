@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="color_principal">#092B5A</color>
+    <color name="color_principal_claro">#09738A</color>
+    <color name="color_principal_glow">#1693A5</color>
+    <color name="color_principal_clarote">#45C5B4</color>
+    <color name="color_principal_contraste">#7ECECA</color>
+    <color name="color_principal_contraste_claro">#9ED1B7</color>
+    <color name="color_footer">#333333</color>
+    <color name="color_text">#000000</color>
+    <color name="color_text_alt">#F0F8FF</color>
+    <color name="color_principal_claro_button">#478AC9</color>
+
+
+    <color name="secondary_color_principal">#002400</color>
+    <color name="secondary_color_principal_claro">#273B09</color>
+    <color name="secondary_color_principal_glow">#586410</color>
+    <color name="secondary_color_principal_clarote">#7B904B</color>
+    <color name="secondary_color_principal_contraste">#DBD2E0</color>
+    <color name="secondary_color_text">#000000</color>
+    <color name="secondary_color_text_alt">#F0F8FF</color>
+
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1013067253187",
+    "project_id": "healthysmile-2024",
+    "storage_bucket": "healthysmile-2024.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013067253187:android:34737c3f23e7142e58a976",
+        "android_client_info": {
+          "package_name": "com.example.healthysmile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbWbAfWePxFe7-9LLLJB-DklneqoK6n8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/icon_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_ConsultaVirtual"
+            android:icon="@drawable/icon_educacion_dental"
+            android:title="Consulta virtual" />
+        <item
+            android:id="@+id/nav_EducacionDental"
+            android:icon="@drawable/icon_educacion_dental"
+            android:title="Educacion dental" />
+        <item
+            android:id="@+id/nav_TiendaVirutal"
+            android:icon="@drawable/icon_tienda_virtual"
+            android:title="Tienda virtual" />
+        <item
+            android:id="@+id/nav_gestionAdmin"
+            android:icon="@drawable/icon_home"
+            android:title="Gestion de administrador"
+            android:visible="true"/>
+        <item
+            android:id="@+id/nav_ayudaYSoporte"
+            android:icon="@drawable/icon_ayuda_y_soporte"
+            android:title="Ayuda y soporte" />
+    </group>
+</menu>
