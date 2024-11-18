@@ -2,15 +2,11 @@ package com.example.healthysmile;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.function.Consumer;
-
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.DocumentReference;
 
 import java.util.Map;
 import java.util.function.Consumer;
@@ -23,9 +19,10 @@ public class ConexionFirebaseDB {
     }
 
     // Método para verificar credenciales de inicio de sesión y obtener los datos del usuario
-    public void verificarCredenciales(String nombreUsuario, String contrasenaUsuario, Consumer<CredentialCallback> callback) {
+    public void verificarCredenciales(String correoUsuario, String contrasenaUsuario, Consumer<CredentialCallback> callback) {
+        // Cambiar la búsqueda por "correoUser" en lugar de "nomUser"
         db.collection("usuarios")
-                .whereEqualTo("nomUser", nombreUsuario)
+                .whereEqualTo("correoUser", correoUsuario)  // Buscar por correo
                 .whereEqualTo("contrasenaUser", contrasenaUsuario)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -59,6 +56,4 @@ public class ConexionFirebaseDB {
                 .addOnSuccessListener(onSuccessListener)
                 .addOnFailureListener(onFailureListener);
     }
-
-
 }

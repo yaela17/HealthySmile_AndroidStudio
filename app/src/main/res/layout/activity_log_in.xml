@@ -40,11 +40,11 @@
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
-                android:hint="Usuario"
-                android:drawableLeft="@drawable/icon_person"
+                android:hint="Correo electronico"
+                android:drawableLeft="@drawable/icon_email"
                 android:textColor="@color/color_text"
                 android:drawablePadding="8dp"
-                android:id="@+id/fragLogInInputNombreUsuario"/>
+                android:id="@+id/fragLogInInputCorreoUsuario"/>
 
             <EditText
                 android:layout_width="match_parent"

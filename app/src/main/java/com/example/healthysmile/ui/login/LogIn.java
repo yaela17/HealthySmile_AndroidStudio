@@ -15,7 +15,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 public class LogIn extends AppCompatActivity {
 
-    private EditText fragLogInInputNombreUsuario;
+    private EditText fragLogInInputCorreoUsuario;
     private EditText fragLogInInputContrasenaUsuario;
     private Button fragLogInBtnIniciarSesion;
     private ConexionFirebaseDB dbHelper;
@@ -25,7 +25,8 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        fragLogInInputNombreUsuario = findViewById(R.id.fragLogInInputNombreUsuario);
+        // Cambiar nombreUsuario por fragLogInInputCorreoUsuario para usar correo
+        fragLogInInputCorreoUsuario = findViewById(R.id.fragLogInInputCorreoUsuario);
         fragLogInInputContrasenaUsuario = findViewById(R.id.fragLogInInputContrasenaUsuario);
         fragLogInBtnIniciarSesion = findViewById(R.id.fragLogInBtnIniciarSesion);
 
@@ -35,20 +36,20 @@ public class LogIn extends AppCompatActivity {
     }
 
     private void iniciarSesion() {
-        String nombreUsuario = fragLogInInputNombreUsuario.getText().toString().trim();
+        String correoUsuario = fragLogInInputCorreoUsuario.getText().toString().trim(); // Usar correo en lugar de nombreUsuario
         String contrasenaUsuario = fragLogInInputContrasenaUsuario.getText().toString().trim();
 
         // Validación de los campos
-        if (nombreUsuario.isEmpty() || contrasenaUsuario.isEmpty()) {
+        if (correoUsuario.isEmpty() || contrasenaUsuario.isEmpty()) {
             Toast.makeText(LogIn.this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Depuración: Mostrar datos antes de la verificación
-        Toast.makeText(LogIn.this, "Nombre de usuario: " + nombreUsuario + ", Contraseña: " + contrasenaUsuario, Toast.LENGTH_SHORT).show();
+        Toast.makeText(LogIn.this, "Correo: " + correoUsuario + ", Contraseña: " + contrasenaUsuario, Toast.LENGTH_SHORT).show();
 
         // Verificar credenciales utilizando la clase ConexionFirebaseDB
-        dbHelper.verificarCredenciales(nombreUsuario, contrasenaUsuario, (callback) -> {
+        dbHelper.verificarCredenciales(correoUsuario, contrasenaUsuario, (callback) -> {
             // Depuración: Verificar si la credencial es válida
             if (callback.isValid) {
                 Toast.makeText(LogIn.this, "Credenciales válidas", Toast.LENGTH_SHORT).show();
