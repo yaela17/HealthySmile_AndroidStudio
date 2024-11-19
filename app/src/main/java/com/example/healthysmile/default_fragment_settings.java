@@ -4,13 +4,15 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class default_fragment_settings extends Fragment {
+public class default_fragment_settings extends Fragment implements AdapterView.OnItemClickListener {
 
     ListView listaDefaultSettings;
     AdaptadorOpcionesPerfilListView adaptador;
@@ -69,7 +71,19 @@ public class default_fragment_settings extends Fragment {
         listaDefaultSettings = view.findViewById(R.id.listViewDefaultSettings);
         adaptador = new AdaptadorOpcionesPerfilListView(getContext(), listLeftIcon, listTitleInputFile, listDescriptionInputFile, lisRightIcon);
         listaDefaultSettings.setAdapter(adaptador);
+        listaDefaultSettings.setOnItemClickListener(this);
 
         return view;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (position == 0) {
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.settingsFrameListViewContainer, new settings_perfil());
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+
     }
 }
