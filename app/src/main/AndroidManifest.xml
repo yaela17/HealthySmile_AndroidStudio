@@ -10,13 +10,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_logo_healthy_smile_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HealthySmile"
+        android:theme="@style/Base.Theme.HealthySmile"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.settings.Settings"
+            android:theme="@style/Base.Theme.HealthySmile"
+            android:exported="false" />
         <activity
             android:name=".NavigationDrawerFragments"
             android:exported="false"
             android:label="@string/title_activity_navigation_drawer_fragments"
-            android:theme="@style/Theme.HealthySmile.NoActionBar" />
+            android:theme="@style/Base.Theme.HealthySmile" />
         <activity
             android:name=".ui.sign_up.Sing_Up"
             android:exported="false" />

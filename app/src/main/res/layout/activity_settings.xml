@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/Base.Theme.HealthySmile"
-    tools:context=".NavigationDrawerFragments">
+    tools:context=".ui.settings.Settings">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -17,20 +17,14 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:backgroundTint="@color/color_principal"
-            app:titleTextColor="@color/white" />
+            android:background="@color/color_principal"
+            app:titleTextColor="@color/white"
+            app:title="Configuracion"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_navigation_drawer_fragments" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
+    <FrameLayout
+            android:id="@+id/settingsFrameListViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 </LinearLayout>

@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;  // Importa Toast
 
+import com.example.healthysmile.ui.settings.Settings;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -29,6 +31,7 @@ public class NavigationDrawerFragments extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
 
         binding = ActivityNavigationDrawerFragmentsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -106,7 +109,8 @@ public class NavigationDrawerFragments extends AppCompatActivity {
 
         }else
             if(item.getItemId() == R.id.action_settings){
-
+                Intent intentIrSettings = new Intent(this, Settings.class);
+                startActivity(intentIrSettings);
             }
         return super.onOptionsItemSelected(item);
     }
