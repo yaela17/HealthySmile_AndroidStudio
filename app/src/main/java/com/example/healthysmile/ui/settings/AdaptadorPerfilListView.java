@@ -1,4 +1,4 @@
-package com.example.healthysmile;
+package com.example.healthysmile.ui.settings;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.rpc.context.AttributeContext;
+import com.example.healthysmile.R;
 
-public class AdaptadorOpcionesPerfilListView extends BaseAdapter {
+public class AdaptadorPerfilListView extends BaseAdapter {
 
     Context contexto;
     Drawable[] listLeftIcon;
@@ -21,7 +21,7 @@ public class AdaptadorOpcionesPerfilListView extends BaseAdapter {
     Drawable[] lisRightIcon;
     LayoutInflater inflater;
 
-    public AdaptadorOpcionesPerfilListView(Context contexto, Drawable[] listLeftIcon, String[] listTitleInputFile, String[] listDescriptionInputFile, Drawable[] lisRightIcon) {
+    public AdaptadorPerfilListView(Context contexto, Drawable[] listLeftIcon, String[] listTitleInputFile, String[] listDescriptionInputFile, Drawable[] lisRightIcon) {
         this.contexto = contexto;
         this.listLeftIcon = listLeftIcon;
         this.listTitleInputFile = listTitleInputFile;
@@ -30,7 +30,7 @@ public class AdaptadorOpcionesPerfilListView extends BaseAdapter {
         this.inflater = LayoutInflater.from(contexto);
     }
 
-    public AdaptadorOpcionesPerfilListView(Context contexto, Drawable[] listLeftIcon, String[] listTitleInputFile, String[] listDescriptionInputFile, LayoutInflater inflater) {
+    public AdaptadorPerfilListView(Context contexto, Drawable[] listLeftIcon, String[] listTitleInputFile, String[] listDescriptionInputFile, LayoutInflater inflater) {
         this.contexto = contexto;
         this.listLeftIcon = listLeftIcon;
         this.listTitleInputFile = listTitleInputFile;
@@ -61,31 +61,21 @@ public class AdaptadorOpcionesPerfilListView extends BaseAdapter {
         TextView inputTitle = view.findViewById(R.id.plantillaOpcionesPerfilTitleInputFile);
         TextView inputDesc = view.findViewById(R.id.plantillaOpcionesPerfilDescriptionInputFile);
         ImageView rightIcon = view.findViewById(R.id.plantillaOpcionesPerfilRightIcon);
+        LinearLayout plantilla = view.findViewById(R.id.idPlantillaOpcionesPerfil);
         leftIcon.setImageDrawable(listLeftIcon[position]);
         inputTitle.setText(listTitleInputFile[position]);
         inputDesc.setText(listDescriptionInputFile[position]);
-        if (position == 0) {
-            // Configurar el tamaño de la imagen
-            leftIcon.setLayoutParams(new LinearLayout.LayoutParams(250, 250));
-
-            // Establecer padding
-            leftIcon.setPadding(0, 8, 0, 0);
-
-
-            // Establecer el fondo circular (asegurate de tener un drawable de fondo circular)
-            leftIcon.setBackgroundResource(R.drawable.custom_circle_image);
-
-            // Establecer el tipo de escala de la imagen
-            leftIcon.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
-            // Establecer el clip a los bordes (solo es necesario si el fondo es circular)
-            leftIcon.setClipToOutline(true);
-
-        }
+        LinearLayout.LayoutParams params;
         if(lisRightIcon[position] != null){
             rightIcon.setImageDrawable(lisRightIcon[position]);
         }else {
             rightIcon.setVisibility(View.GONE);
+        }
+        if(listTitleInputFile[position].isEmpty()){
+            inputTitle.setVisibility(View.GONE);
+        }
+        if(listDescriptionInputFile[position].isEmpty()){
+            inputDesc.setVisibility(View.GONE);
         }
         return view;
     }

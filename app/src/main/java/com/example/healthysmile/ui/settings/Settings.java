@@ -1,25 +1,18 @@
 package com.example.healthysmile.ui.settings;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.DragAndDropPermissions;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavAction;
 
-import com.example.healthysmile.NavigationDrawerFragments;
 import com.example.healthysmile.R;
-import com.example.healthysmile.default_fragment_settings;
 
 public class Settings extends AppCompatActivity {
 
@@ -74,9 +67,8 @@ public class Settings extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.drawable.icon_arrow_back){
-            Intent intento = new Intent(this, NavigationDrawerFragments.class);
-            startActivity(intento);
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }

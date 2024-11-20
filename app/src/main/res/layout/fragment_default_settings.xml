@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".default_fragment_settings">
+    tools:context=".ui.settings.default_fragment_settings">
 
     <ListView
         android:id="@+id/listViewDefaultSettings"

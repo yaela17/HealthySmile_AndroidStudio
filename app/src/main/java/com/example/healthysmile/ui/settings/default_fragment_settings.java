@@ -1,4 +1,4 @@
-package com.example.healthysmile;
+package com.example.healthysmile.ui.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,8 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
+
+import com.example.healthysmile.R;
+import com.example.healthysmile.Usuario;
 
 public class default_fragment_settings extends Fragment implements AdapterView.OnItemClickListener {
 
