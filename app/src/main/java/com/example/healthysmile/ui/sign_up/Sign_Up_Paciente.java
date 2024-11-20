@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.healthysmile.IconMethods;
 import com.example.healthysmile.R;
 import com.example.healthysmile.ConexionFirebaseDB;
+import com.example.healthysmile.Usuario;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,13 +51,13 @@ public class Sign_Up_Paciente extends Fragment {
         String nombre = fragSignUpInputNombreUsuario.getText().toString().trim();
         String correo = fragSignUpInputCorreo.getText().toString().trim();
         String contrasena = fragSignUpInputContrasena.getText().toString().trim();
-        int nivelPermisos = 1; // Nivel de permisos fijo
-
+        int nivelPermisos = 1;
         // Validar campos
         if (nombre.isEmpty() || correo.isEmpty() || contrasena.isEmpty()) {
             Toast.makeText(getActivity(), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
+
 
         // Crear un nuevo usuario en un mapa de datos
         Map<String, Object> user = new HashMap<>();

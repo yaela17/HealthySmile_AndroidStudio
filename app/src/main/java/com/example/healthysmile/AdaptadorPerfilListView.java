@@ -65,19 +65,6 @@ public class AdaptadorPerfilListView extends BaseAdapter {
         inputTitle.setText(listTitleInputFile[position]);
         inputDesc.setText(listDescriptionInputFile[position]);
         LinearLayout.LayoutParams params;
-
-        if (position == 0) {
-            // Configura tamaño, centrado, y otros atributos del primer ícono
-            params = new LinearLayout.LayoutParams(400, 400);
-            params.setMargins(285,0,0,0);
-            params.gravity = Gravity.CENTER_HORIZONTAL;
-            leftIcon.setLayoutParams(params);
-            leftIcon.setPadding(0, 8, 0, 0);
-            leftIcon.setBackgroundResource(R.drawable.custom_circle_image);
-            leftIcon.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            leftIcon.setClipToOutline(true);
-            plantilla.setGravity(Gravity.CENTER);
-        }
         if(lisRightIcon[position] != null){
             rightIcon.setImageDrawable(lisRightIcon[position]);
         }else {

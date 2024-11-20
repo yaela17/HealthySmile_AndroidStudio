@@ -35,16 +35,16 @@
                 android:textColor="@color/color_text"/>
 
             <EditText
+                android:id="@+id/fragLogInInputCorreoUsuario"
+                style="@style/formBasicInput"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/custom_edittext"
                 android:layout_marginTop="40dp"
-                android:hint="Correo electronico"
+                android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/icon_email"
-                android:textColor="@color/color_text"
-                style="@style/formBasicInput"
+                android:hint="Correo electronico"
                 android:inputType="textWebEmailAddress|textAutoComplete|textAutoCorrect"
-                android:id="@+id/fragLogInInputCorreoUsuario"/>
+                android:textColor="@color/color_text" />
 
             <EditText
                 android:id="@+id/fragLogInInputContrasenaUsuario"

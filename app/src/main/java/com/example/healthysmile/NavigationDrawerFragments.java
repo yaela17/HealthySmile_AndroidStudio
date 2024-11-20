@@ -1,13 +1,17 @@
 package com.example.healthysmile;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;  // Importa Toast
 
+import com.bumptech.glide.Glide;
 import com.example.healthysmile.ui.settings.Settings;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -27,6 +31,9 @@ public class NavigationDrawerFragments extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityNavigationDrawerFragmentsBinding binding;
+    Usuario pacienteLocal;
+    Especialista especialistaLocal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,37 +70,72 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         String nombre = intent.getStringExtra("nomUser");
         String correo = intent.getStringExtra("correoUser");
         String tipoUsuario = intent.getStringExtra("tipoUsuario");  // Asegúrate de usar la clave correcta aquí
+        if(tipoUsuario.equals("Paciente")){
+            pacienteLocal = new Usuario(nombre,correo,null,tipoUsuario,null);
+            SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("nombrePaciente", pacienteLocal.getNombreUsuario());
+            editor.putString("correoPaciente", pacienteLocal.getCorreoUsuario());
+            editor.putString("tipoUsuario",pacienteLocal.getTipoUsuario());
+            editor.putString("fotoPaciente", pacienteLocal.getFotoPerfil());
+            editor.apply();
+        }else
+            if(tipoUsuario.equals("Especialista")){
 
+            }
 
-        // Mostrando los datos recibidos a través de Toast
         Toast.makeText(this, "Datos recibidos: Nombre - " + nombre + ", Correo - " + correo + ", TipoUsuario - " + tipoUsuario, Toast.LENGTH_LONG).show();
 
         // Referenciando los TextViews del header
         TextView nombreUser = navigationView.getHeaderView(0).findViewById(R.id.nav_header_navigation_drawer_lateral_nombreUser);
         TextView tipoUser = navigationView.getHeaderView(0).findViewById(R.id.nav_header_navigation_drawer_lateral_tipo_user);
         TextView correoUser = navigationView.getHeaderView(0).findViewById(R.id.nav_header_navigation_drawer_lateral_correoUser);
+        ImageView fotoPerfil = navigationView.getHeaderView(0).findViewById(R.id.nav_header_navigation_drawer_lateral_foto_perfil);
 
         // Verificando si los datos no son null y actualizando las vistas
         if (nombre != null) {
-            nombreUser.setText(nombre);
+            if(pacienteLocal != null){
+                nombreUser.setText(pacienteLocal.getNombreUsuario());
+            }
             Toast.makeText(this, "Nombre actualizado: " + nombre, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Nombre es null", Toast.LENGTH_SHORT).show();
         }
 
         if (correo != null) {
-            correoUser.setText(correo);
+            if(pacienteLocal != null){
+                correoUser.setText(pacienteLocal.getCorreoUsuario());
+            }
             Toast.makeText(this, "Correo actualizado: " + correo, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Correo es null", Toast.LENGTH_SHORT).show();
         }
 
         if (tipoUsuario != null) {
-            tipoUser.setText(tipoUsuario);
+            if(pacienteLocal != null){
+                tipoUser.setText(pacienteLocal.getTipoUsuario());
+            }
             Toast.makeText(this, "Tipo de usuario actualizado: " + tipoUsuario, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Tipo de usuario es null", Toast.LENGTH_SHORT).show();
         }
+
+        if (pacienteLocal != null) {
+            String rutaImagen = pacienteLocal.getFotoPerfil();  // Obtener la ruta de la imagen desde el objeto Usuario
+            if (rutaImagen != null && !rutaImagen.isEmpty()) {
+                // Si el usuario tiene una foto de perfil, carga la imagen desde la URI
+                Glide.with(this)
+                        .load(Uri.parse(rutaImagen))  // Ruta de la imagen (URI)
+                        .into(fotoPerfil); // ImageView donde se cargará la imagen
+            } else {
+                // Si no tiene foto de perfil, carga la imagen predeterminada desde los recursos
+                Glide.with(this)
+                        .load(R.drawable.default_photo_paciente)  // Ruta del recurso predeterminado
+                        .into(fotoPerfil); // ImageView donde se cargará la imagen
+            }
+        }
+
+
     }
 
     @Override

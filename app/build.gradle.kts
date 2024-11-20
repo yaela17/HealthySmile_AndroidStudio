@@ -53,5 +53,6 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation ("com.google.firebase:firebase-auth:22.0.0")
     implementation ("com.google.android.gms:play-services-auth:20.5.0");
+    implementation ("com.github.bumptech.glide:glide:4.15.0")
 
 }

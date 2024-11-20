@@ -13,6 +13,7 @@ import com.example.healthysmile.NavigationDrawerFragments;
 import com.example.healthysmile.R;
 import com.example.healthysmile.ConexionFirebaseDB;
 import com.example.healthysmile.IconMethods;
+import com.example.healthysmile.Usuario;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class LogIn extends AppCompatActivity {
@@ -41,7 +42,6 @@ public class LogIn extends AppCompatActivity {
         iconito.setupPasswordVisibility(fragLogInInputContrasenaUsuario);
 
         fragLogInBtnIniciarSesion.setOnClickListener(v -> iniciarSesion());
-
     }
 
 
