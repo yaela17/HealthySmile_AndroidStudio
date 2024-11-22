@@ -18,6 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,11 +35,9 @@ public class NavigationDrawerFragments extends AppCompatActivity {
     Usuario pacienteLocal;
     Especialista especialistaLocal;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
 
         binding = ActivityNavigationDrawerFragmentsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -58,12 +57,47 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_ayudaYSoporte)
+                R.id.nav_home, R.id.nav_ayudaYSoporte,R.id.nav_ConsultaVirtual,R.id.fragment_consulta_virtual_especialista)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer_fragments);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                NavController navController = Navigation.findNavController(NavigationDrawerFragments.this, R.id.nav_host_fragment_content_navigation_drawer_fragments);
+
+                // Manejar la opción nav_ConsultaVirtual
+                if (item.getItemId() == R.id.nav_ConsultaVirtual) {
+                    navController.popBackStack(R.id.nav_ConsultaVirtual, false);
+                    navController.navigate(R.id.nav_ConsultaVirtual);
+                    return true;
+                }
+
+                // Manejar la opción nav_home
+                if (item.getItemId() == R.id.nav_home) {
+                    navController.popBackStack(R.id.nav_home, false);
+                    navController.navigate(R.id.nav_home);
+                    return true;
+                }
+
+                // Manejar la opción nav_ayudaYSoporte
+                if (item.getItemId() == R.id.nav_ayudaYSoporte) {
+                    navController.popBackStack(R.id.nav_ayudaYSoporte, false);
+                    navController.navigate(R.id.nav_ayudaYSoporte);
+                    return true;
+                }
+
+                // Agrega más condiciones aquí para otras opciones del menú
+
+                return false;
+            }
+        });
+
+
+
 
         // Accediendo al Intent y obteniendo los datos
         Intent intent = getIntent();
@@ -147,9 +181,6 @@ public class NavigationDrawerFragments extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.action_LogOut){
-
-        }else
             if(item.getItemId() == R.id.action_settings){
                 Intent intentIrSettings = new Intent(this, Settings.class);
                 startActivity(intentIrSettings);

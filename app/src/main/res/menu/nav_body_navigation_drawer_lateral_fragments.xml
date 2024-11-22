@@ -31,4 +31,14 @@
             android:icon="@drawable/icon_ayuda_y_soporte"
             android:title="Ayuda y soporte" />
     </group>
+
+    <item
+        android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/icon_log_out"
+                android:title="Logout"/>
+        </menu>
+    </item>
 </menu>

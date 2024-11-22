@@ -23,12 +23,12 @@
         <activity
             android:name=".ui.settings.Settings"
             android:exported="false"
-            android:theme="@style/Base.Theme.HealthySmile" />
+            android:theme="@style/Theme.HealthySmile" />
         <activity
             android:name=".NavigationDrawerFragments"
             android:exported="false"
             android:label="@string/title_activity_navigation_drawer_fragments"
-            android:theme="@style/Base.Theme.HealthySmile" />
+            android:theme="@style/Theme.HealthySmile.NoActionBar" />
         <activity
             android:name=".ui.sign_up.Sing_Up"
             android:exported="false" />

@@ -5,10 +5,5 @@
         android:id="@+id/action_settings"
         android:icon="@drawable/icon_settings"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_LogOut"
-        android:icon="@drawable/icon_log_out"
-        android:title="Cerrar sesion"
-        app:showAsAction="never"/>
+        app:showAsAction="always" />
 </menu>
