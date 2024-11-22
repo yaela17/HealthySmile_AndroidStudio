@@ -6,8 +6,8 @@ public class Especialista extends Usuario {
     private String especialidad;
     private String descripcion;
 
-    public Especialista(String nombreUsuario, String correoUsuario, String contrasenaUsuario,String fotoPerfil, String cedulaProfesional, String descripcion, String especialidad) {
-        super(nombreUsuario, correoUsuario, contrasenaUsuario, "Especialista",fotoPerfil);
+    public Especialista(String idUsuario,String nombreUsuario, String correoUsuario, String contrasenaUsuario,String fotoPerfil, String cedulaProfesional, String descripcion, String especialidad) {
+        super(idUsuario,nombreUsuario, correoUsuario, contrasenaUsuario, "Especialista",fotoPerfil);
         this.cedulaProfesional = cedulaProfesional;
         this.descripcion = descripcion;
         this.especialidad = especialidad;

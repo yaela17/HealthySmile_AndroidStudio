@@ -34,12 +34,13 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
 
         // Aquí es donde ya tienes acceso al contexto
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        String id = sharedPreferences.getString("idPaciente",null);
         String nombre = sharedPreferences.getString("nombrePaciente", null);
         String correo = sharedPreferences.getString("correoPaciente", null);
         String foto = sharedPreferences.getString("fotoPaciente", null);
 
         // Crear el objeto Usuario
-        Usuario paciente = new Usuario(nombre, correo, null, "Paciente", foto);
+        Usuario paciente = new Usuario(id,nombre, correo, null, "Paciente", foto);
 
         Drawable fotoPerfil = null;
         if(paciente.getFotoPerfil() == null){

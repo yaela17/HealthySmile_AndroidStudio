@@ -101,13 +101,15 @@ public class NavigationDrawerFragments extends AppCompatActivity {
 
         // Accediendo al Intent y obteniendo los datos
         Intent intent = getIntent();
+        String idUsuario = intent.getStringExtra("idUsuario");
         String nombre = intent.getStringExtra("nomUser");
         String correo = intent.getStringExtra("correoUser");
         String tipoUsuario = intent.getStringExtra("tipoUsuario");  // Asegúrate de usar la clave correcta aquí
         if(tipoUsuario.equals("Paciente")){
-            pacienteLocal = new Usuario(nombre,correo,null,tipoUsuario,null);
+            pacienteLocal = new Usuario(idUsuario,nombre,correo,null,tipoUsuario,null);
             SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("idPaciente",pacienteLocal.getIdUsuario());
             editor.putString("nombrePaciente", pacienteLocal.getNombreUsuario());
             editor.putString("correoPaciente", pacienteLocal.getCorreoUsuario());
             editor.putString("tipoUsuario",pacienteLocal.getTipoUsuario());

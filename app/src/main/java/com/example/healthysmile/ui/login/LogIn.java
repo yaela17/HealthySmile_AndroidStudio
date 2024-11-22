@@ -13,7 +13,6 @@ import com.example.healthysmile.NavigationDrawerFragments;
 import com.example.healthysmile.R;
 import com.example.healthysmile.ConexionFirebaseDB;
 import com.example.healthysmile.IconMethods;
-import com.example.healthysmile.Usuario;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class LogIn extends AppCompatActivity {
@@ -75,15 +74,18 @@ public class LogIn extends AppCompatActivity {
                         String correoUser = usuario.getString("correoUser");
                         String nomUser = usuario.getString("nomUser");
                         int nivelPermisos = ((Long) usuario.get("nivelPermisos")).intValue(); // Asegurarse que se convierte correctamente a int
+                        String idUsuario = usuario.getString("idUsuario"); // Obtener el idUsuario
 
                         // Depuración: Mostrar datos extraídos
-                        Toast.makeText(LogIn.this, "Correo: " + correoUser + ", Nombre: " + nomUser + ", Nivel de permisos: " + nivelPermisos, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LogIn.this, "Correo: " + correoUser + ", Nombre: " + nomUser + ", Nivel de permisos: " + nivelPermisos + ", ID: " + idUsuario, Toast.LENGTH_SHORT).show();
+
                         // Crear el Intent y enviar los datos con putExtra
                         Intent intentIrHome = new Intent(LogIn.this, NavigationDrawerFragments.class);
                         intentIrHome.putExtra("correoUser", correoUser);  // Ya está correcto
                         intentIrHome.putExtra("nomUser", nomUser);        // Ya está correcto
                         intentIrHome.putExtra("tipoUsuario", "Paciente");  // Aquí estamos enviando tipoUsuario como "Paciente"
                         intentIrHome.putExtra("nivelPermisos", nivelPermisos); // Ya está correcto
+                        intentIrHome.putExtra("idUsuario", idUsuario);  // Enviamos el idUsuario
                         startActivity(intentIrHome);
                     } else {
                         Toast.makeText(LogIn.this, "El tipo de usuario no es Paciente", Toast.LENGTH_SHORT).show();

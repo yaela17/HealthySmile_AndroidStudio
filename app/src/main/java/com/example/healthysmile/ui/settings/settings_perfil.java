@@ -64,10 +64,11 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
         }
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        String id = sharedPreferences.getString("idPaciente",null);
         String nombre = sharedPreferences.getString("nombrePaciente", null);
         String correo = sharedPreferences.getString("correoPaciente", null);
         String foto = sharedPreferences.getString("fotoPaciente", null);
-        paciente = new Usuario(nombre, correo, null, "Paciente", foto);
+        paciente = new Usuario(id,nombre, correo, null, "Paciente", foto);
 
         Drawable fotoPerfil = getResources().getDrawable(R.drawable.default_photo_paciente);
         if (paciente.getFotoPerfil() != null) {
