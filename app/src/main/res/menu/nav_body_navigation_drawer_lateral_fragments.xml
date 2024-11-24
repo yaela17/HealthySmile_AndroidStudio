@@ -8,28 +8,28 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/icon_home"
-            android:title="@string/menu_home" />
+            android:title="@string/label_menu_inicio" />
         <item
             android:id="@+id/nav_ConsultaVirtual"
             android:icon="@drawable/icon_educacion_dental"
-            android:title="Consulta virtual" />
+            android:title="@string/label_menu_consultavirtual" />
         <item
             android:id="@+id/nav_EducacionDental"
             android:icon="@drawable/icon_educacion_dental"
-            android:title="Educacion dental" />
+            android:title="@string/label_menu_educaciondental" />
         <item
             android:id="@+id/nav_TiendaVirutal"
             android:icon="@drawable/icon_tienda_virtual"
-            android:title="Tienda virtual" />
+            android:title="@string/label_menu_tiendavirtual" />
         <item
             android:id="@+id/nav_gestionAdmin"
             android:icon="@drawable/icon_home"
-            android:title="Gestion de administrador"
+            android:title="@string/label_menu_gestiondeadministrador"
             android:visible="true"/>
         <item
             android:id="@+id/nav_ayudaYSoporte"
             android:icon="@drawable/icon_ayuda_y_soporte"
-            android:title="Ayuda y soporte" />
+            android:title="@string/label_menu_ayudaysoporte" />
     </group>
 
     <item
@@ -38,7 +38,7 @@
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/icon_log_out"
-                android:title="Logout"/>
+                android:title="@string/label_menu_logout"/>
         </menu>
     </item>
 </menu>

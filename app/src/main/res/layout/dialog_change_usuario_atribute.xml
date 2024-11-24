@@ -11,14 +11,14 @@
         android:id="@+id/dialogChangeUsuarioAtributeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cambiar nombre"
+        android:text="Cambiar campo ejemplo"
         android:textSize="18dp"/>
 
     <EditText
         android:id="@+id/dialogChangeUsuarioAtributeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Escribe tu nombre"
+        android:hint="Escribe tu campo ejemplo"
         android:inputType="text"/>
 
     <LinearLayout
@@ -30,13 +30,11 @@
             android:id="@+id/dialogChangeUsuariobtnCancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:text="Cancelar"/>
+            android:text="@string/texto_boton_cancelar"/>
         <Button
             android:id="@+id/dialogChangeUsuariobtnGuardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:text="Guardar"/>
+            android:text="@string/texto_boton_guardar"/>
     </LinearLayout>
 </LinearLayout>

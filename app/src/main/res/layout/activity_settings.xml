@@ -19,7 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/color_principal"
             app:titleTextColor="@color/white"
-            app:title="Configuracion"/>
+            app:title="@string/titulo_toolbar_configuracion"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

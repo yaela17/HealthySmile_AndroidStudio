@@ -1,5 +1,136 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">HealthySmile</string>
+    <!-- -->
+
+    <!--Textos generales-->
+
+
+
+    <!--Especialidades-->
+    <string name="opcion_combo_especialidad_selecciona_tu_especialidad">Selecciona tu especialidad</string>
+    <string name="opcion_combo_especialidad_odontologia_general">Odontología General</string>
+    <string name="opcion_combo_especialidad_ortodoncia">Ortodoncia</string>
+    <string name="opcion_combo_especialidad_periodoncia">Periodoncia</string>
+    <string name="opcion_combo_especialidad_endodoncia">Endodoncia</string>
+    <string name="opcion_combo_especialidad_cirugia_bucal">Cirugía Bucal</string>
+    <string name="opcion_combo_especialidad_implantologia">Implantología</string>
+    <string name="opcion_combo_especialidad_odontopediatria">Odontopediatría</string>
+    <string name="opcion_combo_especialidad_odontologia_estetica">Odontología Estética</string>
+    <string name="opcion_combo_especialidad_prostodoncia">Prostodoncia</string>
+    <string name="opcion_combo_especialidad_radiologia_oral_y_maxilofacial">Radiología Oral y Maxilofacial</string>
+    <string name="opcion_combo_especialidad_medicina_oral">Medicina Oral</string>
+    <string name="opcion_combo_especialidad_patologia_oral">Patología Oral</string>
+    <string name="opcion_combo_especialidad_odontologia_forense">Odontología Forense</string>
+    <string name="opcion_combo_especialidad_odontologia_geriatrica">Odontología Geriátrica</string>
+    <string name="opcion_combo_especialidad_odontologia_preventiva">Odontología Preventiva</string>
+    <string name="opcion_combo_especialidad_terapia_orofacial">Terapia Orofacial</string>
+    <string name="opcion_combo_especialidad_oclusion">Oclusión</string>
+    <string name="opcion_combo_especialidad_sistemas_dentales_digitales">Sistemas Dentales Digitales</string>
+    <string name="opcion_combo_especialidad_higiene_dental">Higiene Dental</string>
+
+    <!--label_menu -->
+    <string name="label_menu_inicio">Inicio</string>
+    <string name="label_menu_educaciondental">Educacion Dental</string>
+    <string name="label_menu_tiendavirtual">Tienda virtual</string>
+    <string name="label_menu_gestiondeadministrador">Gestion de administrador</string>
+    <string name="label_menu_ayudaysoporte">Ayuda y Soporte</string>
+    <string name="label_menu_consultavirtual">Consulta virtual</string>
+    <string name="label_menu_logout">Logout</string>
+    <string name="label_menu_consultavirtualespecialista">Especialista</string>
+    <string name="label_menu_configuracion">Configuracion</string>
+
+    <!--texto_boton -->
+    <string name="texto_boton_paciente">paciente</string>
+    <string name="texto_boton_especialista">especialista</string>
+    <string name="texto_boton_iniciarsesion">Iniciar sesion</string>
+    <string name="texto_boton_guardar">Guardar</string>
+    <string name="texto_boton_cancelar">Cancelar</string>
+    <string name="texto_boton_pedir_consulta">Pedir consulta</string>
+    <string name="texto_boton_registrarse" >Registrarse</string>
+    <string name="texto_boton_enviar" >Enviar</string>
+    <string name="texto_boton_chatbot" >Chatbot</string>
+    <string name="texto_boton_agendarcita" >Agendar cita</string>
+    <string name="texto_boton_historialdental" >Historial dental</string>
+
+    <!-- texto_campo -->
+    <string name="texto_campo_nombre" >Nombre</string>
+    <string name="texto_campo_correo" >Email</string>
+    <string name="texto_campo_mensaje" >Mensaje</string>
+
+    <!--texto_hint-->
+    <string name="texto_hint_correo_electronico">Correo electronico</string>
+    <string name="texto_hint_contraseña">Contraseña</string>
+    <string name="texto_hint_campo_nombre" >Nombre de usuario</string>
+    <string name="texto_hint_campo_correo" >Ingresa un correo</string>
+    <string name="texto_hint_campo_mensaje" >Deja tu mensaje</string>
+    <string name="texto_hint_enviar_mensaje" >Escribe un mensaje</string>
+    <string name="texto_hint_cedulaprofesional" >Cedula profesional</string>
+    <string name="texto_hint_descripcion" >Descripcion</string>
+
+    <!-- titulo_toolbar -->
+    <string name="titulo_toolbar_configuracion">Configuracion</string>
+
+
+
+    <!--Activity init aplication-->
+    <!--Titulos-->
+    <string name="titulo_bienvenida_healthySmile">Bienvenido a HealthySmile</string>
+    <!--Textos normales-->
+    <string name="texto_que_deseas_hacer_hoy">¿Que deseas hacer hoy?</string>
+
+    <!--Activity LogIn-->
+    <!--titulos-->
+    <!--textos-->
+
+
+    <!--Activity SigIn-->
+    <!--Titulos-->
+    <!--textos-->
+        <!--fragment_sign_up_paciente-->
+        <!--Titulos-->
+        <string name="titulo_sign_up_paciente_registropaciente">Registro paciente</string>
+        <!--textos-->
+        <!--fragment_sign_up_especialista-->
+        <!--Titulos-->
+        <string name="titulo_sign_up_paciente_registroespecialista">Registro especialista</string>
+        <!--textos-->
+
+
+    <!--Activity settings-->
+    <!--titulos-->
+    <!--textos-->
+
+
+    <!--Dialog change usuario atribute-->
+    <!--titulos-->
+    <!--textos-->
+
+
+    <!--Fragment_ayuda_y_soporte-->
+    <!--titulos-->
+    <string name="titulo_ayudaysoporte_consultorio_part1">Consultorio</string>
+    <string name="titulo_ayudaysoporte_consultorio_part2">de servicio</string>
+    <string name="titulo_ayudaysoporte_consultorio_part3">completo</string>
+    <string name="titulo_preguntas_frecuentes">PREGUNTAS FRECUENTES</string>
+    <string name="subtitulo_citas">Citas</string>
+    <!--textos-->
+    <string name="texto_descripcion_preguntas_frecuentes">encuentra respuestas a las preguntas más comunes sobre nuestros servicios. Si no ves tu pregunta aquí, envianosla y con gusto te atenderemos</string><![CDATA[
+    ]]>
+
+    <!--fragment_consulta_virtual_especialista-->
+    <!--Titulos-->
+    <!--textos-->
+
+
+    <!--fragment_consulta_virtual_init-->
+    <!--Titulos-->
+    <string name="titulo_consulta_consulta_part1" >Consultorio</string>
+    <string name="titulo_consulta_consulta_part2" >de servicio</string>
+    <string name="titulo_consulta_consulta_part3" >completo</string>
+    <string name="titulo_consulta_nuestrosservicios" >Nuestros servicios</string>
+    <!--textos-->
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_navigation_drawer_fragments">NavigationDrawerFragments</string>
@@ -8,9 +139,4 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
 </resources>

@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.healthysmile.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/label_menu_inicio"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_ayudaYSoporte"
         android:name="com.example.healthysmile.fragment_ayuda_y_soporte"
-        android:label="Ayuda y soporte"
+        android:label="@string/label_menu_ayudaysoporte"
         tools:layout="@layout/fragment_ayuda_y_soporte" />
 
     <fragment
         android:id="@+id/nav_ConsultaVirtual"
         android:name="com.example.healthysmile.fragment_cosulta_virtual_init"
-        android:label="Consulta Virtual"
+        android:label="@string/label_menu_consultavirtual"
         tools:layout="@layout/fragment_cosulta_virtual_init" >
         <!-- Acción para navegar al fragmento especialista -->
         <action
@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/fragment_consulta_virtual_especialista"
         android:name="com.example.healthysmile.fragment_consulta_virtual_especialista"
-        android:label="Especialista"
+        android:label="@string/label_menu_consultavirtualespecialista"
         tools:layout="@layout/fragment_consulta_virtual_especialista" />
 
 </navigation>

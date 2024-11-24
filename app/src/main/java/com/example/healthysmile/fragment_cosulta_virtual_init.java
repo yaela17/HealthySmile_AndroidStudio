@@ -31,7 +31,7 @@ public class fragment_cosulta_virtual_init extends Fragment implements View.OnCl
     public void onClick(View v) {
         // Verifica el texto del botón
         String textoBoton = ((Button) v).getText().toString();
-        if (textoBoton.equals("ESPECIALISTA")) {
+        if (textoBoton.equals(getActivity().getApplicationContext().getString(R.string.texto_boton_especialista))) {
             // Obtiene el NavController desde el NavHostFragment
             NavController navController = NavHostFragment.findNavController(fragment_cosulta_virtual_init.this);
 

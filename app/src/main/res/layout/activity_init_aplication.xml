@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bienvenido a HealthySmile"
+        android:text="@string/titulo_bienvenida_healthySmile"
         android:textSize="24dp"
         android:gravity="center"
         android:textStyle="bold"
@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¿Que deseas hacer hoy?"
+        android:text="@string/texto_que_deseas_hacer_hoy"
         android:textSize="15dp"
         android:gravity="center"
         android:textColor="@color/color_text"
@@ -36,14 +36,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="paciente"
+            android:text="@string/texto_boton_paciente"
             android:textColor="@color/white"
             android:backgroundTint="@color/color_principal_clarote"
             android:id="@+id/initAppBtnSignUpPaciente"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="especialista"
+            android:text="@string/texto_boton_especialista"
             android:textColor="@color/white"
             android:backgroundTint="@color/color_principal_clarote"
             android:id="@+id/initAppBtnSignUpEspecialista"/>
@@ -58,7 +58,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="iniciar sesion"
+            android:text="@string/texto_boton_iniciarsesion"
             android:textColor="@color/white"
             android:backgroundTint="@color/color_principal_clarote"
             android:id="@+id/initAppBtnLogin"/>

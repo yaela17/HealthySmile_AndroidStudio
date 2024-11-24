@@ -28,7 +28,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Iniciar sesión"
+                android:text="@string/texto_boton_iniciarsesion"
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textSize="36dp"
@@ -42,7 +42,7 @@
                 android:layout_marginTop="40dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/icon_email"
-                android:hint="Correo electronico"
+                android:hint="@string/texto_hint_correo_electronico"
                 android:inputType="textWebEmailAddress|textAutoComplete|textAutoCorrect"
                 android:textColor="@color/color_text" />
 
@@ -52,7 +52,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="20dp"
-                android:hint="Contraseña"
+                android:hint="@string/texto_hint_contraseña"
                 android:drawableLeft="@drawable/icon_lock"
                 android:drawableRight="@drawable/icon_visible_off"
                 android:textColor="@color/color_text"
@@ -64,7 +64,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Iniciar sesion"
+                android:text="@string/texto_boton_iniciarsesion"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/color_principal_clarote"

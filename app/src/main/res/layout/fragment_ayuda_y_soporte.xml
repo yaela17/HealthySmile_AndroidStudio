@@ -37,7 +37,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Consultorio"
+                        android:text="@string/titulo_ayudaysoporte_consultorio_part1"
                         android:textColor="@color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -45,7 +45,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="de servicio"
+                        android:text="@string/titulo_ayudaysoporte_consultorio_part2"
                         android:textColor="@color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -53,7 +53,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="completo"
+                        android:text="@string/titulo_ayudaysoporte_consultorio_part3"
                         android:textColor="@color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -62,7 +62,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Citas"
+                        android:text="@string/subtitulo_citas"
                         android:textColor="@color/black"
                         android:textSize="6dp" />
 
@@ -72,7 +72,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/custom_button_white_background"
                         android:padding="10dp"
-                        android:text="PEDIR CONSULTA"
+                        android:text="@string/texto_boton_pedir_consulta"
                         android:textColor="@color/black"
                         android:elevation="4dp"
                         android:textSize="10dp" />
@@ -94,11 +94,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PREGUNTAS FRECUENTES"/>
+                        android:text="@string/titulo_preguntas_frecuentes"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="encunetra respuestas a las preguntas más comunes sobre nuestros servicios. Si no ves tu pregunta aquí, envianosla y con gusto te atenderemos"
+                        android:text="@string/texto_descripcion_preguntas_frecuentes"
                         />
                     <ListView
                         android:layout_width="match_parent"
@@ -145,40 +145,40 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nombre"/>
+                        android:text="@string/texto_campo_nombre"/>
                     <EditText
                         android:layout_width="250dp"
                         android:layout_height="50dp"
                         android:padding="8dp"
-                        android:hint="Nombre de usuario"
+                        android:hint="@string/texto_hint_campo_nombre"
                         android:textColor="@color/color_text"
                         android:inputType="text"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Email"/>
+                        android:text="@string/texto_campo_correo"/>
                     <EditText
                         android:layout_width="250dp"
                         android:layout_height="50dp"
                         android:padding="8dp"
-                        android:hint="Ingresa un correo valido"
+                        android:hint="@string/texto_hint_campo_correo"
                         android:textColor="@color/color_text"
                         android:inputType="text"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mensaje"/>
+                        android:text="@string/texto_campo_mensaje"/>
                     <EditText
                         android:layout_width="250dp"
                         android:layout_height="50dp"
                         android:padding="8dp"
-                        android:hint="Deja tu mensaje"
+                        android:hint="@string/texto_hint_campo_mensaje"
                         android:textColor="@color/color_text"
                         android:inputType="text"/>
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:text="Registrarse"
+                        android:text="@string/texto_boton_registrarse"
                         android:textSize="18sp"
                         android:textColor="@color/color_text"
                         android:backgroundTint="@color/color_principal_clarote" />

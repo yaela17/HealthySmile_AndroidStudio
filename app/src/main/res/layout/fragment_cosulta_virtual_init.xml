@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Consultorio"
+                android:text="@string/titulo_consulta_consulta_part1"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -44,7 +44,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="de servicio"
+                android:text="@string/titulo_consulta_consulta_part2"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -52,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="completo"
+                android:text="@string/titulo_consulta_consulta_part3"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Citas"
+                android:text="@string/subtitulo_citas"
                 android:textColor="@color/white"
                 android:textSize="6dp" />
 
@@ -71,7 +71,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_button_white_background"
                 android:padding="10dp"
-                android:text="PEDIR CONSULTA"
+                android:text="@string/texto_boton_pedir_consulta"
                 android:textColor="@color/white"
                 android:elevation="4dp"
                 android:textSize="10dp" />
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:gravity="center"
-            android:text="Nuestros servicios"/>
+            android:text="@string/titulo_consulta_nuestrosservicios"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -105,7 +105,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CHATBOT"
+                    android:text="@string/texto_boton_chatbot"
                     android:backgroundTint="@color/white"
                     android:layout_gravity="center" />
 
@@ -128,7 +128,7 @@
                     android:id="@+id/fragment_consultavirtual_init_btnEspecialista"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ESPECIALISTA"
+                    android:text="@string/texto_boton_especialista"
                     android:backgroundTint="@color/white"
                     android:layout_gravity="center" />
 
@@ -158,7 +158,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="AGENDAR CITA"
+                    android:text="@string/texto_boton_agendarcita"
                     android:backgroundTint="@color/white"
                     android:layout_gravity="center" />
 
@@ -180,7 +180,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="HISTORIAL DENTAL"
+                    android:text="@string/texto_boton_historialdental"
                     android:backgroundTint="@color/white"
                     android:layout_gravity="center" />
 

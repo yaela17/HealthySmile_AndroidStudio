@@ -18,12 +18,7 @@ import com.example.healthysmile.IconMethods;
 import com.example.healthysmile.R;
 
 public class Sign_Up_Especialista extends Fragment implements View.OnClickListener {
-    String[] opComboEspecialidad = {"Selecciona tu especialidad","Odontología General",
-            "Ortodoncia", "Periodoncia", "Endodoncia", "Cirugía Bucal", "Implantología",
-            "Odontopediatría", "Odontología Estética", "Prostodoncia", "Radiología Oral y Maxilofacial",
-            "Medicina Oral", "Patología Oral", "Odontología Forense", "Odontología Geriátrica",
-            "Odontología Preventiva", "Terapia Orofacial", "Oclusión", "Sistemas Dentales Digitales",
-            "Higiene Dental"};
+    String[] opComboEspecialidad;
     CustomSpinnerAdapter adaptadorOpComboEspecialidad;
 
     EditText inputNombre,inputCorreo,inputContrasena,inputCedulaProfesional;
@@ -36,6 +31,27 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sign__up__especialista, container, false);
+
+        opComboEspecialidad = new String[]{getString(R.string.opcion_combo_especialidad_selecciona_tu_especialidad),
+                getString(R.string.opcion_combo_especialidad_odontologia_general),
+                getString(R.string.opcion_combo_especialidad_ortodoncia),
+                getString(R.string.opcion_combo_especialidad_periodoncia),
+                getString(R.string.opcion_combo_especialidad_endodoncia),
+                getString(R.string.opcion_combo_especialidad_cirugia_bucal),
+                getString(R.string.opcion_combo_especialidad_implantologia),
+                getString(R.string.opcion_combo_especialidad_odontopediatria),
+                getString(R.string.opcion_combo_especialidad_odontologia_estetica),
+                getString(R.string.opcion_combo_especialidad_prostodoncia),
+                getString(R.string.opcion_combo_especialidad_radiologia_oral_y_maxilofacial),
+                getString(R.string.opcion_combo_especialidad_medicina_oral),
+                getString(R.string.opcion_combo_especialidad_patologia_oral),
+                getString(R.string.opcion_combo_especialidad_odontologia_forense),
+                getString(R.string.opcion_combo_especialidad_odontologia_geriatrica),
+                getString(R.string.opcion_combo_especialidad_odontologia_preventiva),
+                getString(R.string.opcion_combo_especialidad_terapia_orofacial),
+                getString(R.string.opcion_combo_especialidad_oclusion),
+                getString(R.string.opcion_combo_especialidad_sistemas_dentales_digitales),
+                getString(R.string.opcion_combo_especialidad_higiene_dental)};
 
         // Inicializa las vistas
         inputNombre = view.findViewById(R.id.SignUpEspecialistaInputNombre);

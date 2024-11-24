@@ -40,17 +40,17 @@ public class InitAplication extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         String textoBoton = ((Button)v).getText().toString();
-        if(textoBoton.equals("paciente")){
+        if(textoBoton.equals(getString(R.string.texto_boton_paciente))){
             Intent intentitoMandarPaciente = new Intent(this, Sing_Up.class);
             intentitoMandarPaciente.putExtra("tipoRegistro","paciente");
             startActivity(intentitoMandarPaciente);
         }else
-            if(textoBoton.equals("especialista")){
+            if(textoBoton.equals(getString(R.string.texto_boton_especialista))){
                 Intent intentitoMandarEspecialista = new Intent(this,Sing_Up.class);
                 intentitoMandarEspecialista.putExtra("tipoRegistro","especialista");
                 startActivity(intentitoMandarEspecialista);
             }else
-                if(textoBoton.equals("iniciar sesion")){
+                if(textoBoton.equals(getString(R.string.texto_boton_iniciarsesion))){
                     Intent intentitoMandarLogin = new Intent(this, LogIn.class);
                     startActivity(intentitoMandarLogin);
                 }

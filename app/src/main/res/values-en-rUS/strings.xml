@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">HealthySmile</string>
+    <!-- -->
+
+    <!--General texts-->
+
+    <!--Specialties-->
+    <string name="opcion_combo_especialidad_selecciona_tu_especialidad">Select your specialty</string>
+    <string name="opcion_combo_especialidad_odontologia_general">General Dentistry</string>
+    <string name="opcion_combo_especialidad_ortodoncia">Orthodontics</string>
+    <string name="opcion_combo_especialidad_periodoncia">Periodontics</string>
+    <string name="opcion_combo_especialidad_endodoncia">Endodontics</string>
+    <string name="opcion_combo_especialidad_cirugia_bucal">Oral Surgery</string>
+    <string name="opcion_combo_especialidad_implantologia">Implantology</string>
+    <string name="opcion_combo_especialidad_odontopediatria">Pediatric Dentistry</string>
+    <string name="opcion_combo_especialidad_odontologia_estetica">Aesthetic Dentistry</string>
+    <string name="opcion_combo_especialidad_prostodoncia">Prosthodontics</string>
+    <string name="opcion_combo_especialidad_radiologia_oral_y_maxilofacial">Oral and Maxillofacial Radiology</string>
+    <string name="opcion_combo_especialidad_medicina_oral">Oral Medicine</string>
+    <string name="opcion_combo_especialidad_patologia_oral">Oral Pathology</string>
+    <string name="opcion_combo_especialidad_odontologia_forense">Forensic Dentistry</string>
+    <string name="opcion_combo_especialidad_odontologia_geriatrica">Geriatric Dentistry</string>
+    <string name="opcion_combo_especialidad_odontologia_preventiva">Preventive Dentistry</string>
+    <string name="opcion_combo_especialidad_terapia_orofacial">Orofacial Therapy</string>
+    <string name="opcion_combo_especialidad_oclusion">Occlusion</string>
+    <string name="opcion_combo_especialidad_sistemas_dentales_digitales">Digital Dental Systems</string>
+    <string name="opcion_combo_especialidad_higiene_dental">Dental Hygiene</string>
+
+    <!--Menu labels-->
+    <string name="label_menu_inicio">Home</string>
+    <string name="label_menu_educaciondental">Dental Education</string>
+    <string name="label_menu_tiendavirtual">Online Store</string>
+    <string name="label_menu_gestiondeadministrador">Admin Management</string>
+    <string name="label_menu_ayudaysoporte">Help and Support</string>
+    <string name="label_menu_consultavirtual">Virtual Consultation</string>
+    <string name="label_menu_logout">Logout</string>
+    <string name="label_menu_consultavirtualespecialista">Specialist</string>
+    <string name="label_menu_configuracion">Settings</string>
+
+    <!--Button texts-->
+    <string name="texto_boton_paciente">Patient</string>
+    <string name="texto_boton_especialista">Specialist</string>
+    <string name="texto_boton_iniciarsesion">Log In</string>
+    <string name="texto_boton_guardar">Save</string>
+    <string name="texto_boton_cancelar">Cancel</string>
+    <string name="texto_boton_pedir_consulta">Request Appointment</string>
+    <string name="texto_boton_registrarse">Sign Up</string>
+    <string name="texto_boton_enviar">Send</string>
+    <string name="texto_boton_chatbot">Chatbot</string>
+    <string name="texto_boton_agendarcita">Schedule Appointment</string>
+    <string name="texto_boton_historialdental">Dental History</string>
+
+    <!--Field texts-->
+    <string name="texto_campo_nombre">Name</string>
+    <string name="texto_campo_correo">Email</string>
+    <string name="texto_campo_mensaje">Message</string>
+
+    <!--Hint texts-->
+    <string name="texto_hint_correo_electronico">Email</string>
+    <string name="texto_hint_contraseña">Password</string>
+    <string name="texto_hint_campo_nombre">Username</string>
+    <string name="texto_hint_campo_correo">Enter an email</string>
+    <string name="texto_hint_campo_mensaje">Leave your message</string>
+    <string name="texto_hint_enviar_mensaje">Write a message</string>
+    <string name="texto_hint_cedulaprofesional">Professional ID</string>
+    <string name="texto_hint_descripcion">Description</string>
+
+    <!--Toolbar titles-->
+    <string name="titulo_toolbar_configuracion">Settings</string>
+
+    <!--Activity init application-->
+    <!--Titles-->
+    <string name="titulo_bienvenida_healthySmile">Welcome to HealthySmile</string>
+    <!--Normal texts-->
+    <string name="texto_que_deseas_hacer_hoy">What would you like to do today?</string>
+
+    <!--Activity SignUp-->
+    <!--Titles-->
+    <string name="titulo_sign_up_paciente_registropaciente">Patient Registration</string>
+    <string name="titulo_sign_up_paciente_registroespecialista">Specialist Registration</string>
+
+    <!--Help and Support Fragment-->
+    <!--Titles-->
+    <string name="titulo_ayudaysoporte_consultorio_part1">Clinic</string>
+    <string name="titulo_ayudaysoporte_consultorio_part2">Service</string>
+    <string name="titulo_ayudaysoporte_consultorio_part3">Complete</string>
+    <string name="titulo_preguntas_frecuentes">FREQUENTLY ASKED QUESTIONS</string>
+    <string name="subtitulo_citas">Appointments</string>
+    <!--Texts-->
+    <string name="texto_descripcion_preguntas_frecuentes">Find answers to the most common questions about our services. If you don’t see your question here, send it to us, and we’ll gladly assist you.</string><![CDATA[
+    ]]>
+
+    <!--Virtual Consultation Fragment-->
+    <!--Titles-->
+    <string name="titulo_consulta_consulta_part1">Clinic</string>
+    <string name="titulo_consulta_consulta_part2">Service</string>
+    <string name="titulo_consulta_consulta_part3">Complete</string>
+    <string name="titulo_consulta_nuestrosservicios">Our Services</string>
+
+    <!--Placeholder Text-->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_navigation_drawer_fragments">NavigationDrawerFragments</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+</resources>
