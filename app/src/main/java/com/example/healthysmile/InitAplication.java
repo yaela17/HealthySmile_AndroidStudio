@@ -35,6 +35,7 @@ public class InitAplication extends AppCompatActivity implements View.OnClickLis
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Test event");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+
     }
 
     @Override

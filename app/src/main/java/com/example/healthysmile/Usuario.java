@@ -1,7 +1,7 @@
 package com.example.healthysmile;
 
 public class Usuario {
-    private String idUsuario;
+    private long idUsuario;
     private String nombreUsuario;
     private String correoUsuario;
     private String contrasenaUsuario;
@@ -9,7 +9,7 @@ public class Usuario {
     private int nivelPermisosUsuario;
     private String fotoPerfil;
 
-    public Usuario(String idUsuario,String nombreUsuario, String correoUsuario, String contrasenaUsuario, String tipoUsuario, String fotoPerfil) {
+    public Usuario(long idUsuario,String nombreUsuario, String correoUsuario, String contrasenaUsuario, String tipoUsuario, String fotoPerfil) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.correoUsuario = correoUsuario;
@@ -72,11 +72,11 @@ public class Usuario {
         this.fotoPerfil = fotoPerfil;
     }
 
-    public String getIdUsuario() {
+    public long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(String idUsuario) {
+    public void setIdUsuario(long idUsuario) {
         this.idUsuario = idUsuario;
     }
 }

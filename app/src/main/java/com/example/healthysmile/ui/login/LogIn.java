@@ -15,6 +15,8 @@ import com.example.healthysmile.ConexionFirebaseDB;
 import com.example.healthysmile.IconMethods;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.util.Map;
+
 public class LogIn extends AppCompatActivity {
 
     private EditText fragLogInInputCorreoUsuario;
@@ -33,9 +35,7 @@ public class LogIn extends AppCompatActivity {
         fragLogInBtnIniciarSesion = findViewById(R.id.fragLogInBtnIniciarSesion);
 
         dbHelper = new ConexionFirebaseDB();
-
         fragLogInBtnIniciarSesion.setOnClickListener(v -> iniciarSesion());
-
         IconMethods iconito = new IconMethods();
         // Configura la visibilidad de la contraseña
         iconito.setupPasswordVisibility(fragLogInInputContrasenaUsuario);
@@ -43,41 +43,29 @@ public class LogIn extends AppCompatActivity {
         fragLogInBtnIniciarSesion.setOnClickListener(v -> iniciarSesion());
     }
 
-
     private void iniciarSesion() {
         String correoUsuario = fragLogInInputCorreoUsuario.getText().toString().trim(); // Usar correo en lugar de nombreUsuario
         String contrasenaUsuario = fragLogInInputContrasenaUsuario.getText().toString().trim();
 
-        // Validación de los campos
         if (correoUsuario.isEmpty() || contrasenaUsuario.isEmpty()) {
             Toast.makeText(LogIn.this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Depuración: Mostrar datos antes de la verificación
-        Toast.makeText(LogIn.this, "Correo: " + correoUsuario + ", Contraseña: " + contrasenaUsuario, Toast.LENGTH_SHORT).show();
-
         // Verificar credenciales utilizando la clase ConexionFirebaseDB
         dbHelper.verificarCredenciales(correoUsuario, contrasenaUsuario, (callback) -> {
             // Depuración: Verificar si la credencial es válida
             if (callback.isValid) {
-                Toast.makeText(LogIn.this, "Credenciales válidas", Toast.LENGTH_SHORT).show();
-
                 // Obtener el documento del usuario
                 DocumentSnapshot usuario = callback.usuario;
                 if (usuario != null) {
-                    Toast.makeText(LogIn.this, "Documento recuperado", Toast.LENGTH_SHORT).show();
-
                     // Verifica si el tipo de usuario es "Paciente"
                     if ("Paciente".equals(usuario.getString("tipoUser"))) {
                         // Extraer los datos del usuario
                         String correoUser = usuario.getString("correoUser");
                         String nomUser = usuario.getString("nomUser");
-                        int nivelPermisos = ((Long) usuario.get("nivelPermisos")).intValue(); // Asegurarse que se convierte correctamente a int
-                        String idUsuario = usuario.getString("idUsuario"); // Obtener el idUsuario
-
-                        // Depuración: Mostrar datos extraídos
-                        Toast.makeText(LogIn.this, "Correo: " + correoUser + ", Nombre: " + nomUser + ", Nivel de permisos: " + nivelPermisos + ", ID: " + idUsuario, Toast.LENGTH_SHORT).show();
+                        long nivelPermisos = ((Long) usuario.get("nivelPermisos")).intValue(); // Asegurarse que se convierte correctamente a int
+                        long idUsuario = ((Long) usuario.get("idUsuario")).intValue(); // Obtener el idUsuario
 
                         // Crear el Intent y enviar los datos con putExtra
                         Intent intentIrHome = new Intent(LogIn.this, NavigationDrawerFragments.class);
@@ -88,7 +76,34 @@ public class LogIn extends AppCompatActivity {
                         intentIrHome.putExtra("idUsuario", idUsuario);  // Enviamos el idUsuario
                         startActivity(intentIrHome);
                     } else {
-                        Toast.makeText(LogIn.this, "El tipo de usuario no es Paciente", Toast.LENGTH_SHORT).show();
+                        if("Especialista".equals(usuario.getString("tipoUser"))){
+                            // Acceder a los datos generales del usuario
+                            String correoUser = usuario.getString("correoUser");
+                            String nomUser = usuario.getString("nomUser");
+                            long nivelPermisos = ((Long) usuario.get("nivelPermisos")).intValue();
+                            long idUsuario = ((Long) usuario.get("idUsuario")).intValue();
+
+                            // Acceder a los datos específicos del especialista
+                            Map<String, Object> especialista = (Map<String, Object>) usuario.get("Especialista");  // Obtener el Map del campo 'especialista'
+                            // Si el campo 'especialista' tiene subcampos, los puedes acceder de la siguiente manera:
+                            long idEspecialista = ((Long) especialista.get("idEspecialista")).intValue();
+                            String descripcion = (String) especialista.get("descripcion");
+                            String cedulaProfesional = (String) especialista.get("cedulaProfesional"); // Ejemplo de subcampo
+                            String especialidad = (String) especialista.get("especialidad");  // Otro ejemplo de subcampo
+
+                            // Crear el Intent y enviar los datos con putExtra
+                            Intent intentIrHome = new Intent(LogIn.this, NavigationDrawerFragments.class);
+                            intentIrHome.putExtra("correoUser", correoUser);
+                            intentIrHome.putExtra("nomUser", nomUser);
+                            intentIrHome.putExtra("tipoUsuario", "Especialista");
+                            intentIrHome.putExtra("nivelPermisos", nivelPermisos);
+                            intentIrHome.putExtra("idUsuario", idUsuario);
+                            intentIrHome.putExtra("idEspecialista",idEspecialista);
+                            intentIrHome.putExtra("descripcion",descripcion);
+                            intentIrHome.putExtra("cedulaProfesional", cedulaProfesional);
+                            intentIrHome.putExtra("especialidad", especialidad);
+                            startActivity(intentIrHome);
+                        }
                     }
                 } else {
                     Toast.makeText(LogIn.this, "Documento no encontrado", Toast.LENGTH_SHORT).show();

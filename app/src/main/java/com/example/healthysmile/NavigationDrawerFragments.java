@@ -96,12 +96,9 @@ public class NavigationDrawerFragments extends AppCompatActivity {
             }
         });
 
-
-
-
         // Accediendo al Intent y obteniendo los datos
         Intent intent = getIntent();
-        String idUsuario = intent.getStringExtra("idUsuario");
+        long idUsuario = intent.getLongExtra("idUsuario", 0);
         String nombre = intent.getStringExtra("nomUser");
         String correo = intent.getStringExtra("correoUser");
         String tipoUsuario = intent.getStringExtra("tipoUsuario");  // Asegúrate de usar la clave correcta aquí
@@ -109,15 +106,25 @@ public class NavigationDrawerFragments extends AppCompatActivity {
             pacienteLocal = new Usuario(idUsuario,nombre,correo,null,tipoUsuario,null);
             SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("idPaciente",pacienteLocal.getIdUsuario());
+            editor.putLong("idPaciente",pacienteLocal.getIdUsuario());
             editor.putString("nombrePaciente", pacienteLocal.getNombreUsuario());
             editor.putString("correoPaciente", pacienteLocal.getCorreoUsuario());
             editor.putString("tipoUsuario",pacienteLocal.getTipoUsuario());
-            editor.putString("fotoPaciente", pacienteLocal.getFotoPerfil());
             editor.apply();
         }else
             if(tipoUsuario.equals("Especialista")){
-
+                long idEspecialista = intent.getLongExtra("idEspecialista",0);
+                String cedulaProfesional = intent.getStringExtra("cedulaProfesional");
+                String descripcion = intent.getStringExtra("descripcion");
+                String especialidad = intent.getStringExtra("especialidad");
+                especialistaLocal = new Especialista(idUsuario,nombre,correo,null,null,idEspecialista,cedulaProfesional,descripcion,especialidad);
+                SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putLong("idPaciente",especialistaLocal.getIdUsuario());
+                editor.putString("nombrePaciente", especialistaLocal.getNombreUsuario());
+                editor.putString("correoPaciente", especialistaLocal.getCorreoUsuario());
+                editor.putString("tipoUsuario",especialistaLocal.getTipoUsuario());
+                editor.apply();
             }
 
         Toast.makeText(this, "Datos recibidos: Nombre - " + nombre + ", Correo - " + correo + ", TipoUsuario - " + tipoUsuario, Toast.LENGTH_LONG).show();
@@ -132,8 +139,9 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         if (nombre != null) {
             if(pacienteLocal != null){
                 nombreUser.setText(pacienteLocal.getNombreUsuario());
+            }else{
+                nombreUser.setText(especialistaLocal.getNombreUsuario());
             }
-            Toast.makeText(this, "Nombre actualizado: " + nombre, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Nombre es null", Toast.LENGTH_SHORT).show();
         }
@@ -141,6 +149,8 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         if (correo != null) {
             if(pacienteLocal != null){
                 correoUser.setText(pacienteLocal.getCorreoUsuario());
+            }else {
+                correoUser.setText(especialistaLocal.getCorreoUsuario());
             }
             Toast.makeText(this, "Correo actualizado: " + correo, Toast.LENGTH_SHORT).show();
         } else {
@@ -150,6 +160,8 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         if (tipoUsuario != null) {
             if(pacienteLocal != null){
                 tipoUser.setText(pacienteLocal.getTipoUsuario());
+            }else {
+                tipoUser.setText(especialistaLocal.getTipoUsuario());
             }
             Toast.makeText(this, "Tipo de usuario actualizado: " + tipoUsuario, Toast.LENGTH_SHORT).show();
         } else {
@@ -169,8 +181,20 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                         .load(R.drawable.default_photo_paciente)  // Ruta del recurso predeterminado
                         .into(fotoPerfil); // ImageView donde se cargará la imagen
             }
+        }else {
+            String rutaImagen = especialistaLocal.getFotoPerfil();  // Obtener la ruta de la imagen desde el objeto Usuario
+            if (rutaImagen != null && !rutaImagen.isEmpty()) {
+                // Si el usuario tiene una foto de perfil, carga la imagen desde la URI
+                Glide.with(this)
+                        .load(Uri.parse(rutaImagen))  // Ruta de la imagen (URI)
+                        .into(fotoPerfil); // ImageView donde se cargará la imagen
+            } else {
+                // Si no tiene foto de perfil, carga la imagen predeterminada desde los recursos
+                Glide.with(this)
+                        .load(R.drawable.default_photo_perfil_especialista)  // Ruta del recurso predeterminado
+                        .into(fotoPerfil); // ImageView donde se cargará la imagen
+            }
         }
-
 
     }
 

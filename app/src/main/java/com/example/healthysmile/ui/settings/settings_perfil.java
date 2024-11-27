@@ -31,6 +31,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.healthysmile.ConexionFirebaseDB;
+import com.example.healthysmile.Especialista;
 import com.example.healthysmile.R;
 import com.example.healthysmile.Usuario;
 
@@ -48,6 +50,10 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
     Drawable[] lisRightIcon;
     Dialog dialog;
     Usuario paciente;
+    Especialista especialista;
+    ConexionFirebaseDB dbHelper;
+    String nombre,correo,foto,tipoUsuario;
+    long idUsuario;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +61,7 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
         // Inflamos la vista del fragmento
         View view = inflater.inflate(R.layout.fragment_settings_perfil, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Perfil");
+        dbHelper = new ConexionFirebaseDB();
 
         // Verificar y solicitar permisos de cámara
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -64,16 +71,26 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
         }
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        String id = sharedPreferences.getString("idPaciente",null);
-        String nombre = sharedPreferences.getString("nombrePaciente", null);
-        String correo = sharedPreferences.getString("correoPaciente", null);
-        String foto = sharedPreferences.getString("fotoPaciente", null);
-        paciente = new Usuario(id,nombre, correo, null, "Paciente", foto);
+        idUsuario = sharedPreferences.getLong("idPaciente",0);
+        nombre = sharedPreferences.getString("nombrePaciente", null);
+        correo = sharedPreferences.getString("correoPaciente", null);
+        foto = sharedPreferences.getString("fotoPaciente", null);
+        paciente = new Usuario(idUsuario,nombre, correo, null, "Paciente", foto);
+        tipoUsuario = sharedPreferences.getString("tipoUsuario", "Paciente");
 
-        Drawable fotoPerfil = getResources().getDrawable(R.drawable.default_photo_paciente);
-        if (paciente.getFotoPerfil() != null) {
-            fotoPerfil = Drawable.createFromPath(paciente.getFotoPerfil());
+        if ("Paciente".equals(tipoUsuario)) {
+            paciente = new Usuario(idUsuario, nombre, correo, null, tipoUsuario, foto);
+        } else {
+            // Si es Especialista, obtenemos los datos específicos
+            long idEspecialista = sharedPreferences.getLong("idEspecialista", 0);
+            String cedulaProfesional = sharedPreferences.getString("cedulaProfesional", null);
+            String descripcion = sharedPreferences.getString("descripcion", null);
+            String especialidad = sharedPreferences.getString("especialidad", null);
+
+            especialista = new Especialista(idUsuario, nombre, correo, null, null, idEspecialista, cedulaProfesional, descripcion, especialidad);
         }
+
+        Drawable fotoPerfil =  obtenerFotoPerfil();
 
         listLeftIcon = new Drawable[]{
                 getResources().getDrawable(R.drawable.icon_person),
@@ -91,7 +108,7 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
                 getActivity().getApplicationContext().getString(R.string.texto_campo_nombre),
                 getActivity().getApplicationContext().getString(R.string.texto_campo_correo),
                 getActivity().getApplicationContext().getString(R.string.texto_boton_especialista)};
-        listDescriptionInputFile = new String[]{paciente.getNombreUsuario(), paciente.getCorreoUsuario(), paciente.getTipoUsuario()};
+        listDescriptionInputFile = new String[]{nombre, correo, tipoUsuario};
 
         // Configurar el ListView y el adaptador
         listaDefaultSettings = view.findViewById(R.id.listViewSettingsPerfil);
@@ -133,9 +150,22 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
 
         closeButton.setOnClickListener(v -> dialog.dismiss());
         saveButton.setOnClickListener(v -> {
-            if (title.getText().toString().equals("Nombre")) {
+            if (title.getText().toString().equals(getActivity().getApplicationContext().getString(R.string.texto_campo_nombre))) {
                 paciente.setNombreUsuario(nameInput.getText().toString());
                 listDescriptionInputFile[0] = paciente.getNombreUsuario();
+                dbHelper.cambiarNombrePorCorreo(
+                        correo,
+                        nameInput.getText().toString(),
+                        unused -> {
+                            // Éxito: actualizar la UI y notificar al usuario
+                            adaptador.notifyDataSetChanged();
+                            Toast.makeText(requireActivity().getApplicationContext(), "Nombre actualizado con éxito", Toast.LENGTH_SHORT).show();
+                        },
+                        e -> {
+                            // Error: mostrar mensaje al usuario
+                            Toast.makeText(requireActivity().getApplicationContext(), "Error al actualizar el nombre: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                );
             } else if (title.getText().toString().equals("Correo")) {
                 paciente.setCorreoUsuario(nameInput.getText().toString());
                 listDescriptionInputFile[1] = paciente.getCorreoUsuario();
@@ -183,6 +213,24 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
                 Toast.makeText(getContext(), "Permiso concedido", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "Permiso denegado", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private Drawable obtenerFotoPerfil() {
+        // Si la foto de paciente o especialista es nula, se usa una foto predeterminada
+        if (foto != null && !foto.equals("null")) {
+            return Drawable.createFromPath(foto);
+        } else if (paciente != null && paciente.getFotoPerfil() != null) {
+            return Drawable.createFromPath(paciente.getFotoPerfil());
+        } else if (especialista != null && especialista.getFotoPerfil() != null) {
+            return Drawable.createFromPath(especialista.getFotoPerfil());
+        } else {
+            // Si no hay foto, se asigna una imagen predeterminada según el tipo de usuario
+            if ("Paciente".equals(tipoUsuario)) {
+                return getResources().getDrawable(R.drawable.default_photo_paciente);
+            } else {
+                return getResources().getDrawable(R.drawable.default_photo_perfil_especialista);
             }
         }
     }

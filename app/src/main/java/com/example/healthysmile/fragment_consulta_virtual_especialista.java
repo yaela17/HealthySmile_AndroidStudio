@@ -47,7 +47,7 @@ public class fragment_consulta_virtual_especialista extends Fragment {
 
         // Obtener los datos del paciente desde SharedPreferences
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        String id = sharedPreferences.getString("idPaciente", null);
+        long id = sharedPreferences.getLong("idPaciente", 0);
         String nombre = sharedPreferences.getString("nombrePaciente", null);
         String correo = sharedPreferences.getString("correoPaciente", null);
         String foto = sharedPreferences.getString("fotoPaciente", null);
@@ -102,7 +102,7 @@ public class fragment_consulta_virtual_especialista extends Fragment {
                     String mensaje = (String) args[0];
                     getActivity().runOnUiThread(() -> {
                         // Actualizar la UI con el mensaje recibido
-                        Message newMessage = new Message("especialistaId", paciente.getIdUsuario(), mensaje, new java.util.Date());
+                        Message newMessage = new Message("especialistaId", String.valueOf(paciente.getIdUsuario()), mensaje, new java.util.Date());
                         messageList.add(newMessage);
                         messageAdapter.notifyDataSetChanged();
                         messagesRecyclerView.scrollToPosition(messageList.size() - 1);  // Hacer scroll hasta el último mensaje
@@ -141,7 +141,7 @@ public class fragment_consulta_virtual_especialista extends Fragment {
         String destinatarioId = "especialistaId";  // Este ID debe ser dinámico (de algún modo obtienes el ID del especialista)
 
         // Crear un nuevo mensaje
-        Message message = new Message(paciente.getIdUsuario(), destinatarioId, texto, new java.util.Date());
+        Message message = new Message(String.valueOf(paciente.getIdUsuario()), destinatarioId, texto, new java.util.Date());
 
         // Enviar el mensaje a través de WebSocket
         if (socket != null) {

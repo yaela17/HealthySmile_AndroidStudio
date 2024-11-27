@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.healthysmile.Especialista;
 import com.example.healthysmile.R;
 import com.example.healthysmile.Usuario;
 
@@ -25,6 +26,9 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
     String[] listTitleInputFile;
     String[] listDescriptionInputFile;
     Drawable[] lisRightIcon;
+    Usuario paciente;
+    Especialista especialista;
+    String nombre, correo, foto, tipoUsuario;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,20 +36,26 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
         // Inflamos la vista del fragmento
         View view = inflater.inflate(R.layout.fragment_default_settings, container, false);
 
-        // Aquí es donde ya tienes acceso al contexto
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        String id = sharedPreferences.getString("idPaciente",null);
-        String nombre = sharedPreferences.getString("nombrePaciente", null);
-        String correo = sharedPreferences.getString("correoPaciente", null);
-        String foto = sharedPreferences.getString("fotoPaciente", null);
+        long idUsuario = sharedPreferences.getLong("idPaciente", 0);
+        nombre = sharedPreferences.getString("nombrePaciente", null);
+        correo = sharedPreferences.getString("correoPaciente", null);
+        foto = sharedPreferences.getString("fotoPaciente", null);
+        tipoUsuario = sharedPreferences.getString("tipoUsuario", "Paciente");
 
-        // Crear el objeto Usuario
-        Usuario paciente = new Usuario(id,nombre, correo, null, "Paciente", foto);
+        if ("Paciente".equals(tipoUsuario)) {
+            paciente = new Usuario(idUsuario, nombre, correo, null, tipoUsuario, foto);
+        } else {
+            // Si es Especialista, obtenemos los datos específicos
+            long idEspecialista = sharedPreferences.getLong("idEspecialista", 0);
+            String cedulaProfesional = sharedPreferences.getString("cedulaProfesional", null);
+            String descripcion = sharedPreferences.getString("descripcion", null);
+            String especialidad = sharedPreferences.getString("especialidad", null);
 
-        Drawable fotoPerfil = null;
-        if(paciente.getFotoPerfil() == null){
-            fotoPerfil = getResources().getDrawable(R.drawable.default_photo_paciente);
+            especialista = new Especialista(idUsuario, nombre, correo, null, null, idEspecialista, cedulaProfesional, descripcion, especialidad);
         }
+
+        Drawable fotoPerfil =  obtenerFotoPerfil();
 
         // Inicializamos los arrays de iconos
         listLeftIcon = new Drawable[]{
@@ -79,14 +89,14 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
 
         // Configurar el ListView y el adaptador
         listTitleInputFile = new String[]{
-                paciente.getNombreUsuario(), "Holita titulazo 2", "Hola 3", "Titulo 4", "Titulo 5", "Titulo 6",
+                nombre, "Holita titulazo 2", "Hola 3", "Titulo 4", "Titulo 5", "Titulo 6",
                 "Titulo 7", "Titulo 8", "Titulo 9", "Titulo 10", "Titulo 11", "Titulo 12",
                 "Titulo 13", "Titulo 14", "Titulo 15", "Titulo 16", "Titulo 17", "Titulo 18",
                 "Titulo 19", "Titulo 20"
         };
 
         listDescriptionInputFile = new String[]{
-                paciente.getCorreoUsuario(), "Holita descripcionzasa 2", "Hola 3", "Descripcion 4", "Descripcion 5", "Descripcion 6",
+                correo, "Holita descripcionzasa 2", "Hola 3", "Descripcion 4", "Descripcion 5", "Descripcion 6",
                 "Descripcion 7", "Descripcion 8", "Descripcion 9", "Descripcion 10", "Descripcion 11", "Descripcion 12",
                 "Descripcion 13", "Descripcion 14", "Descripcion 15", "Descripcion 16", "Descripcion 17", "Descripcion 18",
                 "Descripcion 19", "Descripcion 20"
@@ -109,5 +119,25 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
             transaction.commit();
         }
     }
+
+    private Drawable obtenerFotoPerfil() {
+        // Si la foto de paciente o especialista es nula, se usa una foto predeterminada
+        if (foto != null && !foto.equals("null")) {
+            return Drawable.createFromPath(foto);
+        } else if (paciente != null && paciente.getFotoPerfil() != null) {
+            return Drawable.createFromPath(paciente.getFotoPerfil());
+        } else if (especialista != null && especialista.getFotoPerfil() != null) {
+            return Drawable.createFromPath(especialista.getFotoPerfil());
+        } else {
+            // Si no hay foto, se asigna una imagen predeterminada según el tipo de usuario
+            if ("Paciente".equals(tipoUsuario)) {
+                return getResources().getDrawable(R.drawable.default_photo_paciente);
+            } else {
+                return getResources().getDrawable(R.drawable.default_photo_perfil_especialista);
+            }
+        }
+    }
+
+
 }
 

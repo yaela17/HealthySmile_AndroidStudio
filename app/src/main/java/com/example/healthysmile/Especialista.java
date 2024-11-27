@@ -2,15 +2,25 @@ package com.example.healthysmile;
 
 public class Especialista extends Usuario {
 
+    private long idEspecialista;
     private String cedulaProfesional;
     private String especialidad;
     private String descripcion;
 
-    public Especialista(String idUsuario,String nombreUsuario, String correoUsuario, String contrasenaUsuario,String fotoPerfil, String cedulaProfesional, String descripcion, String especialidad) {
+    public Especialista(long idUsuario,String nombreUsuario, String correoUsuario, String contrasenaUsuario,String fotoPerfil,long idEspecialista, String cedulaProfesional, String descripcion, String especialidad) {
         super(idUsuario,nombreUsuario, correoUsuario, contrasenaUsuario, "Especialista",fotoPerfil);
+        this.idEspecialista = idEspecialista;
         this.cedulaProfesional = cedulaProfesional;
         this.descripcion = descripcion;
         this.especialidad = especialidad;
+    }
+
+    public long getIdEspecialista() {
+        return idEspecialista;
+    }
+
+    public void setIdEspecialista(long idEspecialista) {
+        this.idEspecialista = idEspecialista;
     }
 
     public String getCedulaProfesional() {

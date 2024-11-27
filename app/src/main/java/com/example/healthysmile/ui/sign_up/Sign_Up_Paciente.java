@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 import com.example.healthysmile.IconMethods;
 import com.example.healthysmile.R;
 import com.example.healthysmile.ConexionFirebaseDB;
-import com.example.healthysmile.Usuario;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -68,7 +67,7 @@ public class Sign_Up_Paciente extends Fragment {
         user.put("nivelPermisos", nivelPermisos);
 
         // Registrar el usuario utilizando ConexionFirebaseDB
-        dbHelper.registrarUsuario(user, documentReference -> {
+        dbHelper.registrarPaciente(user, documentReference -> {
             Toast.makeText(getActivity(), "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();
             Log.d("Firestore", "Usuario registrado con ID: " + documentReference.getId());
             limpiarCampos();
