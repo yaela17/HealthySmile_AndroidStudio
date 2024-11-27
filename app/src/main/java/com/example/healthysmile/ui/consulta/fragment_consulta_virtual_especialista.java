@@ -1,4 +1,4 @@
-package com.example.healthysmile;
+package com.example.healthysmile.ui.consulta;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,10 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.healthysmile.message.Message;
+import com.example.healthysmile.message.MessageAdapter;
+import com.example.healthysmile.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.FirebaseFirestoreException;
+
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
@@ -32,12 +34,14 @@ public class fragment_consulta_virtual_especialista extends Fragment {
     private List<Message> messageList = new ArrayList<>();
     private FirebaseFirestore db;
     private String chatId;
-    private Usuario paciente;
 
     private EditText messageInput;
     private Button sendButton;
 
     private Socket socket;
+
+    long id;
+    String nombre,correo,foto;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,11 +51,10 @@ public class fragment_consulta_virtual_especialista extends Fragment {
 
         // Obtener los datos del paciente desde SharedPreferences
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        long id = sharedPreferences.getLong("idPaciente", 0);
-        String nombre = sharedPreferences.getString("nombrePaciente", null);
-        String correo = sharedPreferences.getString("correoPaciente", null);
-        String foto = sharedPreferences.getString("fotoPaciente", null);
-        paciente = new Usuario(id, nombre, correo, null, "Paciente", foto);
+        id = sharedPreferences.getLong("idPaciente", 0);
+        nombre = sharedPreferences.getString("nombrePaciente", null);
+        correo = sharedPreferences.getString("correoPaciente", null);
+        foto = sharedPreferences.getString("fotoPaciente", null);
 
         // Inicializar Firestore
         db = FirebaseFirestore.getInstance();
@@ -102,7 +105,7 @@ public class fragment_consulta_virtual_especialista extends Fragment {
                     String mensaje = (String) args[0];
                     getActivity().runOnUiThread(() -> {
                         // Actualizar la UI con el mensaje recibido
-                        Message newMessage = new Message("especialistaId", String.valueOf(paciente.getIdUsuario()), mensaje, new java.util.Date());
+                        Message newMessage = new Message("especialistaId", String.valueOf(id), mensaje, new java.util.Date());
                         messageList.add(newMessage);
                         messageAdapter.notifyDataSetChanged();
                         messagesRecyclerView.scrollToPosition(messageList.size() - 1);  // Hacer scroll hasta el último mensaje
@@ -141,7 +144,7 @@ public class fragment_consulta_virtual_especialista extends Fragment {
         String destinatarioId = "especialistaId";  // Este ID debe ser dinámico (de algún modo obtienes el ID del especialista)
 
         // Crear un nuevo mensaje
-        Message message = new Message(String.valueOf(paciente.getIdUsuario()), destinatarioId, texto, new java.util.Date());
+        Message message = new Message(String.valueOf(id), destinatarioId, texto, new java.util.Date());
 
         // Enviar el mensaje a través de WebSocket
         if (socket != null) {
@@ -155,12 +158,18 @@ public class fragment_consulta_virtual_especialista extends Fragment {
                     messageInput.setText("");  // Limpiar el campo de texto
                     Toast.makeText(getContext(), "Mensaje enviado", Toast.LENGTH_SHORT).show();
 
-                    // Recargar los mensajes para que se visualicen en la interfaz
-                    cargarMensajes();  // Recargar los mensajes
+                    agregarMensaje(message);
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Error al enviar el mensaje", Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    // Método para agregar un mensaje a la lista actual y actualizar la UI
+    private void agregarMensaje(Message message) {
+        messageList.add(message);  // Agregar el mensaje a la lista
+        messageAdapter.notifyItemInserted(messageList.size() - 1);  // Notificar al adaptador del nuevo mensaje
+        messagesRecyclerView.scrollToPosition(messageList.size() - 1);  // Hacer scroll al último mensaje
     }
 
 

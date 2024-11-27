@@ -6,7 +6,6 @@
     <!--Textos generales-->
 
 
-
     <!--Especialidades-->
     <string name="opcion_combo_especialidad_selecciona_tu_especialidad">Selecciona tu especialidad</string>
     <string name="opcion_combo_especialidad_odontologia_general">Odontología General</string>
@@ -47,30 +46,29 @@
     <string name="texto_boton_guardar">Guardar</string>
     <string name="texto_boton_cancelar">Cancelar</string>
     <string name="texto_boton_pedir_consulta">Pedir consulta</string>
-    <string name="texto_boton_registrarse" >Registrarse</string>
-    <string name="texto_boton_enviar" >Enviar</string>
-    <string name="texto_boton_chatbot" >Chatbot</string>
-    <string name="texto_boton_agendarcita" >Agendar cita</string>
-    <string name="texto_boton_historialdental" >Historial dental</string>
+    <string name="texto_boton_registrarse">Registrarse</string>
+    <string name="texto_boton_enviar">Enviar</string>
+    <string name="texto_boton_chatbot">Chatbot</string>
+    <string name="texto_boton_agendarcita">Agendar cita</string>
+    <string name="texto_boton_historialdental">Historial dental</string>
 
     <!-- texto_campo -->
-    <string name="texto_campo_nombre" >Nombre</string>
-    <string name="texto_campo_correo" >Email</string>
-    <string name="texto_campo_mensaje" >Mensaje</string>
+    <string name="texto_campo_nombre">Nombre</string>
+    <string name="texto_campo_correo">Email</string>
+    <string name="texto_campo_mensaje">Mensaje</string>
 
     <!--texto_hint-->
     <string name="texto_hint_correo_electronico">Correo electronico</string>
     <string name="texto_hint_contraseña">Contraseña</string>
-    <string name="texto_hint_campo_nombre" >Nombre de usuario</string>
-    <string name="texto_hint_campo_correo" >Ingresa un correo</string>
-    <string name="texto_hint_campo_mensaje" >Deja tu mensaje</string>
-    <string name="texto_hint_enviar_mensaje" >Escribe un mensaje</string>
-    <string name="texto_hint_cedulaprofesional" >Cedula profesional</string>
-    <string name="texto_hint_descripcion" >Descripcion</string>
+    <string name="texto_hint_campo_nombre">Nombre de usuario</string>
+    <string name="texto_hint_campo_correo">Ingresa un correo</string>
+    <string name="texto_hint_campo_mensaje">Deja tu mensaje</string>
+    <string name="texto_hint_enviar_mensaje">Escribe un mensaje</string>
+    <string name="texto_hint_cedulaprofesional">Cedula profesional</string>
+    <string name="texto_hint_descripcion">Descripcion</string>
 
     <!-- titulo_toolbar -->
     <string name="titulo_toolbar_configuracion">Configuracion</string>
-
 
 
     <!--Activity init aplication-->
@@ -87,14 +85,14 @@
     <!--Activity SigIn-->
     <!--Titulos-->
     <!--textos-->
-        <!--fragment_sign_up_paciente-->
-        <!--Titulos-->
-        <string name="titulo_sign_up_paciente_registropaciente">Registro paciente</string>
-        <!--textos-->
-        <!--fragment_sign_up_especialista-->
-        <!--Titulos-->
-        <string name="titulo_sign_up_paciente_registroespecialista">Registro especialista</string>
-        <!--textos-->
+    <!--fragment_sign_up_paciente-->
+    <!--Titulos-->
+    <string name="titulo_sign_up_paciente_registropaciente">Registro paciente</string>
+    <!--textos-->
+    <!--fragment_sign_up_especialista-->
+    <!--Titulos-->
+    <string name="titulo_sign_up_paciente_registroespecialista">Registro especialista</string>
+    <!--textos-->
 
 
     <!--Activity settings-->
@@ -115,7 +113,8 @@
     <string name="titulo_preguntas_frecuentes">PREGUNTAS FRECUENTES</string>
     <string name="subtitulo_citas">Citas</string>
     <!--textos-->
-    <string name="texto_descripcion_preguntas_frecuentes">encuentra respuestas a las preguntas más comunes sobre nuestros servicios. Si no ves tu pregunta aquí, envianosla y con gusto te atenderemos</string><![CDATA[
+    <string name="texto_descripcion_preguntas_frecuentes">encuentra respuestas a las preguntas más comunes sobre nuestros servicios. Si no ves tu pregunta aquí, envianosla y con gusto te atenderemos</string>
+    <![CDATA[
     ]]>
 
     <!--fragment_consulta_virtual_especialista-->
@@ -125,10 +124,10 @@
 
     <!--fragment_consulta_virtual_init-->
     <!--Titulos-->
-    <string name="titulo_consulta_consulta_part1" >Consultorio</string>
-    <string name="titulo_consulta_consulta_part2" >de servicio</string>
-    <string name="titulo_consulta_consulta_part3" >completo</string>
-    <string name="titulo_consulta_nuestrosservicios" >Nuestros servicios</string>
+    <string name="titulo_consulta_consulta_part1">Consultorio</string>
+    <string name="titulo_consulta_consulta_part2">de servicio</string>
+    <string name="titulo_consulta_consulta_part3">completo</string>
+    <string name="titulo_consulta_nuestrosservicios">Nuestros servicios</string>
     <!--textos-->
 
     <!-- TODO: Remove or change this placeholder text -->

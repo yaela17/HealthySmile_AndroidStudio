@@ -14,9 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.healthysmile.Especialista;
 import com.example.healthysmile.R;
-import com.example.healthysmile.Usuario;
 
 public class default_fragment_settings extends Fragment implements AdapterView.OnItemClickListener {
 
@@ -26,8 +24,6 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
     String[] listTitleInputFile;
     String[] listDescriptionInputFile;
     Drawable[] lisRightIcon;
-    Usuario paciente;
-    Especialista especialista;
     String nombre, correo, foto, tipoUsuario;
 
     @Override
@@ -44,15 +40,12 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
         tipoUsuario = sharedPreferences.getString("tipoUsuario", "Paciente");
 
         if ("Paciente".equals(tipoUsuario)) {
-            paciente = new Usuario(idUsuario, nombre, correo, null, tipoUsuario, foto);
         } else {
             // Si es Especialista, obtenemos los datos específicos
             long idEspecialista = sharedPreferences.getLong("idEspecialista", 0);
             String cedulaProfesional = sharedPreferences.getString("cedulaProfesional", null);
             String descripcion = sharedPreferences.getString("descripcion", null);
             String especialidad = sharedPreferences.getString("especialidad", null);
-
-            especialista = new Especialista(idUsuario, nombre, correo, null, null, idEspecialista, cedulaProfesional, descripcion, especialidad);
         }
 
         Drawable fotoPerfil =  obtenerFotoPerfil();
@@ -124,12 +117,7 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
         // Si la foto de paciente o especialista es nula, se usa una foto predeterminada
         if (foto != null && !foto.equals("null")) {
             return Drawable.createFromPath(foto);
-        } else if (paciente != null && paciente.getFotoPerfil() != null) {
-            return Drawable.createFromPath(paciente.getFotoPerfil());
-        } else if (especialista != null && especialista.getFotoPerfil() != null) {
-            return Drawable.createFromPath(especialista.getFotoPerfil());
         } else {
-            // Si no hay foto, se asigna una imagen predeterminada según el tipo de usuario
             if ("Paciente".equals(tipoUsuario)) {
                 return getResources().getDrawable(R.drawable.default_photo_paciente);
             } else {

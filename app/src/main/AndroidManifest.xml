@@ -22,7 +22,7 @@
         android:theme="@style/Base.Theme.HealthySmile"
         tools:targetApi="31" >
         <service
-            android:name=".GestureService"
+            android:name=".Gesture.GestureService"
             android:exported="false" />
         <activity
             android:name=".ui.settings.Settings"

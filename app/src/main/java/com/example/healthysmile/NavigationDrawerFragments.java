@@ -32,8 +32,8 @@ public class NavigationDrawerFragments extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityNavigationDrawerFragmentsBinding binding;
-    Usuario pacienteLocal;
-    Especialista especialistaLocal;
+
+    String foto = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_ayudaYSoporte,R.id.nav_ConsultaVirtual,R.id.fragment_consulta_virtual_especialista)
+                R.id.nav_home, R.id.nav_ayudaYSoporte,R.id.nav_ConsultaVirtual,R.id.fragment_consulta_virtual_especialista,R.id.nav_EducacionDental)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer_fragments);
@@ -90,7 +90,11 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                     return true;
                 }
 
-                // Agrega más condiciones aquí para otras opciones del menú
+                if (item.getItemId() == R.id.nav_EducacionDental) {
+                    navController.popBackStack(R.id.nav_EducacionDental, false);
+                    navController.navigate(R.id.nav_EducacionDental);
+                    return true;
+                }
 
                 return false;
             }
@@ -103,13 +107,12 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         String correo = intent.getStringExtra("correoUser");
         String tipoUsuario = intent.getStringExtra("tipoUsuario");  // Asegúrate de usar la clave correcta aquí
         if(tipoUsuario.equals("Paciente")){
-            pacienteLocal = new Usuario(idUsuario,nombre,correo,null,tipoUsuario,null);
             SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putLong("idPaciente",pacienteLocal.getIdUsuario());
-            editor.putString("nombrePaciente", pacienteLocal.getNombreUsuario());
-            editor.putString("correoPaciente", pacienteLocal.getCorreoUsuario());
-            editor.putString("tipoUsuario",pacienteLocal.getTipoUsuario());
+            editor.putLong("idPaciente",idUsuario);
+            editor.putString("nombrePaciente", nombre);
+            editor.putString("correoPaciente", correo);
+            editor.putString("tipoUsuario",tipoUsuario);
             editor.apply();
         }else
             if(tipoUsuario.equals("Especialista")){
@@ -117,13 +120,12 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                 String cedulaProfesional = intent.getStringExtra("cedulaProfesional");
                 String descripcion = intent.getStringExtra("descripcion");
                 String especialidad = intent.getStringExtra("especialidad");
-                especialistaLocal = new Especialista(idUsuario,nombre,correo,null,null,idEspecialista,cedulaProfesional,descripcion,especialidad);
                 SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putLong("idPaciente",especialistaLocal.getIdUsuario());
-                editor.putString("nombrePaciente", especialistaLocal.getNombreUsuario());
-                editor.putString("correoPaciente", especialistaLocal.getCorreoUsuario());
-                editor.putString("tipoUsuario",especialistaLocal.getTipoUsuario());
+                editor.putLong("idPaciente",idUsuario);
+                editor.putString("nombrePaciente", nombre);
+                editor.putString("correoPaciente", correo);
+                editor.putString("tipoUsuario",tipoUsuario);
                 editor.apply();
             }
 
@@ -137,39 +139,26 @@ public class NavigationDrawerFragments extends AppCompatActivity {
 
         // Verificando si los datos no son null y actualizando las vistas
         if (nombre != null) {
-            if(pacienteLocal != null){
-                nombreUser.setText(pacienteLocal.getNombreUsuario());
-            }else{
-                nombreUser.setText(especialistaLocal.getNombreUsuario());
+                nombreUser.setText(nombre);
             }
-        } else {
+        else {
             Toast.makeText(this, "Nombre es null", Toast.LENGTH_SHORT).show();
         }
 
         if (correo != null) {
-            if(pacienteLocal != null){
-                correoUser.setText(pacienteLocal.getCorreoUsuario());
-            }else {
-                correoUser.setText(especialistaLocal.getCorreoUsuario());
-            }
-            Toast.makeText(this, "Correo actualizado: " + correo, Toast.LENGTH_SHORT).show();
+                correoUser.setText(correo);
         } else {
             Toast.makeText(this, "Correo es null", Toast.LENGTH_SHORT).show();
         }
 
         if (tipoUsuario != null) {
-            if(pacienteLocal != null){
-                tipoUser.setText(pacienteLocal.getTipoUsuario());
-            }else {
-                tipoUser.setText(especialistaLocal.getTipoUsuario());
-            }
-            Toast.makeText(this, "Tipo de usuario actualizado: " + tipoUsuario, Toast.LENGTH_SHORT).show();
+                tipoUser.setText(tipoUsuario);
         } else {
             Toast.makeText(this, "Tipo de usuario es null", Toast.LENGTH_SHORT).show();
         }
 
-        if (pacienteLocal != null) {
-            String rutaImagen = pacienteLocal.getFotoPerfil();  // Obtener la ruta de la imagen desde el objeto Usuario
+        if (tipoUsuario.equals("Paciente")) {
+            String rutaImagen = foto;  // Obtener la ruta de la imagen desde el objeto Usuario
             if (rutaImagen != null && !rutaImagen.isEmpty()) {
                 // Si el usuario tiene una foto de perfil, carga la imagen desde la URI
                 Glide.with(this)
@@ -182,7 +171,7 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                         .into(fotoPerfil); // ImageView donde se cargará la imagen
             }
         }else {
-            String rutaImagen = especialistaLocal.getFotoPerfil();  // Obtener la ruta de la imagen desde el objeto Usuario
+            String rutaImagen = foto;  // Obtener la ruta de la imagen desde el objeto Usuario
             if (rutaImagen != null && !rutaImagen.isEmpty()) {
                 // Si el usuario tiene una foto de perfil, carga la imagen desde la URI
                 Glide.with(this)

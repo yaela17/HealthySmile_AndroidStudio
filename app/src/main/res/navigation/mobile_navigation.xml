@@ -12,13 +12,13 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_ayudaYSoporte"
-        android:name="com.example.healthysmile.fragment_ayuda_y_soporte"
+        android:name="com.example.healthysmile.ui.ayudaysoporte.fragment_ayuda_y_soporte"
         android:label="@string/label_menu_ayudaysoporte"
         tools:layout="@layout/fragment_ayuda_y_soporte" />
 
     <fragment
         android:id="@+id/nav_ConsultaVirtual"
-        android:name="com.example.healthysmile.fragment_cosulta_virtual_init"
+        android:name="com.example.healthysmile.ui.consulta.fragment_cosulta_virtual_init"
         android:label="@string/label_menu_consultavirtual"
         tools:layout="@layout/fragment_cosulta_virtual_init" >
         <!-- Acción para navegar al fragmento especialista -->
@@ -29,8 +29,13 @@
 
     <fragment
         android:id="@+id/fragment_consulta_virtual_especialista"
-        android:name="com.example.healthysmile.fragment_consulta_virtual_especialista"
+        android:name="com.example.healthysmile.ui.consulta.fragment_consulta_virtual_especialista"
         android:label="@string/label_menu_consultavirtualespecialista"
         tools:layout="@layout/fragment_consulta_virtual_especialista" />
+    <fragment
+        android:id="@+id/nav_EducacionDental"
+        android:name="com.example.healthysmile.fragment_visualizacion_modelos_3d_init"
+        android:label="Educación Dental"
+        tools:layout="@layout/fragment_visualizacion_modelos_3d_init" />
 
 </navigation>

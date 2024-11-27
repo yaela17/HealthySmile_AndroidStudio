@@ -1,4 +1,4 @@
-package com.example.healthysmile;
+package com.example.healthysmile.Gesture;
 
 import android.content.Context;
 import android.hardware.Sensor;

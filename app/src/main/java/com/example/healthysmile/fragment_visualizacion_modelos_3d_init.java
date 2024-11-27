@@ -8,17 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class fragment_ayuda_y_soporte extends Fragment {
+
+public class fragment_visualizacion_modelos_3d_init extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_ayuda_y_soporte, container, false);
-
-
-
-
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_visualizacion_modelos_3d_init, container, false);
         return view;
     }
 }

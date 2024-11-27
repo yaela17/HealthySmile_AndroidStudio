@@ -1,4 +1,4 @@
-package com.example.healthysmile;
+package com.example.healthysmile.ui.consulta;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.healthysmile.R;
 
 public class fragment_cosulta_virtual_init extends Fragment implements View.OnClickListener {
 

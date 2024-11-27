@@ -1,4 +1,4 @@
-package com.example.healthysmile;
+package com.example.healthysmile.message;
 
 import java.util.Date;
 

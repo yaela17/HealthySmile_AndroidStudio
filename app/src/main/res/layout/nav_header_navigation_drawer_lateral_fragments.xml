@@ -11,27 +11,31 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/Animation.Design.BottomSheetDialog">
+
     <ImageView
         android:id="@+id/nav_header_navigation_drawer_lateral_foto_perfil"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:contentDescription="@string/nav_header_desc"
         android:background="@drawable/custom_circle_image"
-        android:scaleType="centerCrop"
         android:clipToOutline="true"
-        android:src="@drawable/default_photo_perfil_especialista"/>
+        android:contentDescription="@string/nav_header_desc"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_photo_perfil_especialista" />
+
     <TextView
+        android:id="@+id/nav_header_navigation_drawer_lateral_nombreUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Nombre del usuario"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:id="@+id/nav_header_navigation_drawer_lateral_nombreUser"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
     <TextView
         android:id="@+id/nav_header_navigation_drawer_lateral_tipo_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tipo de usuario (especialidad si es especialista)" />
+
     <TextView
         android:id="@+id/nav_header_navigation_drawer_lateral_correoUser"
         android:layout_width="wrap_content"
