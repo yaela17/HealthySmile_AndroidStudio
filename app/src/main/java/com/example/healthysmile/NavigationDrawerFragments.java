@@ -57,7 +57,19 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_ayudaYSoporte,R.id.nav_ConsultaVirtual,R.id.fragment_consulta_virtual_especialista,R.id.nav_EducacionDental)
+                R.id.nav_home,
+                R.id.nav_ayudaYSoporte,
+                R.id.nav_ConsultaVirtual,
+                R.id.fragment_consulta_virtual_especialista,
+                R.id.nav_EducacionDental,
+                R.id.fragment_visualizacion_modelos_3d_gingivitis,
+                R.id.fragment_visualizacion_modelos_3d_caries_dentales,
+                R.id.fragment_visualizacion_modelos_3d_cancer_bucal,
+                R.id.fragment_visualizacion_modelos_3d_traumatismos_bucodentales,
+                R.id.fragment_visualizacion_modelos_3d_halitosis,
+                R.id.fragment_visualizacion_modelos_3d_sensibilidad_dental,
+                R.id.fragment_visualizacion_modelos_3d_implantes,
+                R.id.fragment_visualizacion_modelos_3d_periodontitis)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer_fragments);

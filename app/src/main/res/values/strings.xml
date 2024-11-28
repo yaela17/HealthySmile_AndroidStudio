@@ -39,6 +39,16 @@
     <string name="label_menu_consultavirtualespecialista">Especialista</string>
     <string name="label_menu_configuracion">Configuracion</string>
 
+    <string name="label_menu_fragment_gingivitis" tools:ignore="MissingTranslation">Gingivitis</string>
+    <string name="label_menu_fragment_caries_dental" tools:ignore="MissingTranslation">Caries Dental</string>
+    <string name="label_menu_fragment_cancer_bucal" tools:ignore="MissingTranslation">Cancer Bucal</string>
+    <string name="label_menu_fragment_traumatismos_bucodentales" tools:ignore="MissingTranslation">Traumatismos Bucodentales</string>
+    <string name="label_menu_fragment_traumatismos_halitosis" tools:ignore="MissingTranslation">Halitosis</string>
+    <string name="label_menu_fragment_traumatismos_sensibilidad_dental" tools:ignore="MissingTranslation">Sensibilidad dental</string>
+    <string name="label_menu_fragment_traumatismos_implantes" tools:ignore="MissingTranslation">Implantes</string>
+    <string name="label_menu_fragment_traumatismos_periodontitis" tools:ignore="MissingTranslation">Periodontitis</string>
+
+
     <!--texto_boton -->
     <string name="texto_boton_paciente">paciente</string>
     <string name="texto_boton_especialista">especialista</string>

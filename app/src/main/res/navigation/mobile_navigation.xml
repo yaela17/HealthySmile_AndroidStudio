@@ -5,6 +5,9 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
+    <!--nav_(El modulo relacionado-->
+        <!--fragment_(elfragmento)-->
+
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.healthysmile.ui.home.HomeFragment"
@@ -27,15 +30,91 @@
             app:destination="@id/fragment_consulta_virtual_especialista" />
     </fragment>
 
-    <fragment
-        android:id="@+id/fragment_consulta_virtual_especialista"
-        android:name="com.example.healthysmile.ui.consulta.fragment_consulta_virtual_especialista"
-        android:label="@string/label_menu_consultavirtualespecialista"
-        tools:layout="@layout/fragment_consulta_virtual_especialista" />
+        <fragment
+            android:id="@+id/fragment_consulta_virtual_especialista"
+            android:name="com.example.healthysmile.ui.consulta.fragment_consulta_virtual_especialista"
+            android:label="@string/label_menu_consultavirtualespecialista"
+            tools:layout="@layout/fragment_consulta_virtual_especialista" />
+
     <fragment
         android:id="@+id/nav_EducacionDental"
-        android:name="com.example.healthysmile.fragment_visualizacion_modelos_3d_init"
-        android:label="Educación Dental"
-        tools:layout="@layout/fragment_visualizacion_modelos_3d_init" />
+        android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_init"
+        android:label="@string/label_menu_educaciondental"
+        tools:layout="@layout/fragment_visualizacion_modelos_3d_init">
 
+        <action
+            android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_gingivitis"
+            app:destination="@id/fragment_visualizacion_modelos_3d_gingivitis"/>
+
+        <action
+            android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_caries_dentales"
+            app:destination="@id/fragment_visualizacion_modelos_3d_caries_dentales"/>
+
+        <action
+            android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_cancer_bucal"
+            app:destination="@id/fragment_visualizacion_modelos_3d_cancer_bucal"/>
+
+        <action
+            android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_traumatismos_bucodentales"
+            app:destination="@id/fragment_visualizacion_modelos_3d_traumatismos_bucodentales"/>
+
+        <action
+            android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_halitosis"
+            app:destination="@id/fragment_visualizacion_modelos_3d_halitosis"/>
+
+        <action
+            android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_sensibilidad_dental"
+            app:destination="@id/fragment_visualizacion_modelos_3d_sensibilidad_dental"/>
+
+        <action
+            android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_implantes"
+            app:destination="@id/fragment_visualizacion_modelos_3d_implantes"/>
+
+        <action
+            android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_periodontitis"
+            app:destination="@id/fragment_visualizacion_modelos_3d_periodontitis"/>
+
+    </fragment>
+        <fragment
+            android:id="@+id/fragment_visualizacion_modelos_3d_gingivitis"
+            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_gingivitis"
+            android:label="@string/label_menu_fragment_gingivitis"
+            tools:layout="@layout/fragment_visualizacion_modelos_3d_gingivitis" />
+        <fragment
+            android:id="@+id/fragment_visualizacion_modelos_3d_caries_dentales"
+            android:name="com.example.healthysmile.ui.modelos3d.fragment_vizualizacion_modelos_3d_caries_dentales"
+            android:label="@string/label_menu_fragment_caries_dental"
+            tools:layout="@layout/fragment_visualizacion_modelos_3d_caries_dentales" />
+
+        <fragment
+            android:id="@+id/fragment_visualizacion_modelos_3d_cancer_bucal"
+            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_cancer_bucal"
+            android:label="@string/label_menu_fragment_cancer_bucal"
+            tools:layout="@layout/fragment_visualizacion_modelos_3d_cancer_bucal" />
+        <fragment
+            android:id="@+id/fragment_visualizacion_modelos_3d_traumatismos_bucodentales"
+            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_traumatismos_bucodentales"
+            android:label="@string/label_menu_fragment_traumatismos_bucodentales"
+            tools:layout="@layout/fragment_visualizacion_modelos_3d_traumatismos_bucodentales" />
+
+        <fragment
+            android:id="@+id/fragment_visualizacion_modelos_3d_halitosis"
+            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_halitosis"
+            android:label="@string/label_menu_fragment_traumatismos_halitosis"
+            tools:layout="@layout/fragment_visualizacion_modelos_3d_halitosis" />
+        <fragment
+            android:id="@+id/fragment_visualizacion_modelos_3d_sensibilidad_dental"
+            android:name="com.example.healthysmile.fragment_visualizacion_modelos_3d_sensibilidad_dental"
+            android:label="@string/label_menu_fragment_traumatismos_sensibilidad_dental"
+            tools:layout="@layout/fragment_visualizacion_modelos_3d_sensibilidad_dental" />
+        <fragment
+            android:id="@+id/fragment_visualizacion_modelos_3d_implantes"
+            android:name="com.example.healthysmile.fragment_visualizacion_modelos_3d_implantes"
+            android:label="@string/label_menu_fragment_traumatismos_implantes"
+            tools:layout="@layout/fragment_visualizacion_modelos_3d_implantes" />
+        <fragment
+            android:id="@+id/fragment_visualizacion_modelos_3d_periodontitis"
+            android:name="com.example.healthysmile.fragment_visualizacion_modelos_3d_periodontitis"
+            android:label="@string/label_menu_fragment_traumatismos_periodontitis"
+            tools:layout="@layout/fragment_visualizacion_modelos_3d_periodontitis" />
 </navigation>
