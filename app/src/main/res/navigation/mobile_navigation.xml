@@ -44,7 +44,7 @@
 
         <action
             android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_gingivitis"
-            app:destination="@id/fragment_visualizacion_modelos_3d_gingivitis"/>
+            app:destination="@id/fragment_modelo3d"/>
 
         <action
             android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_caries_dentales"
@@ -117,4 +117,8 @@
             android:name="com.example.healthysmile.fragment_visualizacion_modelos_3d_periodontitis"
             android:label="@string/label_menu_fragment_traumatismos_periodontitis"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_periodontitis" />
+    <fragment
+        android:id="@+id/fragment_modelo3d"
+        android:name="com.example.healthysmile.ui.modelos3d.fragment_modelo3d"
+        android:label="fragment_modelo3d" />
 </navigation>

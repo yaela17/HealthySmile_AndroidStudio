@@ -125,6 +125,7 @@ public class NavigationDrawerFragments extends AppCompatActivity {
             editor.putString("nombrePaciente", nombre);
             editor.putString("correoPaciente", correo);
             editor.putString("tipoUsuario",tipoUsuario);
+            editor.putBoolean("sesionActiva",true);
             editor.apply();
         }else
             if(tipoUsuario.equals("Especialista")){
@@ -138,6 +139,7 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                 editor.putString("nombrePaciente", nombre);
                 editor.putString("correoPaciente", correo);
                 editor.putString("tipoUsuario",tipoUsuario);
+                editor.putBoolean("sesionActiva",true);
                 editor.apply();
             }
 

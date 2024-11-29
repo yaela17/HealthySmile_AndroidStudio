@@ -36,7 +36,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -60,5 +59,5 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.3.0");
     implementation ("com.google.firebase:firebase-messaging:23.1.0")
     implementation ("io.socket:socket.io-client:2.0.1")
-
+    implementation ("org.rajawali3d:rajawali:1.0.325@aar")
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dbd2e0">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Titulo de prueba"
+        android:textSize="30dp"
+        android:textColor="@color/color_principal_clarote"
+        android:textStyle="bold"
+        android:layout_marginLeft="30dp"/>
+
+    <View
+        android:layout_width="330dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:background="@color/white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Subtitulo de prueba asi probando que haya mucho texto papulince"
+        android:textSize="30dp"
+        android:textColor="@color/color_principal_clarote"
+        android:textStyle="bold"
+        android:layout_marginLeft="30dp"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:focusable="false"
+        android:clickable="false"
+        android:scrollbars="none"/>
+
+</LinearLayout>
