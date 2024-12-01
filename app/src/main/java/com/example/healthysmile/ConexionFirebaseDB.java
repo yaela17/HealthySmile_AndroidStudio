@@ -1,5 +1,7 @@
 package com.example.healthysmile;
 
+import android.util.Log;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -226,4 +228,19 @@ public class ConexionFirebaseDB {
                 })
                 .addOnFailureListener(onFailureListener); // Manejo de fallos en la consulta inicial
     }
+
+    public void insertarPreguntaFrecuente(Map<String, Object> pregunta) {
+        db.collection("preguntasFrecuentes")
+                .add(pregunta)
+                .addOnSuccessListener(documentReference -> {
+                    // Acción después de insertar exitosamente
+                    Log.d("Firestore", "Pregunta insertada con ID: " + documentReference.getId());
+                })
+                .addOnFailureListener(e -> {
+                    // Acción si ocurre un error
+                    Log.w("Firestore", "Error al agregar la pregunta", e);
+                });
+    }
+
+
 }

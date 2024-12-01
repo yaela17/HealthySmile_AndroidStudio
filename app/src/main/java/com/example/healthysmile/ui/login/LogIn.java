@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.healthysmile.ManejadorShadPreferences;
 import com.example.healthysmile.NavigationDrawerFragments;
 import com.example.healthysmile.R;
 import com.example.healthysmile.ConexionFirebaseDB;
@@ -23,12 +24,15 @@ public class LogIn extends AppCompatActivity {
     private EditText fragLogInInputContrasenaUsuario;
     private Button fragLogInBtnIniciarSesion;
     private ConexionFirebaseDB dbHelper;
+    ManejadorShadPreferences manejadorShadPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_log_in);
+
+        manejadorShadPreferences = new ManejadorShadPreferences(this);
 
         fragLogInInputCorreoUsuario = findViewById(R.id.fragLogInInputCorreoUsuario);
         fragLogInInputContrasenaUsuario = findViewById(R.id.fragLogInInputContrasenaUsuario);
@@ -67,13 +71,9 @@ public class LogIn extends AppCompatActivity {
                         long nivelPermisos = ((Long) usuario.get("nivelPermisos")).intValue(); // Asegurarse que se convierte correctamente a int
                         long idUsuario = ((Long) usuario.get("idUsuario")).intValue(); // Obtener el idUsuario
 
-                        // Crear el Intent y enviar los datos con putExtra
+                        manejadorShadPreferences.guardarPaciente(nomUser,correoUser,"Paciente",nivelPermisos);
+                        manejadorShadPreferences.guardarIdUsuario(idUsuario);
                         Intent intentIrHome = new Intent(LogIn.this, NavigationDrawerFragments.class);
-                        intentIrHome.putExtra("correoUser", correoUser);  // Ya está correcto
-                        intentIrHome.putExtra("nomUser", nomUser);        // Ya está correcto
-                        intentIrHome.putExtra("tipoUsuario", "Paciente");  // Aquí estamos enviando tipoUsuario como "Paciente"
-                        intentIrHome.putExtra("nivelPermisos", nivelPermisos); // Ya está correcto
-                        intentIrHome.putExtra("idUsuario", idUsuario);  // Enviamos el idUsuario
                         startActivity(intentIrHome);
                     } else {
                         if("Especialista".equals(usuario.getString("tipoUser"))){
@@ -92,16 +92,10 @@ public class LogIn extends AppCompatActivity {
                             String especialidad = (String) especialista.get("especialidad");  // Otro ejemplo de subcampo
 
                             // Crear el Intent y enviar los datos con putExtra
+                            manejadorShadPreferences.guardarEspecialista(nomUser,correoUser,"Especialista",2,cedulaProfesional,descripcion,especialidad);
+                            manejadorShadPreferences.guardarIdUsuario(idUsuario);
+                            manejadorShadPreferences.guardarIdEspecialista(idEspecialista);
                             Intent intentIrHome = new Intent(LogIn.this, NavigationDrawerFragments.class);
-                            intentIrHome.putExtra("correoUser", correoUser);
-                            intentIrHome.putExtra("nomUser", nomUser);
-                            intentIrHome.putExtra("tipoUsuario", "Especialista");
-                            intentIrHome.putExtra("nivelPermisos", nivelPermisos);
-                            intentIrHome.putExtra("idUsuario", idUsuario);
-                            intentIrHome.putExtra("idEspecialista",idEspecialista);
-                            intentIrHome.putExtra("descripcion",descripcion);
-                            intentIrHome.putExtra("cedulaProfesional", cedulaProfesional);
-                            intentIrHome.putExtra("especialidad", especialidad);
                             startActivity(intentIrHome);
                         }
                     }

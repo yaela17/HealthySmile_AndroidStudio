@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.modelos3d.fragment_modelo3d">
 
-    <WebView
-        android:id="@+id/modelWebView"
+    <android.opengl.GLSurfaceView
+        android:id="@+id/glSurfaceView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </FrameLayout>

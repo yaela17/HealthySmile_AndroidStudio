@@ -1,0 +1,11 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="line">
+    <solid android:color="@android:color/transparent"/> <!-- Fondo transparente -->
+    <size android:height="1dp"/> <!-- Este es el grosor de la línea -->
+    <stroke android:color="@color/color_text" android:width="3dp"/> <!-- Línea en la parte inferior -->
+    <padding
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp"
+        android:bottom="3dp" /> <!-- Padding para mover la línea a la parte inferior -->
+</shape>

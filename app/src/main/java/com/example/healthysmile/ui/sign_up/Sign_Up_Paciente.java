@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.healthysmile.IconMethods;
+import com.example.healthysmile.ManejadorShadPreferences;
 import com.example.healthysmile.R;
 import com.example.healthysmile.ConexionFirebaseDB;
 
@@ -24,6 +25,7 @@ public class Sign_Up_Paciente extends Fragment {
     private EditText fragSignUpInputNombreUsuario, fragSignUpInputCorreo, fragSignUpInputContrasena;
     private Button fragSignUpBtnRegistrarse;
     private ConexionFirebaseDB dbHelper;
+    private ManejadorShadPreferences manejadorShadPreferences;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class Sign_Up_Paciente extends Fragment {
 
         // Inicializar la clase de conexión Firebase
         dbHelper = new ConexionFirebaseDB();
+        manejadorShadPreferences = new ManejadorShadPreferences(getContext());
 
         fragSignUpInputNombreUsuario = view.findViewById(R.id.fragSignUpPacienteInputNombreUsuario);
         fragSignUpInputCorreo = view.findViewById(R.id.fragSignUpPacienteInputCorreo);
@@ -70,6 +73,7 @@ public class Sign_Up_Paciente extends Fragment {
         dbHelper.registrarPaciente(user, documentReference -> {
             Toast.makeText(getActivity(), "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();
             Log.d("Firestore", "Usuario registrado con ID: " + documentReference.getId());
+            manejadorShadPreferences.guardarPaciente(nombre,correo,"Paciente",1);
             limpiarCampos();
         }, e -> {
             Toast.makeText(getActivity(), "Error al registrar usuario", Toast.LENGTH_SHORT).show();

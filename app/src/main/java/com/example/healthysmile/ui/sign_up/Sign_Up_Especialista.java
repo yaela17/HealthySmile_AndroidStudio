@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.healthysmile.ConexionFirebaseDB;
 import com.example.healthysmile.CustomSpinnerAdapter;
 import com.example.healthysmile.IconMethods;
+import com.example.healthysmile.ManejadorShadPreferences;
 import com.example.healthysmile.R;
 
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
     EditText inputDescripcion;
     Spinner comboEspecialidad;
     Button btnRegistrarse;
+    ManejadorShadPreferences manejadorShadPreferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +40,7 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
         View view = inflater.inflate(R.layout.fragment_sign__up__especialista, container, false);
 
         dbHelper = new ConexionFirebaseDB();
+        manejadorShadPreferences = new ManejadorShadPreferences(getContext());
 
         // Inicializa las vistas
         inputNombre = view.findViewById(R.id.SignUpEspecialistaInputNombre);
@@ -133,6 +136,7 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
 
         dbHelper.registrarEspecialista(user, especialistaData, documentReference -> {
             Toast.makeText(getActivity(), "Especialista registrado con éxito", Toast.LENGTH_SHORT).show();
+            manejadorShadPreferences.guardarEspecialista(nombre,correo,"Especialista",2,cedulaProfesional,descripcion,especialidad);
             limpiarCampos();
         }, e -> {
             Toast.makeText(getActivity(), "Error al registrar especialista", Toast.LENGTH_SHORT).show();

@@ -33,19 +33,19 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
         View view = inflater.inflate(R.layout.fragment_default_settings, container, false);
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        long idUsuario = sharedPreferences.getLong("idPaciente", 0);
-        nombre = sharedPreferences.getString("nombrePaciente", null);
-        correo = sharedPreferences.getString("correoPaciente", null);
-        foto = sharedPreferences.getString("fotoPaciente", null);
-        tipoUsuario = sharedPreferences.getString("tipoUsuario", "Paciente");
+        long idUsuario = sharedPreferences.getLong("idUsuario", 0);
+        nombre = sharedPreferences.getString("nombreUsuario", null);
+        correo = sharedPreferences.getString("correoUsuario", null);
+        foto = sharedPreferences.getString("fotoUsuario", null);
+        tipoUsuario = sharedPreferences.getString("tipoUsuario", null);
 
         if ("Paciente".equals(tipoUsuario)) {
         } else {
             // Si es Especialista, obtenemos los datos específicos
             long idEspecialista = sharedPreferences.getLong("idEspecialista", 0);
-            String cedulaProfesional = sharedPreferences.getString("cedulaProfesional", null);
-            String descripcion = sharedPreferences.getString("descripcion", null);
-            String especialidad = sharedPreferences.getString("especialidad", null);
+            String cedulaProfesional = sharedPreferences.getString("cedulaProfesionalEsp", null);
+            String descripcion = sharedPreferences.getString("descripcionEsp", null);
+            String especialidad = sharedPreferences.getString("especialidadEsp", null);
         }
 
         Drawable fotoPerfil =  obtenerFotoPerfil();

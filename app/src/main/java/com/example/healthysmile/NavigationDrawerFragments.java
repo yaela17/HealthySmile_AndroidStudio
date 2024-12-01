@@ -1,9 +1,12 @@
 package com.example.healthysmile;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -108,42 +111,34 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                     return true;
                 }
 
+                if(item.getItemId() == R.id.nav_logout){
+                    ManejadorShadPreferences manejadorShadPreferences = new ManejadorShadPreferences(getApplicationContext());
+                    manejadorShadPreferences.terminarSesion();
+                    new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                        Intent intentoIrInit = new Intent(getApplicationContext(), InitAplication.class);
+                        startActivity(intentoIrInit);
+                    }, 200);
+                }
+
                 return false;
             }
         });
 
-        // Accediendo al Intent y obteniendo los datos
-        Intent intent = getIntent();
-        long idUsuario = intent.getLongExtra("idUsuario", 0);
-        String nombre = intent.getStringExtra("nomUser");
-        String correo = intent.getStringExtra("correoUser");
-        String tipoUsuario = intent.getStringExtra("tipoUsuario");  // Asegúrate de usar la clave correcta aquí
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        String nombreUsuario = sharedPreferences.getString("nombreUsuario",null);
+        String correoUsuario = sharedPreferences.getString("correoUsuario",null);
+        String tipoUsuario = sharedPreferences.getString("tipoUsuario",null);
+        foto = sharedPreferences.getString("fotoUsuario", null);
+
+ // Asegúrate de usar la clave correcta aquí
         if(tipoUsuario.equals("Paciente")){
-            SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putLong("idPaciente",idUsuario);
-            editor.putString("nombrePaciente", nombre);
-            editor.putString("correoPaciente", correo);
-            editor.putString("tipoUsuario",tipoUsuario);
-            editor.putBoolean("sesionActiva",true);
-            editor.apply();
+
         }else
             if(tipoUsuario.equals("Especialista")){
-                long idEspecialista = intent.getLongExtra("idEspecialista",0);
-                String cedulaProfesional = intent.getStringExtra("cedulaProfesional");
-                String descripcion = intent.getStringExtra("descripcion");
-                String especialidad = intent.getStringExtra("especialidad");
-                SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putLong("idPaciente",idUsuario);
-                editor.putString("nombrePaciente", nombre);
-                editor.putString("correoPaciente", correo);
-                editor.putString("tipoUsuario",tipoUsuario);
-                editor.putBoolean("sesionActiva",true);
-                editor.apply();
+
             }
 
-        Toast.makeText(this, "Datos recibidos: Nombre - " + nombre + ", Correo - " + correo + ", TipoUsuario - " + tipoUsuario, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Datos recibidos: Nombre - " + nombreUsuario + ", Correo - " + correoUsuario + ", TipoUsuario - " + tipoUsuario, Toast.LENGTH_LONG).show();
 
         // Referenciando los TextViews del header
         TextView nombreUser = navigationView.getHeaderView(0).findViewById(R.id.nav_header_navigation_drawer_lateral_nombreUser);
@@ -152,15 +147,15 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         ImageView fotoPerfil = navigationView.getHeaderView(0).findViewById(R.id.nav_header_navigation_drawer_lateral_foto_perfil);
 
         // Verificando si los datos no son null y actualizando las vistas
-        if (nombre != null) {
-                nombreUser.setText(nombre);
+        if (nombreUsuario != null) {
+                nombreUser.setText(nombreUsuario);
             }
         else {
             Toast.makeText(this, "Nombre es null", Toast.LENGTH_SHORT).show();
         }
 
-        if (correo != null) {
-                correoUser.setText(correo);
+        if (correoUsuario != null) {
+                correoUser.setText(correoUsuario);
         } else {
             Toast.makeText(this, "Correo es null", Toast.LENGTH_SHORT).show();
         }

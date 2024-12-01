@@ -1,6 +1,8 @@
 package com.example.healthysmile;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +38,12 @@ public class InitAplication extends AppCompatActivity implements View.OnClickLis
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Test event");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        Boolean estaLogueado = sharedPreferences.getBoolean("sesionActiva",false);
+        if(estaLogueado){
+            Intent intentoIrHome = new Intent(this, NavigationDrawerFragments.class);
+            startActivity(intentoIrHome);
+        }
     }
 
     @Override
