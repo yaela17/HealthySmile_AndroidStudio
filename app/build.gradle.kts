@@ -67,4 +67,5 @@ dependencies {
     implementation ("com.google.ar:core:1.30.0")
     implementation ("io.github.sceneview:arsceneview:1.2.2")
     implementation ("io.github.sceneview:sceneview:1.0.0")
+    implementation ("com.google.android.flexbox:flexbox:3.0.0")
 }

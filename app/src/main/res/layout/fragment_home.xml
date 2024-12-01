@@ -4,27 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.Home">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text_home"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:text="Este es un texto largo para demostrar el scroll."
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+
+                <View
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/fondo_gris_healthy_home"
+                    android:layout_gravity="end|top"/>
+
+                <View
+                    android:layout_width="190dp"
+                    android:layout_height="280dp"
+                    android:background="@color/fondo_azul_healthy_home"
+                    android:layout_gravity="end|top"/>
+
+
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:padding="30dp"
+                    android:background="@drawable/background_diente_home"
+                    android:src="@drawable/dientelupa"/>
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="80dp"
+                    android:padding="10dp"
+                    android:background="@drawable/custom_tittle_text_healthy_home">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Healthy \nSmile"
+                        android:textSize="30dp"
+                        android:textColor="@color/color_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_text"
+                        android:textSize="10dp"
+                        android:text="El futuro del cuidado dental se acerca rápidamente, marcando el comienzo de una neuva era de innovacion digital y transformacion en la salud bucal"/>
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="Conoce a nuestros especialistas"
+                    android:gravity="center"
+                    android:textColor="@color/color_text"
+                    android:textSize="18dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewEspecialistasHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="16dp"/>
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 </FrameLayout>

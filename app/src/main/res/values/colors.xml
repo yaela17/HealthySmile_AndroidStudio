@@ -23,4 +23,9 @@
     <color name="secondary_color_text">#000000</color>
     <color name="secondary_color_text_alt">#F0F8FF</color>
 
+
+    <color name="fondo_gris_healthy_home">#c7d4dc</color>
+    <color name="fondo_azul_healthy_home">#95d0cf</color>
+    <color name="fondo_azul_diente_home">#163662</color>
+
 </resources>

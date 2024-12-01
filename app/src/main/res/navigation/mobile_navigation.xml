@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.healthysmile.ui.home.HomeFragment"
+        android:name="com.example.healthysmile.ui.home.Home"
         android:label="@string/label_menu_inicio"
         tools:layout="@layout/fragment_home" />
     <fragment
