@@ -82,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/texto_boton_chatbot"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@android:color/transparent"
                     android:layout_gravity="center" />
 
             </FrameLayout>
@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/texto_boton_especialista"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@android:color/transparent"
                     android:layout_gravity="center" />
 
             </FrameLayout>
@@ -135,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/texto_boton_agendarcita"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@android:color/transparent"
                     android:layout_gravity="center" />
 
             </FrameLayout>
@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/texto_boton_historialdental"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@android:color/transparent"
                     android:layout_gravity="center" />
 
             </FrameLayout>
