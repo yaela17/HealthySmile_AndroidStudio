@@ -28,4 +28,8 @@
     <color name="fondo_azul_healthy_home">#95d0cf</color>
     <color name="fondo_azul_diente_home">#163662</color>
 
+    <color name="fondo_activity_init">#a7cdd3</color>
+    <color name="color_boton_registro">#4489d7</color>
+    <color name="color_boton_login">#2b5baf</color>
+
 </resources>
