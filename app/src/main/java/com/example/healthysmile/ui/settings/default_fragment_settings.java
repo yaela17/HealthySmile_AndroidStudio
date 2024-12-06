@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.healthysmile.Adaptadores.AdaptadorOpcionesPerfilListView;
 import com.example.healthysmile.R;
 
 public class default_fragment_settings extends Fragment implements AdapterView.OnItemClickListener {

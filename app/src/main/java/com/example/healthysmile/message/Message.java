@@ -3,51 +3,71 @@ package com.example.healthysmile.message;
 import java.util.Date;
 
 public class Message {
-    private String remitenteId;
-    private String destinatarioId;
-    private String text;
-    private Date timestamp;
+    private Long idEspecialista;
+    private Long idUsuario;
+    private Long destinatario;
+    private Long emisor;
+    private Date  fecha;
+    private String mensaje;
 
     public Message() {
         // Constructor vacío necesario para Firestore
     }
 
-    public Message(String remitenteId, String destinatarioId, String text, Date timestamp) {
-        this.remitenteId = remitenteId;
-        this.destinatarioId = destinatarioId;
-        this.text = text;
-        this.timestamp = timestamp;
+    public Message(Long idEspecialista, Long idUsuario, Long destinatario, Long emisor, Date  fecha, String mensaje) {
+        this.idEspecialista = idEspecialista;
+        this.idUsuario = idUsuario;
+        this.destinatario = destinatario;
+        this.emisor = emisor;
+        this.fecha = fecha;
+        this.mensaje = mensaje;
     }
 
-    public String getRemitenteId() {
-        return remitenteId;
+    public Long getIdEspecialista() {
+        return idEspecialista;
     }
 
-    public void setRemitenteId(String remitenteId) {
-        this.remitenteId = remitenteId;
+    public void setIdEspecialista(Long idEspecialista) {
+        this.idEspecialista = idEspecialista;
     }
 
-    public String getDestinatarioId() {
-        return destinatarioId;
+    public Long getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setDestinatarioId(String destinatarioId) {
-        this.destinatarioId = destinatarioId;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getText() {
-        return text;
+    public Long getDestinatario() {
+        return destinatario;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setDestinatario(Long destinatario) {
+        this.destinatario = destinatario;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public Long getEmisor() {
+        return emisor;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setEmisor(Long emisor) {
+        this.emisor = emisor;
+    }
+
+    public Date  getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date  fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 }

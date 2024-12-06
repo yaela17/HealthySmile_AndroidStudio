@@ -46,16 +46,22 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarNavigationDrawerFragments.toolbar);
-        binding.appBarNavigationDrawerFragments.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .setAnchorView(R.id.fab).show();
-            }
-        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        String nombreUsuario = sharedPreferences.getString("nombreUsuario",null);
+        String correoUsuario = sharedPreferences.getString("correoUsuario",null);
+        String tipoUsuario = sharedPreferences.getString("tipoUsuario",null);
+        foto = sharedPreferences.getString("fotoUsuario", null);
+
+        Menu menu = navigationView.getMenu();
+        if ("Administrador".equals(tipoUsuario)) {
+            MenuItem adminItem = menu.findItem(R.id.nav_gestionAdmin);
+            if (adminItem != null) {
+                adminItem.setVisible(true);
+            }
+        }
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -63,7 +69,6 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                 R.id.nav_home,
                 R.id.nav_ayudaYSoporte,
                 R.id.nav_ConsultaVirtual,
-                R.id.fragment_consulta_virtual_especialista,
                 R.id.nav_EducacionDental,
                 R.id.fragment_visualizacion_modelos_3d_gingivitis,
                 R.id.fragment_visualizacion_modelos_3d_caries_dentales,
@@ -72,7 +77,9 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                 R.id.fragment_visualizacion_modelos_3d_halitosis,
                 R.id.fragment_visualizacion_modelos_3d_sensibilidad_dental,
                 R.id.fragment_visualizacion_modelos_3d_implantes,
-                R.id.fragment_visualizacion_modelos_3d_periodontitis)
+                R.id.fragment_visualizacion_modelos_3d_periodontitis,
+                R.id.fragment_consulta_list_chat,
+                R.id.fragment_consulta_list_chat_paciente)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer_fragments);
@@ -120,15 +127,13 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                     }, 200);
                 }
 
+
+
                 return false;
             }
         });
 
-        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        String nombreUsuario = sharedPreferences.getString("nombreUsuario",null);
-        String correoUsuario = sharedPreferences.getString("correoUsuario",null);
-        String tipoUsuario = sharedPreferences.getString("tipoUsuario",null);
-        foto = sharedPreferences.getString("fotoUsuario", null);
+
 
  // Asegúrate de usar la clave correcta aquí
         if(tipoUsuario.equals("Paciente")){

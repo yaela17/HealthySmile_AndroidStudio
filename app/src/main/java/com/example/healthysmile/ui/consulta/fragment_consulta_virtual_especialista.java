@@ -19,13 +19,13 @@ import com.example.healthysmile.message.MessageAdapter;
 import com.example.healthysmile.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import io.socket.client.IO;
-import io.socket.client.Socket;
-import io.socket.emitter.Emitter;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class fragment_consulta_virtual_especialista extends Fragment {
 
@@ -33,28 +33,30 @@ public class fragment_consulta_virtual_especialista extends Fragment {
     private MessageAdapter messageAdapter;
     private List<Message> messageList = new ArrayList<>();
     private FirebaseFirestore db;
-    private String chatId;
 
     private EditText messageInput;
     private Button sendButton;
 
-    private Socket socket;
+    long idUsuarioChat, idEspecialistaChat;
+    String tipoUsuario;
 
-    long id;
-    String nombre,correo,foto;
+    private ListenerRegistration messagesListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_consulta_virtual_especialista, container, false);
 
-        // Obtener los datos del paciente desde SharedPreferences
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        id = sharedPreferences.getLong("idPaciente", 0);
-        nombre = sharedPreferences.getString("nombrePaciente", null);
-        correo = sharedPreferences.getString("correoPaciente", null);
-        foto = sharedPreferences.getString("fotoPaciente", null);
+        idUsuarioChat = sharedPreferences.getLong("idUsuario", 0);
+        idEspecialistaChat = sharedPreferences.getLong("idEspecialistaChat", 0);
+        tipoUsuario = sharedPreferences.getString("tipoUsuario","Paciente");
+
+        if(tipoUsuario.equals("Especialista")){
+            idEspecialistaChat = sharedPreferences.getLong("idUsuario",0);
+            idUsuarioChat = sharedPreferences.getLong("idEspecialistaChat",0);
+        }
+
 
         // Inicializar Firestore
         db = FirebaseFirestore.getInstance();
@@ -64,9 +66,6 @@ public class fragment_consulta_virtual_especialista extends Fragment {
         messageAdapter = new MessageAdapter(messageList);
         messagesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         messagesRecyclerView.setAdapter(messageAdapter);
-
-        // Obtener el chatId (este debe ser dinámico en función de la conversación)
-        chatId = "chatId";  // Aquí debes obtener dinámicamente el chatId
 
         // Cargar mensajes desde Firestore
         cargarMensajes();
@@ -78,107 +77,134 @@ public class fragment_consulta_virtual_especialista extends Fragment {
         sendButton.setOnClickListener(v -> {
             String textoMensaje = messageInput.getText().toString();
             if (!textoMensaje.isEmpty()) {
-                // Enviar el mensaje por WebSocket
                 enviarMensajeSocket(textoMensaje);
             } else {
                 Toast.makeText(getContext(), "No puedes enviar un mensaje vacío", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Configurar WebSocket
-        configurarSocket();
-
         return view;
     }
 
-    // Método para configurar WebSocket
-    private void configurarSocket() {
-        try {
-            // Conectar al servidor WebSocket (asegúrate de usar la IP correcta del servidor en producción)
-            socket = IO.socket("http://localhost:3000");
-            socket.connect();
-
-            // Escuchar el evento de recibir un mensaje
-            socket.on("recibirMensaje", new Emitter.Listener() {
-                @Override
-                public void call(Object... args) {
-                    String mensaje = (String) args[0];
-                    getActivity().runOnUiThread(() -> {
-                        // Actualizar la UI con el mensaje recibido
-                        Message newMessage = new Message("especialistaId", String.valueOf(id), mensaje, new java.util.Date());
-                        messageList.add(newMessage);
-                        messageAdapter.notifyDataSetChanged();
-                        messagesRecyclerView.scrollToPosition(messageList.size() - 1);  // Hacer scroll hasta el último mensaje
-                    });
-                }
-            });
-
-        } catch (Exception e) {
-            Log.e("SocketIO", "Error al conectar con WebSocket", e);
-        }
-    }
-
     private void cargarMensajes() {
-        db.collection("chats").document(chatId).collection("messages")
-                .orderBy("timestamp")
+        db.collection("chats")
+                .whereEqualTo("idUsuario", idUsuarioChat)
+                .whereEqualTo("idEspecialista", idEspecialistaChat)
                 .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if (!queryDocumentSnapshots.isEmpty()) {
-                        for (DocumentSnapshot document : queryDocumentSnapshots) {
-                            Message message = document.toObject(Message.class);
-                            messageList.add(message);
-                        }
-                        messageAdapter.notifyDataSetChanged();  // Actualiza el adapter
-                        messagesRecyclerView.scrollToPosition(messageList.size() - 1);  // Hacer scroll al último mensaje
+                .addOnSuccessListener(querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        DocumentSnapshot chatDocument = querySnapshot.getDocuments().get(0);
+                        String chatId = chatDocument.getId();
+                        Log.d("Consulta", "Chat encontrado: " + chatId);
+
+                        // Escuchar cambios en tiempo real en la colección de mensajes
+                        messagesListener = db.collection("chats")
+                                .document(chatId)
+                                .collection("mensajes")
+                                .orderBy("fecha", Query.Direction.ASCENDING)
+                                .addSnapshotListener((snapshots, e) -> {
+                                    if (e != null) {
+                                        Log.e("Firestore", "Error en el listener de mensajes", e);
+                                        return;
+                                    }
+
+                                    if (snapshots != null) {
+                                        messageList.clear(); // Limpiar la lista antes de actualizarla
+                                        for (DocumentSnapshot document : snapshots.getDocuments()) {
+                                            Message message = document.toObject(Message.class);
+                                            messageList.add(message);
+                                        }
+                                        messageAdapter.notifyDataSetChanged();
+                                        messagesRecyclerView.scrollToPosition(messageList.size() - 1);
+                                    }
+                                });
+                    } else {
+                        Log.d("Consulta", "No se encontró el chat.");
                     }
                 })
-                .addOnFailureListener(e -> {
-                    Log.e("Firestore", "Error al cargar mensajes", e);
+                .addOnFailureListener(e -> Log.e("Firestore", "Error al cargar mensajes", e));
+    }
+
+
+    private void enviarMensajeSocket(String texto) {
+        db.collection("chats")
+                .whereEqualTo("idUsuario", idUsuarioChat)
+                .whereEqualTo("idEspecialista", idEspecialistaChat)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        DocumentSnapshot chatDocument = querySnapshot.getDocuments().get(0);
+                        String chatId = chatDocument.getId();
+                        guardarMensaje(chatId, texto);
+                    } else {
+                        // Crear un nuevo chat si no existe
+                        Map<String, Object> nuevoChat = new HashMap<>();
+                        nuevoChat.put("idUsuario", idUsuarioChat);
+                        nuevoChat.put("idEspecialista", idEspecialistaChat);
+
+                        db.collection("chats").add(nuevoChat)
+                                .addOnSuccessListener(documentReference -> {
+                                    guardarMensaje(documentReference.getId(), texto);
+                                    cargarMensajesNuevoChat(documentReference.getId());
+                                });
+                    }
                 });
     }
 
+    private void guardarMensaje(String chatId, String texto) {
+        Map<String, Object> nuevoMensaje = new HashMap<>();
+        nuevoMensaje.put("mensaje", texto);
+        nuevoMensaje.put("fecha", new java.util.Date());
+        if(tipoUsuario.equals("Paciente")){
+            nuevoMensaje.put("emisor", idUsuarioChat);
+            nuevoMensaje.put("destinatario", idEspecialistaChat);
+        }else
+            if(tipoUsuario.equals("Especialista")){
+                nuevoMensaje.put("emisor", idEspecialistaChat);
+                nuevoMensaje.put("destinatario", idUsuarioChat);
+            }
 
-
-    // Método para enviar un mensaje por WebSocket
-    private void enviarMensajeSocket(String texto) {
-        String destinatarioId = "especialistaId";  // Este ID debe ser dinámico (de algún modo obtienes el ID del especialista)
-
-        // Crear un nuevo mensaje
-        Message message = new Message(String.valueOf(id), destinatarioId, texto, new java.util.Date());
-
-        // Enviar el mensaje a través de WebSocket
-        if (socket != null) {
-            socket.emit("enviarMensaje", texto);
-        }
-
-        // Guardar el mensaje en Firestore
-        db.collection("chats").document(chatId).collection("messages")
-                .add(message)
+        db.collection("chats").document(chatId).collection("mensajes")
+                .add(nuevoMensaje)
                 .addOnSuccessListener(documentReference -> {
-                    messageInput.setText("");  // Limpiar el campo de texto
+                    messageInput.setText(""); // Limpiar el campo de texto
                     Toast.makeText(getContext(), "Mensaje enviado", Toast.LENGTH_SHORT).show();
-
-                    agregarMensaje(message);
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Error al enviar el mensaje", Toast.LENGTH_SHORT).show();
                 });
     }
 
-    // Método para agregar un mensaje a la lista actual y actualizar la UI
-    private void agregarMensaje(Message message) {
-        messageList.add(message);  // Agregar el mensaje a la lista
-        messageAdapter.notifyItemInserted(messageList.size() - 1);  // Notificar al adaptador del nuevo mensaje
-        messagesRecyclerView.scrollToPosition(messageList.size() - 1);  // Hacer scroll al último mensaje
+    private void cargarMensajesNuevoChat(String chatId) {
+        // Escuchar cambios en tiempo real en la colección de mensajes del nuevo chat
+        messagesListener = db.collection("chats")
+                .document(chatId)
+                .collection("mensajes")
+                .orderBy("fecha", Query.Direction.ASCENDING)
+                .addSnapshotListener((snapshots, e) -> {
+                    if (e != null) {
+                        Log.e("Firestore", "Error en el listener de mensajes", e);
+                        return;
+                    }
+
+                    if (snapshots != null) {
+                        messageList.clear();
+                        for (DocumentSnapshot document : snapshots.getDocuments()) {
+                            Message message = document.toObject(Message.class);
+                            messageList.add(message);
+                        }
+                        messageAdapter.notifyDataSetChanged();
+                        messagesRecyclerView.scrollToPosition(messageList.size() - 1);
+                    }
+                });
     }
 
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        // Desconectar el socket cuando se destruya el fragmento
-        if (socket != null) {
-            socket.disconnect();
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (messagesListener != null) {
+            messagesListener.remove();
         }
     }
 }

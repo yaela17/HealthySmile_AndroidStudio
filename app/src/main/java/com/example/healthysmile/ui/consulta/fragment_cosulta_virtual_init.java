@@ -1,5 +1,7 @@
 package com.example.healthysmile.ui.consulta;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -34,11 +36,16 @@ public class fragment_cosulta_virtual_init extends Fragment implements View.OnCl
         // Verifica el texto del botón
         String textoBoton = ((Button) v).getText().toString();
         if (textoBoton.equals(getActivity().getApplicationContext().getString(R.string.texto_boton_especialista))) {
-            // Obtiene el NavController desde el NavHostFragment
             NavController navController = NavHostFragment.findNavController(fragment_cosulta_virtual_init.this);
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+            String tipoUsuario = sharedPreferences.getString("tipoUsuario", "Paciente");
+            if(tipoUsuario.equals("Paciente")){
+                navController.navigate(R.id.fragment_consulta_list_chat);
+            }else
+                if(tipoUsuario.equals("Especialista")){
+                    navController.navigate(R.id.fragment_consulta_list_chat_paciente);
+                }
 
-            // Navega al destino usando la acción definida en el gráfico de navegación
-            navController.navigate(R.id.action_fragment_cosulta_virtual_init_to_fragment_consulta_virtual_especialista);
         } else {
             Toast.makeText(requireContext(), "Acción no reconocida", Toast.LENGTH_SHORT).show();
         }

@@ -25,9 +25,13 @@
         android:label="@string/label_menu_consultavirtual"
         tools:layout="@layout/fragment_cosulta_virtual_init" >
         <!-- Acción para navegar al fragmento especialista -->
+
         <action
-            android:id="@+id/action_fragment_cosulta_virtual_init_to_fragment_consulta_virtual_especialista"
-            app:destination="@id/fragment_consulta_virtual_especialista" />
+            android:id="@+id/action_nav_ConsultaVirtual_to_fragment_consulta_list_chat"
+            app:destination="@id/fragment_consulta_list_chat" />
+        <action
+            android:id="@+id/action_nav_ConsultaVirtual_to_fragment_consulta_list_chat_paciente"
+            app:destination="@id/fragment_consulta_list_chat_paciente" />
     </fragment>
 
         <fragment
@@ -104,21 +108,35 @@
             tools:layout="@layout/fragment_visualizacion_modelos_3d_halitosis" />
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_sensibilidad_dental"
-            android:name="com.example.healthysmile.fragment_visualizacion_modelos_3d_sensibilidad_dental"
+            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_sensibilidad_dental"
             android:label="@string/label_menu_fragment_traumatismos_sensibilidad_dental"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_sensibilidad_dental" />
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_implantes"
-            android:name="com.example.healthysmile.fragment_visualizacion_modelos_3d_implantes"
+            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_implantes"
             android:label="@string/label_menu_fragment_traumatismos_implantes"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_implantes" />
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_periodontitis"
-            android:name="com.example.healthysmile.fragment_visualizacion_modelos_3d_periodontitis"
+            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_periodontitis"
             android:label="@string/label_menu_fragment_traumatismos_periodontitis"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_periodontitis" />
     <fragment
         android:id="@+id/fragment_modelo3d"
         android:name="com.example.healthysmile.ui.modelos3d.fragment_modelo3d"
         android:label="fragment_modelo3d" />
+    <fragment
+        android:id="@+id/fragment_consulta_list_chat"
+        android:name="com.example.healthysmile.ui.consulta.fragment_consulta_list_chat_especialista"
+        android:label="fragment_consulta_list_chat"
+        tools:layout="@layout/fragment_consulta_list_chat_especialista" >
+        <action
+            android:id="@+id/action_fragment_consulta_list_chat_to_fragment_consulta_virtual_especialista"
+            app:destination="@id/fragment_consulta_virtual_especialista" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_consulta_list_chat_paciente"
+        android:name="com.example.healthysmile.ui.consulta.fragment_consulta_list_chat_paciente"
+        android:label="fragment_consulta_list_chat_paciente"
+        tools:layout="@layout/fragment_consulta_list_chat_paciente" />
 </navigation>

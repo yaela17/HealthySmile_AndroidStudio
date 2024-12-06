@@ -1,4 +1,4 @@
-package com.example.healthysmile.ui.settings;
+package com.example.healthysmile.Adaptadores;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

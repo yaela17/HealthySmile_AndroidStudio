@@ -31,6 +31,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.healthysmile.Adaptadores.AdaptadorPerfilListView;
 import com.example.healthysmile.ConexionFirebaseDB;
 import com.example.healthysmile.R;
 

@@ -27,7 +27,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     @Override
     public void onBindViewHolder(MessageViewHolder holder, int position) {
         Message message = messageList.get(position);
-        holder.messageText.setText(message.getText());
+        holder.messageText.setText(message.getMensaje());
         // Aquí puedes agregar más lógica si quieres mostrar el remitente o destinatario
     }
 

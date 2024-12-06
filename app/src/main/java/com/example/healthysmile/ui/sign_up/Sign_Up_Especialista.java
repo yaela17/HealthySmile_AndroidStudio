@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.healthysmile.ConexionFirebaseDB;
-import com.example.healthysmile.CustomSpinnerAdapter;
+import com.example.healthysmile.Adaptadores.CustomSpinnerAdapter;
 import com.example.healthysmile.IconMethods;
 import com.example.healthysmile.ManejadorShadPreferences;
 import com.example.healthysmile.R;

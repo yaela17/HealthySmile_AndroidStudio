@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/plantillaListaEspecialistaFotoPerfil"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/default_photo_perfil_especialista"
+            android:background="@drawable/custom_circle_image"
+            android:scaleType="centerCrop"
+            android:clipToOutline="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/plantillaListaEspecialistaNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ejemplo nombre Especialista"
+                android:textSize="15dp"
+                android:textColor="@color/color_text"/>
+            <TextView
+                android:id="@+id/plantillaListaEspecialistaEspecialidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ejemplo especialidad Especialista"
+                android:textSize="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/color_text"/>
+            <TextView
+                android:id="@+id/plantillaListaEspecialistaDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ejemplo descripcion Especialista"
+                android:textSize="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/color_text"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

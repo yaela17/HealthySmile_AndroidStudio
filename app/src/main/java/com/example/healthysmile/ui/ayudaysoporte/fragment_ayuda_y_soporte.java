@@ -10,13 +10,11 @@ import android.widget.ExpandableListView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.healthysmile.AdaptadorExpandibleListView;
+import com.example.healthysmile.Adaptadores.AdaptadorExpandibleListView;
 import com.example.healthysmile.R;
 import com.example.healthysmile.ConexionFirebaseDB;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
