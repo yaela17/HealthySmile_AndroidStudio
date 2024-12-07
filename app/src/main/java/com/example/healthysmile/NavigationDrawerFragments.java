@@ -70,6 +70,8 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                 R.id.nav_ayudaYSoporte,
                 R.id.nav_ConsultaVirtual,
                 R.id.nav_EducacionDental,
+                R.id.nav_TiendaVirutal,
+                R.id.nav_gestionAdmin,
                 R.id.fragment_visualizacion_modelos_3d_gingivitis,
                 R.id.fragment_visualizacion_modelos_3d_caries_dentales,
                 R.id.fragment_visualizacion_modelos_3d_cancer_bucal,
@@ -115,6 +117,18 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_EducacionDental) {
                     navController.popBackStack(R.id.nav_EducacionDental, false);
                     navController.navigate(R.id.nav_EducacionDental);
+                    return true;
+                }
+
+                if (item.getItemId() == R.id.nav_TiendaVirutal) {
+                    navController.popBackStack(R.id.nav_TiendaVirutal, false);
+                    navController.navigate(R.id.nav_TiendaVirutal);
+                    return true;
+                }
+
+                if (item.getItemId() == R.id.nav_gestionAdmin) {
+                    navController.popBackStack(R.id.nav_gestionAdmin, false);
+                    navController.navigate(R.id.nav_gestionAdmin);
                     return true;
                 }
 
@@ -203,7 +217,6 @@ public class NavigationDrawerFragments extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }

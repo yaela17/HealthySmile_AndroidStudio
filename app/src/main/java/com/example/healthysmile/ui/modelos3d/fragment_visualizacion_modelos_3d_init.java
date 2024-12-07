@@ -68,6 +68,9 @@ public class fragment_visualizacion_modelos_3d_init extends Fragment implements 
                             }else
                                 if(v.getId() == R.id.modelos_init_imagen_periodontitis){
                                     navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_periodontitis);
-                                }
+                                }else
+                                    if(v.getId() == R.id.modelos_init_imagen_halitosis){
+                                        navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_halitosis);
+                                    }
     }
 }

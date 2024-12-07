@@ -48,7 +48,7 @@
 
         <action
             android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_gingivitis"
-            app:destination="@id/fragment_modelo3d"/>
+            app:destination="@id/fragment_visualizacion_modelos_3d_gingivitis"/>
 
         <action
             android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_caries_dentales"
@@ -138,5 +138,16 @@
         android:id="@+id/fragment_consulta_list_chat_paciente"
         android:name="com.example.healthysmile.ui.consulta.fragment_consulta_list_chat_paciente"
         android:label="fragment_consulta_list_chat_paciente"
-        tools:layout="@layout/fragment_consulta_list_chat_paciente" />
+        tools:layout="@layout/fragment_consulta_list_chat_paciente" >
+        <action
+            android:id="@+id/action_fragment_consulta_list_chat_paciente_to_fragment_consulta_virtual_especialista"
+            app:destination="@id/fragment_consulta_virtual_especialista" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_TiendaVirutal"
+        android:name="com.example.healthysmile.ui.tiendavirtual.fragment_tienda_virtual_init"
+        android:label="fragment_tienda_virtual_init"
+        tools:layout="@layout/fragment_tienda_virtual_init" />
+
 </navigation>

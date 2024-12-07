@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/en_construccion"
-    tools:context=".ui.modelos3d.fragment_visualizacion_modelos_3d_sensibilidad_dental">
+    tools:context=".fragment_gestion_administrador_init">
 
 
 </FrameLayout>
