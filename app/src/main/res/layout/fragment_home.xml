@@ -6,32 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.Home">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp">
-
-
                 <View
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:background="@color/fondo_gris_healthy_home"
                     android:layout_gravity="end|top"/>
-
                 <View
                     android:layout_width="190dp"
                     android:layout_height="280dp"
                     android:background="@color/fondo_azul_healthy_home"
                     android:layout_gravity="end|top"/>
-
 
                 <ImageView
                     android:layout_width="250dp"
@@ -40,7 +34,6 @@
                     android:padding="30dp"
                     android:background="@drawable/background_diente_home"
                     android:src="@drawable/dientelupa"/>
-
                 <LinearLayout
                     android:layout_width="200dp"
                     android:layout_height="150dp"
@@ -50,24 +43,20 @@
                     android:layout_marginLeft="80dp"
                     android:padding="10dp"
                     android:background="@drawable/custom_tittle_text_healthy_home">
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Healthy \nSmile"
                         android:textSize="30dp"
                         android:textColor="@color/color_text"/>
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/color_text"
                         android:textSize="10dp"
                         android:text="El futuro del cuidado dental se acerca rápidamente, marcando el comienzo de una neuva era de innovacion digital y transformacion en la salud bucal"/>
-
                 </LinearLayout>
             </FrameLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,15 +68,261 @@
                     android:text="Conoce a nuestros especialistas"
                     android:gravity="center"
                     android:textColor="@color/color_text"
-                    android:textSize="18dp"/>
+                    android:textSize="20dp"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewEspecialistasHome"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:nestedScrollingEnabled="false"
                     android:padding="16dp"/>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="¿Pueden los bots \nremplazarar a los\nespecialistas?"
+                            android:textSize="23dp"
+                            android:layout_marginLeft="20dp"
+                            android:gravity="start"
+                            android:textColor="@color/color_text"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text="El futuro del cuidado dental está aquí, marcando una nueva era de innovación digital y automatización. Healthy Smile es el ejemplo perfecto de cómo la tecnología está transformando el sector de la salud bucal. Con Healthy Smile, la automatización permite una gestión eficiente de citas, el monitoreo continuo del historial dental de los pacientes y la entrega de diagnósticos preliminares basados en modelos 3D personalizados. Todo esto contribuye a una experiencia de atención más ágil y precisa, mejorando la satisfacción del paciente mientras permite que los especialistas se centren en lo que más importa: ofrecer cuidados de calidad."
+                            android:textSize="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:gravity="start"
+                            android:textColor="@color/color_text"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="130dp"
+                            android:src="@drawable/home_imagen_1"
+                            android:scaleType="centerCrop"
+                            android:layout_marginLeft="30dp" />
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="250dp"
+                            android:src="@drawable/home_imagen_2"
+                            android:scaleType="centerCrop"
+                            android:paddingLeft="50dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="30dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/home_imagen_3"
+                    android:scaleType="centerCrop"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Consulta Virtual"
+                            android:textSize="23dp"
+                            android:gravity="start"
+                            android:textColor="@color/color_text"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text=" Nuestra plataforma de Consulta Virtual está diseñada para facilitar la interacción entre pacientes y especialistas, ofreciendo acceso rápido y seguro a atención dental de calidad sin necesidad de visitas físicas. Los pacientes pueden reprogramar citas, y recibir diagnósticos preliminares basados en la información proporcionada, todo en tiempo real.
+Funcionamiento
+\nRegístrate: Crea tu cuenta y completa tu perfil médico.
+Conéctate: Habla directamente con un especialista desde la comodidad de tu hogar.
+Recibe tu Diagnóstico: Obtén resultados inmediatos y recomendaciones.
+ Botón: Explorar más sobre consultas virtuales"
+                            android:textSize="10dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="start"
+                            android:textColor="@color/color_text"/>
+                        <Button
+                            android:id="@+id/btnHomeConsultaVirtual"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Explorar más sobre consultas virtuales  "
+                            android:textSize="7sp"
+                            android:textColor="@color/white"
+                            android:backgroundTint="#7b904b"/>
+                    </LinearLayout>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/home_imagen_4"
+                            android:scaleType="centerCrop"/>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="220dp"
+                            android:layout_height="300dp"
+                            android:src="@drawable/home_imagen_5"
+                            android:scaleType="centerCrop"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Educación"
+                                android:textColor="@color/color_text"
+                                android:textStyle="bold"
+                                android:textSize="20dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="30dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dental"
+                                android:textSize="35dp"
+                                android:textColor="@color/color_text"
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Puedes acceder a recursos educativos sobre salud bucal, incluyendo guías, modelos 3D, hábitos y consejos para tratar tu problema, lo que te ayudará a tomar decisiones informadas sobre tu salud dental."
+                                android:textSize="10dp"
+                                android:textColor="@color/color_text"
+                                android:layout_gravity="center"
+                                android:padding="10dp"
+                                android:gravity="center"/>
+                            <Button
+                                android:id="@+id/btnHomeEducacionDental"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Explorar más sobre educación dental"
+                                android:textSize="8dp"
+                                android:layout_margin="5dp"
+                                android:textColor="@color/white"
+                                android:backgroundTint="#478ac9"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="220dp"
+                            android:layout_height="300dp"
+                            android:padding="10dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tienda\nVirtual"
+                                android:textColor="@color/color_text"
+                                android:textStyle="bold"
+                                android:textSize="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="30dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Explora nuestra tienda, añade productos al carrito, sube tu receta médica si es necesario y recibe tu pedido en casa."
+                                android:textSize="10dp"
+                                android:textColor="@color/color_text"
+                                android:layout_gravity="center"
+                                android:padding="10dp"
+                                android:gravity="center"/>
+                            <Button
+                                android:id="@+id/btnHomeTiendaVirtual"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Comprar ahora"
+                                android:layout_margin="5dp"
+                                android:textColor="@color/white"
+                                android:backgroundTint="#478ac9"/>
+                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/home_imagen_6"
+                            android:scaleType="centerCrop"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="220dp"
+                            android:layout_height="300dp"
+                            android:src="@drawable/home_imagen_7"
+                            android:scaleType="centerCrop"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ayuda y\nSoporte"
+                                android:textColor="#1e3861"
+                                android:textStyle="bold"
+                                android:textSize="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="30dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Puedes acceder a nuestra sección de Ayuda y Soporte para encontrar preguntas frecuentes, asistencia técnica, que te ayudarán a resolver dudas sobre la plataforma, consultas virtuales y la gestión de citas o compras."
+                                android:textSize="10dp"
+                                android:textColor="@color/color_text"
+                                android:layout_gravity="center"
+                                android:padding="10dp"
+                                android:gravity="start"/>
+                            <Button
+                                android:id="@+id/btnHomeAyudaYSoporte"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Obtener ayuda"
+                                android:layout_margin="5dp"
+                                android:textColor="@color/white"
+                                android:backgroundTint="#478ac9"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </FrameLayout>

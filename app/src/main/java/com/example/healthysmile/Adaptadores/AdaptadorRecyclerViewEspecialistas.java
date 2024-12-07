@@ -47,20 +47,43 @@ public class AdaptadorRecyclerViewEspecialistas extends RecyclerView.Adapter<Ada
         holder.tvCedula.setText("Cédula : " + listaCedulas.get(position));
         holder.tvDescripcion.setText(listaDescripciones.get(position));
 
-        // Validar si la URL es válida
+        // Validar si la URL es válida y cargar imagen
         String fotoUrl = listaFotos.get(position);
         if (fotoUrl == null || fotoUrl.isEmpty()) {
-            // Mostrar imagen por defecto
             holder.imgFoto.setImageResource(R.drawable.default_photo_perfil_especialista);
         } else {
-            // Cargar imagen usando Glide
             Glide.with(context)
                     .load(fotoUrl)
                     .placeholder(R.drawable.default_photo_perfil_especialista) // Imagen de carga
                     .error(R.drawable.default_photo_perfil_especialista) // Imagen de error
                     .into(holder.imgFoto);
         }
+
+        holder.itemView.setAlpha(0f);
+        holder.itemView.animate()
+                .alpha(1f)
+                .setDuration(500)
+                .setStartDelay(position * 100)
+                .start();
+
+        // Fondo dinámico al hacer clic
+        holder.itemView.setOnClickListener(v -> {
+            boolean isExpanded = holder.tvDescripcion.getVisibility() == View.VISIBLE;
+
+            // Cambiar fondo dinámico
+            holder.itemView.setBackgroundResource(isExpanded ? R.drawable.plantilla_informacion_especialistas_default_background : R.drawable.plantilla_informacion_especialistas_clicked_background);
+
+            // Alternar expansión
+            holder.tvDescripcion.setVisibility(isExpanded ? View.GONE : View.VISIBLE);
+
+            // Agregar animación de expansión/contracción
+            holder.tvDescripcion.animate()
+                    .alpha(isExpanded ? 0f : 1f)
+                    .setDuration(300)
+                    .start();
+        });
     }
+
 
     @Override
     public int getItemCount() {

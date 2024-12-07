@@ -12,16 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="450sp">
-
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -42,14 +39,6 @@
                         android:text="Consultorio \n Digital"
                         android:textColor="@color/white"
                         android:textSize="35dp"/>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:backgroundTint="@color/black"
-                        android:textColor="@color/white"
-                        android:text="CONSULTAR AHORA"/>
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
@@ -64,12 +53,10 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal">
-
             <FrameLayout
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginRight="20dp">
-
                 <ImageView
                     android:layout_width="130dp"
                     android:layout_height="130dp"
@@ -77,21 +64,17 @@
                     android:clipToOutline="true"
                     android:background="@drawable/background_image_consulta"
                     android:src="@drawable/chatbot"/>
-
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/texto_boton_chatbot"
-                    android:backgroundTint="@android:color/transparent"
+                    android:background="@android:color/transparent"
                     android:layout_gravity="center" />
-
             </FrameLayout>
-
             <FrameLayout
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="20dp">
-
                 <ImageView
                     android:layout_width="130dp"
                     android:layout_height="130dp"
@@ -99,17 +82,15 @@
                     android:clipToOutline="true"
                     android:background="@drawable/background_image_consulta"
                     android:src="@drawable/dentistaaa"/>
-
                 <Button
                     android:id="@+id/fragment_consultavirtual_init_btnEspecialista"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/texto_boton_especialista"
-                    android:backgroundTint="@android:color/transparent"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/color_text"
                     android:layout_gravity="center" />
-
             </FrameLayout>
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,12 +98,10 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal">
-
             <FrameLayout
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginRight="20dp">
-
                 <ImageView
                     android:layout_width="130dp"
                     android:layout_height="130dp"
@@ -130,21 +109,17 @@
                     android:clipToOutline="true"
                     android:background="@drawable/background_image_consulta"
                     android:src="@drawable/cabos"/>
-
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/texto_boton_agendarcita"
-                    android:backgroundTint="@android:color/transparent"
+                    android:background="@android:color/transparent"
                     android:layout_gravity="center" />
-
             </FrameLayout>
-
             <FrameLayout
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="20dp">
-
                 <ImageView
                     android:layout_width="130dp"
                     android:layout_height="130dp"
@@ -152,16 +127,13 @@
                     android:clipToOutline="true"
                     android:background="@drawable/background_image_consulta"
                     android:src="@drawable/historial"/>
-
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/texto_boton_historialdental"
-                    android:backgroundTint="@android:color/transparent"
+                    android:background="@android:color/transparent"
                     android:layout_gravity="center" />
-
             </FrameLayout>
-
         </LinearLayout>
     </LinearLayout>
     </ScrollView>

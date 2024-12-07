@@ -23,6 +23,15 @@
         <item name="android:elevation">4dp</item> <!-- Sombra para darle elevación -->
     </style>
 
+    <style name="estilo_boton_home_azul">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:backgroundTint">#478ac9</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
 
     <style name="Theme.HealthySmile" parent="Base.Theme.HealthySmile" />
 

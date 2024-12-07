@@ -1,57 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="125dp"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/plantillaHomeFotoEspecialista"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:src="@drawable/default_photo_perfil_especialista"
-        android:background="@drawable/custom_circle_image"
-        android:scaleType="centerCrop"
-        android:clipToOutline="true"/>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clipToPadding="false"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="8dp"
+    card_view:cardBackgroundColor="@color/white">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="13dp"
-        android:orientation="vertical">
+        android:padding="5dp">
 
-        <TextView
-            android:id="@+id/plantillaHomeNombreEspecialista"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="German Castelazo Rico"
-            android:gravity="center"
-            android:textColor="@color/color_text"
-            android:textSize="18dp"/>
-        <TextView
-            android:id="@+id/plantillaHomeEspecialidadEspecialista"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Especialidad"
-            android:gravity="center"
-            android:textColor="@color/color_text"
-            android:textSize="12dp"/>
-        <TextView
-            android:id="@+id/plantillaHomeCedulaEspecialista"
+        <ImageView
+            android:id="@+id/plantillaHomeFotoEspecialista"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/default_photo_perfil_especialista"
+            android:background="@drawable/custom_circle_image"
+            android:scaleType="centerCrop"
+            android:clipToOutline="true" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Cedula : 12345678"
-            android:textColor="@color/color_principal_clarote"
-            android:textSize="12dp"/>
-        <TextView
-            android:id="@+id/plantillaHomeDescripcionEspecialista"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="12dp"
-            android:gravity="center"
-            android:textColor="@color/color_text"
-            android:text="Este es un ejemplo de como se va acomodando la descripcion de un espacialista asi bien papulince cwn"/>
+            android:padding="13dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/plantillaHomeNombreEspecialista"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="German Castelazo Rico"
+                android:gravity="center"
+                android:textColor="@color/color_text"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/plantillaHomeEspecialidadEspecialista"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Especialidad"
+                android:gravity="center"
+                android:textColor="@color/color_text"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/plantillaHomeCedulaEspecialista"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Cedula : 12345678"
+                android:textColor="@color/color_principal_clarote"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/plantillaHomeDescripcionEspecialista"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:textColor="@color/color_text"
+                android:text="Este es un ejemplo de como se va acomodando la descripcion de un espacialista asi bien papulince cwn" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</androidx.cardview.widget.CardView>
