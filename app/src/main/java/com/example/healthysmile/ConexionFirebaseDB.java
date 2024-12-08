@@ -2,6 +2,8 @@ package com.example.healthysmile;
 
 import android.util.Log;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -241,6 +243,34 @@ public class ConexionFirebaseDB {
                     Log.w("Firestore", "Error al agregar la pregunta", e);
                 });
     }
+
+    public void eliminarDocumento(String coleccion, long idUsuario, OnSuccessListener<Void> onSuccessListener, OnFailureListener onFailureListener) {
+        db.collection(coleccion)
+                .whereEqualTo("idUsuario", idUsuario) // Cambiado de document(idDocumento)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        String documentId = queryDocumentSnapshots.getDocuments().get(0).getId();
+                        Log.d("EliminarDocumento", "Intentando eliminar documento en colección: " + coleccion + " con idUsuario: " + idUsuario + " y documentId: " + documentId);
+                        db.collection(coleccion)
+                                .document(documentId)
+                                .delete()
+                                .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        onSuccessListener.onSuccess(null); // Llama al listener de éxito
+                                    } else {
+                                        onFailureListener.onFailure(task.getException()); // Llama al listener de fallo
+                                    }
+                                });
+                    } else {
+                        onFailureListener.onFailure(new Exception("Usuario no encontrado")); // Maneja el caso de que no haya coincidencias
+                    }
+                })
+                .addOnFailureListener(onFailureListener);
+    }
+
+
+
 
 
 }

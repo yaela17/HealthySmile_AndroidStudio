@@ -97,7 +97,29 @@ public class LogIn extends AppCompatActivity {
                             manejadorShadPreferences.guardarIdEspecialista(idEspecialista);
                             Intent intentIrHome = new Intent(LogIn.this, NavigationDrawerFragments.class);
                             startActivity(intentIrHome);
-                        }
+                        }else
+                            if("Administrador".equals(usuario.getString("tipoUser"))){
+                                // Acceder a los datos generales del usuario
+                                String correoUser = usuario.getString("correoUser");
+                                String nomUser = usuario.getString("nomUser");
+                                long nivelPermisos = ((Long) usuario.get("nivelPermisos")).intValue();
+                                long idUsuario = ((Long) usuario.get("idUsuario")).intValue();
+
+                                // Acceder a los datos específicos del especialista
+                                Map<String, Object> especialista = (Map<String, Object>) usuario.get("Especialista");  // Obtener el Map del campo 'especialista'
+                                // Si el campo 'especialista' tiene subcampos, los puedes acceder de la siguiente manera:
+                                long idEspecialista = ((Long) especialista.get("idEspecialista")).intValue();
+                                String descripcion = (String) especialista.get("descripcion");
+                                String cedulaProfesional = (String) especialista.get("cedulaProfesional"); // Ejemplo de subcampo
+                                String especialidad = (String) especialista.get("especialidad");  // Otro ejemplo de subcampo
+
+                                // Crear el Intent y enviar los datos con putExtra
+                                manejadorShadPreferences.guardarEspecialista(nomUser,correoUser,"Administrador",nivelPermisos,cedulaProfesional,descripcion,especialidad);
+                                manejadorShadPreferences.guardarIdUsuario(idUsuario);
+                                manejadorShadPreferences.guardarIdEspecialista(idEspecialista);
+                                Intent intentIrHome = new Intent(LogIn.this, NavigationDrawerFragments.class);
+                                startActivity(intentIrHome);
+                            }
                     }
                 } else {
                     Toast.makeText(LogIn.this, "Documento no encontrado", Toast.LENGTH_SHORT).show();

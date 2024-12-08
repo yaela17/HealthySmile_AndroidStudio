@@ -42,7 +42,7 @@ public class fragment_cosulta_virtual_init extends Fragment implements View.OnCl
             if(tipoUsuario.equals("Paciente")){
                 navController.navigate(R.id.fragment_consulta_list_chat);
             }else
-                if(tipoUsuario.equals("Especialista")){
+                if(tipoUsuario.equals("Especialista") || tipoUsuario.equals("Administrador")){
                     navController.navigate(R.id.fragment_consulta_list_chat_paciente);
                 }
 
