@@ -1,5 +1,6 @@
 package com.example.healthysmile.ui.sign_up;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.example.healthysmile.IconMethods;
 import com.example.healthysmile.ManejadorShadPreferences;
 import com.example.healthysmile.R;
 import com.example.healthysmile.ConexionFirebaseDB;
+import com.example.healthysmile.ui.login.LogIn;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -75,6 +77,8 @@ public class Sign_Up_Paciente extends Fragment {
             Log.d("Firestore", "Usuario registrado con ID: " + documentReference.getId());
             manejadorShadPreferences.guardarPaciente(nombre,correo,"Paciente",1);
             limpiarCampos();
+            Intent intent = new Intent(getContext(), LogIn.class);
+            startActivity(intent);
         }, e -> {
             Toast.makeText(getActivity(), "Error al registrar usuario", Toast.LENGTH_SHORT).show();
             Log.w("Firestore", "Error al registrar usuario", e);

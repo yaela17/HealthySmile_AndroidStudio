@@ -1,22 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="9dp">
+    android:padding="20dp">
 
-    <TextView
-        android:id="@+id/messageTex"
+    <LinearLayout
+        android:id="@+id/messageContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mensaje de ejemplo"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:padding="20dp"
-        android:paddingBottom="25dp"
-        android:foreground="@drawable/fondo_dialogo"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        android:textColor="@color/black"/>
+        android:orientation="vertical"
+        android:background="@drawable/mensaje_background_emisor"
+        android:padding="15dp"> <!-- Fondo opcional -->
+
+        <TextView
+            android:id="@+id/messageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mensaje de ejemplo"
+            android:textSize="16sp"
+            android:background="@null"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/messageDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de ejemplo"
+            android:textSize="10sp"
+            android:background="@null"
+            android:layout_gravity="end"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
 
 </LinearLayout>

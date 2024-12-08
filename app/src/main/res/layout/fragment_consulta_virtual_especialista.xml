@@ -27,14 +27,18 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/texto_hint_enviar_mensaje"
+            android:background="@drawable/custom_edittext"
             android:padding="8dp"
+            style="@style/formBasicInput"
             android:layout_marginEnd="8dp"/>
 
         <Button
             android:id="@+id/sendButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/texto_boton_enviar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/custom_circle_image"
+            android:foreground="@drawable/icon_enviar"
+            android:foregroundGravity="center"
             android:layout_gravity="end"/>
     </LinearLayout>
 </LinearLayout>

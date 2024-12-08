@@ -63,7 +63,7 @@ public class fragment_consulta_virtual_especialista extends Fragment {
 
         // Configurar RecyclerView
         messagesRecyclerView = view.findViewById(R.id.messagesRecyclerView);
-        messageAdapter = new MessageAdapter(messageList);
+        messageAdapter = new MessageAdapter(messageList,idUsuarioChat);
         messagesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         messagesRecyclerView.setAdapter(messageAdapter);
 

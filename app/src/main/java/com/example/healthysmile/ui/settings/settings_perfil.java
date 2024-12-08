@@ -101,7 +101,7 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
         listTitleInputFile = new String[]{
                 getActivity().getApplicationContext().getString(R.string.texto_campo_nombre),
                 getActivity().getApplicationContext().getString(R.string.texto_campo_correo),
-                getActivity().getApplicationContext().getString(R.string.texto_boton_especialista)};
+                "Tipo de Usuario"};
         listDescriptionInputFile = new String[]{nombre, correo, tipoUsuario};
 
         // Configurar el ListView y el adaptador

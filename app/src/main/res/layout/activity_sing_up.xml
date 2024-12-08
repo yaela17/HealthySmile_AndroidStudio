@@ -10,6 +10,8 @@
     android:background="@drawable/fondo_sign_up"
     tools:context=".ui.sign_up.Sing_Up">
 
+
+
     <FrameLayout
         android:id="@+id/signUpFragmentContainer"
         android:layout_width="match_parent"

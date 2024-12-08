@@ -1,5 +1,6 @@
 package com.example.healthysmile.ui.sign_up;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,7 @@ import com.example.healthysmile.Adaptadores.CustomSpinnerAdapter;
 import com.example.healthysmile.IconMethods;
 import com.example.healthysmile.ManejadorShadPreferences;
 import com.example.healthysmile.R;
+import com.example.healthysmile.ui.login.LogIn;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -138,6 +140,8 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
             Toast.makeText(getActivity(), "Especialista registrado con éxito", Toast.LENGTH_SHORT).show();
             manejadorShadPreferences.guardarEspecialista(nombre,correo,"Especialista",2,cedulaProfesional,descripcion,especialidad);
             limpiarCampos();
+            Intent intent = new Intent(getContext(), LogIn.class);
+            startActivity(intent);
         }, e -> {
             Toast.makeText(getActivity(), "Error al registrar especialista", Toast.LENGTH_SHORT).show();
             Log.w("Firestore", "Error al registrar especialista", e);
