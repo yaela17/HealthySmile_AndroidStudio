@@ -6,14 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/fondo_sign_up"
     tools:context=".ui.sign_up.Sing_Up">
 
-
+    <ImageView
+        android:id="@+id/flechaRegresar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/icon_arrow_back"/>
 
     <FrameLayout
         android:id="@+id/signUpFragmentContainer"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

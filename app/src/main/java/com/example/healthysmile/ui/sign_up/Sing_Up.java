@@ -2,6 +2,8 @@ package com.example.healthysmile.ui.sign_up;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +12,9 @@ import androidx.fragment.app.Fragment;
 import com.example.healthysmile.InitAplication;
 import com.example.healthysmile.R;
 
-public class Sing_Up extends AppCompatActivity {
+public class Sing_Up extends AppCompatActivity implements View.OnClickListener {
+
+    ImageView imagenRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,8 @@ public class Sing_Up extends AppCompatActivity {
             Intent intentitoInitAplication = new Intent(this, InitAplication.class);
             startActivity(intentitoInitAplication);
         }
+        imagenRegresar = findViewById(R.id.flechaRegresar);
+        imagenRegresar.setOnClickListener(this);
     }
 
     public void cambiarFragmento(Fragment fragment) {
@@ -37,5 +43,11 @@ public class Sing_Up extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.signUpFragmentContainer, fragment)
                 .commit();
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(this, InitAplication.class);
+        startActivity(intent);
     }
 }

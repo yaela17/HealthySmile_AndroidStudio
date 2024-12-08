@@ -150,4 +150,8 @@ public class fragment_consulta_list_chat_paciente extends Fragment {
 
         listaChatUsuarios.setAdapter(adaptador);
     }
+
+
+
+
 }

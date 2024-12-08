@@ -69,6 +69,7 @@ public class AdaptadorListaEspecialistas extends BaseAdapter {
             SharedPreferences sharedPreferences = contexto.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putLong("idEspecialistaChat", idsEspecialista[position]);
+            editor.putString("nombreReceptorChat", nombres[position]);
             editor.apply();
             NavController navController = NavHostFragment.findNavController(fragment);
             navController.navigate(R.id.fragment_consulta_virtual_especialista,null);

@@ -128,7 +128,7 @@
     <fragment
         android:id="@+id/fragment_consulta_list_chat"
         android:name="com.example.healthysmile.ui.consulta.fragment_consulta_list_chat_especialista"
-        android:label="fragment_consulta_list_chat"
+        android:label="Consulta Especialista"
         tools:layout="@layout/fragment_consulta_list_chat_especialista" >
         <action
             android:id="@+id/action_fragment_consulta_list_chat_to_fragment_consulta_virtual_especialista"
@@ -137,7 +137,7 @@
     <fragment
         android:id="@+id/fragment_consulta_list_chat_paciente"
         android:name="com.example.healthysmile.ui.consulta.fragment_consulta_list_chat_paciente"
-        android:label="fragment_consulta_list_chat_paciente"
+        android:label=""
         tools:layout="@layout/fragment_consulta_list_chat_paciente" >
         <action
             android:id="@+id/action_fragment_consulta_list_chat_paciente_to_fragment_consulta_virtual_especialista"

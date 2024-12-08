@@ -2,6 +2,7 @@ package com.example.healthysmile.Adaptadores;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,9 +62,12 @@ public class AdaptadorListaPacientes extends BaseAdapter {
         textCorreo.setText(correos[position]);
 
         convertView.setOnClickListener(v -> {
+            Log.d("Adaptador", "ID seleccionado: " + idsUsuario[position]);
+            Log.d("Adaptador", "Nombre seleccionado: " + nombres[position]);
             SharedPreferences sharedPreferences = contexto.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putLong("idEspecialistaChat", idsUsuario[position]);
+            editor.putString("nombreReceptorChat", nombres[position]);
             editor.apply();
             NavController navController = NavHostFragment.findNavController(fragment);
             navController.navigate(R.id.fragment_consulta_virtual_especialista,null);

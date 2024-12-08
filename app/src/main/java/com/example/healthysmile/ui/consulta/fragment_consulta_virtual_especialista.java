@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,7 +40,7 @@ public class fragment_consulta_virtual_especialista extends Fragment {
     private Button sendButton;
 
     long idUsuarioChat, idEspecialistaChat;
-    String tipoUsuario;
+    String tipoUsuario, nombreReceptorChat;
 
     private ListenerRegistration messagesListener;
 
@@ -50,7 +52,12 @@ public class fragment_consulta_virtual_especialista extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         idUsuarioChat = sharedPreferences.getLong("idUsuario", 0);
         idEspecialistaChat = sharedPreferences.getLong("idEspecialistaChat", 0);
+        nombreReceptorChat = sharedPreferences.getString("nombreReceptorChat","null");
         tipoUsuario = sharedPreferences.getString("tipoUsuario","Paciente");
+        Log.d("ConsultaVirtual", "idUsuarioChat: " + idUsuarioChat);
+        Log.d("ConsultaVirtual", "idEspecialistaChat: " + idEspecialistaChat);
+        Log.d("ConsultaVirtual", "nombreReceptorChat: " + nombreReceptorChat);
+        Log.d("ConsultaVirtual", "tipoUsuario: " + tipoUsuario);
 
         if(tipoUsuario.equals("Especialista")){
             idEspecialistaChat = sharedPreferences.getLong("idUsuario",0);
@@ -64,6 +71,8 @@ public class fragment_consulta_virtual_especialista extends Fragment {
             if(tipoUsuario.equals("Paciente")){
                 idEmisorActual = idUsuarioChat;
             }
+        Log.d("ConsultaVirtual", "idEmisorActual: " + idEmisorActual);
+
 
         // Inicializar Firestore
         db = FirebaseFirestore.getInstance();
@@ -89,6 +98,13 @@ public class fragment_consulta_virtual_especialista extends Fragment {
                 Toast.makeText(getContext(), "No puedes enviar un mensaje vacío", Toast.LENGTH_SHORT).show();
             }
         });
+
+        if (getActivity() != null) {
+            AppCompatActivity activity = (AppCompatActivity) getActivity();
+            if (activity.getSupportActionBar() != null) {
+                activity.getSupportActionBar().setTitle(nombreReceptorChat);
+            }
+        }
 
         return view;
     }
@@ -214,4 +230,5 @@ public class fragment_consulta_virtual_especialista extends Fragment {
             messagesListener.remove();
         }
     }
+
 }
