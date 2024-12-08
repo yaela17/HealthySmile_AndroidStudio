@@ -57,13 +57,20 @@ public class fragment_consulta_virtual_especialista extends Fragment {
             idUsuarioChat = sharedPreferences.getLong("idEspecialistaChat",0);
         }
 
+        long idEmisorActual = 0;
+        if(tipoUsuario.equals("Especialista")){
+            idEmisorActual = idEspecialistaChat;
+        }else
+            if(tipoUsuario.equals("Paciente")){
+                idEmisorActual = idUsuarioChat;
+            }
 
         // Inicializar Firestore
         db = FirebaseFirestore.getInstance();
 
         // Configurar RecyclerView
         messagesRecyclerView = view.findViewById(R.id.messagesRecyclerView);
-        messageAdapter = new MessageAdapter(messageList,idUsuarioChat);
+        messageAdapter = new MessageAdapter(messageList,idEmisorActual);
         messagesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         messagesRecyclerView.setAdapter(messageAdapter);
 
