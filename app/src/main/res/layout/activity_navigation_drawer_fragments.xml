@@ -20,8 +20,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:itemIconTint="@color/color_principal_clarote"
-        app:itemTextColor="@color/color_principal_clarote"
+        android:background="@color/color_azul_medianoche"
+        app:itemIconTint="@color/color_azul_polvo"
+        app:itemTextColor="@color/color_azul_polvo"
         app:headerLayout="@layout/nav_header_navigation_drawer_lateral_fragments"
         app:menu="@menu/nav_body_navigation_drawer_lateral_fragments" />
 </androidx.drawerlayout.widget.DrawerLayout>

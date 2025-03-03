@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="190dp"
+    android:layout_height="200dp"
     android:background="@drawable/side_nav_bar_lateral"
     android:gravity="bottom"
     android:orientation="vertical"
@@ -28,17 +28,20 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Nombre del usuario"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/color_azul_marino"/>
 
     <TextView
         android:id="@+id/nav_header_navigation_drawer_lateral_tipo_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tipo de usuario (especialidad si es especialista)" />
+        android:text="Tipo de usuario (especialidad si es especialista)"
+        android:textColor="@color/color_azul_acero"/>
 
     <TextView
         android:id="@+id/nav_header_navigation_drawer_lateral_correoUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle" />
+        android:text="@string/nav_header_subtitle"
+        android:textColor="@color/color_azul_acero"/>
 </LinearLayout>

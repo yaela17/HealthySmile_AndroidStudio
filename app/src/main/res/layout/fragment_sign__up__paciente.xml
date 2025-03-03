@@ -28,7 +28,7 @@
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textSize="36dp"
-                android:textColor="@color/color_text"/>
+                android:textColor="@color/color_azul_medianoche" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -38,7 +38,8 @@
                 android:padding="8dp"
                 android:hint="@string/texto_hint_campo_nombre"
                 android:drawableLeft="@drawable/icon_person"
-                android:textColor="@color/color_text"
+                android:drawableTint="@color/color_azul_polvo"
+                android:textColor="@color/color_azul_acero"
                 android:drawablePadding="8dp"
                 style="@style/formBasicInput"
                 android:inputType="textPersonName|textAutoCorrect|textAutoComplete"
@@ -51,7 +52,8 @@
                 android:layout_marginTop="20dp"
                 android:hint="@string/texto_hint_correo_electronico"
                 android:drawableLeft="@drawable/icon_email"
-                android:textColor="@color/color_text"
+                android:drawableTint="@color/color_azul_polvo"
+                android:textColor="@color/color_azul_acero"
                 style="@style/formBasicInput"
                 android:inputType="textWebEmailAddress|textAutoCorrect|textAutoComplete"
                 android:id="@+id/fragSignUpPacienteInputCorreo"/>
@@ -64,7 +66,8 @@
                 android:hint="@string/texto_hint_contraseña"
                 android:drawableLeft="@drawable/icon_lock"
                 android:drawableRight="@drawable/icon_visible_off"
-                android:textColor="@color/color_text"
+                android:drawableTint="@color/color_azul_polvo"
+                android:textColor="@color/color_azul_acero"
                 style="@style/formBasicInput"
                 android:inputType="textPassword"
                 android:importantForAccessibility="yes"
@@ -75,9 +78,9 @@
                 android:layout_height="60dp"
                 android:text="@string/texto_boton_registrarse"
                 android:textSize="18sp"
-                android:textColor="@color/color_text"
+                android:textColor="@color/white"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/color_principal_clarote"
+                android:backgroundTint="@color/color_azul_medianoche"
                 android:id="@+id/fragSignUpPacienteBtnRegistrarse"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -15,14 +15,16 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#23b9ca">
+            android:backgroundTint="@color/color_azul_medianoche">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:backgroundTint="#23b9ca"
-                app:titleTextColor="@color/white" />
+                android:backgroundTint="@color/color_azul_medianoche"
+                app:titleTextColor="@color/white"
+
+                />
 
         </com.google.android.material.appbar.AppBarLayout>
 
