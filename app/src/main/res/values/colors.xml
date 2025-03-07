@@ -35,6 +35,7 @@
 
     <color name="color_gris_oscuro">#2F3A45</color>
     <color name="color_azul_marino">#013A5D</color>
+    <color name="color_turquesa_oscuro">#005F73</color>
 
     <!--Colores buenos ahora si (Claro)-->
     <color name="color_azul_alice">#E7F3FA</color>
