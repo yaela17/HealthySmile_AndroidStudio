@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/en_construccion"
     tools:context=".ui.modelos3d.fragment_visualizacion_modelos_3d_cancer_bucal">
 
-
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subir Archivo"
+        android:layout_gravity="center"/>
 </FrameLayout>
