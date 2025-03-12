@@ -70,4 +70,6 @@ dependencies {
     implementation ("io.github.sceneview:arsceneview:1.2.2")
     implementation ("io.github.sceneview:sceneview:1.0.0")
     implementation ("com.google.android.flexbox:flexbox:3.0.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 }
