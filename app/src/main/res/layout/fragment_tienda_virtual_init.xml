@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/en_construccion"
-    tools:context=".ui.tiendavirtual.fragment_tienda_virtual_init">
+    tools:context=".gui.tiendavirtual.fragment_tienda_virtual_init">
 
 </FrameLayout>

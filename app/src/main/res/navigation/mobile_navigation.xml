@@ -10,18 +10,18 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.healthysmile.ui.home.Home"
+        android:name="com.example.healthysmile.gui.home.Home"
         android:label="@string/label_menu_inicio"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_ayudaYSoporte"
-        android:name="com.example.healthysmile.ui.ayudaysoporte.fragment_ayuda_y_soporte"
+        android:name="com.example.healthysmile.gui.ayudaysoporte.fragment_ayuda_y_soporte"
         android:label="@string/label_menu_ayudaysoporte"
         tools:layout="@layout/fragment_ayuda_y_soporte" />
 
     <fragment
         android:id="@+id/nav_ConsultaVirtual"
-        android:name="com.example.healthysmile.ui.consulta.fragment_cosulta_virtual_init"
+        android:name="com.example.healthysmile.gui.consulta.fragment_cosulta_virtual_init"
         android:label="@string/label_menu_consultavirtual"
         tools:layout="@layout/fragment_cosulta_virtual_init" >
         <!-- Acción para navegar al fragmento especialista -->
@@ -36,13 +36,13 @@
 
         <fragment
             android:id="@+id/fragment_consulta_virtual_especialista"
-            android:name="com.example.healthysmile.ui.consulta.fragment_consulta_virtual_especialista"
+            android:name="com.example.healthysmile.gui.consulta.fragment_consulta_virtual_especialista"
             android:label="@string/label_menu_consultavirtualespecialista"
             tools:layout="@layout/fragment_consulta_virtual_especialista" />
 
     <fragment
         android:id="@+id/nav_EducacionDental"
-        android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_init"
+        android:name="com.example.healthysmile.gui.modelos3d.fragment_visualizacion_modelos_3d_init"
         android:label="@string/label_menu_educaciondental"
         tools:layout="@layout/fragment_visualizacion_modelos_3d_init">
 
@@ -81,53 +81,53 @@
     </fragment>
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_gingivitis"
-            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_gingivitis"
+            android:name="com.example.healthysmile.gui.modelos3d.fragment_visualizacion_modelos_3d_gingivitis"
             android:label="@string/label_menu_fragment_gingivitis"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_gingivitis" />
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_caries_dentales"
-            android:name="com.example.healthysmile.ui.modelos3d.fragment_vizualizacion_modelos_3d_caries_dentales"
+            android:name="com.example.healthysmile.gui.modelos3d.fragment_vizualizacion_modelos_3d_caries_dentales"
             android:label="@string/label_menu_fragment_caries_dental"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_caries_dentales" />
 
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_cancer_bucal"
-            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_cancer_bucal"
+            android:name="com.example.healthysmile.gui.modelos3d.fragment_visualizacion_modelos_3d_cancer_bucal"
             android:label="@string/label_menu_fragment_cancer_bucal"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_cancer_bucal" />
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_traumatismos_bucodentales"
-            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_traumatismos_bucodentales"
+            android:name="com.example.healthysmile.gui.modelos3d.fragment_visualizacion_modelos_3d_traumatismos_bucodentales"
             android:label="@string/label_menu_fragment_traumatismos_bucodentales"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_traumatismos_bucodentales" />
 
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_halitosis"
-            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_halitosis"
+            android:name="com.example.healthysmile.gui.modelos3d.fragment_visualizacion_modelos_3d_halitosis"
             android:label="@string/label_menu_fragment_traumatismos_halitosis"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_halitosis" />
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_sensibilidad_dental"
-            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_sensibilidad_dental"
+            android:name="com.example.healthysmile.gui.modelos3d.fragment_visualizacion_modelos_3d_sensibilidad_dental"
             android:label="@string/label_menu_fragment_traumatismos_sensibilidad_dental"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_sensibilidad_dental" />
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_implantes"
-            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_implantes"
+            android:name="com.example.healthysmile.gui.modelos3d.fragment_visualizacion_modelos_3d_implantes"
             android:label="@string/label_menu_fragment_traumatismos_implantes"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_implantes" />
         <fragment
             android:id="@+id/fragment_visualizacion_modelos_3d_periodontitis"
-            android:name="com.example.healthysmile.ui.modelos3d.fragment_visualizacion_modelos_3d_periodontitis"
+            android:name="com.example.healthysmile.gui.modelos3d.fragment_visualizacion_modelos_3d_periodontitis"
             android:label="@string/label_menu_fragment_traumatismos_periodontitis"
             tools:layout="@layout/fragment_visualizacion_modelos_3d_periodontitis" />
     <fragment
         android:id="@+id/fragment_modelo3d"
-        android:name="com.example.healthysmile.ui.modelos3d.fragment_modelo3d"
+        android:name="com.example.healthysmile.gui.modelos3d.fragment_modelo3d"
         android:label="fragment_modelo3d" />
     <fragment
         android:id="@+id/fragment_consulta_list_chat"
-        android:name="com.example.healthysmile.ui.consulta.fragment_consulta_list_chat_especialista"
+        android:name="com.example.healthysmile.gui.consulta.fragment_consulta_list_chat_especialista"
         android:label="Consulta Especialista"
         tools:layout="@layout/fragment_consulta_list_chat_especialista" >
         <action
@@ -136,7 +136,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_consulta_list_chat_paciente"
-        android:name="com.example.healthysmile.ui.consulta.fragment_consulta_list_chat_paciente"
+        android:name="com.example.healthysmile.gui.consulta.fragment_consulta_list_chat_paciente"
         android:label=""
         tools:layout="@layout/fragment_consulta_list_chat_paciente" >
         <action
@@ -146,12 +146,12 @@
 
     <fragment
         android:id="@+id/nav_TiendaVirutal"
-        android:name="com.example.healthysmile.ui.tiendavirtual.fragment_tienda_virtual_init"
+        android:name="com.example.healthysmile.gui.tiendavirtual.fragment_tienda_virtual_init"
         android:label="fragment_tienda_virtual_init"
         tools:layout="@layout/fragment_tienda_virtual_init" />
     <fragment
         android:id="@+id/nav_gestionAdmin"
-        android:name="com.example.healthysmile.fragment_gestion_administrador_init"
+        android:name="com.example.healthysmile.gui.gestion.fragment_gestion_administrador_init"
         android:label="Administracion"
         tools:layout="@layout/fragment_gestion_administrador_init" />
 </navigation>

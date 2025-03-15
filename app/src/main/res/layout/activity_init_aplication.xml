@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/color_azul_polvo"
-    tools:context=".InitAplication">
+    tools:context=".gui.InitAplication">
 
     <ScrollView
         android:layout_width="match_parent"

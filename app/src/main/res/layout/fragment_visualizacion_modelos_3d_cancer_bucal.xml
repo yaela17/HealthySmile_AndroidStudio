@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.modelos3d.fragment_visualizacion_modelos_3d_cancer_bucal">
+    tools:context=".gui.modelos3d.fragment_visualizacion_modelos_3d_cancer_bucal">
 
     <Button
         android:id="@+id/btnUpload"

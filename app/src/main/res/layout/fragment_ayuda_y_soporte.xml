@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ayudaysoporte.fragment_ayuda_y_soporte">
+    tools:context=".gui.ayudaysoporte.fragment_ayuda_y_soporte">
 
   <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

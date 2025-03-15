@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.consulta.fragment_consulta_list_chat_paciente">
+    tools:context=".gui.consulta.fragment_consulta_list_chat_paciente">
 
 
     <ListView
