@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_nav_ConsultaVirtual_to_fragment_consulta_list_chat_paciente"
             app:destination="@id/fragment_consulta_list_chat_paciente" />
+        <action
+            android:id="@+id/action_nav_ConsultaVirtual_to_fragment_consulta_citas"
+            app:destination="@id/fragment_consulta_citas" />
     </fragment>
 
         <fragment
@@ -154,4 +157,9 @@
         android:name="com.example.healthysmile.gui.gestion.fragment_gestion_administrador_init"
         android:label="Administracion"
         tools:layout="@layout/fragment_gestion_administrador_init" />
+    <fragment
+        android:id="@+id/fragment_consulta_citas"
+        android:name="com.example.healthysmile.gui.consulta.fragment_consulta_citas"
+        android:label="fragment_consulta_citas"
+        tools:layout="@layout/fragment_consulta_citas" />
 </navigation>

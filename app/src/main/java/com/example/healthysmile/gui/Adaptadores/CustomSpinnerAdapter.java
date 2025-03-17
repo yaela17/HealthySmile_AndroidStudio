@@ -17,13 +17,11 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
         super(context, resource, objects);
     }
 
-    // Método para actualizar la posición seleccionada
     public void setSelectedPosition(int position) {
         selectedPosition = position;
         notifyDataSetChanged();
     }
 
-    // Este método controla cómo se muestra el `Spinner` cuando está cerrado
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
@@ -33,7 +31,6 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
         TextView textView = (TextView) convertView;
         textView.setText(getItem(position));
 
-        // Aplicamos el estilo estándar para el elemento seleccionado en el `Spinner` cerrado
         textView.setTextColor(getContext().getColor(R.color.black));
 
         return convertView;
@@ -48,12 +45,11 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
         TextView textView = (TextView) convertView;
         textView.setText(getItem(position));
 
-        // Aplicamos un estilo especial solo si el elemento es el seleccionado y en el menú desplegable
         if (position == selectedPosition) {
-            textView.setTextColor(getContext().getColor(R.color.white));  // Color de texto especial para el seleccionado
-            textView.setBackgroundColor(getContext().getColor(R.color.color_principal_glow));  // Fondo especial
+            textView.setTextColor(getContext().getColor(R.color.white));
+            textView.setBackgroundColor(getContext().getColor(R.color.color_principal_glow));
         } else {
-            textView.setTextColor(getContext().getColor(R.color.black));  // Color de texto normal
+            textView.setTextColor(getContext().getColor(R.color.black));
             textView.setBackgroundResource(R.drawable.border_background);
         }
 

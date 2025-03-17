@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--Colores a usar en los styles-->
+
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
@@ -48,4 +52,12 @@
     <color name="color_morado_vibrante">#8E05C2</color>
     <color name="color_violeta_intenso">#700B97</color>
     <color name="color_purpura_oscuro">#3E065F</color>
+
+
+    <color name="calendario_ocupadaUsuario">#A3C9FF</color>
+    <color name="calendario_pasadas">#A8E6A3</color>
+    <color name="calendario_seleccionadoUsuario">#D1A6E1</color>
+    <color name="calendario_ocupadasOtrosUsuarios">#F1A7C1</color>
+    <color name="calendario_inhabil">#cfcfc4</color>
+
 </resources>

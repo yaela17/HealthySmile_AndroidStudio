@@ -17,14 +17,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthysmile.gui.Adaptadores.AdaptadorRecyclerViewEspecialistas;
 import com.example.healthysmile.R;
+import com.example.healthysmile.service.EspecialistaService;
+import com.example.healthysmile.service.EspecialistaResponseListenerInicio;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Home extends Fragment implements View.OnClickListener {
 
@@ -36,7 +37,9 @@ public class Home extends Fragment implements View.OnClickListener {
     ArrayList<String> listaCedulas = new ArrayList<>();
     ArrayList<String> listaDescripciones = new ArrayList<>();
     ArrayList<String> listaFotos = new ArrayList<>();
-    Button btnConsultaVirtual, btnEducacionDental, btnAyudaYSoporte,btnTiendaVirtual;
+    Button btnConsultaVirtual, btnEducacionDental, btnAyudaYSoporte, btnTiendaVirtual;
+
+    private EspecialistaService especialistaService;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class Home extends Fragment implements View.OnClickListener {
         layoutManager.setFlexWrap(FlexWrap.WRAP); // Permitir que los elementos salten a la siguiente línea
         recyclerViewEspecialistasInfo.setLayoutManager(layoutManager);
 
+        especialistaService = new EspecialistaService(getContext());
 
         // Obtener datos y configurar adaptador
         obtenerDatosEspecialistas();
@@ -68,50 +72,39 @@ public class Home extends Fragment implements View.OnClickListener {
     }
 
     private void obtenerDatosEspecialistas() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        especialistaService.obtenerEspecialistasInicio(new EspecialistaResponseListenerInicio() {
+            @Override
+            public void onResponseInicio(List<String> nombres, List<String> especialidades, List<String> descripciones, List<Long> idsEspecialista, List<String> cedulasProfesional,List<String>fotos) {
+                // Llenar las listas con los datos obtenidos del servicio
+                listaNombres.clear();
+                listaEspecialidades.clear();
+                listaDescripciones.clear();
+                listaCedulas.clear();
+                listaFotos.clear();
 
-        db.collection("usuarios") // Cambia "usuarios" por el nombre real de tu colección
-                .whereEqualTo("tipoUser", "Especialista") // Filtro para especialistas
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    for (DocumentSnapshot document : queryDocumentSnapshots) {
-                        // Obtener datos comunes
-                        String nombre = document.getString("nomUser");
-                        String fotoPerfil = document.contains("fotoPerfil") ? document.getString("fotoPerfil") : null;
+                listaNombres.addAll(nombres);
+                listaEspecialidades.addAll(especialidades);
+                listaDescripciones.addAll(descripciones);
+                listaCedulas.addAll(cedulasProfesional);
+                listaFotos.addAll(fotos);
 
-                        // Obtener datos del subcampo "Especialista"
-                        if (document.contains("Especialista")) {
-                            Object especialistaObj = document.get("Especialista");
-                            if (especialistaObj instanceof Map) {
-                                Map<String, Object> especialistaMap = (Map<String, Object>) especialistaObj;
-                                String especialidad = (String) especialistaMap.get("especialidad");
-                                String cedula = (String) especialistaMap.get("cedulaProfesional");
-                                String descripcion = (String) especialistaMap.get("descripcion");
+                // Configurar el adaptador con los datos obtenidos
+                AdaptadorRecyclerViewEspecialistas adaptador = new AdaptadorRecyclerViewEspecialistas(
+                        getContext(),
+                        listaNombres,
+                        listaEspecialidades,
+                        listaCedulas,
+                        listaDescripciones,
+                        listaFotos
+                );
+                recyclerViewEspecialistasInfo.setAdapter(adaptador);
+            }
 
-                                // Agregar a los ArrayLists
-                                listaNombres.add(nombre != null ? nombre : "Sin nombre");
-                                listaEspecialidades.add(especialidad != null ? especialidad : "Sin especialidad");
-                                listaCedulas.add(cedula != null ? cedula : "Sin cédula");
-                                listaDescripciones.add(descripcion != null ? descripcion : "Sin descripción");
-
-                                // Verificar y agregar foto
-                                listaFotos.add(fotoPerfil != null ? fotoPerfil : "default");
-                            }
-                        }
-                    }
-
-                    // Configurar el adaptador con los datos obtenidos
-                    AdaptadorRecyclerViewEspecialistas adaptador = new AdaptadorRecyclerViewEspecialistas(
-                            getContext(),
-                            listaNombres,
-                            listaEspecialidades,
-                            listaCedulas,
-                            listaDescripciones,
-                            listaFotos
-                    );
-                    recyclerViewEspecialistasInfo.setAdapter(adaptador);
-                })
-                .addOnFailureListener(e -> Log.e("FirestoreError", "Error al obtener datos: " + e.getMessage()));
+            @Override
+            public void onErrorInicio(String error) {
+                Log.e("Home", "Error al obtener especialistas: " + error);
+            }
+        });
     }
 
     @Override
@@ -119,20 +112,18 @@ public class Home extends Fragment implements View.OnClickListener {
         NavController navController = NavHostFragment.findNavController(this);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         String tipoUsuario = sharedPreferences.getString("tipoUsuario", "Paciente");
-        if(v.getId() == R.id.btnHomeConsultaVirtual){
-            if(tipoUsuario.equals("Paciente")){
+        if (v.getId() == R.id.btnHomeConsultaVirtual) {
+            if (tipoUsuario.equals("Paciente")) {
                 navController.navigate(R.id.fragment_consulta_list_chat);
-            }else
+            } else {
                 navController.navigate(R.id.fragment_consulta_list_chat_paciente);
-        }else
-            if(v.getId() == R.id.btnHomeEducacionDental){
-                navController.navigate(R.id.nav_EducacionDental);
-            }else
-                if(v.getId() == R.id.btnHomeAyudaYSoporte){
-                    navController.navigate(R.id.nav_ayudaYSoporte);
-                }else
-                    if(v.getId() == R.id.btnHomeTiendaVirtual){
-                        navController.navigate(R.id.nav_TiendaVirutal);
-                    }
+            }
+        } else if (v.getId() == R.id.btnHomeEducacionDental) {
+            navController.navigate(R.id.nav_EducacionDental);
+        } else if (v.getId() == R.id.btnHomeAyudaYSoporte) {
+            navController.navigate(R.id.nav_ayudaYSoporte);
+        } else if (v.getId() == R.id.btnHomeTiendaVirtual) {
+            navController.navigate(R.id.nav_TiendaVirutal);
+        }
     }
 }

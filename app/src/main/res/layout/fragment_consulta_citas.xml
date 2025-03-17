@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.consulta.fragment_consulta_citas">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- MaterialCalendarView -->
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/consultas_calendario_citas"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:mcv_calendarMode="month"
+            app:mcv_firstDayOfWeek="monday"
+            app:mcv_selectionColor="@color/calendario_seleccionadoUsuario"
+            app:mcv_selectionMode="single"
+            app:mcv_showOtherDates="all" />
+
+        <!-- EditText para seleccionar la fecha -->
+        <EditText
+            android:id="@+id/ConsultaCitaInputDate"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:clickable="true"
+            android:focusable="true"
+            android:hint="(YY:MM:DD)"
+            android:drawableRight="@drawable/icon_calendary"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="20dp"/>
+
+        <!-- EditText para seleccionar la hora -->
+        <EditText
+            android:id="@+id/ConsultaCitaInputTime"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:clickable="true"
+            android:focusable="true"
+            android:hint="(HH:MM)"
+            android:drawableRight="@drawable/icon_time_hour"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/ConsultaCitasInputMotivoCita"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:drawablePadding="8dp"
+            android:gravity="start|top"
+            android:hint="Motivo cita"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp"/>
+
+        <Spinner
+            android:id="@+id/ConsultaCitasComboEspecialistas"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edittext"
+            android:paddingLeft="10dp"
+            android:textColor="@color/color_azul_acero"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/ConsultaCitasbtnGuardarCita"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:text="Guardar"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:layout_margin="10dp"/>
+
+
+    </LinearLayout>
+</FrameLayout>

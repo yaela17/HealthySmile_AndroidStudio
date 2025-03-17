@@ -16,7 +16,7 @@ import com.example.healthysmile.R;
 
 public class fragment_cosulta_virtual_init extends Fragment implements View.OnClickListener {
 
-    Button btnEspecialista;
+    Button btnEspecialista,btnAgendarCita;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,7 +26,10 @@ public class fragment_cosulta_virtual_init extends Fragment implements View.OnCl
 
         // Vincula el botón y configura el listener
         btnEspecialista = view.findViewById(R.id.fragment_consultavirtual_init_btnEspecialista);
+        btnAgendarCita = view.findViewById(R.id.fragment_consultavirtual_init_btnAgendarCita);
+
         btnEspecialista.setOnClickListener(this);
+        btnAgendarCita.setOnClickListener(this);
 
         return view;
     }
@@ -35,8 +38,8 @@ public class fragment_cosulta_virtual_init extends Fragment implements View.OnCl
     public void onClick(View v) {
         // Verifica el texto del botón
         String textoBoton = ((Button) v).getText().toString();
+        NavController navController = NavHostFragment.findNavController(fragment_cosulta_virtual_init.this);
         if (textoBoton.equals(getActivity().getApplicationContext().getString(R.string.texto_boton_especialista))) {
-            NavController navController = NavHostFragment.findNavController(fragment_cosulta_virtual_init.this);
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
             String tipoUsuario = sharedPreferences.getString("tipoUsuario", "Paciente");
             if(tipoUsuario.equals("Paciente")){
@@ -45,8 +48,10 @@ public class fragment_cosulta_virtual_init extends Fragment implements View.OnCl
                 if(tipoUsuario.equals("Especialista") || tipoUsuario.equals("Administrador")){
                     navController.navigate(R.id.fragment_consulta_list_chat_paciente);
                 }
-
-        } else {
+        }else
+            if(textoBoton.equals(getActivity().getApplicationContext().getString(R.string.texto_boton_agendarcita))){
+                navController.navigate(R.id.fragment_consulta_citas);
+            }else {
             Toast.makeText(requireContext(), "Acción no reconocida", Toast.LENGTH_SHORT).show();
         }
     }

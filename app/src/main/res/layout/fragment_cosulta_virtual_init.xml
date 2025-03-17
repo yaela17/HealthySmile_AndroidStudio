@@ -110,6 +110,7 @@
                     android:background="@drawable/background_image_consulta"
                     android:src="@drawable/cabos"/>
                 <Button
+                    android:id="@+id/fragment_consultavirtual_init_btnAgendarCita"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/texto_boton_agendarcita"

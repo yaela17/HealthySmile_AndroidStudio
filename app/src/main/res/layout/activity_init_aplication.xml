@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Bienvenido a"
-                android:textSize="60dp"
+                android:textSize="45sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/color_azul_medianoche"
@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Healthy Smile"
-                android:textSize="60dp"
+                android:textSize="45sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:typeface="serif"
@@ -44,22 +44,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/inicio_fondo1"
-                    android:scaleType="centerCrop"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     android:src="@drawable/inicio_fondo3"
-                    android:scaleType="centerCrop"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/inicio_fondo_2"
                     android:scaleType="centerCrop"/>
             </LinearLayout>
 

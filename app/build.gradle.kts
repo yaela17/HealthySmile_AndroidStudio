@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.healthysmile"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -74,4 +74,12 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.google.code.gson:gson:2.8.8")
     implementation ("com.android.volley:volley:1.2.1")
+    implementation("com.github.prolificinteractive:material-calendarview:2.0.0") {
+        exclude(group = "com.android.support", module = "support-compat")
+        exclude(group = "com.android.support", module = "appcompat-v7")
+    }
+    implementation ("com.jakewharton.threetenabp:threetenabp:1.3.1")
+
+
+
 }
