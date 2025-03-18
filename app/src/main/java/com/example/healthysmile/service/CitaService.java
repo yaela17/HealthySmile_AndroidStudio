@@ -7,6 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.healthysmile.controller.CitaObtenerPorFechaResponseListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +21,7 @@ public class CitaService {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    public void obtenerCitaPorFecha(long idUsuario, String fecha, String hora, final CitaResponseListener listener) {
+    public void obtenerCitaPorFecha(long idUsuario, String fecha, String hora, final CitaObtenerPorFechaResponseListener listener) {
         JSONObject requestBody = new JSONObject();
         try {
             requestBody.put("idUsuario", idUsuario);
@@ -36,7 +37,7 @@ public class CitaService {
                 Request.Method.POST,
                 URL_OBTENER_CITA_POR_FECHA,
                 requestBody,
-                response -> procesarCita(response, listener),
+                response -> procesarCitaPorFecha(response, listener),
                 error -> {
                     Log.e("Volley", "Error al obtener cita", error);
                     listener.onError("Error al obtener cita");
@@ -46,7 +47,7 @@ public class CitaService {
         requestQueue.add(jsonObjectRequest);
     }
 
-    private void procesarCita(JSONObject response, CitaResponseListener listener) {
+    private void procesarCitaPorFecha(JSONObject response, CitaObtenerPorFechaResponseListener listener) {
         try {
             if (response.has("mensaje")) {
                 // Si la API devuelve un mensaje, significa que no hay cita

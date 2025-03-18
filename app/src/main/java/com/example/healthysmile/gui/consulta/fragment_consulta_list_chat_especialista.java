@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.healthysmile.gui.Adaptadores.AdaptadorListaEspecialistas;
 import com.example.healthysmile.R;
 import com.example.healthysmile.service.EspecialistaService;
-import com.example.healthysmile.service.EspecialistaResponseListenerChat;
+import com.example.healthysmile.controller.EspecialistaResponseListenerChat;
 
 
 import java.util.List;

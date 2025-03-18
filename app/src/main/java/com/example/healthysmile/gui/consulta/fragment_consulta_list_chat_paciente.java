@@ -68,7 +68,7 @@ public class fragment_consulta_list_chat_paciente extends Fragment {
         idsPacientes.clear();
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        long idEspecialista = sharedPreferences.getLong("idUsuario", -1);
+        long idEspecialista = sharedPreferences.getLong("idEspecialista", -1);
 
         if (idEspecialista == -1) {
             Toast.makeText(getContext(), "Error: No se encontró el ID del especialista.", Toast.LENGTH_SHORT).show();

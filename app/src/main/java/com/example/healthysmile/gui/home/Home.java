@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.healthysmile.gui.Adaptadores.AdaptadorRecyclerViewEspecialistas;
 import com.example.healthysmile.R;
 import com.example.healthysmile.service.EspecialistaService;
-import com.example.healthysmile.service.EspecialistaResponseListenerInicio;
+import com.example.healthysmile.controller.EspecialistaResponseListenerInicio;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;

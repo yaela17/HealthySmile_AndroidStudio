@@ -7,6 +7,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.healthysmile.controller.EspecialistaResponseListenerChat;
+import com.example.healthysmile.controller.EspecialistaResponseListenerInicio;
+import com.example.healthysmile.controller.EspecialistaResponseListenerSpinnerCitas;
 
 
 import org.json.JSONArray;
@@ -18,7 +21,7 @@ import java.util.List;
 
 public class EspecialistaService {
 
-    private static final String URL_OBTENER_ESPECIALISTAS = "http://10.0.2.2:3000/api/obtenerEspecialistasChatsitoAndroid";
+    private static final String URL_OBTENER_ESPECIALISTAS = "http://10.0.2.2:3000/api/obtenerEspecialistasChatAndroid";
     private RequestQueue requestQueue;
 
     public EspecialistaService(Context context) {
@@ -48,13 +51,13 @@ public class EspecialistaService {
         try {
             for (int i = 0; i < response.length(); i++) {
                 JSONObject especialista = response.getJSONObject(i);
-                long idUsuario = especialista.getLong("idUsuario");
+                long idEspecialista = especialista.getLong("idEspecialista");
                 String nombre = especialista.getString("nombre");
                 String especialidad = especialista.optString("especialidad", "No especificado");
                 String descripcion = especialista.optString("descripcion", "No disponible");
 
                 nombres.add(nombre);
-                idsEspecialista.add(idUsuario);
+                idsEspecialista.add(idEspecialista);
                 especialidades.add(especialidad);
                 descripciones.add(descripcion);
             }
@@ -89,7 +92,7 @@ public class EspecialistaService {
         try {
             for (int i = 0; i < response.length(); i++) {
                 JSONObject especialista = response.getJSONObject(i);
-                long idUsuario = especialista.getLong("idUsuario");
+                long idEspecialista = especialista.getLong("idEspecialista");
                 String nombre = especialista.getString("nombre");
                 String especialidad = especialista.optString("especialidad", "No especificado");
                 String descripcion = especialista.optString("descripcion", "No disponible");
@@ -99,7 +102,7 @@ public class EspecialistaService {
 
 
                 nombres.add(nombre);
-                idsEspecialista.add(idUsuario);
+                idsEspecialista.add(idEspecialista);
                 especialidades.add(especialidad);
                 descripciones.add(descripcion);
                 cedulasProfesional.add(cedulaProfesional);
@@ -141,11 +144,11 @@ public class EspecialistaService {
 
                 String nombre = especialista.getString("nombre");
                 String especialidad = especialista.optString("especialidad", "No especificado");
-                long idUsuario = especialista.getLong("idUsuario");
+                long idEspecialista = especialista.getLong("idEspecialista");
 
                 nombres.add(nombre);
                 especialidades.add(especialidad);
-                idsEspecialista.add(idUsuario);
+                idsEspecialista.add(idEspecialista);
             }
 
             if (nombres.isEmpty()) {

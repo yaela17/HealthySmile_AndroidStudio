@@ -23,15 +23,20 @@ import com.example.healthysmile.gui.Adaptadores.CustomDateDecorator;
 import com.example.healthysmile.gui.Adaptadores.CustomSpinnerAdapter;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
-import com.example.healthysmile.service.CitaResponseListener;
+import com.example.healthysmile.controller.CitaObtenerPorFechaResponseListener;
 import com.example.healthysmile.service.CitaService;
-import com.example.healthysmile.service.EspecialistaResponseListenerSpinnerCitas;
+import com.example.healthysmile.service.DeleteCitaService;
+import com.example.healthysmile.controller.EspecialistaResponseListenerSpinnerCitas;
+import com.example.healthysmile.controller.ModifyCitaResponseListener;
+import com.example.healthysmile.service.UpdateCitaService;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.example.healthysmile.service.EspecialistaService;
 import com.example.healthysmile.R;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.threeten.bp.LocalDateTime;
 
 import java.text.SimpleDateFormat;
@@ -171,7 +176,7 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
 
             // Llamar al servicio para obtener la cita
             CitaService citaService = new CitaService(getContext());
-            citaService.obtenerCitaPorFecha(idUsuario, fechaSeleccionada, hora24, new CitaResponseListener() {
+            citaService.obtenerCitaPorFecha(idUsuario, fechaSeleccionada, hora24, new CitaObtenerPorFechaResponseListener() {
                 @Override
                 public void onResponse(long idCita, String motivoCita, long idEspecialista) {
                     // Mostrar los datos en los campos correspondientes
@@ -382,7 +387,8 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        crearCita();
+        //crearCita();
+        eliminarCita();
     }
 
     public String convertirHora12A24(String hora12) {
@@ -398,4 +404,101 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
         }
     }
 
+    public void modificarCita() {
+        // Obtener los valores de la UI
+        String fechaSeleccionada = inputDate.getText().toString(); // Fecha seleccionada en el CalendarView
+        String horaSeleccionada = convertirHora12A24(inputTime.getText().toString()); // Hora seleccionada en el EditText
+        String motivoCita = inputMotivoCita.getText().toString(); // Motivo de la cita
+        long idEspecialista = idsEspecialistas.get(comboEspecialidad.getSelectedItemPosition()); // Especialista seleccionado
+
+        // Validar que los campos no estén vacíos
+        if (fechaSeleccionada.isEmpty() || horaSeleccionada.isEmpty() || motivoCita.isEmpty()) {
+            Toast.makeText(getContext(), "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        // Crear un JSONObject para enviar al servidor
+        JSONObject requestBody = new JSONObject();
+        try {
+            requestBody.put("idUsuario", idUsuario);
+            requestBody.put("fecha", fechaSeleccionada);
+            requestBody.put("hora", horaSeleccionada);
+            requestBody.put("nuevaHora", horaSeleccionada);
+            requestBody.put("nuevoMotivo", motivoCita);
+            requestBody.put("nuevoEspecialista", idEspecialista);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Error al crear los datos para la cita", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Llamar al servicio para modificar la cita
+        UpdateCitaService updateCitaService = new UpdateCitaService(getContext());
+        updateCitaService.modificarCita(requestBody, new ModifyCitaResponseListener() {
+            @Override
+            public void onResponse(String mensaje) {
+                // Manejar la respuesta exitosa
+                Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(String error) {
+                // Manejar el error de la solicitud
+                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCitaNoEncontrada(String mensaje) {
+                // Manejar el caso en que no se encuentra la cita
+                Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void eliminarCita() {
+        // Obtener los valores de la UI
+        String fechaSeleccionada = inputDate.getText().toString(); // Fecha seleccionada en el CalendarView
+        String horaSeleccionada = convertirHora12A24(inputTime.getText().toString()); // Hora seleccionada en el EditText
+
+        // Validar que los campos no estén vacíos
+        if (fechaSeleccionada.isEmpty() || horaSeleccionada.isEmpty()) {
+            Toast.makeText(getContext(), "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Crear un JSONObject para enviar al servidor
+        JSONObject requestBody = new JSONObject();
+        try {
+            requestBody.put("idUsuario", idUsuario); // Suponiendo que idUsuario ya está definido
+            requestBody.put("fecha", fechaSeleccionada);
+            requestBody.put("hora", horaSeleccionada);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Error al crear los datos para eliminar la cita", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Llamar al servicio para eliminar la cita
+        DeleteCitaService deleteCitaService = new DeleteCitaService(getContext());
+        deleteCitaService.eliminarCita(requestBody, new ModifyCitaResponseListener() {
+            @Override
+            public void onResponse(String mensaje) {
+                // Manejar la respuesta exitosa
+                Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(String error) {
+                // Manejar el error de la solicitud
+                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCitaNoEncontrada(String mensaje) {
+                // Manejar el caso en que no se encuentra la cita
+                Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 }
