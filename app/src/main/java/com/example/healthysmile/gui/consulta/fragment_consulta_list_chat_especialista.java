@@ -11,10 +11,10 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.healthysmile.gui.Adaptadores.AdaptadorListaEspecialistas;
+import com.example.healthysmile.gui.extraAndroid.adaptadores.AdaptadorListaEspecialistas;
 import com.example.healthysmile.R;
 import com.example.healthysmile.service.EspecialistaService;
-import com.example.healthysmile.controller.EspecialistaResponseListenerChat;
+import com.example.healthysmile.controller.consulta.EspecialistaResponseListenerChat;
 
 
 import java.util.List;

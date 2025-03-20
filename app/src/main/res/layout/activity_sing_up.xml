@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fondo_sign_up"
-    tools:context=".gui.sign_up.Sing_Up">
+    tools:context=".gui.iniciarSesion.sign_up.Sing_Up">
 
     <ImageView
         android:id="@+id/flechaRegresar"

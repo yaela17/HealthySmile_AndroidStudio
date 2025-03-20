@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/white"
-    tools:context=".gui.sign_up.Sign_Up_Especialista">
+    tools:context=".gui.iniciarSesion.sign_up.Sign_Up_Especialista">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

@@ -11,8 +11,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.healthysmile.R;
-import com.example.healthysmile.gui.login.LogIn;
-import com.example.healthysmile.gui.sign_up.Sing_Up;
+import com.example.healthysmile.gui.iniciarSesion.login.LogIn;
+import com.example.healthysmile.gui.iniciarSesion.sign_up.Sing_Up;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class InitAplication extends AppCompatActivity implements View.OnClickListener {

@@ -16,7 +16,7 @@ import android.widget.Toast;  // Importa Toast
 import com.bumptech.glide.Glide;
 import com.example.healthysmile.utils.SharedPreferencesHelper;
 import com.example.healthysmile.R;
-import com.example.healthysmile.gui.settings.Settings;
+import com.example.healthysmile.gui.extraAndroid.settings.Settings;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;

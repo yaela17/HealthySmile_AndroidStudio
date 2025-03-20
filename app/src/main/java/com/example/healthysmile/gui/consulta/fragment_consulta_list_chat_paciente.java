@@ -17,7 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.healthysmile.gui.Adaptadores.AdaptadorListaPacientes;
+import com.example.healthysmile.gui.extraAndroid.adaptadores.AdaptadorListaPacientes;
 import com.example.healthysmile.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;

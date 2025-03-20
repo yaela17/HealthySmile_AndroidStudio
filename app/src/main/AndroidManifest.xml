@@ -33,7 +33,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".gui.settings.Settings"
+            android:name=".gui.extraAndroid.settings.Settings"
             android:exported="false"
             android:theme="@style/Theme.HealthySmile" />
         <activity
@@ -42,10 +42,10 @@
             android:label="@string/title_activity_navigation_drawer_fragments"
             android:theme="@style/Theme.HealthySmile.NoActionBar" />
         <activity
-            android:name=".gui.sign_up.Sing_Up"
+            android:name=".gui.iniciarSesion.sign_up.Sing_Up"
             android:exported="false" />
         <activity
-            android:name=".gui.login.LogIn"
+            android:name=".gui.iniciarSesion.login.LogIn"
             android:exported="false" />
         <activity
             android:name=".gui.InitAplication"

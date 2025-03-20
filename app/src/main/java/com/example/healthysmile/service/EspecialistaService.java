@@ -7,9 +7,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.healthysmile.controller.EspecialistaResponseListenerChat;
-import com.example.healthysmile.controller.EspecialistaResponseListenerInicio;
-import com.example.healthysmile.controller.EspecialistaResponseListenerSpinnerCitas;
+import com.example.healthysmile.controller.consulta.EspecialistaResponseListenerChat;
+import com.example.healthysmile.controller.extraAndroid.EspecialistaResponseListenerInicio;
+import com.example.healthysmile.controller.consulta.EspecialistaResponseListenerSpinnerCitas;
 
 
 import org.json.JSONArray;

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/white"
     android:layout_marginTop="30dp"
-    tools:context=".gui.sign_up.Sign_Up_Paciente">
+    tools:context=".gui.iniciarSesion.sign_up.Sign_Up_Paciente">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

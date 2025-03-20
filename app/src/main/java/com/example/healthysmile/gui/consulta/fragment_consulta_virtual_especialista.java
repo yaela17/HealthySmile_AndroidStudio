@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthysmile.model.entities.Message;
-import com.example.healthysmile.gui.Adaptadores.MessageAdapter;
+import com.example.healthysmile.gui.extraAndroid.adaptadores.MessageAdapter;
 import com.example.healthysmile.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;

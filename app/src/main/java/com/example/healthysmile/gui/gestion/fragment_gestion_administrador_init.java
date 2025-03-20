@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.healthysmile.gui.Adaptadores.AdaptadorBorrarEspecialista;
+import com.example.healthysmile.gui.extraAndroid.adaptadores.AdaptadorBorrarEspecialista;
 import com.example.healthysmile.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
