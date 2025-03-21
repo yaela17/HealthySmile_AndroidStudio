@@ -193,7 +193,7 @@ public class NavigationDrawerFragments extends AppCompatActivity {
             } else {
                 // Si no tiene foto de perfil, carga la imagen predeterminada desde los recursos
                 Glide.with(this)
-                        .load(R.drawable.default_photo_paciente)  // Ruta del recurso predeterminado
+                        .load(R.drawable.default_photo_perfil_paciente)  // Ruta del recurso predeterminado
                         .into(fotoPerfil); // ImageView donde se cargará la imagen
             }
         }else {

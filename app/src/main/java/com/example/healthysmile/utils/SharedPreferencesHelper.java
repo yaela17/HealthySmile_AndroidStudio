@@ -66,4 +66,17 @@ public class SharedPreferencesHelper {
         editor.apply();
     }
 
+    public void guardarCodigoVerificacion(String codigoVerificacion){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("codigoVerificacion", codigoVerificacion);
+        editor.apply();
+    }
+
+    public void eliminarCodigoVerificacion(){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("codigoVerificacion");
+    }
+
 }

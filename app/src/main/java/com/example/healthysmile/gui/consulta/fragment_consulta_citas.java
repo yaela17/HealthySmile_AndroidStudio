@@ -247,21 +247,18 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
                 if (response.isSuccessful()) {
                     ApiNodeMySqlRespuesta respuesta = response.body();
                     if (respuesta != null) {
-                        // Manejar la respuesta exitosa, por ejemplo, mostrar un mensaje
-                        Toast.makeText(getContext(), respuesta.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.d("CitaCreada", respuesta.getMessage());  // Reemplaza el Toast por Log
                     } else {
-                        // Si la respuesta es nula
-                        Toast.makeText(getContext(), "Error: Respuesta vacía", Toast.LENGTH_SHORT).show();
+                        Log.d("CitaCreada", "Error: Respuesta vacía");  // Reemplaza el Toast por Log
                     }
                 } else {
-                    // Manejar el error de la respuesta
-                    Toast.makeText(getContext(), "Error al crear la cita", Toast.LENGTH_SHORT).show();
+                    Log.d("CitaCreada", "Error al crear la cita");  // Reemplaza el Toast por Log
                 }
             }
+
             @Override
             public void onFailure(retrofit2.Call<ApiNodeMySqlRespuesta> call, Throwable t) {
-                // Manejar el fallo de la llamada
-                Toast.makeText(getContext(), "Error en la conexión", Toast.LENGTH_SHORT).show();
+                Log.d("CitaCreada", "Error en la conexión: " + t.getMessage());  // Reemplaza el Toast por Log
             }
         });
     }
@@ -387,8 +384,7 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        //crearCita();
-        eliminarCita();
+        crearCita();
     }
 
     public String convertirHora12A24(String hora12) {
@@ -484,19 +480,15 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
         deleteCitaService.eliminarCita(requestBody, new ModifyCitaResponseListener() {
             @Override
             public void onResponse(String mensaje) {
-                // Manejar la respuesta exitosa
                 Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
             }
-
             @Override
             public void onError(String error) {
-                // Manejar el error de la solicitud
                 Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onCitaNoEncontrada(String mensaje) {
-                // Manejar el caso en que no se encuentra la cita
                 Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
             }
         });

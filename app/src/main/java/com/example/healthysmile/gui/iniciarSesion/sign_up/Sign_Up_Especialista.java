@@ -16,7 +16,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.gui.NavigationDrawerFragments;
+import com.example.healthysmile.model.TemplateParams;
 import com.example.healthysmile.service.ApiNodeMySqlService;
+import com.example.healthysmile.service.EmailServiceJS;
 import com.example.healthysmile.utils.IconUtils;
 import com.example.healthysmile.utils.SharedPreferencesHelper;
 import com.example.healthysmile.model.entities.Especialista;
@@ -115,7 +117,7 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
         String cedulaProfesional = inputCedulaProfesional.getText().toString().trim();
         String especialidad = comboEspecialidad.getSelectedItem().toString().trim();
         String descripcion = inputDescripcion.getText().toString().trim();
-        int nivelPermisos = 2; // Permisos más altos para especialistas
+        int nivelPermisos = 2;
         String tipoUser = "Especialista";
 
         if (nombre.isEmpty() || correo.isEmpty() || contrasena.isEmpty() || cedulaProfesional.isEmpty() ||
@@ -139,8 +141,18 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
                     manejadorShadPreferences.guardarEspecialista(nombre, correo, tipoUser, nivelPermisos, cedulaProfesional, descripcion, especialidad);
                     manejadorShadPreferences.guardarIdUsuario(idUsuario);
                     manejadorShadPreferences.guardarIdEspecialista(idEspecialista);
+
+                    EmailServiceJS emailService = new EmailServiceJS();
+                    String verification_code = generadorCodigoDeVerificacion();
+                    manejadorShadPreferences.guardarCodigoVerificacion(verification_code);
+                    TemplateParams templateParams = new TemplateParams(contrasena,correo,nombre,verification_code);
+                    emailService.enviarCorreo(templateParams);
+
                     limpiarCampos();
-                    startActivity(new Intent(getContext(), NavigationDrawerFragments.class));
+                    requireActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.signUpFragmentContainer, new fragment_sign__up__verificacion_correo()) // Reemplaza con el nuevo fragmento
+                            .commit();
                 } else {
                     Toast.makeText(getActivity(), "Error en la respuesta del servidor", Toast.LENGTH_SHORT).show();
                 }
@@ -161,4 +173,10 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
         inputDescripcion.setText("");
         comboEspecialidad.setSelection(0);
     }
+
+    public String generadorCodigoDeVerificacion() {
+        int code = (int) (100000 + Math.random() * 900000);
+        return String.valueOf(code);
+    }
+
 }

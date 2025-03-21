@@ -15,12 +15,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.gui.NavigationDrawerFragments;
+import com.example.healthysmile.model.TemplateParams;
 import com.example.healthysmile.service.ApiNodeMySqlService;
+import com.example.healthysmile.service.EmailServiceJS;
 import com.example.healthysmile.utils.SharedPreferencesHelper;
 import com.example.healthysmile.model.entities.Usuario;
 import com.example.healthysmile.R;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
-import com.example.healthysmile.gui.iniciarSesion.login.LogIn;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,8 +73,18 @@ public class Sign_Up_Paciente extends Fragment {
                     Log.d("RegistroUsuario", "ID Usuario: " + idUsuario);
                     manejadorShadPreferences.guardarPaciente(nombre, correo, tipoUser, nivelPermisos);
                     manejadorShadPreferences.guardarIdUsuario(idUsuario);
+
+                    EmailServiceJS emailService = new EmailServiceJS();
+                    String verification_code = generadorCodigoDeVerificacion();
+                    manejadorShadPreferences.guardarCodigoVerificacion(verification_code);
+                    TemplateParams templateParams = new TemplateParams(contrasena,correo,nombre,verification_code);
+                    emailService.enviarCorreo(templateParams);
+
                     limpiarCampos();
-                    startActivity(new Intent(getContext(), NavigationDrawerFragments.class));
+                    requireActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.signUpFragmentContainer, new fragment_sign__up__verificacion_correo()) // Reemplaza con el nuevo fragmento
+                            .commit();
                 } else {
                     Toast.makeText(getActivity(), "Error en la respuesta del servidor", Toast.LENGTH_SHORT).show();
                 }
@@ -91,4 +102,10 @@ public class Sign_Up_Paciente extends Fragment {
         fragSignUpInputCorreo.setText("");
         fragSignUpInputContrasena.setText("");
     }
+
+    public String generadorCodigoDeVerificacion() {
+        int code = (int) (100000 + Math.random() * 900000);
+        return String.valueOf(code);
+    }
+
 }

@@ -13,7 +13,7 @@
             android:id="@+id/plantillaListaPacienteFotoPerfil"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/default_photo_paciente"
+            android:src="@drawable/default_photo_perfil_paciente"
             android:background="@drawable/custom_circle_image"
             android:scaleType="centerCrop"
             android:clipToOutline="true"/>

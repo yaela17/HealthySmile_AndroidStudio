@@ -1,8 +1,8 @@
 package com.example.healthysmile.service;
 
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
+import com.example.healthysmile.model.TemplateParams;
 import com.example.healthysmile.model.entities.Especialista;
-import com.example.healthysmile.model.entities.PreguntaFrecuente;
 import com.example.healthysmile.model.entities.Usuario;
 
 import java.util.Map;
@@ -27,4 +27,7 @@ public interface ApiNodeMySqlService {
 
     @POST("api/verificarCorreo")
     Call<ApiNodeMySqlRespuesta> verificarCorreo(@Query("correoUser") String correo);
+
+    @POST("api/enviarCorreoVerificacion")
+    Call<ApiNodeMySqlRespuesta> enviarCorreoVerificacion(@Body TemplateParams templateParams);
 }

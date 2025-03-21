@@ -19,9 +19,7 @@ import com.example.healthysmile.gui.extraAndroid.adaptadores.AdaptadorExpandible
 import com.example.healthysmile.repository.FirebaseMessageRepository;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
-import com.example.healthysmile.service.ayudaYSoporte.PreguntasFrecuentesService;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.example.healthysmile.service.ayudaYSoporte.ObtenerPreguntasFrecuentesService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -152,8 +150,8 @@ public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickLi
     }
 
     private void cargarPreguntasFrecuentes() {
-        PreguntasFrecuentesService preguntasFrecuentesService = new PreguntasFrecuentesService(getContext());
-        preguntasFrecuentesService.obtenerPreguntasFrecuentes(new ObtenerPreguntasFrecuentesResponse() {
+        ObtenerPreguntasFrecuentesService obtenerPreguntasFrecuentesService = new ObtenerPreguntasFrecuentesService(getContext());
+        obtenerPreguntasFrecuentesService.obtenerPreguntasFrecuentes(new ObtenerPreguntasFrecuentesResponse() {
             @Override
             public void onResponse(List<Long> idsPreguntasFrecuentes,List<String> preguntas, List<String> respuestas, List<Long> idsUsuarios, List<Long> idsEspecialistas) {
                 if (!preguntas.isEmpty()) {

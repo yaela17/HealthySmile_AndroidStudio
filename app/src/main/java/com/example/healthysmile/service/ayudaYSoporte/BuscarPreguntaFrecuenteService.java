@@ -12,11 +12,11 @@ import com.example.healthysmile.controller.ayudaYSoporte.BuscarPreguntaResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BuscarPreguntaService {
+public class BuscarPreguntaFrecuenteService {
     private static final String URL_BUSCAR_PREGUNTA_FRECUENTE = "http://10.0.2.2:3000/api/buscarPregunta";
     private final RequestQueue requestQueue;
 
-    public BuscarPreguntaService(Context context) {
+    public BuscarPreguntaFrecuenteService(Context context) {
         requestQueue = Volley.newRequestQueue(context);
     }
 

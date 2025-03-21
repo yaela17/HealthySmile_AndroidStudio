@@ -16,12 +16,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PreguntasFrecuentesService {
+public class ObtenerPreguntasFrecuentesService {
     private static final String URL_OBTENER_PREGUNTAS_FRECUENTES = "http://10.0.2.2:3000/api/obtenerPreguntas";
 
     private RequestQueue requestQueue;
 
-    public PreguntasFrecuentesService(Context context) {
+    public ObtenerPreguntasFrecuentesService(Context context) {
         requestQueue = Volley.newRequestQueue(context);
     }
 

@@ -221,7 +221,7 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
             return Drawable.createFromPath(foto);
         } else {
             if ("Paciente".equals(tipoUsuario)) {
-                return getResources().getDrawable(R.drawable.default_photo_paciente);
+                return getResources().getDrawable(R.drawable.default_photo_perfil_paciente);
             } else {
                 return getResources().getDrawable(R.drawable.default_photo_perfil_especialista);
             }

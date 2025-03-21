@@ -38,11 +38,10 @@ public class DeleteCitaService {
 
     private void procesarRespuesta(JSONObject response, ModifyCitaResponseListener listener) {
         try {
-            if (response.has("mensaje")) {
-                String mensaje = response.getString("mensaje");
+            if (response.has("message")) {
+                String mensaje = response.getString("message");
                 listener.onResponse(mensaje);
             } else {
-                // Aquí podrías manejar otro tipo de error o respuesta
                 listener.onError("Error inesperado");
             }
         } catch (JSONException e) {

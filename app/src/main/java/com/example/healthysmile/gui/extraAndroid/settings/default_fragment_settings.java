@@ -95,7 +95,7 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
             return Drawable.createFromPath(foto);
         } else {
             if ("Paciente".equals(tipoUsuario)) {
-                return getResources().getDrawable(R.drawable.default_photo_paciente);
+                return getResources().getDrawable(R.drawable.default_photo_perfil_paciente);
             } else {
                 return getResources().getDrawable(R.drawable.default_photo_perfil_especialista);
             }

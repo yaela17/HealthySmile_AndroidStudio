@@ -15,13 +15,9 @@ import android.widget.Toast;
 
 import com.example.healthysmile.R;
 import com.example.healthysmile.controller.ayudaYSoporte.ResponderPreguntaResponse;
-import com.example.healthysmile.service.ayudaYSoporte.ResponderPreguntaService;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.example.healthysmile.service.ayudaYSoporte.ResponderPreguntaFrecuenteService;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AdaptadorExpandibleListView extends BaseExpandableListAdapter {
 
@@ -131,8 +127,8 @@ public class AdaptadorExpandibleListView extends BaseExpandableListAdapter {
                         return;
                     }
 
-                    ResponderPreguntaService responderPreguntaService = new ResponderPreguntaService(context);
-                    responderPreguntaService.responderPreguntaFrecuente(idPreguntaFrecuente, idEspecialista, nuevaRespuesta, new ResponderPreguntaResponse() {
+                    ResponderPreguntaFrecuenteService responderPreguntaFrecuenteService = new ResponderPreguntaFrecuenteService(context);
+                    responderPreguntaFrecuenteService.responderPreguntaFrecuente(idPreguntaFrecuente, idEspecialista, nuevaRespuesta, new ResponderPreguntaResponse() {
                         @Override
                         public void onResponse(String mensaje) {
                             listRespuestas.set(groupPosition, nuevaRespuesta);

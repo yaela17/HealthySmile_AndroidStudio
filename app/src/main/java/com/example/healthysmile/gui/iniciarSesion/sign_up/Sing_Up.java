@@ -25,10 +25,10 @@ public class Sing_Up extends AppCompatActivity implements View.OnClickListener {
         String tipoUsuario = intentRecibirTipoUsuario.getStringExtra("tipoRegistro");
         if (tipoUsuario != null) {
             if (tipoUsuario.equals("paciente")) {
-                cambiarFragmento(new Sign_Up_Paciente()); // Fragmento para pacientes
+                cambiarFragmento(new Sign_Up_Paciente());
             } else
                     if (tipoUsuario.equals("especialista")) {
-                    cambiarFragmento(new Sign_Up_Especialista()); // Fragmento para especialistas
+                    cambiarFragmento(new Sign_Up_Especialista());
             }
         }else {
             Intent intentitoInitAplication = new Intent(this, InitAplication.class);

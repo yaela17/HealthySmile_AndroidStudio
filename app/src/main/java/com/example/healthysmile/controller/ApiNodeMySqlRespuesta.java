@@ -5,6 +5,7 @@ public class ApiNodeMySqlRespuesta {
     private String mensaje;
     private long idUsuario;
     private long idEspecialista;
+    private long idCita;
 
     public String getMessage() {
         return message;
@@ -16,4 +17,5 @@ public class ApiNodeMySqlRespuesta {
     public long getIdEspecialista(){
         return idEspecialista;
     }
+    public long getIdCita(){return idCita;}
 }
