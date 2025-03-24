@@ -24,8 +24,7 @@
         <item
             android:id="@+id/nav_gestionAdmin"
             android:icon="@drawable/icon_home"
-            android:title="@string/label_menu_gestiondeadministrador"
-            android:visible="false"/>
+            android:title="@string/label_menu_gestiondeadministrador"/>
         <item
             android:id="@+id/nav_ayudaYSoporte"
             android:icon="@drawable/icon_ayuda_y_soporte"

@@ -13,21 +13,24 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ApiNodeMySqlService {
-    @POST("api/crearPaciente")
+    @POST("crearPaciente")
     Call<ApiNodeMySqlRespuesta> crearPaciente(@Body Usuario paciente);
 
-    @POST("api/crearEspecialista")
+    @POST("crearEspecialista")
     Call<ApiNodeMySqlRespuesta> crearEspecialista(@Body Especialista especialista);
 
-    @POST("api/crearCita")
-    Call<ApiNodeMySqlRespuesta> crearCita(@Body Map<String, Object> citaDatos);
-
-    @POST("api/crearPregunta")
+    @POST("crearPregunta")
     Call<ApiNodeMySqlRespuesta> crearPreguntaFrecuente(@Body Map<String, Object> preguntaFrecuente);
 
-    @POST("api/verificarCorreo")
+    @POST("crearCita")
+    Call<ApiNodeMySqlRespuesta> crearCita(@Body Map<String, Object> citaDatos);
+
+    @POST("verificarCorreo")
     Call<ApiNodeMySqlRespuesta> verificarCorreo(@Query("correoUser") String correo);
 
-    @POST("api/enviarCorreoVerificacion")
+    @POST("enviarCorreoVerificacion")
     Call<ApiNodeMySqlRespuesta> enviarCorreoVerificacion(@Body TemplateParams templateParams);
+
+    @POST("actualizarFotoPerfil")
+    Call<ApiNodeMySqlRespuesta> actualizarFotoPerfil(@Body Map<String, Object> params);
 }

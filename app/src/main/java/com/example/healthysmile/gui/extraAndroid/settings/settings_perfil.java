@@ -38,10 +38,8 @@ import com.example.healthysmile.R;
 public class settings_perfil extends Fragment implements AdapterView.OnItemClickListener {
 
     private static final int REQUEST_CAMERA_PERMISSION = 100;
-    private static final int REQUEST_GALLERY_IMAGE = 101;
 
     ListView listaDefaultSettings;
-    ImageView fotoPerfilGrande;
     AdaptadorPerfilListView adaptador;
     Drawable[] listLeftIcon;
     String[] listTitleInputFile;
@@ -56,7 +54,6 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflamos la vista del fragmento
         View view = inflater.inflate(R.layout.fragment_settings_perfil, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Perfil");
         dbHelper = new FirebaseMessageRepository();
@@ -84,8 +81,6 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
             String especialidad = sharedPreferences.getString("especialidadEsp", null);
         }
 
-        Drawable fotoPerfil =  obtenerFotoPerfil();
-
         listLeftIcon = new Drawable[]{
                 getResources().getDrawable(R.drawable.icon_person),
                 getResources().getDrawable(R.drawable.icon_email),
@@ -110,16 +105,10 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
         listaDefaultSettings.setAdapter(adaptador);
         listaDefaultSettings.setOnItemClickListener(this);
 
-        fotoPerfilGrande = view.findViewById(R.id.settingsFotoPerfilGrande);
-        fotoPerfilGrande.setImageDrawable(fotoPerfil);
-
-        // Listener para cambiar la foto de perfil
-        fotoPerfilGrande.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openGallery();
-            }
-        });
+        Fragment profileImageSelectorFragment = new fragmentProfileImageSelector();
+        getChildFragmentManager().beginTransaction()
+                .replace(R.id.fragmentProfileImageSelectorSettings, profileImageSelectorFragment)
+                .commit();
 
         return view;
     }
@@ -183,48 +172,6 @@ public class settings_perfil extends Fragment implements AdapterView.OnItemClick
             WindowManager.LayoutParams layoutParams = window.getAttributes();
             layoutParams.y = 240;
             window.setAttributes(layoutParams);
-        }
-    }
-
-    private void openGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, REQUEST_GALLERY_IMAGE);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_GALLERY_IMAGE && resultCode == AppCompatActivity.RESULT_OK && data != null) {
-            Uri selectedImageUri = data.getData();
-            if (selectedImageUri != null) {
-                fotoPerfilGrande.setImageURI(selectedImageUri);
-                // Guarda la URI o actualiza los datos en SharedPreferences
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CAMERA_PERMISSION) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(getContext(), "Permiso concedido", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getContext(), "Permiso denegado", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private Drawable obtenerFotoPerfil() {
-        // Si la foto de paciente o especialista es nula, se usa una foto predeterminada
-        if (foto != null && !foto.equals("null")) {
-            return Drawable.createFromPath(foto);
-        } else {
-            if ("Paciente".equals(tipoUsuario)) {
-                return getResources().getDrawable(R.drawable.default_photo_perfil_paciente);
-            } else {
-                return getResources().getDrawable(R.drawable.default_photo_perfil_especialista);
-            }
         }
     }
 }

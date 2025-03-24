@@ -32,7 +32,7 @@
     <string name="label_menu_inicio">Inicio</string>
     <string name="label_menu_educaciondental">Educacion Dental</string>
     <string name="label_menu_tiendavirtual">Tienda virtual</string>
-    <string name="label_menu_gestiondeadministrador">Gestion de administrador</string>
+    <string name="label_menu_gestiondeadministrador">Gestion</string>
     <string name="label_menu_ayudaysoporte">Ayuda y Soporte</string>
     <string name="label_menu_consultavirtual">Consulta virtual</string>
     <string name="label_menu_logout">Logout</string>

@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.healthysmile.R;
+import com.example.healthysmile.utils.ReutilizableMethods;
 
 public class AdaptadorOpcionesPerfilListView extends BaseAdapter {
 
@@ -65,6 +66,9 @@ public class AdaptadorOpcionesPerfilListView extends BaseAdapter {
         inputTitle.setText(listTitleInputFile[position]);
         inputDesc.setText(listDescriptionInputFile[position]);
         if (position == 0) {
+            ReutilizableMethods reutilizableMethods = new ReutilizableMethods();
+            reutilizableMethods.cargarFotoPerfil(view.getContext(), leftIcon);
+
             // Configurar el tamaño de la imagen
             leftIcon.setLayoutParams(new LinearLayout.LayoutParams(250, 250));
 

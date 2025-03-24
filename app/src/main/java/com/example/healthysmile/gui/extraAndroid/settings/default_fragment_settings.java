@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.AdaptadorOpcionesPerfilListView;
 import com.example.healthysmile.R;
 
@@ -91,15 +92,12 @@ public class default_fragment_settings extends Fragment implements AdapterView.O
 
     private Drawable obtenerFotoPerfil() {
         // Si la foto de paciente o especialista es nula, se usa una foto predeterminada
-        if (foto != null && !foto.equals("null")) {
-            return Drawable.createFromPath(foto);
-        } else {
+
             if ("Paciente".equals(tipoUsuario)) {
                 return getResources().getDrawable(R.drawable.default_photo_perfil_paciente);
             } else {
                 return getResources().getDrawable(R.drawable.default_photo_perfil_especialista);
             }
-        }
     }
 
 

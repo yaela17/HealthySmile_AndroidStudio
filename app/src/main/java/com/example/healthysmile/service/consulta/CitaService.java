@@ -3,67 +3,126 @@ package com.example.healthysmile.service.consulta;
 import android.content.Context;
 import android.util.Log;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.healthysmile.controller.consulta.CitaObtenerPorFechaResponseListener;
+import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
+import com.example.healthysmile.controller.consulta.ModifyCitaResponseListener;
+import com.example.healthysmile.repository.NodeApiRetrofitClient;
+import com.example.healthysmile.service.ApiNodeMySqlService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CitaService {
 
-    private static final String URL_OBTENER_CITA_POR_FECHA = "http://10.0.2.2:3000/api/obtenerCitaPorFecha";
-    private RequestQueue requestQueue;
+    private final ApiNodeMySqlService apiService;
+    private final UpdateCitaService updateCitaService;
+    private final DeleteCitaService deleteCitaService;
 
     public CitaService(Context context) {
-        requestQueue = Volley.newRequestQueue(context);
+        this.apiService = NodeApiRetrofitClient.getApiService();
+        this.updateCitaService = new UpdateCitaService(context);
+        this.deleteCitaService = new DeleteCitaService(context);
     }
 
-    public void obtenerCitaPorFecha(long idUsuario, String fecha, String hora, final CitaObtenerPorFechaResponseListener listener) {
+    public void crearCita(String fecha, String hora, String motivo, long idUsuario, long idEspecialista) {
+        Map<String, Object> citaDatos = new HashMap<>();
+        citaDatos.put("fecha", fecha);
+        citaDatos.put("hora", hora);
+        citaDatos.put("motivo", motivo);
+        citaDatos.put("idUsuario", idUsuario);
+        citaDatos.put("idEspecialista", idEspecialista);
+
+        apiService.crearCita(citaDatos).enqueue(new Callback<ApiNodeMySqlRespuesta>() {
+            @Override
+            public void onResponse(Call<ApiNodeMySqlRespuesta> call, Response<ApiNodeMySqlRespuesta> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("CitaCreada", response.body().getMessage());
+                } else {
+                    Log.d("CitaCreada", "Error al crear la cita: Respuesta no válida");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiNodeMySqlRespuesta> call, Throwable t) {
+                Log.d("CitaCreada", "Error en la conexión: " + t.getMessage());
+            }
+        });
+    }
+
+    public void modificarCita(long idUsuario, String fecha, String hora, String nuevoMotivo, long nuevoEspecialista, ModifyCitaResponseListener listener) {
+        // Crear el JSON con los datos de la cita modificada
+        JSONObject requestBody = new JSONObject();
+        try {
+            requestBody.put("idUsuario", idUsuario);
+            requestBody.put("fecha", fecha);
+            requestBody.put("hora", hora);
+            requestBody.put("nuevaHora", hora);
+            requestBody.put("nuevoMotivo", nuevoMotivo);
+            requestBody.put("nuevoEspecialista", nuevoEspecialista);
+        } catch (JSONException e) {
+            Log.e("ModificarCita", "Error al crear el JSON", e);
+            listener.onError("Error al crear los datos para la cita");
+            return;
+        }
+
+        updateCitaService.modificarCita(requestBody, new ModifyCitaResponseListener() {
+            @Override
+            public void onResponse(String mensaje) {
+                Log.d("ModificarCita", "Cita modificada con éxito: " + mensaje);
+                listener.onResponse(mensaje);
+            }
+
+            @Override
+            public void onError(String error) {
+                Log.e("ModificarCita", "Error al modificar la cita: " + error);
+                listener.onError(error);
+            }
+
+            @Override
+            public void onCitaNoEncontrada(String mensaje) {
+                Log.w("ModificarCita", "Cita no encontrada: " + mensaje);
+                listener.onCitaNoEncontrada(mensaje);
+            }
+        });
+    }
+
+    public void eliminarCita(long idUsuario, String fecha, String hora, ModifyCitaResponseListener listener) {
         JSONObject requestBody = new JSONObject();
         try {
             requestBody.put("idUsuario", idUsuario);
             requestBody.put("fecha", fecha);
             requestBody.put("hora", hora);
         } catch (JSONException e) {
-            Log.e("Volley", "Error al crear JSON de solicitud", e);
-            listener.onError("Error al crear solicitud de cita");
+            Log.e("EliminarCita", "Error al crear el JSON", e);
+            listener.onError("Error al crear los datos para eliminar la cita");
             return;
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST,
-                URL_OBTENER_CITA_POR_FECHA,
-                requestBody,
-                response -> procesarCitaPorFecha(response, listener),
-                error -> {
-                    Log.e("Volley", "Error al obtener cita", error);
-                    listener.onError("Error al obtener cita");
-                }
-        );
-
-        requestQueue.add(jsonObjectRequest);
-    }
-
-    private void procesarCitaPorFecha(JSONObject response, CitaObtenerPorFechaResponseListener listener) {
-        try {
-            if (response.has("mensaje")) {
-                // Si la API devuelve un mensaje, significa que no hay cita
-                String mensaje = response.getString("mensaje");
-                listener.onCitaNoEncontrada(mensaje);
-            } else {
-                // Si la API devuelve los datos de la cita
-                long idCita = response.getLong("idCita");
-                String motivoCita = response.getString("motivoCita");
-                long idEspecialista = response.getLong("idEspecialista");
-
-                listener.onResponse(idCita, motivoCita, idEspecialista);
+        // Llamar al servicio de eliminación de citas
+        deleteCitaService.eliminarCita(requestBody, new ModifyCitaResponseListener() {
+            @Override
+            public void onResponse(String mensaje) {
+                Log.d("EliminarCita", "Cita eliminada con éxito: " + mensaje);
+                listener.onResponse(mensaje);
             }
-        } catch (JSONException e) {
-            Log.e("Volley", "Error al procesar JSON", e);
-            listener.onError("Error al procesar datos de la cita.");
-        }
+
+            @Override
+            public void onError(String error) {
+                Log.e("EliminarCita", "Error al eliminar la cita: " + error);
+                listener.onError(error);
+            }
+
+            @Override
+            public void onCitaNoEncontrada(String mensaje) {
+                Log.w("EliminarCita", "Cita no encontrada: " + mensaje);
+                listener.onCitaNoEncontrada(mensaje);
+            }
+        });
     }
 }

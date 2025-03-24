@@ -16,7 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.healthysmile.R;
-import com.example.healthysmile.repository.SupabaseFileStorageRepository;
+import com.example.healthysmile.service.SupabaseFileStorageService;
+import com.example.healthysmile.service.extraAndroid.ActualizarFotoService;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,16 +26,16 @@ import java.io.InputStream;
 public class fragment_visualizacion_modelos_3d_cancer_bucal extends Fragment {
 
     private static final int PICK_FILE_REQUEST = 1;
-    private SupabaseFileStorageRepository supabaseClient;
+    private SupabaseFileStorageService supabaseClient;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_visualizacion_modelos_3d_cancer_bucal, container, false);
 
         Button btnUpload = view.findViewById(R.id.btnUpload);
-        supabaseClient = new SupabaseFileStorageRepository();
+        supabaseClient = new SupabaseFileStorageService();
 
-        btnUpload.setOnClickListener(v -> openFileChooser());
+//        btnUpload.setOnClickListener(v -> openFileChooser());
 
         return view;
     }
@@ -55,8 +56,8 @@ public class fragment_visualizacion_modelos_3d_cancer_bucal extends Fragment {
                 if (file != null) {
                     new Thread(() -> {
                         try {
-                            String response = supabaseClient.uploadFile(file);
-                            getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Subida exitosa: " + response, Toast.LENGTH_LONG).show());
+                            ActualizarFotoService actualizarFotoService = new ActualizarFotoService(getContext());
+                          //  getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Subida exitosa: " + response, Toast.LENGTH_LONG).show());
                         } catch (Exception e) {
                             getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Error al subir: " + e.getMessage(), Toast.LENGTH_LONG).show());
                         }

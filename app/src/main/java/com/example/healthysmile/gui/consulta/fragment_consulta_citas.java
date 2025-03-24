@@ -1,7 +1,7 @@
 package com.example.healthysmile.gui.consulta;
 
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,15 +19,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
+import com.example.healthysmile.controller.consulta.ObtenerCitasPorDiaResponseListener;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.CustomDateDecorator;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.CustomSpinnerAdapter;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
-import com.example.healthysmile.controller.consulta.CitaObtenerPorFechaResponseListener;
 import com.example.healthysmile.service.consulta.CitaService;
 import com.example.healthysmile.service.consulta.DeleteCitaService;
 import com.example.healthysmile.controller.consulta.EspecialistaResponseListenerSpinnerCitas;
 import com.example.healthysmile.controller.consulta.ModifyCitaResponseListener;
+import com.example.healthysmile.service.consulta.ObtenerCitasPorDiaService;
 import com.example.healthysmile.service.consulta.UpdateCitaService;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -35,6 +36,7 @@ import com.example.healthysmile.service.EspecialistaService;
 import com.example.healthysmile.R;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+import org.checkerframework.checker.units.qual.C;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.threeten.bp.LocalDateTime;
@@ -53,13 +55,14 @@ import retrofit2.Callback;
 
 public class fragment_consulta_citas extends Fragment implements View.OnClickListener, OnDateSelectedListener {
 
-    private EditText inputDate, inputTime,inputMotivoCita;
+    private EditText inputDate, inputMotivoCita;
     Button btnGuardar;
     private MaterialCalendarView calendarView;
     private int selectedYear, selectedMonth, selectedDay, selectedHour, selectedMinute;
-    Spinner comboEspecialidad;
+    Spinner comboEspecialidad,comboHorariosDisponibles;
     long idUsuario = -1;
     long idEspecialistaSeleccionado = -1;
+    String horaSeleccionada = "";
     private List<Long> idsEspecialistas = new ArrayList<>();
 
     @Override
@@ -69,13 +72,16 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
         calendarView = view.findViewById(R.id.consultas_calendario_citas);
         calendarView.setOnDateChangedListener(this);
         inputDate = view.findViewById(R.id.ConsultaCitaInputDate);
-        inputTime = view.findViewById(R.id.ConsultaCitaInputTime);
         inputMotivoCita = view.findViewById(R.id.ConsultaCitasInputMotivoCita);
         comboEspecialidad = view.findViewById(R.id.ConsultaCitasComboEspecialistas);
+        comboHorariosDisponibles = view.findViewById(R.id.ConsultaCitasComboHorariosDisponibles);
+
         btnGuardar = view.findViewById(R.id.ConsultaCitasbtnGuardarCita);
         btnGuardar.setOnClickListener(this);
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("AppPrefs", getContext().MODE_PRIVATE);
         idUsuario = sharedPreferences.getLong("idUsuario", -1);
+
+
         Log.d("idUsuario", "ID Usuario: " + idUsuario);
 
         Calendar calendar = Calendar.getInstance();
@@ -90,7 +96,6 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
                 .commit();
 
         setupIconClickListener(inputDate, R.drawable.icon_calendary, this::showDatePickerDialog);
-        setupIconClickListener(inputTime, R.drawable.icon_time_hour, this::showTimePickerDialog);
 
         calendarView.setOnMonthChangedListener((widget, date) -> {
             decorateSundays(date);
@@ -127,13 +132,14 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
 
         String[] opComboEspecialidadArray = opComboEspecialidad.toArray(new String[0]);
 
-        Spinner comboEspecialidad = getView().findViewById(R.id.ConsultaCitasComboEspecialistas);
         CustomSpinnerAdapter adaptadorOpComboEspecialidad = new CustomSpinnerAdapter(getContext(), R.layout.custom_spinner_item, opComboEspecialidadArray);
         comboEspecialidad.setAdapter(adaptadorOpComboEspecialidad);
         comboEspecialidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 idEspecialistaSeleccionado = idsEspecialistas.get(position);
+                String fechaSeleccionadaActual = inputDate.getText().toString().trim();
+                llenarSpinnerConHorarios(fechaSeleccionadaActual,getContext());
                 Log.d("Especialista seleccionado", "ID: " + idEspecialistaSeleccionado);
             }
             @Override
@@ -141,6 +147,87 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
             }
         });
     }
+
+    private void llenarSpinnerConHorarios(String dia, Context context) {
+        Log.d("Debug", "Llamando a llenarSpinnerConHorarios con día: " + dia);
+        ObtenerCitasPorDiaService servicio = new ObtenerCitasPorDiaService(context);
+
+        servicio.obtenerCitasPorDia(dia,idEspecialistaSeleccionado,new ObtenerCitasPorDiaResponseListener() {
+            @Override
+            public void onResponse(List<Long> idsCita, List<String> motivosCita, List<Long> idsEspecialista, List<String> fechasCita) {
+                List<String> horariosTotales = generarListaHorarios();
+                List<String> horasOcupadas = new ArrayList<>();
+
+                // Mostrar las fechas recibidas
+                Log.d("Debug", "Fechas de citas recibidas: " + fechasCita);
+
+                // Recorrer las fechas de las citas y extraer solo la hora en formato 24h
+                SimpleDateFormat dateFormatLocal = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+
+                for (String fechaCita : fechasCita) {
+                    try {
+                        // Parsear la fecha en el formato adecuado (eliminamos el UTC)
+                        Date date = dateFormatLocal.parse(fechaCita); // Usamos el formato que el procedimiento devuelve
+                        if (date != null) {
+                            // Extraer solo la hora en formato 24h
+                            SimpleDateFormat horaFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                            String horaLocal = horaFormat.format(date); // Formateamos la hora en formato 24h
+                            horasOcupadas.add(horaLocal.trim());
+                            Log.d("Debug", "Fecha parseada: " + fechaCita + " -> Hora local: " + horaLocal.trim());
+                        }
+                    } catch (Exception e) {
+                        Log.e("Horarios", "Error al parsear la fecha: " + fechaCita, e);
+                    }
+                }
+
+                // Mostrar las horas ocupadas
+                Log.d("Debug", "Horas ocupadas: " + horasOcupadas);
+
+                // Filtrar horarios disponibles
+                List<String> horariosDisponibles = new ArrayList<>();
+                for (String hora : horariosTotales) {
+                    if (!horasOcupadas.contains(hora)) {
+                        horariosDisponibles.add(hora);
+                        Log.d("Debug", "Hora disponible agregada: " + hora);
+                    } else {
+                        Log.d("Debug", "Hora ocupada: " + hora);
+                    }
+                }
+
+                // Mostrar las horas disponibles antes de actualizar el Spinner
+                Log.d("Debug", "Horarios disponibles para el Spinner: " + horariosDisponibles);
+
+                // Actualizar el Spinner con las horas disponibles
+                actualizarSpinnerHorarios(context, horariosDisponibles);
+            }
+
+            @Override
+            public void onError(String error) {
+                Log.e("Horarios", "Error al obtener citas: " + error);
+            }
+        });
+    }
+
+
+    // Nuevo método para actualizar el Spinner
+    private void actualizarSpinnerHorarios(Context context, List<String> horariosDisponibles) {
+        String[] opComboHorariosArray = horariosDisponibles.toArray(new String[0]);
+        CustomSpinnerAdapter adaptadorOpComboHorariosDisponibles =
+                new CustomSpinnerAdapter(context, R.layout.custom_selected_spinner_item, opComboHorariosArray);
+
+        comboHorariosDisponibles.setAdapter(adaptadorOpComboHorariosDisponibles);
+        comboHorariosDisponibles.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                horaSeleccionada = horariosDisponibles.get(position);
+                Log.d("Horario seleccionado", "Hora: " + horaSeleccionada);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
 
     @Override
     public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -156,111 +243,25 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
             // Establecer la fecha en el EditText
             inputDate.setText(fechaSeleccionada);
 
-            // Obtener la hora ingresada en el inputTime
-            String hora12 = inputTime.getText().toString().trim();
-
-            // Verificar que el usuario haya ingresado una hora
-            if (hora12.isEmpty()) {
-                Toast.makeText(getContext(), "Por favor, ingrese una hora válida.", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Convertir la hora de formato 12 horas a 24 horas
-            String hora24 = convertirHora12A24(hora12);
-
-            // Verificar si la conversión fue exitosa
-            if (hora24 == null) {
-                Toast.makeText(getContext(), "Error al convertir la hora", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Llamar al servicio para obtener la cita
-            CitaService citaService = new CitaService(getContext());
-            citaService.obtenerCitaPorFecha(idUsuario, fechaSeleccionada, hora24, new CitaObtenerPorFechaResponseListener() {
-                @Override
-                public void onResponse(long idCita, String motivoCita, long idEspecialista) {
-                    // Mostrar los datos en los campos correspondientes
-                    inputMotivoCita.setText(motivoCita);
-                    idEspecialistaSeleccionado = idEspecialista;
-
-                    // Seleccionar automáticamente el especialista en el Spinner
-                    seleccionarEspecialistaEnSpinner(idEspecialista);
-
-                    Toast.makeText(getContext(), "Cita encontrada: " + motivoCita, Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onCitaNoEncontrada(String mensaje) {
-                    Toast.makeText(getContext(), mensaje, Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onError(String error) {
-                    Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            // Mensaje de depuración
-            Log.d("CalendarView", "Fecha seleccionada: " + fechaSeleccionada + " Hora: " + hora24);
+            llenarSpinnerConHorarios(fechaSeleccionada,getContext());
         }
     }
 
-
-    private void seleccionarEspecialistaEnSpinner(long idEspecialista) {
-        int posicionEncontrada = -1;
-
-        // Buscar la posición del especialista en la lista
-        for (int i = 0; i < idsEspecialistas.size(); i++) {
-            if (idsEspecialistas.get(i) == idEspecialista) {
-                posicionEncontrada = i;
-                break;
-            }
+    private List<String> generarListaHorarios() {
+        List<String> horarios = new ArrayList<>();
+        for (int hora = 8; hora <= 16; hora++) {
+            horarios.add(String.format("%02d:00", hora));
         }
-
-        // Si se encontró la posición, seleccionar en el Spinner
-        if (posicionEncontrada != -1) {
-            comboEspecialidad.setSelection(posicionEncontrada);
-            Log.d("Especialista seleccionado", "ID: " + idEspecialista + ", Posición: " + posicionEncontrada);
-        } else {
-            Log.e("Especialista no encontrado", "No se encontró el ID: " + idEspecialista);
-        }
+        return horarios;
     }
 
     public void crearCita() {
         String fecha = inputDate.getText().toString();
-        String hora = convertirHora12A24(inputTime.getText().toString());
+        String hora = comboHorariosDisponibles.getSelectedItem().toString();
         String motivo = inputMotivoCita.getText().toString();
 
-        Map<String, Object> citaDatos = new HashMap<>();
-        citaDatos.put("fecha", fecha);
-        citaDatos.put("hora", hora);
-        citaDatos.put("motivo", motivo);
-        citaDatos.put("idUsuario", idUsuario);
-        citaDatos.put("idEspecialista", idEspecialistaSeleccionado);
-
-        ApiNodeMySqlService apiService = NodeApiRetrofitClient.getApiService();
-
-        retrofit2.Call<ApiNodeMySqlRespuesta> call = apiService.crearCita(citaDatos);
-        call.enqueue(new Callback<ApiNodeMySqlRespuesta>() {
-            @Override
-            public void onResponse(retrofit2.Call<ApiNodeMySqlRespuesta> call, retrofit2.Response<ApiNodeMySqlRespuesta> response) {
-                if (response.isSuccessful()) {
-                    ApiNodeMySqlRespuesta respuesta = response.body();
-                    if (respuesta != null) {
-                        Log.d("CitaCreada", respuesta.getMessage());  // Reemplaza el Toast por Log
-                    } else {
-                        Log.d("CitaCreada", "Error: Respuesta vacía");  // Reemplaza el Toast por Log
-                    }
-                } else {
-                    Log.d("CitaCreada", "Error al crear la cita");  // Reemplaza el Toast por Log
-                }
-            }
-
-            @Override
-            public void onFailure(retrofit2.Call<ApiNodeMySqlRespuesta> call, Throwable t) {
-                Log.d("CitaCreada", "Error en la conexión: " + t.getMessage());  // Reemplaza el Toast por Log
-            }
-        });
+        CitaService citaService = new CitaService(getContext());
+        citaService.crearCita(fecha,hora,motivo,idUsuario,idEspecialistaSeleccionado);
     }
 
     private void setupIconClickListener(EditText editText, int iconResId, Runnable action) {
@@ -332,7 +333,7 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
                         selectedDay = dayOfMonth;
 
                         // Formatear y mostrar la fecha en el EditText de fecha
-                        SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+                        SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd");
                         inputDate.setText(sdf.format(selectedDate.getTime()));
 
                         // Actualizar el calendario con la fecha seleccionada
@@ -356,132 +357,58 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
         datePickerDialog.show();
     }
 
-    private void showTimePickerDialog() {
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
-                (view, hourOfDay, minute) -> {
-                    if (hourOfDay >= 8 && hourOfDay <= 16) {
-                        selectedHour = hourOfDay;
-                        selectedMinute = minute;
 
-                        String time = String.format("%02d:%02d", selectedHour, selectedMinute);
-
-                        Calendar calendar = Calendar.getInstance();
-                        calendar.set(Calendar.HOUR_OF_DAY, selectedHour);
-                        calendar.set(Calendar.MINUTE, selectedMinute);
-                        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a", Locale.getDefault());
-                        String timeWithAmPm = sdf.format(calendar.getTime());
-
-                        inputTime.setText(timeWithAmPm);
-                    } else {
-                        Toast.makeText(getContext(), "Por favor seleccione una hora entre las 8:00 AM y las 4:00 PM.", Toast.LENGTH_SHORT).show();
-                        showTimePickerDialog();
-                    }
-                },
-                selectedHour, selectedMinute, false);
-
-        timePickerDialog.show();
-    }
 
     @Override
     public void onClick(View v) {
         crearCita();
     }
 
-    public String convertirHora12A24(String hora12) {
-        try {
-            SimpleDateFormat formato12Horas = new SimpleDateFormat("hh:mm a"); // 12 horas con a.m./p.m.
-            SimpleDateFormat formato24Horas = new SimpleDateFormat("HH:mm:ss"); // 24 horas
-
-            Date date = formato12Horas.parse(hora12);
-            return formato24Horas.format(date);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     public void modificarCita() {
         // Obtener los valores de la UI
         String fechaSeleccionada = inputDate.getText().toString(); // Fecha seleccionada en el CalendarView
-        String horaSeleccionada = convertirHora12A24(inputTime.getText().toString()); // Hora seleccionada en el EditText
+        String horaSeleccionada = comboHorariosDisponibles.getSelectedItem().toString();
         String motivoCita = inputMotivoCita.getText().toString(); // Motivo de la cita
         long idEspecialista = idsEspecialistas.get(comboEspecialidad.getSelectedItemPosition()); // Especialista seleccionado
 
-        // Validar que los campos no estén vacíos
         if (fechaSeleccionada.isEmpty() || horaSeleccionada.isEmpty() || motivoCita.isEmpty()) {
             Toast.makeText(getContext(), "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
             return;
         }
-
-
-        // Crear un JSONObject para enviar al servidor
-        JSONObject requestBody = new JSONObject();
-        try {
-            requestBody.put("idUsuario", idUsuario);
-            requestBody.put("fecha", fechaSeleccionada);
-            requestBody.put("hora", horaSeleccionada);
-            requestBody.put("nuevaHora", horaSeleccionada);
-            requestBody.put("nuevoMotivo", motivoCita);
-            requestBody.put("nuevoEspecialista", idEspecialista);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(getContext(), "Error al crear los datos para la cita", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Llamar al servicio para modificar la cita
-        UpdateCitaService updateCitaService = new UpdateCitaService(getContext());
-        updateCitaService.modificarCita(requestBody, new ModifyCitaResponseListener() {
+        CitaService citaService = new CitaService(getContext());
+        citaService.modificarCita(idUsuario,fechaSeleccionada,horaSeleccionada,motivoCita,idEspecialista, new ModifyCitaResponseListener() {
             @Override
             public void onResponse(String mensaje) {
-                // Manejar la respuesta exitosa
                 Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
             }
-
             @Override
             public void onError(String error) {
-                // Manejar el error de la solicitud
                 Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
             }
-
             @Override
             public void onCitaNoEncontrada(String mensaje) {
-                // Manejar el caso en que no se encuentra la cita
                 Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
             }
         });
     }
 
     public void eliminarCita() {
-        // Obtener los valores de la UI
         String fechaSeleccionada = inputDate.getText().toString(); // Fecha seleccionada en el CalendarView
-        String horaSeleccionada = convertirHora12A24(inputTime.getText().toString()); // Hora seleccionada en el EditText
+        String horaSeleccionada = comboHorariosDisponibles.getSelectedItem().toString();
 
-        // Validar que los campos no estén vacíos
         if (fechaSeleccionada.isEmpty() || horaSeleccionada.isEmpty()) {
             Toast.makeText(getContext(), "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Crear un JSONObject para enviar al servidor
-        JSONObject requestBody = new JSONObject();
-        try {
-            requestBody.put("idUsuario", idUsuario); // Suponiendo que idUsuario ya está definido
-            requestBody.put("fecha", fechaSeleccionada);
-            requestBody.put("hora", horaSeleccionada);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(getContext(), "Error al crear los datos para eliminar la cita", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Llamar al servicio para eliminar la cita
-        DeleteCitaService deleteCitaService = new DeleteCitaService(getContext());
-        deleteCitaService.eliminarCita(requestBody, new ModifyCitaResponseListener() {
+        CitaService citaService = new CitaService(getContext());
+        citaService.eliminarCita(idUsuario, fechaSeleccionada, horaSeleccionada, new ModifyCitaResponseListener() {
             @Override
             public void onResponse(String mensaje) {
                 Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
             }
+
             @Override
             public void onError(String error) {
                 Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();

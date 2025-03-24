@@ -9,11 +9,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;  // Importa Toast
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.healthysmile.utils.ReutilizableMethods;
 import com.example.healthysmile.utils.SharedPreferencesHelper;
 import com.example.healthysmile.R;
 import com.example.healthysmile.gui.extraAndroid.settings.Settings;
@@ -52,14 +55,9 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         String correoUsuario = sharedPreferences.getString("correoUsuario",null);
         String tipoUsuario = sharedPreferences.getString("tipoUsuario",null);
         foto = sharedPreferences.getString("fotoUsuario", null);
+        SharedPreferencesHelper sharedPreferencesHelper = new SharedPreferencesHelper(NavigationDrawerFragments.this);
+        sharedPreferencesHelper.imprimirDatosSharedPreferences();
 
-        Menu menu = navigationView.getMenu();
-        if ("Administrador".equals(tipoUsuario)) {
-            MenuItem adminItem = menu.findItem(R.id.nav_gestionAdmin);
-            if (adminItem != null) {
-                adminItem.setVisible(true);
-            }
-        }
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -85,6 +83,31 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer_fragments);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+                // No necesitas hacer nada aquí si solo quieres cargar la foto cuando se abre
+            }
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+                // Cargar la foto de perfil cuando el drawer se despliegue
+                ImageView fotoPerfil = navigationView.getHeaderView(0).findViewById(R.id.nav_header_navigation_drawer_lateral_foto_perfil);
+                ReutilizableMethods reutilizableMethods = new ReutilizableMethods();
+                reutilizableMethods.cargarFotoPerfil(getApplicationContext(), fotoPerfil);
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+                // No necesitas hacer nada aquí si no es necesario hacer algo cuando se cierre el drawer
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                // No necesitas hacer nada aquí si no es necesario hacer algo cuando cambie el estado del drawer
+            }
+        });
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -146,15 +169,6 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         });
 
 
-
- // Asegúrate de usar la clave correcta aquí
-        if(tipoUsuario.equals("Paciente")){
-
-        }else
-            if(tipoUsuario.equals("Especialista")){
-
-            }
-
         Toast.makeText(this, "Datos recibidos: Nombre - " + nombreUsuario + ", Correo - " + correoUsuario + ", TipoUsuario - " + tipoUsuario, Toast.LENGTH_LONG).show();
 
         // Referenciando los TextViews del header
@@ -183,33 +197,9 @@ public class NavigationDrawerFragments extends AppCompatActivity {
             Toast.makeText(this, "Tipo de usuario es null", Toast.LENGTH_SHORT).show();
         }
 
-        if (tipoUsuario.equals("Paciente")) {
-            String rutaImagen = foto;  // Obtener la ruta de la imagen desde el objeto Usuario
-            if (rutaImagen != null && !rutaImagen.isEmpty()) {
-                // Si el usuario tiene una foto de perfil, carga la imagen desde la URI
-                Glide.with(this)
-                        .load(Uri.parse(rutaImagen))  // Ruta de la imagen (URI)
-                        .into(fotoPerfil); // ImageView donde se cargará la imagen
-            } else {
-                // Si no tiene foto de perfil, carga la imagen predeterminada desde los recursos
-                Glide.with(this)
-                        .load(R.drawable.default_photo_perfil_paciente)  // Ruta del recurso predeterminado
-                        .into(fotoPerfil); // ImageView donde se cargará la imagen
-            }
-        }else {
-            String rutaImagen = foto;  // Obtener la ruta de la imagen desde el objeto Usuario
-            if (rutaImagen != null && !rutaImagen.isEmpty()) {
-                // Si el usuario tiene una foto de perfil, carga la imagen desde la URI
-                Glide.with(this)
-                        .load(Uri.parse(rutaImagen))  // Ruta de la imagen (URI)
-                        .into(fotoPerfil); // ImageView donde se cargará la imagen
-            } else {
-                // Si no tiene foto de perfil, carga la imagen predeterminada desde los recursos
-                Glide.with(this)
-                        .load(R.drawable.default_photo_perfil_especialista)  // Ruta del recurso predeterminado
-                        .into(fotoPerfil); // ImageView donde se cargará la imagen
-            }
-        }
+        ReutilizableMethods reutilizableMethods = new ReutilizableMethods();
+        reutilizableMethods.cargarFotoPerfil(getApplicationContext(),fotoPerfil);
+
 
     }
 

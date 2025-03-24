@@ -1,5 +1,7 @@
 package com.example.healthysmile.service;
 
+import static com.example.healthysmile.service.URLSApisNode.URL_OBTENER_ESPECIALISTAS;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -21,7 +23,7 @@ import java.util.List;
 
 public class EspecialistaService {
 
-    private static final String URL_OBTENER_ESPECIALISTAS = "http://10.0.2.2:3000/api/obtenerEspecialistasChatAndroid";
+
     private RequestQueue requestQueue;
 
     public EspecialistaService(Context context) {

@@ -1,5 +1,7 @@
 package com.example.healthysmile.service.ayudaYSoporte;
 
+import static com.example.healthysmile.service.URLSApisNode.URL_OBTENER_PREGUNTAS_FRECUENTES;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ObtenerPreguntasFrecuentesService {
-    private static final String URL_OBTENER_PREGUNTAS_FRECUENTES = "http://10.0.2.2:3000/api/obtenerPreguntas";
+
 
     private RequestQueue requestQueue;
 
@@ -32,8 +34,8 @@ public class ObtenerPreguntasFrecuentesService {
                 null,
                 response -> procesarObtenerPreguntasFrecuentes(response, listener),
                 error -> {
-                    Log.e("Volley", "Error al obtener especialistas", error);
-                    listener.onError("Error al cargar especialistas");
+                    Log.e("Volley", "Error al obtener preguntas frecuentes", error);
+                    listener.onError("Error al cargar preguntas frecuentes");
                 }
         );
         requestQueue.add(jsonArrayRequest);

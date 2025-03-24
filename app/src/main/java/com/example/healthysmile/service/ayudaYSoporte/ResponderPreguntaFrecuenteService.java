@@ -1,5 +1,7 @@
 package com.example.healthysmile.service.ayudaYSoporte;
 
+import static com.example.healthysmile.service.URLSApisNode.URL_RESPONDER_PREGUNTA_FRECUENTE;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -14,7 +16,7 @@ import org.json.JSONObject;
 
 public class ResponderPreguntaFrecuenteService {
 
-    private static final String URL_RESPONDER_PREGUNTA_FRECUENTE = "http://10.0.2.2:3000/api/responderPregunta";
+
     private RequestQueue requestQueue;
 
     public ResponderPreguntaFrecuenteService(Context context) {

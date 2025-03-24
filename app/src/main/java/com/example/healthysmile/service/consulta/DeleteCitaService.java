@@ -1,5 +1,7 @@
 package com.example.healthysmile.service.consulta;
 
+import static com.example.healthysmile.service.URLSApisNode.URL_ELIMINAR_CITA;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -13,7 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DeleteCitaService {
-    private static final String URL_ELIMINAR_CITA = "http://10.0.2.2:3000/api/eliminarCita";
+
     private RequestQueue requestQueue;
 
     public DeleteCitaService(Context context) {

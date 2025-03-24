@@ -45,7 +45,7 @@ public class AdaptadorListaPacientes extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return idsUsuario[position];
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.example.healthysmile.service.consulta;
 
+import static com.example.healthysmile.service.URLSApisNode.URL_ACTUALIZAR_CITA;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -13,7 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UpdateCitaService {
-    private static final String URL_ACTUALIZAR_CITA = "http://10.0.2.2:3000/api/modificarCita";
     private RequestQueue requestQueue;
 
     public UpdateCitaService(Context context) {

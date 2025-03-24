@@ -54,14 +54,10 @@ public class fragment_consulta_virtual_especialista extends Fragment {
         idEspecialistaChat = sharedPreferences.getLong("idEspecialistaChat", 0);
         nombreReceptorChat = sharedPreferences.getString("nombreReceptorChat","null");
         tipoUsuario = sharedPreferences.getString("tipoUsuario","Paciente");
-        Log.d("ConsultaVirtual", "idUsuarioChat: " + idUsuarioChat);
-        Log.d("ConsultaVirtual", "idEspecialistaChat: " + idEspecialistaChat);
-        Log.d("ConsultaVirtual", "nombreReceptorChat: " + nombreReceptorChat);
-        Log.d("ConsultaVirtual", "tipoUsuario: " + tipoUsuario);
 
         if(tipoUsuario.equals("Especialista")){
-            idEspecialistaChat = sharedPreferences.getLong("idUsuario",0);
             idUsuarioChat = sharedPreferences.getLong("idEspecialistaChat",0);
+            idEspecialistaChat = sharedPreferences.getLong("idEspecialista",0);
         }
 
         long idEmisorActual = 0;
@@ -71,6 +67,10 @@ public class fragment_consulta_virtual_especialista extends Fragment {
             if(tipoUsuario.equals("Paciente")){
                 idEmisorActual = idUsuarioChat;
             }
+        Log.d("ConsultaVirtual", "idUsuarioChat: " + idUsuarioChat);
+        Log.d("ConsultaVirtual", "idEspecialistaChat: " + idEspecialistaChat);
+        Log.d("ConsultaVirtual", "nombreReceptorChat: " + nombreReceptorChat);
+        Log.d("ConsultaVirtual", "tipoUsuario: " + tipoUsuario);
         Log.d("ConsultaVirtual", "idEmisorActual: " + idEmisorActual);
 
 

@@ -17,14 +17,17 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.healthysmile.controller.consulta.ObtenerPacientesResponseListener;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.AdaptadorListaPacientes;
 import com.example.healthysmile.R;
+import com.example.healthysmile.service.consulta.ObtenerPacientesService;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class fragment_consulta_list_chat_paciente extends Fragment {
@@ -36,15 +39,14 @@ public class fragment_consulta_list_chat_paciente extends Fragment {
 
     private FirebaseFirestore db;
 
-    private List<String> nombres = new ArrayList<>();
-    private List<String> correos = new ArrayList<>();
-    private List<Long> idsPacientes = new ArrayList<>();
+    private List<String> nombresLV = new ArrayList<>();
+    private List<String> correosLV = new ArrayList<>();
+    private List<Long> idsPacientesLV = new ArrayList<>();
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_consulta_list_chat_paciente, container, false);
 
         listaChatUsuarios = view.findViewById(R.id.consultaListViewChatsPaciente);
@@ -63,9 +65,9 @@ public class fragment_consulta_list_chat_paciente extends Fragment {
     }
 
     private void cargarPacientes() {
-        nombres.clear();
-        correos.clear();
-        idsPacientes.clear();
+        nombresLV.clear();
+        correosLV.clear();
+        idsPacientesLV.clear();
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         long idEspecialista = sharedPreferences.getLong("idEspecialista", -1);
@@ -75,7 +77,6 @@ public class fragment_consulta_list_chat_paciente extends Fragment {
             return;
         }
 
-        // Consultar Firebase para obtener los IDs de los pacientes con los que ha chateado el especialista
         db.collection("chats")
                 .whereEqualTo("idEspecialista", idEspecialista)
                 .get()
@@ -84,16 +85,13 @@ public class fragment_consulta_list_chat_paciente extends Fragment {
                         for (DocumentSnapshot document : queryDocumentSnapshots) {
                             Long idPaciente = document.getLong("idUsuario");
                             if (idPaciente != null) {
-                                idsPacientes.add(idPaciente);
+                                idsPacientesLV.add(idPaciente);
                             }
                         }
-
-                        if (idsPacientes.isEmpty()) {
+                        if (idsPacientesLV.isEmpty()) {
                             Toast.makeText(getContext(), "No se encontraron pacientes asociados.", Toast.LENGTH_SHORT).show();
                             return;
                         }
-
-                        // Enviar la lista de IDs al backend MySQL
                         obtenerDetallesPacientes();
                     } else {
                         Toast.makeText(getContext(), "No se encontraron chats asociados al especialista.", Toast.LENGTH_SHORT).show();
@@ -106,50 +104,32 @@ public class fragment_consulta_list_chat_paciente extends Fragment {
     }
 
     private void obtenerDetallesPacientes() {
-        // Convertir la lista de IDs en un string separado por comas
-        String idsString = android.text.TextUtils.join(",", idsPacientes);
+        ObtenerPacientesService pacientesService = new ObtenerPacientesService(getContext());
 
-        String url = "http://10.0.2.2:3000/api/obtenerPacientesChatAndroid?idsUsuarios=" + idsString;
-
-        // Realizar la petición HTTP para obtener los datos de los pacientes desde MySQL
-        RequestQueue queue = Volley.newRequestQueue(getContext());
-
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
-                response -> {
-                    try {
-                        for (int i = 0; i < response.length(); i++) {
-                            JSONObject paciente = response.getJSONObject(i);
-                            long id = paciente.getLong("idUsuario");
-                            String nombre = paciente.getString("nombre");
-                            String correo = paciente.getString("correo");
-
-                            nombres.add(nombre);
-                            correos.add(correo);
-                            idsPacientes.add(id);
-                        }
-
-                        // Pasar los datos al adaptador del ListView
-                        cargarListView();
-                    } catch (Exception e) {
-                        Log.e("Volley", "Error al procesar JSON", e);
-                        Toast.makeText(getContext(), "Error al procesar datos", Toast.LENGTH_SHORT).show();
-                    }
-                },
-                error -> {
-                    Log.e("Volley", "Error en la petición HTTP", error);
-                    Toast.makeText(getContext(), "Error al obtener datos de pacientes", Toast.LENGTH_SHORT).show();
-                });
-
-        queue.add(request);
+        pacientesService.obtenerPacientesChat(new ObtenerPacientesResponseListener() {
+            @Override
+            public void onResponse(List<String> nombres, List<String> correos, List<Long> idsPacientes) {
+                idsPacientesLV.clear();
+                for (int i = 0; i < nombres.size(); i++) {
+                    nombresLV.add(nombres.get(i));
+                    correosLV.add(correos.get(i));
+                    idsPacientesLV.add(idsPacientes.get(i));
+                }
+                cargarListView();
+            }
+            @Override
+            public void onError(String error) {
+                Log.e("Volley", error);
+                Toast.makeText(getContext(), "Error al obtener datos de pacientes", Toast.LENGTH_SHORT).show();
+            }
+        }, idsPacientesLV);
     }
 
     private void cargarListView() {
-        // Convertir listas a arreglos para el adaptador
-        String[] nombresArray = nombres.toArray(new String[0]);
-        String[] correosArray = correos.toArray(new String[0]);
-        long[] idsArray = idsPacientes.stream().mapToLong(Long::longValue).toArray();
+        String[] nombresArray = nombresLV.toArray(new String[0]);
+        String[] correosArray = correosLV.toArray(new String[0]);
+        long[] idsArray = idsPacientesLV.stream().mapToLong(Long::longValue).toArray();
 
-        // Crear e inicializar el adaptador
         AdaptadorListaPacientes adaptador = new AdaptadorListaPacientes(
                 getContext(),
                 correosArray,

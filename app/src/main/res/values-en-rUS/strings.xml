@@ -31,7 +31,7 @@
     <string name="label_menu_inicio">Home</string>
     <string name="label_menu_educaciondental">Dental Education</string>
     <string name="label_menu_tiendavirtual">Online Store</string>
-    <string name="label_menu_gestiondeadministrador">Admin Management</string>
+    <string name="label_menu_gestiondeadministrador">Management</string>
     <string name="label_menu_ayudaysoporte">Help and Support</string>
     <string name="label_menu_consultavirtual">Virtual Consultation</string>
     <string name="label_menu_logout">Logout</string>

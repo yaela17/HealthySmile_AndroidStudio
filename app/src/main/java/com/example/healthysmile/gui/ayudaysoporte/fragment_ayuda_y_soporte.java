@@ -64,58 +64,59 @@ public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.formPreguntaFrecuenteBtnEnviar) {
-            final String correoUsuario = campoCorreo.getText().toString().trim();
-            final String pregunta = campoPregunta.getText().toString().trim();
-
-// Verificamos si los campos están vacíos
-            if (correoUsuario.isEmpty() || pregunta.isEmpty()) {
-                Log.e("Error", "El correo o la pregunta no pueden estar vacíos");
-                return;
-            }
-
-            SharedPreferences sharedPreferences = getContext().getSharedPreferences("AppPrefs", getContext().MODE_PRIVATE);
-            long idUsuario = sharedPreferences.getLong("idUsuario", -1);
-
-// Agregamos un log para ver el correo y el idUsuario
-            Log.d("VerificarCorreo", "Correo a verificar: " + correoUsuario);
-            Log.d("VerificarCorreo", "ID de Usuario: " + idUsuario);
-
-            ApiNodeMySqlService apiService = NodeApiRetrofitClient.getApiService();
-            apiService.verificarCorreo(correoUsuario).enqueue(new retrofit2.Callback<ApiNodeMySqlRespuesta>() {
-                @Override
-                public void onResponse(Call<ApiNodeMySqlRespuesta> call, Response<ApiNodeMySqlRespuesta> response) {
-                    // Agregar un log para ver la respuesta del servidor
-                    Log.d("VerificarCorreo", "Respuesta recibida: " + response.toString());
-
-                    if (response.isSuccessful()) {
-                        ApiNodeMySqlRespuesta apiResponse = response.body();
-                        // Agregamos un log para ver el cuerpo de la respuesta
-                        Log.d("VerificarCorreo", "Cuerpo de la respuesta: " + (apiResponse != null ? apiResponse.getMensaje() : "null"));
-
-                        if (apiResponse != null && "Existe".equals(apiResponse.getMensaje())) { // Usamos el mensaje del servidor
-                            Log.d("VerificarCorreo", "Correo verificado con éxito, procediendo a insertar pregunta frecuente.");
-                            insertarPreguntaFrecuente(idUsuario, pregunta);
-                        } else {
-                            Log.e("VerificarCorreo", "Correo no registrado en la aplicación");
-                            campoCorreo.setError("Correo no registrado en la aplicación");
-                        }
-                    } else {
-                        Log.e("Error", "No se pudo verificar el correo. Código de respuesta: " + response.code());
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<ApiNodeMySqlRespuesta> call, Throwable t) {
-                    // Agregamos más información para la depuración
-                    Log.e("Error", "Error en la solicitud: " + t.getMessage());
-                    t.printStackTrace();
-                }
-            });
-
+            crearPreguntaFrecuente();
         }
     }
 
-    // Método para insertar la pregunta frecuente en Firestore
+    private void crearPreguntaFrecuente() {
+        final String correoUsuario = campoCorreo.getText().toString().trim();
+        final String pregunta = campoPregunta.getText().toString().trim();
+
+        if (correoUsuario.isEmpty() || pregunta.isEmpty()) {
+            Log.e("Error", "El correo o la pregunta no pueden estar vacíos");
+            return;
+        }
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("AppPrefs", getContext().MODE_PRIVATE);
+        long idUsuario = sharedPreferences.getLong("idUsuario", -1);
+
+        Log.d("VerificarCorreo", "Correo a verificar: " + correoUsuario);
+        Log.d("VerificarCorreo", "ID de Usuario: " + idUsuario);
+
+        verificarCorreo(correoUsuario, idUsuario, pregunta);
+    }
+
+    private void verificarCorreo(String correoUsuario, long idUsuario, String pregunta) {
+        ApiNodeMySqlService apiService = NodeApiRetrofitClient.getApiService();
+        apiService.verificarCorreo(correoUsuario).enqueue(new retrofit2.Callback<ApiNodeMySqlRespuesta>() {
+            @Override
+            public void onResponse(Call<ApiNodeMySqlRespuesta> call, Response<ApiNodeMySqlRespuesta> response) {
+                Log.d("VerificarCorreo", "Respuesta recibida: " + response.toString());
+
+                if (response.isSuccessful()) {
+                    ApiNodeMySqlRespuesta apiResponse = response.body();
+                    Log.d("VerificarCorreo", "Cuerpo de la respuesta: " + (apiResponse != null ? apiResponse.getMensaje() : "null"));
+
+                    if (apiResponse != null && "Existe".equals(apiResponse.getMensaje())) {
+                        Log.d("VerificarCorreo", "Correo verificado con éxito, procediendo a insertar pregunta frecuente.");
+                        insertarPreguntaFrecuente(idUsuario, pregunta);
+                    } else {
+                        Log.e("VerificarCorreo", "Correo no registrado en la aplicación");
+                        campoCorreo.setError("Correo no registrado en la aplicación");
+                    }
+                } else {
+                    Log.e("Error", "No se pudo verificar el correo. Código de respuesta: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiNodeMySqlRespuesta> call, Throwable t) {
+                Log.e("Error", "Error en la solicitud: " + t.getMessage());
+                t.printStackTrace();
+            }
+        });
+    }
+
     private void insertarPreguntaFrecuente(long idUsuario, String pregunta) {
         Map<String, Object> preguntaFrecuente = new HashMap<>();
         preguntaFrecuente.put("pregunta", pregunta);
@@ -141,15 +142,10 @@ public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickLi
                 });
     }
 
-
-    // Método para vaciar los campos EditText
-    private void vaciarCampos() {
-        campoNombre.setText("");  // Limpia el campo de nombre
-        campoCorreo.setText("");  // Limpia el campo de correo
-        campoPregunta.setText("");  // Limpia el campo de pregunta
-    }
-
     private void cargarPreguntasFrecuentes() {
+        Log.d("ala", "Correo a verificar: ");
+        Log.d("ala", "si papu" );
+
         ObtenerPreguntasFrecuentesService obtenerPreguntasFrecuentesService = new ObtenerPreguntasFrecuentesService(getContext());
         obtenerPreguntasFrecuentesService.obtenerPreguntasFrecuentes(new ObtenerPreguntasFrecuentesResponse() {
             @Override
@@ -182,4 +178,9 @@ public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickLi
         });
     }
 
+    private void vaciarCampos() {
+        campoNombre.setText("");
+        campoCorreo.setText("");
+        campoPregunta.setText("");
+    }
 }
