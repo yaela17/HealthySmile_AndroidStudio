@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".gui.gestion.fragment_gestion_paciente_citas">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/gestion_paciente_citas_calendario"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:mcv_calendarMode="month"
+            app:mcv_firstDayOfWeek="monday"
+            app:mcv_selectionColor="@color/calendario_seleccionadoUsuario"
+            app:mcv_selectionMode="single"
+            app:mcv_showOtherDates="all" />
+
+        <ListView
+            android:id="@+id/gestion_paciente_citas_listView_citas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="50dp"/>
+
+    </LinearLayout>
+</FrameLayout>

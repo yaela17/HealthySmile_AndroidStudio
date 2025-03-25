@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.healthysmile.R;
 import com.example.healthysmile.gui.iniciarSesion.login.LogIn;
 import com.example.healthysmile.gui.iniciarSesion.sign_up.Sing_Up;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class InitAplication extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnPaciente,btnEspecialista,btnLogin;
+    MaterialCardView cardPaciente, cardEspecialista;
+    TextView textViewLogin;
     private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
@@ -26,12 +29,13 @@ public class InitAplication extends AppCompatActivity implements View.OnClickLis
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_init_aplication);
 
-        btnPaciente = findViewById(R.id.initAppBtnSignUpPaciente);
-        btnEspecialista = findViewById(R.id.initAppBtnSignUpEspecialista);
-        btnLogin = findViewById(R.id.initAppBtnLogin);
-        btnPaciente.setOnClickListener(this);
-        btnEspecialista.setOnClickListener(this);
-        btnLogin.setOnClickListener(this);
+        cardPaciente = findViewById(R.id.initAppCardSignUpPaciente);
+        cardEspecialista = findViewById(R.id.initAppCardSignUpEspecialista);
+        textViewLogin = findViewById(R.id.initAppTextViewLogin);
+
+        cardPaciente.setOnClickListener(this);
+        cardEspecialista.setOnClickListener(this);
+        textViewLogin.setOnClickListener(this);
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
@@ -48,20 +52,18 @@ public class InitAplication extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        String textoBoton = ((Button)v).getText().toString();
-        if(textoBoton.equals(getString(R.string.texto_boton_paciente))){
-            Intent intentitoMandarPaciente = new Intent(this, Sing_Up.class);
-            intentitoMandarPaciente.putExtra("tipoRegistro","paciente");
-            startActivity(intentitoMandarPaciente);
-        }else
-            if(textoBoton.equals(getString(R.string.texto_boton_especialista))){
-                Intent intentitoMandarEspecialista = new Intent(this,Sing_Up.class);
-                intentitoMandarEspecialista.putExtra("tipoRegistro","especialista");
-                startActivity(intentitoMandarEspecialista);
-            }else
-                if(textoBoton.equals(getString(R.string.texto_boton_iniciarsesion))){
-                    Intent intentitoMandarLogin = new Intent(this, LogIn.class);
-                    startActivity(intentitoMandarLogin);
-                }
+        Intent intent;
+        if (v.getId() == R.id.initAppCardSignUpPaciente) {
+            intent = new Intent(this, Sing_Up.class);
+            intent.putExtra("tipoRegistro", "paciente");
+        } else if (v.getId() == R.id.initAppCardSignUpEspecialista) {
+            intent = new Intent(this, Sing_Up.class);
+            intent.putExtra("tipoRegistro", "especialista");
+        } else if (v.getId() == R.id.initAppTextViewLogin) {
+            intent = new Intent(this, LogIn.class);
+        } else {
+            return;
+        }
+        startActivity(intent);
     }
 }

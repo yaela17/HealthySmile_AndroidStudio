@@ -24,6 +24,7 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/calendario"
                     android:scaleType="centerCrop"
+                    android:contentDescription="@string/content_description_imagen_fondo_consulta_virtual_init"
                     android:alpha="0.5"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -36,9 +37,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="Consultorio \n Digital"
+                        android:text="@string/titulo_consulta_virtual_consultorio_digital"
                         android:textColor="@color/white"
-                        android:textSize="35dp"/>
+                        android:textSize="35sp"/>
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
@@ -56,14 +57,16 @@
             <FrameLayout
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginEnd="20dp">
                 <ImageView
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:scaleType="centerCrop"
                     android:clipToOutline="true"
                     android:background="@drawable/background_image_consulta"
-                    android:src="@drawable/chatbot"/>
+                    android:src="@drawable/chatbot"
+                    android:contentDescription="@string/content_description_imagen_opcion_chatbot"
+                    tools:ignore="UnusedAttribute" />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,14 +77,16 @@
             <FrameLayout
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:layout_marginLeft="20dp">
+                android:layout_marginStart="20dp">
                 <ImageView
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:scaleType="centerCrop"
                     android:clipToOutline="true"
                     android:background="@drawable/background_image_consulta"
-                    android:src="@drawable/dentistaaa"/>
+                    android:src="@drawable/dentistaaa"
+                    android:contentDescription="@string/content_description_imagen_opcion_especialista"
+                    tools:ignore="UnusedAttribute" />
                 <Button
                     android:id="@+id/fragment_consultavirtual_init_btnEspecialista"
                     android:layout_width="wrap_content"
@@ -101,14 +106,16 @@
             <FrameLayout
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginEnd="20dp">
                 <ImageView
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:scaleType="centerCrop"
                     android:clipToOutline="true"
                     android:background="@drawable/background_image_consulta"
-                    android:src="@drawable/cabos"/>
+                    android:src="@drawable/cabos"
+                    android:contentDescription="@string/content_description_imagen_opcion_agendar_cita"
+                    tools:ignore="UnusedAttribute" />
                 <Button
                     android:id="@+id/fragment_consultavirtual_init_btnAgendarCita"
                     android:layout_width="wrap_content"
@@ -120,14 +127,16 @@
             <FrameLayout
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:layout_marginLeft="20dp">
+                android:layout_marginStart="20dp">
                 <ImageView
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:scaleType="centerCrop"
                     android:clipToOutline="true"
                     android:background="@drawable/background_image_consulta"
-                    android:src="@drawable/historial"/>
+                    android:src="@drawable/historial"
+                    android:contentDescription="@string/content_description_imagen_opcion_historial_dental"
+                    tools:ignore="UnusedAttribute" />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

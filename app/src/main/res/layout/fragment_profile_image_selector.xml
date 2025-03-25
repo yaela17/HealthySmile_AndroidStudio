@@ -21,7 +21,8 @@
             android:background="@drawable/custom_circle_image"
             android:scaleType="centerCrop"
             android:clipToOutline="true"
-            android:src="@drawable/default_photo_perfil_especialista" />
+            android:src="@drawable/default_photo_perfil_especialista"
+            tools:ignore="UnusedAttribute" />
 
         <ImageView
             android:id="@+id/profileImageSelectImageIcon"
@@ -34,6 +35,7 @@
             android:scaleType="centerCrop"
             android:clipToOutline="true"
             android:src="@drawable/icon_camera"
-            android:layout_margin="8dp" />
+            android:layout_margin="8dp"
+            tools:ignore="UnusedAttribute" />
     </FrameLayout>
 </FrameLayout>

@@ -22,21 +22,24 @@
             <EditText
                 android:id="@+id/sign_up_verificacion_input_codigo"
                 android:layout_width="match_parent"
+                android:inputType="text"
+                android:autofillHints="none"
+                android:hint="@string/texto_hint_codigo_verificacion"
                 android:layout_height="50dp"
-                />
+                tools:ignore="LabelFor" />
 
             <Button
                 android:id="@+id/sign_up_verificacion_btn_verificar"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:text="Verificar"/>
+                android:text="@string/texto_boton_verificar"/>
 
             <TextView
                 android:id="@+id/sign_up_verificacion_text_view_temporizador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Tiempo restante para verificación : "/>
+                android:text="@string/texto_verificacion_tiempo_restante"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

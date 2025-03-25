@@ -18,27 +18,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/messageInput"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:hint="@string/texto_hint_enviar_mensaje"
             android:background="@drawable/custom_edittext"
             android:padding="8dp"
+            android:inputType="text"
+            android:autofillHints="none"
             style="@style/formBasicInput"
             android:layout_marginEnd="8dp"/>
 
         <Button
             android:id="@+id/sendButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@drawable/custom_circle_image"
             android:foreground="@drawable/icon_enviar"
             android:foregroundGravity="center"
+            android:contentDescription="@string/content_description_boton_enviar_mensaje"
             android:layout_gravity="end"/>
     </LinearLayout>
 </LinearLayout>

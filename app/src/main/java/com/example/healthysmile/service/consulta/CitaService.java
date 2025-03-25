@@ -92,12 +92,10 @@ public class CitaService {
         });
     }
 
-    public void eliminarCita(long idUsuario, String fecha, String hora, ModifyCitaResponseListener listener) {
+    public void eliminarCita(long idCita, ModifyCitaResponseListener listener) {
         JSONObject requestBody = new JSONObject();
         try {
-            requestBody.put("idUsuario", idUsuario);
-            requestBody.put("fecha", fecha);
-            requestBody.put("hora", hora);
+            requestBody.put("idCita", idCita);
         } catch (JSONException e) {
             Log.e("EliminarCita", "Error al crear el JSON", e);
             listener.onError("Error al crear los datos para eliminar la cita");

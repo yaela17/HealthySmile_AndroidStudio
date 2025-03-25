@@ -228,6 +228,14 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
         });
     }
 
+    private List<String> generarListaHorarios() {
+        List<String> horarios = new ArrayList<>();
+        for (int hora = 8; hora <= 16; hora++) {
+            horarios.add(String.format("%02d:00", hora));
+        }
+        return horarios;
+    }
+
 
     @Override
     public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -247,13 +255,6 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
         }
     }
 
-    private List<String> generarListaHorarios() {
-        List<String> horarios = new ArrayList<>();
-        for (int hora = 8; hora <= 16; hora++) {
-            horarios.add(String.format("%02d:00", hora));
-        }
-        return horarios;
-    }
 
     public void crearCita() {
         String fecha = inputDate.getText().toString();
@@ -403,7 +404,7 @@ public class fragment_consulta_citas extends Fragment implements View.OnClickLis
         }
 
         CitaService citaService = new CitaService(getContext());
-        citaService.eliminarCita(idUsuario, fechaSeleccionada, horaSeleccionada, new ModifyCitaResponseListener() {
+        citaService.eliminarCita(idUsuario, new ModifyCitaResponseListener() {
             @Override
             public void onResponse(String mensaje) {
                 Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();

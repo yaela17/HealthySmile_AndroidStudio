@@ -1,6 +1,5 @@
 package com.example.healthysmile.service.extraAndroid;
 
-import static com.example.healthysmile.service.SupabaseFileStorageService.BUCKET_NAME;
 import static com.example.healthysmile.service.SupabaseFileStorageService.SUPABASE_URL;
 
 import android.content.Context;
@@ -12,6 +11,7 @@ import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 import com.example.healthysmile.service.SupabaseFileStorageService;
+import com.example.healthysmile.controller.SubirArchivoResponseListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,7 +38,7 @@ public class ActualizarFotoService {
         SupabaseFileStorageService supabaseFileStorageService = new SupabaseFileStorageService();
 
         // Usamos el método asincrónico para subir el archivo
-        supabaseFileStorageService.subirArchivoEnSegundoPlano(context, file, new SupabaseFileStorageService.SubidaCallback() {
+        supabaseFileStorageService.subirArchivoEnSegundoPlano(context, file, new SubirArchivoResponseListener() {
             @Override
             public void onSubidaExitosa(String fotoUrl) {
                 // Una vez que el archivo ha sido subido, se obtiene la URL

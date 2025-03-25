@@ -6,8 +6,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;  // Asegúrate de importar la clase correcta
 import android.os.Looper;
-import android.util.Log;
-import android.widget.Toast;
+
+import com.example.healthysmile.controller.CargarFotoResponseListener;
+import com.example.healthysmile.controller.SubirArchivoResponseListener;
 
 import okhttp3.*;
 
@@ -24,17 +25,7 @@ public class SupabaseFileStorageService {
 
     private final OkHttpClient client = new OkHttpClient();
 
-    public interface SubidaCallback {
-        void onSubidaExitosa(String fotoUrl);
-        void onError(String error);
-    }
-
-    public interface FotoCallback {
-        void onFotoCargada(Drawable drawable);
-    }
-
-
-    public void subirArchivoSupabase(final File file, final SubidaCallback callback) {
+    public void subirArchivoSupabase(final File file, final SubirArchivoResponseListener callback) {
         String uploadUrl = SUPABASE_URL + "/storage/v1/object/" + BUCKET_NAME + "/" + file.getName();
 
         RequestBody requestBody = new MultipartBody.Builder()
@@ -93,7 +84,7 @@ public class SupabaseFileStorageService {
     }
 
     // Método para cargar foto desde Supabase
-    public void cargarFotoEnSegundoPlano(final Context context, final String fotoUrl, final FotoCallback callback) {
+    public void cargarFotoEnSegundoPlano(final Context context, final String fotoUrl, final CargarFotoResponseListener callback) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable() {
             @Override
@@ -101,7 +92,6 @@ public class SupabaseFileStorageService {
                 try {
                     // Realizamos la descarga de la imagen en segundo plano
                     Drawable drawable = cargarFoto(context, fotoUrl);
-
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
@@ -118,7 +108,7 @@ public class SupabaseFileStorageService {
 
 
 
-    public void subirArchivoEnSegundoPlano(final Context context, final File file, final SubidaCallback callback) {
+    public void subirArchivoEnSegundoPlano(final Context context, final File file, final SubirArchivoResponseListener callback) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable() {
             @Override

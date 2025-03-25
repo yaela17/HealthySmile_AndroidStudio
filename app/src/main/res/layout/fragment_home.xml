@@ -40,21 +40,21 @@
                     android:orientation="vertical"
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="80dp"
+                    android:layout_marginStart="80dp"
                     android:padding="10dp"
                     android:background="@drawable/custom_tittle_text_healthy_home">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Healthy \nSmile"
-                        android:textSize="30dp"
+                        android:text="@string/titulo_fragment_home_healthy_smile"
+                        android:textSize="30sp"
                         android:textColor="@color/color_text"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/color_text"
-                        android:textSize="10dp"
-                        android:text="El futuro del cuidado dental se acerca rápidamente, marcando el comienzo de una neuva era de innovacion digital y transformacion en la salud bucal"/>
+                        android:textSize="11sp"
+                        android:text="@string/texto_fragment_home_titulo_healthy_smile"/>
                 </LinearLayout>
             </FrameLayout>
             <LinearLayout
@@ -68,7 +68,7 @@
                     android:text="Conoce a nuestros especialistas"
                     android:gravity="center"
                     android:textColor="@color/color_text"
-                    android:textSize="20dp"/>
+                    android:textSize="20sp"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewEspecialistasHome"
                     android:layout_width="match_parent"
@@ -95,8 +95,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="¿Pueden los bots \nremplazarar a los\nespecialistas?"
-                            android:textSize="23dp"
-                            android:layout_marginLeft="20dp"
+                            android:textSize="23sp"
+                            android:layout_marginStart="20dp"
                             android:gravity="start"
                             android:textColor="@color/color_text"
                             android:textStyle="bold"/>
@@ -104,9 +104,9 @@
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:text="El futuro del cuidado dental está aquí, marcando una nueva era de innovación digital y automatización. Healthy Smile es el ejemplo perfecto de cómo la tecnología está transformando el sector de la salud bucal. Con Healthy Smile, la automatización permite una gestión eficiente de citas, el monitoreo continuo del historial dental de los pacientes y la entrega de diagnósticos preliminares basados en modelos 3D personalizados. Todo esto contribuye a una experiencia de atención más ágil y precisa, mejorando la satisfacción del paciente mientras permite que los especialistas se centren en lo que más importa: ofrecer cuidados de calidad."
-                            android:textSize="10dp"
+                            android:textSize="11sp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginLeft="20dp"
+                            android:layout_marginStart="20dp"
                             android:gravity="start"
                             android:textColor="@color/color_text"/>
                     </LinearLayout>
@@ -119,15 +119,16 @@
                             android:layout_height="130dp"
                             android:src="@drawable/home_imagen_1"
                             android:scaleType="centerCrop"
-                            android:layout_marginLeft="30dp" />
+                            android:layout_marginStart="30dp" />
                         <ImageView
                             android:layout_width="200dp"
                             android:layout_height="250dp"
                             android:src="@drawable/home_imagen_2"
                             android:scaleType="centerCrop"
-                            android:paddingLeft="50dp"
+                            android:paddingStart="50dp"
+                            android:paddingEnd="50dp"
                             android:layout_marginTop="15dp"
-                            android:layout_marginLeft="30dp" />
+                            android:layout_marginStart="30dp" />
                     </LinearLayout>
                 </LinearLayout>
                 <ImageView
@@ -148,7 +149,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Consulta Virtual"
-                            android:textSize="23dp"
+                            android:textSize="23sp"
                             android:gravity="start"
                             android:textColor="@color/color_text"
                             android:textStyle="bold"/>
@@ -161,7 +162,7 @@ Funcionamiento
 Conéctate: Habla directamente con un especialista desde la comodidad de tu hogar.
 Recibe tu Diagnóstico: Obtén resultados inmediatos y recomendaciones.
  Botón: Explorar más sobre consultas virtuales"
-                            android:textSize="10dp"
+                            android:textSize="11sp"
                             android:layout_marginTop="10dp"
                             android:gravity="start"
                             android:textColor="@color/color_text"/>
@@ -170,7 +171,7 @@ Recibe tu Diagnóstico: Obtén resultados inmediatos y recomendaciones.
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Explorar más sobre consultas virtuales  "
-                            android:textSize="7sp"
+                            android:textSize="11sp"
                             android:textColor="@color/white"
                             android:backgroundTint="#7b904b"/>
                     </LinearLayout>
@@ -205,14 +206,14 @@ Recibe tu Diagnóstico: Obtén resultados inmediatos y recomendaciones.
                                 android:text="Educación"
                                 android:textColor="@color/color_text"
                                 android:textStyle="bold"
-                                android:textSize="20dp"
+                                android:textSize="20sp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="30dp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Dental"
-                                android:textSize="35dp"
+                                android:textSize="35sp"
                                 android:textColor="@color/color_text"
                                 android:layout_gravity="center"
                                 android:layout_margin="5dp" />
@@ -220,7 +221,7 @@ Recibe tu Diagnóstico: Obtén resultados inmediatos y recomendaciones.
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Puedes acceder a recursos educativos sobre salud bucal, incluyendo guías, modelos 3D, hábitos y consejos para tratar tu problema, lo que te ayudará a tomar decisiones informadas sobre tu salud dental."
-                                android:textSize="10dp"
+                                android:textSize="11sp"
                                 android:textColor="@color/color_text"
                                 android:layout_gravity="center"
                                 android:padding="10dp"
@@ -230,7 +231,7 @@ Recibe tu Diagnóstico: Obtén resultados inmediatos y recomendaciones.
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Explorar más sobre educación dental"
-                                android:textSize="8dp"
+                                android:textSize="11sp"
                                 android:layout_margin="5dp"
                                 android:textColor="@color/white"
                                 android:backgroundTint="#478ac9"/>
@@ -251,14 +252,14 @@ Recibe tu Diagnóstico: Obtén resultados inmediatos y recomendaciones.
                                 android:text="Tienda\nVirtual"
                                 android:textColor="@color/color_text"
                                 android:textStyle="bold"
-                                android:textSize="30dp"
+                                android:textSize="30sp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="30dp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Explora nuestra tienda, añade productos al carrito, sube tu receta médica si es necesario y recibe tu pedido en casa."
-                                android:textSize="10dp"
+                                android:textSize="10sp"
                                 android:textColor="@color/color_text"
                                 android:layout_gravity="center"
                                 android:padding="10dp"
@@ -299,14 +300,14 @@ Recibe tu Diagnóstico: Obtén resultados inmediatos y recomendaciones.
                                 android:text="Ayuda y\nSoporte"
                                 android:textColor="#1e3861"
                                 android:textStyle="bold"
-                                android:textSize="30dp"
+                                android:textSize="30sp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="30dp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Puedes acceder a nuestra sección de Ayuda y Soporte para encontrar preguntas frecuentes, asistencia técnica, que te ayudarán a resolver dudas sobre la plataforma, consultas virtuales y la gestión de citas o compras."
-                                android:textSize="10dp"
+                                android:textSize="10sp"
                                 android:textColor="@color/color_text"
                                 android:layout_gravity="center"
                                 android:padding="10dp"
@@ -315,7 +316,7 @@ Recibe tu Diagnóstico: Obtén resultados inmediatos y recomendaciones.
                                 android:id="@+id/btnHomeAyudaYSoporte"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Obtener ayuda"
+                                android:text="@string/texto_boton_obtener_ayuda"
                                 android:layout_margin="5dp"
                                 android:textColor="@color/white"
                                 android:backgroundTint="#478ac9"/>

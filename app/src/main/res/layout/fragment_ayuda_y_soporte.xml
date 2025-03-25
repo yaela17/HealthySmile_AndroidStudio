@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context=".gui.ayudaYSoporte.fragment_ayuda_y_soporte">
 
-  <androidx.core.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -13,42 +13,36 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Primer LinearLayout con FrameLayout y contenido de la imagen y texto -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <FrameLayout
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:src="@drawable/sp3"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/content_description_imagen_fondo_preguntas_frecuentes"
+                    android:alpha="0.5" />
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/sp3"
-                        android:scaleType="centerCrop"
-                        android:alpha="0.5" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="Ayuda y Soporte"
-                            android:textColor="@color/white"
-                            android:textSize="35dp" />
-                    </LinearLayout>
-                </FrameLayout>
+                        android:gravity="center"
+                        android:text="@string/label_menu_ayudaysoporte"
+                        android:textColor="@color/white"
+                        android:textSize="35sp" />
+                </LinearLayout>
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,13 +55,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Preguntas frecuentes"
-                    android:textSize="30dp" />
+                    android:text="@string/titulo_preguntas_frecuentes"
+                    android:textSize="30sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:src="@drawable/sp2"
+                    android:contentDescription="@string/content_description_imagen_preguntas_frecuentes"
                     android:scaleType="fitCenter" />
 
                 <ExpandableListView
@@ -88,144 +83,143 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <FrameLayout
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1000dp">
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/linea_de_color" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_marginBottom="50dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/linea_de_color" />
+                <ImageView
+                    android:layout_width="330dp"
+                    android:layout_height="450dp"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingEnd="123dp"
+                    android:src="@drawable/sp1"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/content_description_imagen_enviar_pregunta_frecuente"
+                    tools:ignore="RtlSymmetry" />
 
-                    <ImageView
-                        android:layout_width="330dp"
-                        android:layout_height="450dp"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="123dp"
-                        android:src="@drawable/sp1"
-                        android:scaleType="centerCrop" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:padding="20dp"
+                    android:layout_marginBottom="45dp"
+                    android:background="@drawable/background_form_frecuent_question"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titulo_contactenos"
+                        android:textSize="30sp"
+                        android:textColor="@color/color_text"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/color_text"
+                        android:text="@string/texto_campo_nombre" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:padding="20dp"
-                        android:layout_marginBottom="45dp"
-                        android:background="@drawable/background_form_frecuent_question"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Contáctenos"
-                            android:textSize="30dp"
+                        <EditText
+                            android:id="@+id/formPreguntaFrecuenteNombre"
+                            android:layout_width="250dp"
+                            android:layout_height="48dp"
+                            android:hint="@string/texto_hint_campo_nombre"
                             android:textColor="@color/color_text"
-                            android:layout_gravity="center"/>
+                            android:background="@android:color/transparent"
+                            android:gravity="start|top"
+                            android:autofillHints="name"
+                            android:inputType="text"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:textSize="18dp"
-                            android:textColor="@color/color_text"
-                            android:text="@string/texto_campo_nombre" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginTop="20dp">
-
-                            <EditText
-                                android:id="@+id/formPreguntaFrecuenteNombre"
-                                android:layout_width="250dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:hint="@string/texto_hint_campo_nombre"
-                                android:textColor="@color/color_text"
-                                android:background="@android:color/transparent"
-                                android:gravity="start|top"
-                                android:inputType="text"/>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="3dp"
-                                android:background="@color/color_text" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/color_text"
-                            android:textSize="18dp"
-                            android:text="@string/texto_campo_correo" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingBottom="20dp"
-                            android:layout_marginTop="20dp">
-                            <EditText
-                                android:id="@+id/formPreguntaFrecuenteCorreo"
-                                android:layout_width="250dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:hint="@string/texto_hint_campo_correo"
-                                android:textColor="@color/color_text"
-                                android:background="@android:color/transparent"
-                                android:gravity="start|top"
-                                android:inputType="text" />
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="3dp"
-                                android:background="@color/color_text" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/color_text"
-                            android:textSize="18dp"
-                            android:text="@string/texto_campo_mensaje" />
-
-                        <LinearLayout
+                        <View
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginTop="20dp">
-
-                            <EditText
-                                android:id="@+id/formPreguntaFrecuentePregunta"
-                                android:layout_width="match_parent"
-                                android:layout_height="150dp"
-                                android:layout_marginTop="10dp"
-                                android:hint="@string/texto_hint_campo_mensaje"
-                                android:textColor="@color/color_text"
-                                android:background="@android:color/transparent"
-                                android:gravity="start|top"
-                                android:inputType="textMultiLine" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="3dp"
-                                android:background="@color/color_text" />
-                        </LinearLayout>
-
-                        <Button
-                            android:id="@+id/formPreguntaFrecuenteBtnEnviar"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="30dp"
-                            android:text="ENVIAR"
-                            android:textSize="18sp"
-                            android:textColor="@color/color_text"
-                            android:backgroundTint="@color/color_principal_clarote" />
+                            android:layout_height="3dp"
+                            android:background="@color/color_text" />
                     </LinearLayout>
-                </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_text"
+                        android:textSize="18sp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/texto_campo_correo" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="20dp"
+                        android:layout_marginTop="10dp">
+                        <EditText
+                            android:id="@+id/formPreguntaFrecuenteCorreo"
+                            android:layout_width="250dp"
+                            android:layout_height="48dp"
+                            android:hint="@string/texto_hint_campo_correo"
+                            android:textColor="@color/color_text"
+                            android:background="@android:color/transparent"
+                            android:gravity="start|top"
+                            android:autofillHints="emailAddress"
+                            android:inputType="text" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:background="@color/color_text" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_text"
+                        android:textSize="18sp"
+                        android:text="@string/texto_campo_mensaje" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="20dp">
+
+                        <EditText
+                            android:id="@+id/formPreguntaFrecuentePregunta"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginTop="10dp"
+                            android:hint="@string/texto_hint_campo_mensaje"
+                            android:textColor="@color/color_text"
+                            android:background="@android:color/transparent"
+                            android:gravity="start|top"
+                            android:autofillHints="none"
+                            android:inputType="textMultiLine" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:background="@color/color_text" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/formPreguntaFrecuenteBtnEnviar"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="30dp"
+                        android:text="@string/texto_boton_enviar"
+                        android:textSize="18sp"
+                        android:textColor="@color/color_text"
+                        android:backgroundTint="@color/color_principal_clarote" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

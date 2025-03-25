@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -18,7 +19,9 @@
             android:src="@drawable/default_photo_perfil_especialista"
             android:background="@drawable/custom_circle_image"
             android:scaleType="centerCrop"
-            android:clipToOutline="true" />
+            android:clipToOutline="true"
+            android:contentDescription="@string/content_description_imagen_foto_perfil_especialista"
+            tools:ignore="UnusedAttribute" />
 
         <LinearLayout
             android:layout_width="250dp"
@@ -30,16 +33,16 @@
                 android:id="@+id/plantillaBorrarEspecialistaNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ejemplo nombre Especialista"
-                android:textSize="15dp"
+                android:text="@string/texto_plantilla_especialista_list_chat_ejemplo_nombre_especialista"
+                android:textSize="15sp"
                 android:textColor="@color/color_text" />
 
             <TextView
                 android:id="@+id/plantillaBorrarEspecialistaEspecialidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ejemplo especialidad Especialista"
-                android:textSize="10dp"
+                android:text="@string/texto_plantilla_especialista_list_chat_ejemplo_especialidad_especialista"
+                android:textSize="11sp"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/color_text" />
 
@@ -47,8 +50,8 @@
                 android:id="@+id/plantillaBorrarEspecialistaDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ejemplo descripcion Especialista"
-                android:textSize="10dp"
+                android:text="@string/texto_plantilla_especialista_list_chat_ejemplo_descripcion_especialista"
+                android:textSize="11sp"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/color_text" />
         </LinearLayout>
@@ -59,6 +62,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:src="@drawable/icon_delete"
+            android:contentDescription="@null"
             app:tint="@android:color/holo_red_dark" />
     </LinearLayout>
 </LinearLayout>

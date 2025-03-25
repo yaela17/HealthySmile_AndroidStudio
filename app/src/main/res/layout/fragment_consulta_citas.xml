@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <!-- MaterialCalendarView -->
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
@@ -27,12 +28,13 @@
             android:id="@+id/ConsultaCitaInputDate"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:inputType="none"
+            android:inputType="date"
             android:clickable="true"
             android:focusable="true"
-            android:hint="(YY:MM:DD)"
-            android:drawableRight="@drawable/icon_calendary"
-            android:layout_marginLeft="105dp"
+            android:hint="@string/texto_hint_formato_fecha"
+            android:drawableEnd="@drawable/icon_calendary"
+            android:autofillHints="none"
+            android:layout_marginStart="105dp"
             android:layout_marginTop="20dp"/>
 
         <Spinner
@@ -41,7 +43,8 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/custom_edittext"
-            android:paddingLeft="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
             android:textColor="@color/color_azul_acero"
             android:layout_margin="10dp"/>
 
@@ -52,7 +55,9 @@
             android:layout_margin="20dp"
             android:drawablePadding="8dp"
             android:gravity="start|top"
-            android:hint="Motivo cita"
+            android:hint="@string/texto_hint_motivo_cita"
+            android:inputType="text"
+            android:autofillHints="none"
             android:paddingStart="20dp"
             android:paddingTop="20dp"
             android:paddingEnd="20dp"/>
@@ -63,17 +68,19 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/custom_edittext"
-            android:paddingLeft="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
             android:textColor="@color/color_azul_acero"
             android:layout_margin="10dp"/>
 
 
         <Button
             android:id="@+id/ConsultaCitasbtnGuardarCita"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:text="CREAR"
+            android:text="@string/texto_boton_crear"
+            android:layout_gravity="center_horizontal"
             android:paddingStart="10dp"
             android:paddingEnd="20dp"
             android:layout_margin="10dp"/>

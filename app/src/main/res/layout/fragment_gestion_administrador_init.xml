@@ -3,12 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.gestion.fragment_gestion_administrador_init">
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".gui.gestion.fragment_gestion_init">
 
-    <ListView
-        android:id="@+id/consultaListViewBorrarEspecialistas"
+
+    <FrameLayout
+        android:id="@+id/frame_gestion_option_bottom_navigation_view_selected"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_gestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        app:itemPaddingBottom="20dp"
+        app:itemIconTint="@color/color_purpura_oscuro"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/menu_bottom_nav_administrador"
+        app:elevation="8dp"
+        app:labelVisibilityMode="labeled"
+        app:itemHorizontalTranslationEnabled="true"
         />
 
 </FrameLayout>

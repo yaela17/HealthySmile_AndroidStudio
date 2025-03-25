@@ -26,7 +26,7 @@
                 android:text="@string/titulo_sign_up_paciente_registroespecialista"
                 android:textAlignment="center"
                 android:textColor="@color/color_azul_medianoche"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -35,10 +35,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
-                android:drawableLeft="@drawable/icon_person"
+                android:drawableStart="@drawable/icon_person"
                 android:drawableTint="@color/color_azul_polvo"
                 android:hint="@string/texto_hint_campo_nombre"
                 android:inputType="textPersonName|textAutoCorrect|textAutoComplete"
+                android:autofillHints="name"
                 android:textColor="@color/color_azul_acero" />
 
             <EditText
@@ -48,10 +49,11 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/icon_email"
+                android:drawableStart="@drawable/icon_email"
                 android:drawableTint="@color/color_azul_polvo"
                 android:hint="@string/texto_hint_correo_electronico"
                 android:inputType="textWebEmailAddress|textAutoCorrect|textAutoComplete"
+                android:autofillHints="emailAddress"
                 android:textColor="@color/color_azul_acero"/>
 
             <EditText
@@ -61,12 +63,13 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/icon_lock"
+                android:drawableStart="@drawable/icon_lock"
                 android:drawableTint="@color/color_azul_polvo"
-                android:drawableRight="@drawable/icon_visible_off"
+                android:drawableEnd="@drawable/icon_visible_off"
                 android:hint="@string/texto_hint_contraseña"
                 android:importantForAccessibility="yes"
                 android:inputType="textPassword"
+                android:autofillHints="password"
                 android:textColor="@color/color_azul_acero"/>
 
             <EditText
@@ -76,10 +79,11 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/icon_cedulaprofesional"
+                android:drawableStart="@drawable/icon_cedulaprofesional"
                 android:drawableTint="@color/color_azul_polvo"
                 android:hint="@string/texto_hint_cedulaprofesional"
                 android:inputType="textShortMessage|textAutoCorrect|textAutoComplete"
+                android:autofillHints="none"
                 android:textColor="@color/color_azul_acero" />
 
             <Spinner
@@ -89,7 +93,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
                 android:drawablePadding="8dp"
-                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:textColor="@color/color_azul_acero"/>
 
             <EditText
@@ -104,11 +109,13 @@
                 android:paddingStart="20dp"
                 android:paddingTop="20dp"
                 android:paddingEnd="20dp"
+                android:autofillHints="none"
+                android:inputType="text"
                 android:textColor="@color/color_azul_acero"/>
 
             <Button
                 android:id="@+id/SignUpEspecialistaBtnRegistrarse"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/color_azul_medianoche"

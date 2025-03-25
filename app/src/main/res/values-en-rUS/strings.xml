@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">HealthySmile</string>
-    <!-- -->
+    <!-- User Types -->
+    <string name="tipo_usuario_paciente">Patient</string>
+    <string name="tipo_usuario_especialista">Specialist</string>
+    <string name="tipo_usuario_administrador">Administrator</string>
 
+    <!-- Actions the user can perform -->
+    <string name="accion_tipo_usuario_paciente_1" >Action 1</string>
+    <string name="accion_tipo_usuario_paciente_2">Action2</string>
+
+    <string name="accion_tipo_usuario_especialista_1">Action 1</string>
+    <string name="accion_tipo_usuario_especialista_2">Action2</string>
     <!--General texts-->
 
     <!--Specialties-->
@@ -26,6 +35,22 @@
     <string name="opcion_combo_especialidad_oclusion">Occlusion</string>
     <string name="opcion_combo_especialidad_sistemas_dentales_digitales">Digital Dental Systems</string>
     <string name="opcion_combo_especialidad_higiene_dental">Dental Hygiene</string>
+
+    <string name="label_menu_fragment_gingivitis">Gingivitis</string>
+    <string name="label_menu_fragment_caries_dental">Tooth Decay</string>
+    <string name="label_menu_fragment_cancer_bucal">Oral Cancer</string>
+    <string name="label_menu_fragment_traumatismos_bucodentales">Dental Trauma</string>
+    <string name="label_menu_fragment_traumatismos_halitosis">Halitosis</string>
+    <string name="label_menu_fragment_traumatismos_sensibilidad_dental">Tooth Sensitivity</string>
+    <string name="label_menu_fragment_traumatismos_implantes">Implants</string>
+    <string name="label_menu_fragment_traumatismos_periodontitis">Periodontitis</string>
+    <string name="texto_boton_crear">Create</string>
+    <string name="texto_boton_obtener_ayuda">Get Help</string>
+    <string name="texto_boton_verificar">Verify</string>
+    <string name="texto_hint_motivo_cita">Motive cita</string>
+    <string name="texto_hint_formato_fecha">(YY:MM:DD)</string>
+    <string name="texto_hint_codigo_verificacion">Verification Code</string>
+
 
     <!--Menu labels-->
     <string name="label_menu_inicio">Home</string>
@@ -71,9 +96,19 @@
 
     <!--Activity init application-->
     <!--Titles-->
-    <string name="titulo_bienvenida_healthySmile">Welcome to HealthySmile</string>
+    <string name="titulo_bienvenida">Welcome to</string>
+
     <!--Normal texts-->
-    <string name="texto_que_deseas_hacer_hoy">What would you like to do today?</string>
+    <string name="texto_que_deseas_hacer_hoy">What do you want to do today?</string>
+    <string name="texto_quieres_registrate_como">Do you want to register as?</string>
+    <string name="texto_ya_tienes_una_cuenta">Do you already have an account?</string>
+
+    <!--Fragment home-->
+    <string name="titulo_fragment_home_healthy_smile">Healthy \n Smile</string>
+    <string name="texto_fragment_home_titulo_healthy_smile">The future of dental care is rapidly approaching, ushering in a new era of digital innovation and transformation in oral health.</string>
+
+    <!--Fragment verification-->
+    <string name="texto_verificacion_tiempo_restante">Time remaining for verification:</string>
 
     <!--Activity SignUp-->
     <!--Titles-->
@@ -86,6 +121,8 @@
     <string name="titulo_ayudaysoporte_consultorio_part2">Service</string>
     <string name="titulo_ayudaysoporte_consultorio_part3">Complete</string>
     <string name="titulo_preguntas_frecuentes">FREQUENTLY ASKED QUESTIONS</string>
+    <string name="titulo_contactenos">Contact Us</string>
+
     <string name="subtitulo_citas">Appointments</string>
     <!--Texts-->
     <string name="texto_descripcion_preguntas_frecuentes">Find answers to the most common questions about our services. If you don’t see your question here, send it to us, and we’ll gladly assist you.</string><![CDATA[
@@ -97,6 +134,46 @@
     <string name="titulo_consulta_consulta_part2">Service</string>
     <string name="titulo_consulta_consulta_part3">Complete</string>
     <string name="titulo_consulta_nuestrosservicios">Our Services</string>
+    <string name="titulo_consulta_virtual_consultorio_digital">Consultorio \n Digital</string>
+
+    <!-- Specialist list chat template -->
+    <string name="texto_plantilla_especialista_list_chat_ejemplo_nombre_especialista">Example Specialist Name</string>
+    <string name="texto_plantilla_especialista_list_chat_ejemplo_especialidad_especialista">Example Specialist Specialty</string>
+    <string name="texto_plantilla_especialista_list_chat_ejemplo_descripcion_especialista">Example Specialist Description</string>
+
+    <!-- Patient list chat template -->
+    <string name="texto_plantilla_paciente_list_chat_ejemplo_nombre_paciente">Example Patient Name</string>
+    <string name="texto_plantilla_paciente_list_chat_ejemplo_correo_paciente">Example Patient Email</string>
+
+    <!-- Specialist information template -->
+    <string name="texto_plantilla_informacion_especialista_nombre">German Castelazo Rico</string>
+    <string name="texto_plantilla_informacion_especialista_especialidad">Specialty</string>
+    <string name="texto_plantilla_informacion_especialista_cedula">License: 12345678</string>
+    <string name="texto_plantilla_informacion_especialista_descripcion">This is an example of how a specialist\'s description is displayed, looking neat and professional.</string>
+
+    <!-- FAQ dropdown -->
+    <string name="desplegado_pregunta_frecuente_texto_respuesta">Answer</string>
+    <string name="desplegado_pregunta_frecuente_texto_escriba_la_respuesta">Write the answer</string>
+
+    <!-- Modify patient appointment form -->
+
+    <!-- Content description images -->
+    <string name="content_description_imagen_diente_inicio">Central image when starting the application</string>
+    <string name="content_description_imagen_photo_perfil_especialista_default">Default profile picture for specialists</string>
+    <string name="content_description_imagen_photo_perfil_paciente_default">Default profile picture for patients</string>
+    <string name="content_description_imagen_foto_perfil_especialista" >This image contains the specialist\'s profile picture or the default one if none is set</string>
+    <string name="content_description_imagen_foto_perfil_paciente" >This image contains the patient\'s profile picture or the default one if none is set</string>
+    <string name="content_description_imagen_arrow_back">Arrow to go back</string>
+    <string name="content_description_imagen_fondo_preguntas_frecuentes">This image is the main background of the FAQ fragment</string>
+    <string name="content_description_imagen_preguntas_frecuentes">This image is placed above the frequently asked questions</string>
+    <string name="content_description_imagen_enviar_pregunta_frecuente">This image is placed above the FAQ submission form</string>
+    <string name="content_description_boton_enviar_mensaje">Button to send message</string>
+    <string name="content_description_imagen_fondo_consulta_virtual_init">This image is the main background of the virtual consultation init fragment</string>
+    <string name="content_description_imagen_opcion_chatbot">This image represents the chatbot option</string>
+    <string name="content_description_imagen_opcion_especialista">This image represents the specialist chat option</string>
+    <string name="content_description_imagen_opcion_agendar_cita">This image represents the appointment scheduling option</string>
+    <string name="content_description_imagen_opcion_historial_dental">This image represents the dental history option</string>
+
 
     <!--Placeholder Text-->
     <string name="hello_blank_fragment">Hello blank fragment</string>

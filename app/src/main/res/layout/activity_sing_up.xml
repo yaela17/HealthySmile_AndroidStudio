@@ -15,7 +15,8 @@
         android:layout_height="50dp"
         android:layout_gravity="start"
         android:layout_marginTop="50dp"
-        android:src="@drawable/icon_arrow_back"/>
+        android:src="@drawable/icon_arrow_back"
+        android:contentDescription="@string/content_description_imagen_arrow_back"/>
 
     <FrameLayout
         android:id="@+id/signUpFragmentContainer"

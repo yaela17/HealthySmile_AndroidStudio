@@ -41,6 +41,10 @@
     <color name="color_azul_marino">#013A5D</color>
     <color name="color_turquesa_oscuro">#005F73</color>
 
+    <!--Colores generales-->
+    <color name="gris_antracita">#333333</color>
+
+
     <!--Colores buenos ahora si (Claro)-->
     <color name="color_azul_alice">#E7F3FA</color>
     <color name="color_azul_polvo">#B0D6E6</color>
@@ -59,5 +63,8 @@
     <color name="calendario_seleccionadoUsuario">#D1A6E1</color>
     <color name="calendario_ocupadasOtrosUsuarios">#F1A7C1</color>
     <color name="calendario_inhabil">#cfcfc4</color>
+
+    <!--Colores para las plantillas-->
+    <color name="plantilla_especialista_list_chat_texto_color">@color/gris_antracita</color>
 
 </resources>

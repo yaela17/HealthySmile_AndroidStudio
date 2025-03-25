@@ -44,6 +44,12 @@ public class SharedPreferencesHelper {
         editor.apply();
     }
 
+    public long obtenerIdUsuario() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", context.MODE_PRIVATE);
+        return sharedPreferences.getLong("idUsuario", -1);
+    }
+
+
     public void guardarIdEspecialista(long idEspecialista){
         SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">HealthySmile</string>
-    <!-- -->
+
+    <!--Tipos de usuario-->
+    <string name="tipo_usuario_paciente">Paciente</string>
+    <string name="tipo_usuario_especialista">Especialista</string>
+    <string name="tipo_usuario_administrador">Administrador</string>
+
+    <!--Acciones que puede hacer el usuario-->
+    <string name="accion_tipo_usuario_paciente_1">Acción1</string>
+    <string name="accion_tipo_usuario_paciente_2">Acción2</string>
+
+    <string name="accion_tipo_usuario_especialista_1">Acción1</string>
+    <string name="accion_tipo_usuario_especialista_2">Acción2</string>
 
     <!--Textos generales-->
 
@@ -39,14 +50,14 @@
     <string name="label_menu_consultavirtualespecialista">Especialista</string>
     <string name="label_menu_configuracion">Configuracion</string>
 
-    <string name="label_menu_fragment_gingivitis" tools:ignore="MissingTranslation">Gingivitis</string>
-    <string name="label_menu_fragment_caries_dental" tools:ignore="MissingTranslation">Caries Dental</string>
-    <string name="label_menu_fragment_cancer_bucal" tools:ignore="MissingTranslation">Cancer Bucal</string>
-    <string name="label_menu_fragment_traumatismos_bucodentales" tools:ignore="MissingTranslation">Traumatismos Bucodentales</string>
-    <string name="label_menu_fragment_traumatismos_halitosis" tools:ignore="MissingTranslation">Halitosis</string>
-    <string name="label_menu_fragment_traumatismos_sensibilidad_dental" tools:ignore="MissingTranslation">Sensibilidad dental</string>
-    <string name="label_menu_fragment_traumatismos_implantes" tools:ignore="MissingTranslation">Implantes</string>
-    <string name="label_menu_fragment_traumatismos_periodontitis" tools:ignore="MissingTranslation">Periodontitis</string>
+    <string name="label_menu_fragment_gingivitis">Gingivitis</string>
+    <string name="label_menu_fragment_caries_dental" >Caries Dental</string>
+    <string name="label_menu_fragment_cancer_bucal" >Cancer Bucal</string>
+    <string name="label_menu_fragment_traumatismos_bucodentales" >Traumatismos Bucodentales</string>
+    <string name="label_menu_fragment_traumatismos_halitosis" >Halitosis</string>
+    <string name="label_menu_fragment_traumatismos_sensibilidad_dental">Sensibilidad dental</string>
+    <string name="label_menu_fragment_traumatismos_implantes">Implantes</string>
+    <string name="label_menu_fragment_traumatismos_periodontitis">Periodontitis</string>
 
 
     <!--texto_boton -->
@@ -61,6 +72,9 @@
     <string name="texto_boton_chatbot">Chatbot</string>
     <string name="texto_boton_agendarcita">Agendar cita</string>
     <string name="texto_boton_historialdental">Historial dental</string>
+    <string name="texto_boton_crear">Crear</string>
+    <string name="texto_boton_obtener_ayuda">Obtener ayuda</string>
+    <string name="texto_boton_verificar">Verificar</string>
 
     <!-- texto_campo -->
     <string name="texto_campo_nombre">Nombre</string>
@@ -76,6 +90,9 @@
     <string name="texto_hint_enviar_mensaje">Escribe un mensaje</string>
     <string name="texto_hint_cedulaprofesional">Cedula profesional</string>
     <string name="texto_hint_descripcion">Descripcion</string>
+    <string name="texto_hint_motivo_cita">Motivo cita</string>
+    <string name="texto_hint_formato_fecha">(YY:MM:DD)</string>
+    <string name="texto_hint_codigo_verificacion">Codigo de verificacion</string>
 
     <!-- titulo_toolbar -->
     <string name="titulo_toolbar_configuracion">Configuracion</string>
@@ -83,9 +100,20 @@
 
     <!--Activity init aplication-->
     <!--Titulos-->
-    <string name="titulo_bienvenida_healthySmile">Bienvenido a HealthySmile</string>
+    <string name="titulo_bienvenida">Bienvenido a</string>
+
     <!--Textos normales-->
     <string name="texto_que_deseas_hacer_hoy">¿Que deseas hacer hoy?</string>
+    <string name="texto_quieres_registrate_como">¿Quieres registrarte como?</string>
+    <string name="texto_ya_tienes_una_cuenta">¿Ya tienes una cuenta?</string>
+
+    <!--Fragment home-->
+    <string name="titulo_fragment_home_healthy_smile">Healthy \n Smile</string>
+    <string name="texto_fragment_home_titulo_healthy_smile">El futuro del cuidado dental se acerca rápidamente, marcando el comienzo de una nueva era de innovacion digital y transformacion en la salud bucal</string>
+
+    <!--Fragment verificacion-->
+    <string name="texto_verificacion_tiempo_restante">Tiempo restante para verificacion : </string>
+
 
     <!--Activity LogIn-->
     <!--titulos-->
@@ -120,7 +148,8 @@
     <string name="titulo_ayudaysoporte_consultorio_part1">Consultorio</string>
     <string name="titulo_ayudaysoporte_consultorio_part2">de servicio</string>
     <string name="titulo_ayudaysoporte_consultorio_part3">completo</string>
-    <string name="titulo_preguntas_frecuentes">PREGUNTAS FRECUENTES</string>
+    <string name="titulo_preguntas_frecuentes">Preguntas frecuentes</string>
+    <string name="titulo_contactenos">Contáctenos</string>
     <string name="subtitulo_citas">Citas</string>
     <!--textos-->
     <string name="texto_descripcion_preguntas_frecuentes">encuentra respuestas a las preguntas más comunes sobre nuestros servicios. Si no ves tu pregunta aquí, envianosla y con gusto te atenderemos</string>
@@ -134,11 +163,52 @@
 
     <!--fragment_consulta_virtual_init-->
     <!--Titulos-->
+    <string name="titulo_consulta_virtual_consultorio_digital">Consultorio \n Digital</string>
     <string name="titulo_consulta_consulta_part1">Consultorio</string>
     <string name="titulo_consulta_consulta_part2">de servicio</string>
     <string name="titulo_consulta_consulta_part3">completo</string>
     <string name="titulo_consulta_nuestrosservicios">Nuestros servicios</string>
     <!--textos-->
+
+
+    <!--Plantilla especialista list chat -->
+    <string name="texto_plantilla_especialista_list_chat_ejemplo_nombre_especialista">Ejemplo nombre Especialista</string>
+    <string name="texto_plantilla_especialista_list_chat_ejemplo_especialidad_especialista">Ejemplo especialidad Especialista</string>
+    <string name="texto_plantilla_especialista_list_chat_ejemplo_descripcion_especialista">Ejemplo descripcion Especialista</string>
+
+    <!--Plantilla paciente list chat -->
+    <string name="texto_plantilla_paciente_list_chat_ejemplo_nombre_paciente">Ejemplo nombre Paciente</string>
+    <string name="texto_plantilla_paciente_list_chat_ejemplo_correo_paciente">Ejemplo correo Paciente</string>
+
+    <!--Plantilla informacion especialista -->
+    <string name="texto_plantilla_informacion_especialista_nombre">German Castelazo Rico</string>
+    <string name="texto_plantilla_informacion_especialista_especialidad">Especialidad</string>
+    <string name="texto_plantilla_informacion_especialista_cedula">Cedula : 12345678</string>
+    <string name="texto_plantilla_informacion_especialista_descripcion">Este es un ejemplo de como se va acomodando la descripcion de un espacialista asi bien papulince cwn</string>
+
+    <!--Desplegado pregunta frecuente-->
+    <string name="desplegado_pregunta_frecuente_texto_respuesta">Respuesta</string>
+    <string name="desplegado_pregunta_frecuente_texto_escriba_la_respuesta">Escriba la respuesta</string>
+
+    <!--Formulario modificar cita paciente-->
+
+    <!--Content description imagenes-->
+    <string name="content_description_imagen_diente_inicio">Imagen central al iniciar la aplicación</string>
+    <string name="content_description_imagen_photo_perfil_especialista_default">Foto de perfil predeterminada para el especialista</string>
+    <string name="content_description_imagen_photo_perfil_paciente_default">Foto de perfil predeterminada para el paciente</string>
+    <string name="content_description_imagen_foto_perfil_especialista">Esta imagen contiene la foto de perfil del especialista o la predeterminada en caso de no tener</string>
+    <string name="content_description_imagen_foto_perfil_paciente">Esta imagen contiene la foto de perfil del paciente o la predeterminada en caso de no tener</string>
+    <string name="content_description_imagen_arrow_back">Flecha para retroceder una accion</string>
+    <string name="content_description_imagen_fondo_preguntas_frecuentes">Esta imagen es el fondo principal del fragmento preguntas frecuentes</string>
+    <string name="content_description_imagen_preguntas_frecuentes">Esta imagen se encuentra encima de las preguntas frecuentes</string>
+    <string name="content_description_imagen_enviar_pregunta_frecuente">Esta imagen se encuentra encima del formulario para pregunta frecuente</string>
+    <string name="content_description_boton_enviar_mensaje">Boton para enviar mensaje</string>
+    <string name="content_description_imagen_fondo_consulta_virtual_init">Esta imagen es el fondo principal del fragmento consulta virtual init</string>
+    <string name="content_description_imagen_opcion_chatbot">Esta imagen es para la opcion del chatbot</string>
+    <string name="content_description_imagen_opcion_especialista">Esta imagen es para la opcion del chat</string>
+    <string name="content_description_imagen_opcion_agendar_cita">Esta imagen es para la opcion de citas</string>
+    <string name="content_description_imagen_opcion_historial_dental">Esta imagen es para la opcion del historial de citas</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

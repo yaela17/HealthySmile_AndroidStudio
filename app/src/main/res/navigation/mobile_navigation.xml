@@ -154,7 +154,7 @@
         tools:layout="@layout/fragment_tienda_virtual_init" />
     <fragment
         android:id="@+id/nav_gestionAdmin"
-        android:name="com.example.healthysmile.gui.gestion.fragment_gestion_administrador_init"
+        android:name="com.example.healthysmile.gui.gestion.fragment_gestion_init"
         android:label="Administracion"
         tools:layout="@layout/fragment_gestion_administrador_init" />
     <fragment

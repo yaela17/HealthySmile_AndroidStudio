@@ -17,16 +17,11 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        // Configura la Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Agregar un ícono a la izquierda (como un ícono de retroceso o un ícono de menú)
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.icon_arrow_back); // Cambia 'ic_menu' por tu ícono
-
-        // Si no hay un fragmento previamente cargado (es decir, si la actividad se está iniciando),
-        // se carga el fragmento por defecto
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.icon_arrow_back);
         loadDefaultFragment();
 
 
@@ -57,6 +52,4 @@ public class Settings extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

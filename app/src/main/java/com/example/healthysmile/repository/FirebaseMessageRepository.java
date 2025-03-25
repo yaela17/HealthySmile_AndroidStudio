@@ -19,35 +19,6 @@ public class FirebaseMessageRepository {
         db = FirebaseFirestore.getInstance();
     }
 
-    // Método para verificar credenciales de inicio de sesión y obtener los datos del usuario
-    public void verificarCredenciales(String correoUsuario, String contrasenaUsuario, Consumer<CredentialCallback> callback) {
-        db.collection("usuarios")
-                .whereEqualTo("correoUser", correoUsuario)
-                .whereEqualTo("contrasenaUser", contrasenaUsuario)
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if (!queryDocumentSnapshots.isEmpty()) {
-                        DocumentSnapshot document = queryDocumentSnapshots.getDocuments().get(0);
-                        callback.accept(new CredentialCallback(true, document));
-                    } else {
-                        callback.accept(new CredentialCallback(false, null));
-                    }
-                })
-                .addOnFailureListener(e -> callback.accept(new CredentialCallback(false, null)));
-    }
-
-    // Clase para almacenar el resultado de la verificación
-    public static class CredentialCallback {
-        public final boolean isValid;
-        public final DocumentSnapshot usuario;
-
-        public CredentialCallback(boolean isValid, DocumentSnapshot usuario) {
-            this.isValid = isValid;
-            this.usuario = usuario;
-        }
-    }
-
-
     // Método para cambiar el nombre de un usuario existente basado en el correo
     public void cambiarNombrePorCorreo(String correoUser, String nuevoNombre,
                                        final OnSuccessListener<Void> onSuccessListener,
@@ -113,9 +84,4 @@ public class FirebaseMessageRepository {
                 })
                 .addOnFailureListener(onFailureListener);
     }
-
-
-
-
-
 }
