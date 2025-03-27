@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.extraAndroid.settings.settings_perfil">
+    tools:context=".gui.extraAndroid.settings.Settings_perfil">
 
     <LinearLayout
         android:layout_width="match_parent"

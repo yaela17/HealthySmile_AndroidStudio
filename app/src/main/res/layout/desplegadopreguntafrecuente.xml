@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/desplegado_pregunta_frecuente_texto_respuesta"
+        android:textColor="@color/color_comun_text"
         android:textSize="14sp"/>
     <!-- Área de texto para respuesta, visible solo si el nivelPermisos > 2 -->
     <EditText
@@ -17,8 +18,9 @@
         android:hint="@string/desplegado_pregunta_frecuente_texto_escriba_la_respuesta"
         android:visibility="gone"
         android:layout_marginTop="8dp"
-        android:layout_height="150dp"
+        android:backgroundTint="@color/color_drawable_plantilla_informacion_background"
         android:background="@android:drawable/edit_text"
+        android:layout_height="150dp"
         android:inputType="textMultiLine"
         android:gravity="top|start" />
     <!-- Botón de enviar respuesta, visible solo si el nivelPermisos > 2 -->

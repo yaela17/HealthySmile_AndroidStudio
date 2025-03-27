@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
     android:orientation="vertical"
-    tools:context=".gui.extraAndroid.settings.fragmentProfileImageSelector">
+    tools:context=".gui.extraAndroid.settings.FragmentProfileImageSelector">
 
     <FrameLayout
         android:layout_width="wrap_content"

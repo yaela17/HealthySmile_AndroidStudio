@@ -5,9 +5,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_bottom_especialista_citas"
+            android:icon="@drawable/icon_time_hour"
             android:title="Citas" />
+        <!-- ver citas -->
         <item
             android:id="@+id/nav_bottom_especialista_productos"
+            android:icon="@drawable/icon_catalogo_tienda_virtual"
             android:title="Productos" />
+        <!--Como carrusel, se utilizara el carrito de compra -->
+        <!-- Carrito de compra agregar campo es compra dependiendo se compra o se píde-->
+        <!-- Guardar String por comas de productos y para regreso mapearlos -->
     </group>
 </menu>

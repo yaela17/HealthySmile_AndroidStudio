@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/color_azul_polvo"
+    android:background="@color/color_init_aplication_background_linear_layout"
     android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
     tools:context=".gui.InitAplication">
 
@@ -24,7 +24,7 @@
                 android:textSize="45sp"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textColor="@color/color_azul_medianoche"
+                android:textColor="@color/color_init_aplication_bienvenido_a"
                 android:typeface="serif"
                 android:layout_marginTop="60dp"/>
             <TextView
@@ -35,7 +35,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:typeface="serif"
-                android:textColor="@color/white"/>
+                android:textColor="@color/color_init_aplication_healthy_smile"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
                 android:textSize="25sp"
                 android:typeface="serif"
                 android:gravity="start"
-                android:textColor="@color/color_text"
+                android:textColor="@color/color_comun_text"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"/>
 
@@ -65,7 +65,7 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/initAppCardSignUpEspecialista"
-                    android:background="@color/white"
+                    android:backgroundTint="@color/color_initi_aplication_background_tint_card_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="16dp"
@@ -76,8 +76,8 @@
                             android:padding="15dp"
                             android:orientation="horizontal">
                             <ImageView
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
                                 android:src="@drawable/default_photo_perfil_especialista"
                                 android:background="@drawable/custom_circle_image"
                                 android:scaleType="centerCrop"
@@ -94,28 +94,28 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/tipo_usuario_especialista"
                                     android:textSize="15sp"
-                                    android:textColor="@color/color_text"/>
+                                    android:textColor="@color/color_comun_text"/>
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/accion_tipo_usuario_especialista_1"
                                     android:textSize="11sp"
                                     android:layout_marginTop="5dp"
-                                    android:textColor="@color/color_text"/>
+                                    android:textColor="@color/color_comun_text"/>
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/accion_tipo_usuario_especialista_2"
                                     android:textSize="11sp"
                                     android:layout_marginTop="5dp"
-                                    android:textColor="@color/color_text"/>
+                                    android:textColor="@color/color_comun_text"/>
                             </LinearLayout>
                         </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/initAppCardSignUpPaciente"
-                    android:background="@color/white"
+                    android:backgroundTint="@color/color_initi_aplication_background_tint_card_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -126,8 +126,8 @@
                             android:padding="15dp"
                             android:orientation="horizontal">
                             <ImageView
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
                                 android:src="@drawable/default_photo_perfil_paciente"
                                 android:background="@drawable/custom_circle_image"
                                 android:scaleType="centerCrop"
@@ -145,21 +145,21 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/tipo_usuario_paciente"
                                     android:textSize="15sp"
-                                    android:textColor="@color/color_text"/>
+                                    android:textColor="@color/color_comun_text"/>
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/accion_tipo_usuario_paciente_1"
                                     android:textSize="11sp"
                                     android:layout_marginTop="5dp"
-                                    android:textColor="@color/color_text"/>
+                                    android:textColor="@color/color_comun_text"/>
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/accion_tipo_usuario_paciente_2"
                                     android:textSize="11sp"
                                     android:layout_marginTop="5dp"
-                                    android:textColor="@color/color_text"/>
+                                    android:textColor="@color/color_comun_text"/>
                             </LinearLayout>
                         </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -171,7 +171,7 @@
                 android:textSize="25sp"
                 android:typeface="serif"
                 android:gravity="center_horizontal"
-                android:textColor="@color/color_text"
+                android:textColor="@color/color_comun_text"
                 android:layout_marginStart="20dp"
                 android:id="@+id/initAppTextViewLogin"/>
         </LinearLayout>

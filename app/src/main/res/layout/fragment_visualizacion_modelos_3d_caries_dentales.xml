@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/en_construccion"
-    tools:context=".gui.educacionDental.fragment_vizualizacion_modelos_3d_caries_dentales">
+    tools:context=".gui.educacionDental.Fragment_vizualizacion_modelos_3d_caries_dentales">
 
 
 

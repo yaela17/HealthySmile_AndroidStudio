@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    android:background="@color/white">
+    android:background="@color/color_formulario_background_tint_card_view">
 
     <ImageView
         android:id="@+id/plantillaListaEspecialistaFotoPerfil"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="@string/texto_plantilla_especialista_list_chat_ejemplo_nombre_especialista"
             android:textSize="15sp"
-            android:textColor="@color/plantilla_especialista_list_chat_texto_color"/>
+            android:textColor="@color/color_comun_text"/>
         <TextView
             android:id="@+id/plantillaListaEspecialistaEspecialidad"
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:text="@string/texto_plantilla_especialista_list_chat_ejemplo_especialidad_especialista"
             android:textSize="11sp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/plantilla_especialista_list_chat_texto_color"/>
+            android:textColor="@color/color_comun_text"/>
         <TextView
             android:id="@+id/plantillaListaEspecialistaDescripcion"
             android:layout_width="match_parent"
@@ -46,6 +46,6 @@
             android:text="@string/texto_plantilla_especialista_list_chat_ejemplo_descripcion_especialista"
             android:textSize="11sp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/plantilla_especialista_list_chat_texto_color"/>
+            android:textColor="@color/color_comun_text"/>
     </LinearLayout>
 </LinearLayout>

@@ -7,8 +7,16 @@
         <item name="android:navigationBarColor">@color/black</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:windowSplashScreenBackground" tools:ignore="NewApi">@color/color_turquesa_oscuro</item>
-
     </style>
+
+    <style name="activy_log_ing">
+        <item name="android:background">@drawable/fondo_log_in</item>
+    </style>
+
+    <style name="nav_header_drawer">
+        <item name="android:background">@drawable/side_nav_bar_lateral</item>
+    </style>
+
 
     <style name="formBasicInput">
         <item name="android:singleLine">true</item>
@@ -17,7 +25,40 @@
         <item name="android:background">@drawable/custom_edittext</item>
         <item name="android:padding">8dp</item>
         <item name="android:drawablePadding">8dp</item>
+        <item name="android:drawableTint">@color/color_formulario_drawable_tint</item>
+        <item name="android:textColor">@color/color_formulario_text</item>
     </style>
+
+    <style name="formBasicInput_nombre_usuario" parent="formBasicInput">
+        <item name="android:drawableStart">@drawable/icon_person</item>
+        <item name="android:hint">@string/texto_hint_campo_nombre</item>
+        <item name="android:inputType">textPersonName|textAutoCorrect|textAutoComplete</item>
+        <item name="android:autofillHints">username</item>
+    </style>
+
+    <style name="formBasicInput_correoElectronico" parent="formBasicInput">
+        <item name="android:drawableStart">@drawable/icon_email</item>
+        <item name="android:hint">@string/texto_hint_correo_electronico</item>
+        <item name="android:inputType">textWebEmailAddress|textAutoComplete|textAutoCorrect</item>
+        <item name="android:autofillHints">emailAddress</item>
+    </style>
+
+    <style name="formBasicInput_contraseña" parent="formBasicInput">
+        <item name="android:drawableStart">@drawable/icon_lock</item>
+        <item name="android:drawableEnd">@drawable/icon_visible_off</item>
+        <item name="android:hint">@string/texto_hint_contraseña</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:autofillHints">password</item>
+    </style>
+
+    <style name="formBasicInput_codigo_verificacion" parent="formBasicInput">
+        <item name="android:drawableStart">@drawable/icon_code_verification</item>
+        <item name="android:hint">@string/texto_hint_codigo_verificacion</item>
+        <item name="android:inputType">text</item>
+        <item name="android:autofillHints">none</item>
+    </style>
+
+
 
     <style name="CustomButtonStyle">
         <item name="android:background">@drawable/custom_button_white_background</item> <!-- Fondo blanco -->

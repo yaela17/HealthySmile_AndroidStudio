@@ -31,28 +31,25 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
         TextView textView = (TextView) convertView;
         textView.setText(getItem(position));
 
-        textView.setTextColor(getContext().getColor(R.color.black));
+        textView.setTextColor(getContext().getColor(R.color.color_comun_text));
 
         return convertView;
     }
-
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.custom_spinner_item, parent, false);
         }
-
         TextView textView = (TextView) convertView;
         textView.setText(getItem(position));
 
         if (position == selectedPosition) {
             textView.setTextColor(getContext().getColor(R.color.white));
-            textView.setBackgroundColor(getContext().getColor(R.color.color_principal_glow));
+            textView.setBackgroundColor(getContext().getColor(R.color.color_drawable_custom_spinner_text_item_selected));
         } else {
             textView.setTextColor(getContext().getColor(R.color.black));
             textView.setBackgroundResource(R.drawable.border_background);
         }
-
         return convertView;
     }
 }

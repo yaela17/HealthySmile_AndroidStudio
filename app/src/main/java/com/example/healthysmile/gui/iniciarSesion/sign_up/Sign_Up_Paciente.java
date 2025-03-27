@@ -1,6 +1,5 @@
 package com.example.healthysmile.gui.iniciarSesion.sign_up;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
-import com.example.healthysmile.gui.NavigationDrawerFragments;
 import com.example.healthysmile.model.TemplateParams;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 import com.example.healthysmile.service.EmailServiceJS;
@@ -83,7 +81,7 @@ public class Sign_Up_Paciente extends Fragment {
                     limpiarCampos();
                     requireActivity().getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.signUpFragmentContainer, new fragment_sign__up__verificacion_correo()) // Reemplaza con el nuevo fragmento
+                            .replace(R.id.signUpFragmentContainer, new Fragment_sign__up__verificacion_correo()) // Reemplaza con el nuevo fragmento
                             .commit();
                 } else {
                     Toast.makeText(getActivity(), "Error en la respuesta del servidor", Toast.LENGTH_SHORT).show();

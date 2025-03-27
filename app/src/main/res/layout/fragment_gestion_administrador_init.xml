@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".gui.gestion.fragment_gestion_init">
+    tools:context=".gui.gestion.Fragment_gestion_init">
 
 
     <FrameLayout
@@ -18,14 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/white"
-        app:itemPaddingBottom="20dp"
-        app:itemIconTint="@color/color_purpura_oscuro"
-        app:itemTextColor="@color/black"
+        android:background="@color/color_formulario_background_tint_card_view"
+        app:itemIconTint="@color/color_comun_text"
+        app:itemTextColor="@color/color_comun_text"
         app:menu="@menu/menu_bottom_nav_administrador"
         app:elevation="8dp"
         app:labelVisibilityMode="labeled"
         app:itemHorizontalTranslationEnabled="true"
+
         />
 
 </FrameLayout>

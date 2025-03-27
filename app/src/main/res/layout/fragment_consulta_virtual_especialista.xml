@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".gui.consulta.fragment_consulta_virtual_especialista">
+    tools:context=".gui.consulta.Fragment_consulta_virtual_especialista">
 
 
     <androidx.recyclerview.widget.RecyclerView

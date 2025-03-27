@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.iniciarSesion.sign_up.fragment_sign_up_foto_perfil">
+    tools:context=".gui.iniciarSesion.sign_up.Fragment_sign_up_foto_perfil">
 
     <LinearLayout
         android:layout_width="match_parent"

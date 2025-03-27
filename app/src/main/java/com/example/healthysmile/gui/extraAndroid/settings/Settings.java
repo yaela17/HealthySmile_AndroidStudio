@@ -31,7 +31,7 @@ public class Settings extends AppCompatActivity {
     private void loadDefaultFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.settingsFrameListViewContainer, new default_fragment_settings())
+                .replace(R.id.settingsFrameListViewContainer, new Default_fragment_settings())
                 .commit();
     }
 

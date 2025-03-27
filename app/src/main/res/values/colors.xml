@@ -14,7 +14,6 @@
     <color name="color_principal_contraste">#7ECECA</color>
     <color name="color_principal_contraste_claro">#9ED1B7</color>
     <color name="color_footer">#333333</color>
-    <color name="color_text">#000000</color>
     <color name="color_text_alt">#F0F8FF</color>
     <color name="color_principal_claro_button">#478AC9</color>
 
@@ -36,13 +35,21 @@
     <color name="color_boton_registro">#4489d7</color>
     <color name="color_boton_login">#2b5baf</color>
 
-
+<color name="color_text">@color/color_negro</color>
     <color name="color_gris_oscuro">#2F3A45</color>
     <color name="color_azul_marino">#013A5D</color>
     <color name="color_turquesa_oscuro">#005F73</color>
 
     <!--Colores generales-->
     <color name="gris_antracita">#333333</color>
+    <color name="color_blanco">#FFFFFFFF</color>
+    <color name="color_gris_azulado_oscuro">#37474F</color>
+    <color name="color_gris_fumado">#455A64</color>
+    <color name="color_azul_noche">#263238</color>
+    <color name="color_verde_pizarra">#2E3B32</color>
+
+
+
 
 
     <!--Colores buenos ahora si (Claro)-->
@@ -51,11 +58,40 @@
     <color name="color_azul_acero">#4C7FA7</color>
     <color name="color_azul_medianoche">#012347</color>
 
+    <color name="color_turquesa_medio">#45C5B4</color>
+    <color name="color_azul_marino_profundo">#092B5A</color>
+    <color name="color_azul_celeste_profundo">#1693A5</color>
+    <color name="color_azul_acantilado">#09738A</color>
+
     <!--Colores buenos ahora si (Oscuro)-->
     <color name="color_negro">#000000</color>
     <color name="color_morado_vibrante">#8E05C2</color>
     <color name="color_violeta_intenso">#700B97</color>
     <color name="color_purpura_oscuro">#3E065F</color>
+
+    <color name="color_purpura_neon">#7E57C2</color>
+    <color name="color_purpura_marino">#4A0D67</color>
+    <color name="color_violeta_medio">#A345C5</color>
+    <color name="color_purpura_profundo">#76169A</color>
+    <color name="color_violeta_acantilado">#8A0973</color>
+
+    <!--Colores reutilizables -->
+    <color name="color_comun_text">@color/color_negro</color>
+    <color name="color_titulo_formulario">@color/color_azul_medianoche</color>
+    <color name="color_formulario_background_tint_card_view">@color/color_blanco</color>
+    <color name="color_formulario_text">@color/color_azul_acero</color>
+    <color name="color_formulario_drawable_tint">@color/color_azul_polvo</color>
+    <color name="color_formulario_boton">@color/color_azul_medianoche</color>
+    <color name="color_navigation_drawer_background_tint">@color/color_azul_medianoche</color>
+
+    <!--Activity init aplication-->
+    <color name="color_init_aplication_background_linear_layout">@color/color_azul_polvo</color>
+    <color name="color_init_aplication_bienvenido_a">@color/color_azul_medianoche</color>
+    <color name="color_init_aplication_healthy_smile">@color/color_blanco</color>
+    <color name="color_initi_aplication_background_tint_card_view">@color/color_blanco</color>
+
+    <!-- Activity navigation drawer -->
+    <color name="color_navigation_drawer_icon_color">@color/color_azul_polvo</color>
 
 
     <color name="calendario_ocupadaUsuario">#A3C9FF</color>
@@ -66,5 +102,16 @@
 
     <!--Colores para las plantillas-->
     <color name="plantilla_especialista_list_chat_texto_color">@color/gris_antracita</color>
+    <color name="plantilla_list_view_opciones_perfil_icon_color">@color/color_comun_text</color>
+    <color name="plantilla_list_view_opciones_perfil_title_color">@color/color_azul_acantilado</color>
+    <color name="plantilla_list_view_opciones_perfil_descripcion_color">@color/color_azul_celeste_profundo</color>
+    <color name="plantilla_informacion_especialista_cedula_color">@color/color_azul_celeste_profundo</color>
+
+    <!--Colores drawables -->
+    <color name="color_drawable_custom_edit_text_stroke">@color/color_azul_marino_profundo</color>
+    <color name="color_drawable_custom_spinner_text">@color/color_turquesa_medio</color>
+    <color name="color_drawable_custom_spinner_text_item_selected">@color/color_azul_celeste_profundo</color>
+    <color name="color_drawable_plantilla_informacion_background">@color/color_blanco</color>
+    <color name="color_drawable_plantilla_informacion_selected_background">@color/color_azul_alice</color>
 
 </resources>

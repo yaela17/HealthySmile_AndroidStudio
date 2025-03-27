@@ -5,9 +5,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_bottom_paciente_citas"
+            android:icon="@drawable/icon_time_hour"
             android:title="Citas" />
+        <!-- citas, ver, modificar y borrar -->
         <item
             android:id="@+id/nav_bottom_paciente_compras"
+            android:icon="@drawable/icon_catalogo_tienda_virtual"
             android:title="Compras" />
+        <!-- compras, ver y borrar -->
     </group>
 </menu>

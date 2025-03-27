@@ -5,12 +5,18 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_bottom_admiministrador_citas"
+            android:icon="@drawable/icon_time_hour"
             android:title="Citas" />
+        <!--Puede ver todas las citas del consultorio por dia seleccionado y que se pueda filtrar por especialista-->
         <item
             android:id="@+id/nav_bottom_administrador_productos"
+            android:icon="@drawable/icon_catalogo_tienda_virtual"
             android:title="Productos" />
+        <!--Agregar producto, modificar producto, eliminar producto, son los que se ven en la tienda-->
         <item
             android:id="@+id/nav_bottom_administrador_especialistas"
+            android:icon="@drawable/icon_person"
             android:title="Especialista" />
+        <!--Se muestran los especialistas y se pueden-->
     </group>
 </menu>

@@ -3,74 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/white"
     tools:context=".gui.iniciarSesion.sign_up.Sign_Up_Especialista">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/color_formulario_background_tint_card_view"
         android:layout_margin="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="@color/white"
             android:orientation="vertical"
             android:padding="30dp">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/titulo_sign_up_paciente_registroespecialista"
                 android:textAlignment="center"
-                android:textColor="@color/color_azul_medianoche"
+                android:textColor="@color/color_titulo_formulario"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/SignUpEspecialistaInputNombre"
-                style="@style/formBasicInput"
+                style="@style/formBasicInput_nombre_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
-                android:drawableStart="@drawable/icon_person"
-                android:drawableTint="@color/color_azul_polvo"
-                android:hint="@string/texto_hint_campo_nombre"
-                android:inputType="textPersonName|textAutoCorrect|textAutoComplete"
-                android:autofillHints="name"
-                android:textColor="@color/color_azul_acero" />
+                android:layout_marginTop="40dp"/>
 
             <EditText
                 android:id="@+id/SignUpEspecialistaInputCorreo"
-                style="@style/formBasicInput"
+                style="@style/formBasicInput_correoElectronico"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawableStart="@drawable/icon_email"
-                android:drawableTint="@color/color_azul_polvo"
-                android:hint="@string/texto_hint_correo_electronico"
-                android:inputType="textWebEmailAddress|textAutoCorrect|textAutoComplete"
-                android:autofillHints="emailAddress"
-                android:textColor="@color/color_azul_acero"/>
+                android:layout_marginTop="20dp" />
 
             <EditText
                 android:id="@+id/SignUpEspecialistaInputContrasena"
-                style="@style/formBasicInput"
+                style="@style/formBasicInput_contraseña"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawableStart="@drawable/icon_lock"
-                android:drawableTint="@color/color_azul_polvo"
-                android:drawableEnd="@drawable/icon_visible_off"
-                android:hint="@string/texto_hint_contraseña"
-                android:importantForAccessibility="yes"
-                android:inputType="textPassword"
-                android:autofillHints="password"
-                android:textColor="@color/color_azul_acero"/>
+                android:importantForAccessibility="yes"/>
 
             <EditText
                 android:id="@+id/SignUpEspecialistaInputCedulaProfesional"
@@ -78,13 +54,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/custom_edittext"
                 android:drawableStart="@drawable/icon_cedulaprofesional"
-                android:drawableTint="@color/color_azul_polvo"
                 android:hint="@string/texto_hint_cedulaprofesional"
                 android:inputType="textShortMessage|textAutoCorrect|textAutoComplete"
-                android:autofillHints="none"
-                android:textColor="@color/color_azul_acero" />
+                android:autofillHints="none"/>
 
             <Spinner
                 android:id="@+id/SignUpEspecialistaComboEspecialidad"
@@ -118,7 +91,7 @@
                 android:layout_width="320dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/color_azul_medianoche"
+                android:backgroundTint="@color/color_formulario_boton"
                 android:text="@string/texto_boton_registrarse"
                 android:textSize="18sp"
                 android:textColor="@color/white"/>

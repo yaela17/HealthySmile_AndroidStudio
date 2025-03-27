@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.consulta.fragment_consulta_citas">
+    tools:context=".gui.consulta.Fragment_consulta_citas">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
         <EditText
             android:id="@+id/ConsultaCitasInputMotivoCita"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_margin="20dp"
             android:drawablePadding="8dp"
             android:gravity="start|top"
@@ -81,6 +81,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/texto_boton_crear"
             android:layout_gravity="center_horizontal"
+            android:gravity="center"
             android:paddingStart="10dp"
             android:paddingEnd="20dp"
             android:layout_margin="10dp"/>

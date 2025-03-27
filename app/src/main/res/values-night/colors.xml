@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Colores reutilizables -->
+    <color name="color_comun_text">@color/color_blanco</color>
+    <color name="color_titulo_formulario">@color/color_purpura_oscuro</color>
+    <color name="color_formulario_background_tint_card_view">@color/color_negro</color>
+    <color name="color_formulario_text">@color/color_violeta_intenso</color>
+    <color name="color_formulario_drawable_tint">@color/color_morado_vibrante</color>
+    <color name="color_formulario_boton">@color/color_purpura_oscuro</color>
+    <color name="color_navigation_drawer_background_tint">@color/color_purpura_oscuro</color>
 
-    <!--Colores a usar en los styles-->
+    <!--Activity init aplication-->
+    <color name="color_init_aplication_background_linear_layout">@color/color_negro</color>
+    <color name="color_init_aplication_bienvenido_a">@color/color_purpura_oscuro</color>
+    <color name="color_init_aplication_healthy_smile">@color/color_blanco</color>
+    <color name="color_initi_aplication_background_tint_card_view">@color/color_purpura_neon</color>
+
+    <!-- Activity navigation drawer -->
+    <color name="color_navigation_drawer_icon_color">@color/color_violeta_medio</color>
+
+
+    <!--Colores para las plantillas-->
+    <color name="plantilla_list_view_opciones_perfil_title_color">@color/color_violeta_acantilado</color>
+    <color name="plantilla_list_view_opciones_perfil_descripcion_color">@color/color_purpura_profundo</color>
+    <color name="plantilla_informacion_especialista_cedula_color">@color/color_purpura_profundo</color>
+
+    <!--Colores drawables -->
+    <color name="color_drawable_custom_edit_text_stroke">@color/color_purpura_marino</color>
+    <color name="color_drawable_custom_spinner_text">@color/color_violeta_medio</color>
+    <color name="color_drawable_custom_spinner_text_item_selected">@color/color_purpura_profundo</color>
+    <color name="color_drawable_plantilla_informacion_background">@color/color_negro</color>
+    <color name="color_drawable_plantilla_informacion_selected_background">@color/color_purpura_neon</color>
+
+
+
+
+
 
 </resources>

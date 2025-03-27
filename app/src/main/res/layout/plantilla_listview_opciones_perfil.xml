@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/idPlantillaOpcionesPerfil"
@@ -16,7 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start|center_vertical"
         android:contentDescription="@null"
-        android:src="@drawable/icon_visible"/>
+        android:src="@drawable/icon_visible"
+        app:tint="@color/plantilla_list_view_opciones_perfil_icon_color" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -33,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="@string/texto_campo_nombre"
             android:textSize="20sp"
-            android:textColor="@color/color_principal_claro"
+            android:textColor="@color/plantilla_list_view_opciones_perfil_title_color"
             android:gravity="center_vertical"/>
 
         <TextView
@@ -41,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/texto_hint_descripcion"
-            android:textColor="@color/color_principal_clarote"
+            android:textColor="@color/plantilla_list_view_opciones_perfil_descripcion_color"
             android:gravity="center_vertical"/>
     </LinearLayout>
 
@@ -51,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|center_vertical"
         android:contentDescription="@null"
-        android:src="@drawable/icon_visible"/>
+        android:src="@drawable/icon_visible"
+        app:tint="@color/plantilla_list_view_opciones_perfil_icon_color"/>
 
 </LinearLayout>

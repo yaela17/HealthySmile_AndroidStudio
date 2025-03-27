@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="12dp"
-    android:textColor="@color/color_principal_clarote"
-    android:textSize="16dp"
+    android:text="@string/texto_plantilla_informacion_especialista_especialidad"
+    android:textColor="@color/color_drawable_custom_spinner_text"
+    android:textSize="16sp"
     android:gravity="center_vertical" />

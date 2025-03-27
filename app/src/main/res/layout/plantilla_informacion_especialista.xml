@@ -8,7 +8,7 @@
     android:clipToPadding="false"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="8dp"
-    card_view:cardBackgroundColor="@color/white">
+    card_view:cardBackgroundColor="@color/color_formulario_background_tint_card_view">
 
     <LinearLayout
         android:orientation="vertical"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/texto_plantilla_informacion_especialista_nombre"
                 android:gravity="center"
-                android:textColor="@color/color_text"
+                android:textColor="@color/color_comun_text"
                 android:textSize="18sp" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/texto_plantilla_informacion_especialista_especialidad"
                 android:gravity="center"
-                android:textColor="@color/color_text"
+                android:textColor="@color/color_comun_text"
                 android:textSize="12sp" />
 
             <TextView
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/texto_plantilla_informacion_especialista_cedula"
-                android:textColor="@color/color_principal_clarote"
+                android:textColor="@color/plantilla_informacion_especialista_cedula_color"
                 android:textSize="12sp" />
 
             <TextView
@@ -69,7 +69,7 @@
                 android:visibility="gone"
                 android:textSize="12sp"
                 android:gravity="center"
-                android:textColor="@color/color_text"
+                android:textColor="@color/color_comun_text"
                 android:text="@string/texto_plantilla_informacion_especialista_descripcion" />
         </LinearLayout>
     </LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar pregunta"
+        android:textSize="20sp"
+        android:textColor="@color/color_comun_text"/>
+
+    <EditText
+        android:id="@+id/formulario_agregar_pregunta_frecuente_edita_text_pregunta"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/formBasicInput"/>
+    <Button
+        android:id="@+id/formulario_agregar_pregunta_frecuente_btn_enviar"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="Enviar"/>
+</LinearLayout>

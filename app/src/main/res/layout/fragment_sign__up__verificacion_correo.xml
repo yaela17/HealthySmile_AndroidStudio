@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.iniciarSesion.sign_up.fragment_sign__up__verificacion_correo">
+    tools:context=".gui.iniciarSesion.sign_up.Fragment_sign__up__verificacion_correo">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/color_formulario_background_tint_card_view"
         android:layout_margin="30dp">
 
         <LinearLayout
@@ -21,17 +21,17 @@
 
             <EditText
                 android:id="@+id/sign_up_verificacion_input_codigo"
+                style="@style/formBasicInput_codigo_verificacion"
                 android:layout_width="match_parent"
-                android:inputType="text"
-                android:autofillHints="none"
-                android:hint="@string/texto_hint_codigo_verificacion"
                 android:layout_height="50dp"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"/>
 
             <Button
                 android:id="@+id/sign_up_verificacion_btn_verificar"
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/color_formulario_boton"
                 android:text="@string/texto_boton_verificar"/>
 
             <TextView
@@ -39,6 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:text="@string/texto_verificacion_tiempo_restante"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

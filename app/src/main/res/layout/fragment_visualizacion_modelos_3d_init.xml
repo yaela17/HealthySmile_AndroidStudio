@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.educacionDental.fragment_visualizacion_modelos_3d_init">
+    tools:context=".gui.educacionDental.Fragment_visualizacion_modelos_3d_init">
 
     <ScrollView
         android:layout_width="wrap_content"

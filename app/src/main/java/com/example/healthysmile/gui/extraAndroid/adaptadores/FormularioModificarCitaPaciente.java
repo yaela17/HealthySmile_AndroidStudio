@@ -18,17 +18,17 @@ import java.util.List;
 
 public class FormularioModificarCitaPaciente extends DialogFragment {
 
-    public FormularioModificarCitaPaciente(String date,long idEspecialistaSeleccionado) {
-        this.date = date;
-        this.idEspecialistaSeleccionado = idEspecialistaSeleccionado;
-    }
-
     private String date;
     private EditText editTextMotivo;
     private Spinner spinnerHorarios, spinnerEspecialistas;
     private Button btnGuardar;
     private List<Long> idsEspecialistas = new ArrayList<>();
     long idEspecialistaSeleccionado;
+
+    public FormularioModificarCitaPaciente(String date,long idEspecialistaSeleccionado) {
+        this.date = date;
+        this.idEspecialistaSeleccionado = idEspecialistaSeleccionado;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

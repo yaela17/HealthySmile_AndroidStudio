@@ -1,6 +1,5 @@
 package com.example.healthysmile.gui.ayudaYSoporte;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,15 +10,19 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.healthysmile.R;
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.controller.ayudaYSoporte.ObtenerPreguntasFrecuentesResponse;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.AdaptadorExpandibleListView;
+import com.example.healthysmile.gui.extraAndroid.adaptadores.FormularioAgregarPreguntaFrecuente;
 import com.example.healthysmile.repository.FirebaseMessageRepository;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 import com.example.healthysmile.service.ayudaYSoporte.ObtenerPreguntasFrecuentesService;
+import com.example.healthysmile.utils.SharedPreferencesHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,13 +32,12 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickListener {
+public class Fragment_ayuda_y_soporte extends Fragment {
 
-    Button btnEnviar;
-    EditText campoNombre, campoCorreo, campoPregunta;
     ExpandableListView preguntasFrecuentesLV;
+    FloatingActionButton btnAgregarPregunta;
+    SharedPreferencesHelper sharedPreferencesHelper;
 
-    private FirebaseMessageRepository conexionFirebaseDB;
 
     // Listas para almacenar las preguntas y respuestas
     private List<String> preguntasList = new ArrayList<>();
@@ -45,45 +47,21 @@ public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ayuda_y_soporte, container, false);
-
-        campoNombre = view.findViewById(R.id.formPreguntaFrecuenteNombre);
-        campoCorreo = view.findViewById(R.id.formPreguntaFrecuenteCorreo);
-        campoPregunta = view.findViewById(R.id.formPreguntaFrecuentePregunta);
-        btnEnviar = view.findViewById(R.id.formPreguntaFrecuenteBtnEnviar);
+        sharedPreferencesHelper = new SharedPreferencesHelper(getContext());
+        btnAgregarPregunta = view.findViewById(R.id.ayuda_y_soporte_action_button_pregunta_frecuente);
         preguntasFrecuentesLV = view.findViewById(R.id.expandableListViewPreguntasFrecuentes);
 
-        conexionFirebaseDB = new FirebaseMessageRepository(); // Inicializamos la conexión a Firebase
-        btnEnviar.setOnClickListener(this);
 
-        // Llamada para cargar las preguntas frecuentes de Firebase
+        btnAgregarPregunta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FormularioAgregarPreguntaFrecuente formulario = new FormularioAgregarPreguntaFrecuente(getContext());
+                formulario.show(getParentFragmentManager(), "formulario_pregunta");
+            }
+        });
+
         cargarPreguntasFrecuentes();
-
         return view;
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.formPreguntaFrecuenteBtnEnviar) {
-            crearPreguntaFrecuente();
-        }
-    }
-
-    private void crearPreguntaFrecuente() {
-        final String correoUsuario = campoCorreo.getText().toString().trim();
-        final String pregunta = campoPregunta.getText().toString().trim();
-
-        if (correoUsuario.isEmpty() || pregunta.isEmpty()) {
-            Log.e("Error", "El correo o la pregunta no pueden estar vacíos");
-            return;
-        }
-
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("AppPrefs", getContext().MODE_PRIVATE);
-        long idUsuario = sharedPreferences.getLong("idUsuario", -1);
-
-        Log.d("VerificarCorreo", "Correo a verificar: " + correoUsuario);
-        Log.d("VerificarCorreo", "ID de Usuario: " + idUsuario);
-
-        verificarCorreo(correoUsuario, idUsuario, pregunta);
     }
 
     private void verificarCorreo(String correoUsuario, long idUsuario, String pregunta) {
@@ -102,7 +80,7 @@ public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickLi
                         insertarPreguntaFrecuente(idUsuario, pregunta);
                     } else {
                         Log.e("VerificarCorreo", "Correo no registrado en la aplicación");
-                        campoCorreo.setError("Correo no registrado en la aplicación");
+                        //campoCorreo.setError("Correo no registrado en la aplicación");
                     }
                 } else {
                     Log.e("Error", "No se pudo verificar el correo. Código de respuesta: " + response.code());
@@ -117,7 +95,7 @@ public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickLi
         });
     }
 
-    private void insertarPreguntaFrecuente(long idUsuario, String pregunta) {
+    public void insertarPreguntaFrecuente(long idUsuario, String pregunta) {
         Map<String, Object> preguntaFrecuente = new HashMap<>();
         preguntaFrecuente.put("pregunta", pregunta);
         preguntaFrecuente.put("idUsuario", idUsuario);
@@ -129,7 +107,7 @@ public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickLi
                     @Override
                     public void onResponse(Call<ApiNodeMySqlRespuesta> call, Response<ApiNodeMySqlRespuesta> response) {
                         if (response.isSuccessful()) {
-                            vaciarCampos();
+
                             cargarPreguntasFrecuentes();
                         } else {
                             Log.e("Error", "No se pudo insertar la pregunta frecuente");
@@ -142,7 +120,7 @@ public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickLi
                 });
     }
 
-    private void cargarPreguntasFrecuentes() {
+    public void cargarPreguntasFrecuentes() {
         Log.d("ala", "Correo a verificar: ");
         Log.d("ala", "si papu" );
 
@@ -176,11 +154,5 @@ public class fragment_ayuda_y_soporte extends Fragment implements View.OnClickLi
                 Log.e("Error", error);
             }
         });
-    }
-
-    private void vaciarCampos() {
-        campoNombre.setText("");
-        campoCorreo.setText("");
-        campoPregunta.setText("");
     }
 }
