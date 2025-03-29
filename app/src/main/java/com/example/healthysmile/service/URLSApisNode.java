@@ -20,4 +20,7 @@ public class URLSApisNode {
     public static final String URL_OBTENER_PACIENTES = BASE_URL_APIs_Node + "obtenerPacientesChatAndroid";
     public static final String URL_RESPONDER_PREGUNTA_FRECUENTE = BASE_URL_APIs_Node + "responderPregunta";
     public static final String URL_AUMENTAR_BUSQUEDAS_PREGUNTA = BASE_URL_APIs_Node + "aumentarBusquedas";
+
+    //Productos
+    public static final String URL_OBTENER_PRODUCTOS = BASE_URL_APIs_Node + "obtenerProductos";
 }

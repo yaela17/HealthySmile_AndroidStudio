@@ -34,12 +34,17 @@ public class Fragment_gestion_init extends Fragment {
         if (tipoUsuario.equals("Paciente")) {
             bottomNavigationView.getMenu().clear();
             bottomNavigationView.inflateMenu(R.menu.menu_bottom_nav_paciente);
-            loadDefaultFragment(new Fragment_gestion_paciente_citas());
-        } else{
+            loadFragment(new Fragment_gestion_paciente_citas());
+        } else
+            if(tipoUsuario.equals("Especialista")) {
             bottomNavigationView.getMenu().clear();
             bottomNavigationView.inflateMenu(R.menu.menu_bottom_nav_especialista);
-            loadDefaultFragment(new Fragment_gestion_especialista_citas());
-        }
+            loadFragment(new Fragment_gestion_especialista_citas());
+            }else{
+                bottomNavigationView.getMenu().clear();
+                bottomNavigationView.inflateMenu(R.menu.menu_bottom_nav_administrador);
+                loadFragment(new Fragment_gestion_especialista_citas());
+            }
 
         // Dentro de tu método onCreateView
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -55,9 +60,7 @@ public class Fragment_gestion_init extends Fragment {
             Fragment selectedFragment = fragmentMap.get(item.getItemId());
 
             if (selectedFragment != null) {
-                getChildFragmentManager().beginTransaction()
-                        .replace(R.id.frame_gestion_option_bottom_navigation_view_selected, selectedFragment)
-                        .commit();
+                loadFragment(selectedFragment);
             }
 
             return true;
@@ -67,9 +70,9 @@ public class Fragment_gestion_init extends Fragment {
         return view;
     }
 
-    private void loadDefaultFragment(Fragment defaultFragment) {
+    private void loadFragment(Fragment fragment) {
         getChildFragmentManager().beginTransaction()
-                .replace(R.id.frame_gestion_option_bottom_navigation_view_selected, defaultFragment)
+                .replace(R.id.frame_gestion_option_bottom_navigation_view_selected, fragment)
                 .commit();
     }
 

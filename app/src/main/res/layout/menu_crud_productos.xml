@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/menu_ver_productos"
+        android:text="Ver Productos"
+        android:icon="@drawable/icon_visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/menu_agregar_producto"
+        android:text="Agregar Producto"
+        android:icon="@drawable/icon_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/menu_editar_producto"
+        android:text="Editar Producto"
+        android:icon="@drawable/icon_pencil_change_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/menu_eliminar_producto"
+        android:text="Eliminar Producto"
+        android:icon="@drawable/icon_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

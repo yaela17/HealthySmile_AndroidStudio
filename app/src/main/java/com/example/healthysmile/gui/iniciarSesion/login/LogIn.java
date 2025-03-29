@@ -61,7 +61,7 @@ public class LogIn extends AppCompatActivity {
                     if (usuario instanceof Especialista) {
                         Especialista especialistaAutenticado = (Especialista) usuario;
                         manejadorShadPreferences.guardarEspecialista(especialistaAutenticado.getNomUser(),
-                                especialistaAutenticado.getCorreoUser(), "Especialista", especialistaAutenticado.getNivelPermisos(),
+                                especialistaAutenticado.getCorreoUser(), especialistaAutenticado.getTipoUser(), especialistaAutenticado.getNivelPermisos(),
                                 especialistaAutenticado.getCedulaProfesional(),
                                 especialistaAutenticado.getDescripcion(),
                                 especialistaAutenticado.getEspecialidad());
@@ -71,7 +71,7 @@ public class LogIn extends AppCompatActivity {
                         Log.d("LogIn", "Usuario Especialista autenticado");
                     } else {
                         manejadorShadPreferences.guardarPaciente(usuario.getNomUser(),
-                                usuario.getCorreoUser(), "Paciente", usuario.getNivelPermisos());
+                                usuario.getCorreoUser(), usuario.getTipoUser(), usuario.getNivelPermisos());
                         manejadorShadPreferences.guardarIdUsuario(usuario.getIdUsuario());
                         manejadorShadPreferences.guardarfotoUsuario(usuario.getFotoPerfil());
                         Log.d("LogIn", "Usuario Paciente autenticado");

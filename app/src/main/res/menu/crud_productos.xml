@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+        <item
+            android:id="@+id/menu_ver_productos"
+            android:title="Ver Productos"
+            android:icon="@drawable/icon_visible"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menu_agregar_producto"
+            android:title="Agregar Producto"
+            android:icon="@drawable/icon_add"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menu_editar_producto"
+            android:title="Editar Producto"
+            android:icon="@drawable/icon_pencil_change_input"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menu_eliminar_producto"
+            android:title="Eliminar Producto"
+            android:icon="@drawable/icon_delete"
+            app:showAsAction="always"/>
+</menu>

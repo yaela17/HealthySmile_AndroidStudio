@@ -127,4 +127,23 @@ public class SharedPreferencesHelper {
             Log.e("SharedPreferencesError", "Error al imprimir datos de SharedPreferences", e);
         }
     }
+
+    public void guardarAccionSeleccionadaLVProductos(boolean valor) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("eliminar", valor);
+        editor.apply();
+    }
+
+    public void eliminarAccionSeleccionadaLVProductos() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("eliminar");
+        editor.apply();
+    }
+
+    public boolean obtenerAccionSeleccionada() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("eliminar", false);
+    }
 }

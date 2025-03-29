@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import com.example.healthysmile.R;
 import com.example.healthysmile.service.SupabaseFileStorageService;
 import com.example.healthysmile.service.extraAndroid.ActualizarFotoService;
+import com.example.healthysmile.utils.ImageUtils;
 import com.example.healthysmile.utils.ReutilizableMethods;
 
 import java.io.File;
@@ -68,8 +69,6 @@ public class FragmentProfileImageSelector extends Fragment {
         reutilizableMethods.cargarFotoPerfil(getContext(),profileImage);
     }
 
-
-
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, REQUEST_GALLERY_IMAGE);
@@ -82,7 +81,8 @@ public class FragmentProfileImageSelector extends Fragment {
             Uri selectedImageUri = data.getData();
             if (selectedImageUri != null) {
                 // Convertir la URI a un archivo temporal
-                File file = convertUriToFile(selectedImageUri);
+                ImageUtils imageUtils = new ImageUtils();
+                File file = imageUtils.convertUriToFile(getContext(),selectedImageUri);
                 if (file != null && file.exists()) {
                     Log.d("FotoPerfil", "El archivo existe");
                     Log.d("FotoPerfil", "Nombre del archivo: " + file.getName());
@@ -96,46 +96,4 @@ public class FragmentProfileImageSelector extends Fragment {
             }
         }
     }
-
-    // Convertir el URI a un archivo temporal
-    private File convertUriToFile(Uri uri) {
-        try {
-            InputStream inputStream = getActivity().getContentResolver().openInputStream(uri);
-            File tempFile = new File(getActivity().getCacheDir(), getFileName(uri));
-            FileOutputStream outputStream = new FileOutputStream(tempFile);
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = inputStream.read(buffer)) > 0) {
-                outputStream.write(buffer, 0, length);
-            }
-            outputStream.close();
-            inputStream.close();
-            return tempFile;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    // Obtener el nombre del archivo desde la URI
-    @SuppressLint("Range")
-    private String getFileName(Uri uri) {
-        String result = null;
-        if (uri.getScheme().equals("content")) {
-            try (android.database.Cursor cursor = getActivity().getContentResolver().query(uri, null, null, null, null)) {
-                if (cursor != null && cursor.moveToFirst()) {
-                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-                }
-            }
-        }
-        if (result == null) {
-            result = uri.getPath();
-            int cut = result.lastIndexOf('/');
-            if (cut != -1) {
-                result = result.substring(cut + 1);
-            }
-        }
-        return result;
-    }
-
 }

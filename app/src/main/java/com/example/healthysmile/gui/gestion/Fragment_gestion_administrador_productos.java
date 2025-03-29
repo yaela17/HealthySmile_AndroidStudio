@@ -7,60 +7,56 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.healthysmile.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_gestion_administrador_productos#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.healthysmile.utils.SharedPreferencesHelper;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
+
 public class Fragment_gestion_administrador_productos extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Fragment_gestion_administrador_productos() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_gestion_administrador_productos.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Fragment_gestion_administrador_productos newInstance(String param1, String param2) {
-        Fragment_gestion_administrador_productos fragment = new Fragment_gestion_administrador_productos();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private FloatingActionMenu fabMenu;
+    private FloatingActionButton fabVerProductos, fabAgregarProducto,fabEliminarProducto;
+    SharedPreferencesHelper sharedPreferencesHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        sharedPreferencesHelper = new SharedPreferencesHelper(getContext());
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gestion_administrador_productos, container, false);
+        View view = inflater.inflate(R.layout.fragment_gestion_administrador_productos, container, false);
+
+        fabMenu = view.findViewById(R.id.fab_menu);
+        fabVerProductos = view.findViewById(R.id.fab_ver_productos);
+        fabAgregarProducto = view.findViewById(R.id.fab_agregar_producto);
+        fabEliminarProducto = view.findViewById(R.id.fab_eliminar_producto);
+
+        // Set click listeners
+        fabVerProductos.setOnClickListener(v -> {
+            sharedPreferencesHelper.guardarAccionSeleccionadaLVProductos(false);
+            cargarFragment(new Fragment_mostrar_productos());
+            fabMenu.close(true);
+        });
+        fabAgregarProducto.setOnClickListener(v -> {
+            cargarFragment(new Fragment_form_agregar_producto());
+            fabMenu.close(true); // Cierra el menú después de seleccionar
+        });
+        fabEliminarProducto.setOnClickListener(v -> {
+            sharedPreferencesHelper.guardarAccionSeleccionadaLVProductos(true);
+            cargarFragment(new Fragment_mostrar_productos());
+            fabMenu.close(true); // Cierra el menú después de seleccionar
+        });
+        sharedPreferencesHelper.guardarAccionSeleccionadaLVProductos(false);
+        cargarFragment(new Fragment_mostrar_productos());
+        return view;
     }
+
+    public void cargarFragment(Fragment fragment) {
+        getChildFragmentManager().beginTransaction()
+                .replace(R.id.frame_gestion_administrador_productos_crud_selected, fragment)
+                .commit();
+    }
+
 }

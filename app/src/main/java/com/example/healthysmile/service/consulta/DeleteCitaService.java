@@ -40,8 +40,8 @@ public class DeleteCitaService {
 
     private void procesarRespuesta(JSONObject response, ModifyCitaResponseListener listener) {
         try {
-            if (response.has("message")) {
-                String mensaje = response.getString("message");
+            if (response.has("mensaje")) {
+                String mensaje = response.getString("mensaje");
                 listener.onResponse(mensaje);
             } else {
                 listener.onError("Error inesperado");

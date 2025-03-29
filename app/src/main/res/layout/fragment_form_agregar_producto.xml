@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="60dp"
+    tools:context=".gui.gestion.Fragment_form_agregar_producto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/form_agregar_producto_btn_editar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@color/color_boton_registro"
+                android:layout_gravity="top|end"
+                android:visibility="gone"
+                android:text="Editar"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agregar Producto"
+                    android:textColor="@color/color_comun_text"
+                    android:textSize="25sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Foto Producto"
+                    android:textColor="@color/color_comun_text"
+                    android:textSize="15sp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"/>
+
+                <ImageView
+                    android:id="@+id/form_agregar_producto_foto_producto"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/foto_a_seleccionar"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <Button
+                    android:id="@+id/form_agregar_producto_btn_cambiar_foto"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Cambiar foto"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre producto"
+                    android:textColor="@color/color_comun_text"
+                    android:textSize="15sp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"/>
+
+                <EditText
+                    android:id="@+id/form_agregar_producto_input_nombre_producto"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="30dp"
+                    style="@style/formBasicInput"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cantidad de producto"
+                    android:textColor="@color/color_comun_text"
+                    android:textSize="15sp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"/>
+
+                <EditText
+                    android:id="@+id/form_agregar_producto_input_cantidad_producto"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="30dp"
+                    style="@style/formBasicInput"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descripcion producto"
+                    android:textColor="@color/color_comun_text"
+                    android:textSize="15sp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"/>
+
+                <EditText
+                    android:id="@+id/form_agregar_producto_input_descripcion_producto"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="30dp"
+                    style="@style/formBasicInput"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Costo producto"
+                    android:textColor="@color/color_comun_text"
+                    android:textSize="15sp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"/>
+
+                <EditText
+                    android:id="@+id/form_agregar_producto_input_costo_producto"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="30dp"
+                    style="@style/formBasicInput"/>
+
+                <LinearLayout
+                    android:id="@+id/form_agregar_producto_layout_disponibilidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="30dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/titulo_form_agregar_producto_switch_disponible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Disponible"
+                        android:textColor="@color/color_comun_text"
+                        android:textSize="15sp"/>
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/form_agregar_producto_switch_disponible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/form_agregar_producto_btn_agregar_producto"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:text="Agregar producto"/>
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+</FrameLayout>

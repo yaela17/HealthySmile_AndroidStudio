@@ -3,9 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/en_construccion"
     tools:context=".gui.educacionDental.Fragment_vizualizacion_modelos_3d_caries_dentales">
 
-
+    <android.view.SurfaceView
+        android:id="@+id/modelo3dprueba"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>

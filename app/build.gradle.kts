@@ -59,30 +59,33 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore-ktx")
-    implementation ("com.github.bumptech.glide:glide:4.15.0")
-    implementation ("com.google.firebase:firebase-database:20.0.4");
-    implementation ("com.squareup.okhttp3:okhttp:4.9.1")
-    implementation ("com.google.android.material:material:1.8.0")
-    implementation ("androidx.recyclerview:recyclerview:1.3.0");
-    implementation ("com.google.firebase:firebase-messaging:23.1.0")
-    implementation ("io.socket:socket.io-client:2.0.1")
-    implementation ("org.rajawali3d:rajawali:1.0.325@aar")
-    implementation ("org.nanohttpd:nanohttpd:2.3.1")
-    implementation ("io.github.sceneview:sceneview:0.2.0")
-    implementation ("com.google.ar:core:1.30.0")
-    implementation ("io.github.sceneview:arsceneview:1.2.2")
-    implementation ("io.github.sceneview:sceneview:1.0.0")
-    implementation ("com.google.android.flexbox:flexbox:3.0.0")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.google.code.gson:gson:2.8.8")
-    implementation ("com.android.volley:volley:1.2.1")
+    implementation("com.github.bumptech.glide:glide:4.15.0")
+    implementation("com.google.firebase:firebase-database:20.0.4");
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+    implementation("com.google.android.material:material:1.8.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.0");
+    implementation("com.google.firebase:firebase-messaging:23.1.0")
+    implementation("io.socket:socket.io-client:2.0.1")
+    implementation("org.rajawali3d:rajawali:1.0.325@aar")
+    implementation("org.nanohttpd:nanohttpd:2.3.1")
+    implementation("io.github.sceneview:sceneview:0.2.0")
+    implementation("com.google.ar:core:1.30.0")
+    implementation("io.github.sceneview:arsceneview:1.2.2")
+    implementation("io.github.sceneview:sceneview:1.0.0")
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.8.8")
+    implementation("com.android.volley:volley:1.2.1")
     implementation("com.github.prolificinteractive:material-calendarview:2.0.0") {
         exclude(group = "com.android.support", module = "support-compat")
         exclude(group = "com.android.support", module = "appcompat-v7")
     }
-    implementation ("com.jakewharton.threetenabp:threetenabp:1.3.1")
-
-
-
+    implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
+    implementation("com.google.android.filament:filament-android:1.12.0")
+    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("com.google.android.filament:gltfio-android:1.32.1")
+    implementation("com.google.android.filament:filament-utils-android:1.32.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
+    implementation ("com.github.clans:fab:1.6.4")
 }

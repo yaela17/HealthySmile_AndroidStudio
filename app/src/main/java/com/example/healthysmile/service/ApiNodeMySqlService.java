@@ -3,6 +3,7 @@ package com.example.healthysmile.service;
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.model.TemplateParams;
 import com.example.healthysmile.model.entities.Especialista;
+import com.example.healthysmile.model.entities.Producto;
 import com.example.healthysmile.model.entities.Usuario;
 
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiNodeMySqlService {
@@ -33,4 +35,10 @@ public interface ApiNodeMySqlService {
 
     @POST("actualizarFotoPerfil")
     Call<ApiNodeMySqlRespuesta> actualizarFotoPerfil(@Body Map<String, Object> params);
+
+    @POST("agregarProducto")
+    Call<ApiNodeMySqlRespuesta> agregarProducto(@Body Producto producto);
+
+    @POST("deshabilitarProducto")
+    Call<ApiNodeMySqlRespuesta> deshabilitarProducto(@Body Producto producto);
 }

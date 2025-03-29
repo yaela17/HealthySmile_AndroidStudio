@@ -53,8 +53,8 @@ public class ObtenerCitaPorFechaService {
 
         Log.d("Respuesta del servidor fecha", response.toString());
         try {
-            if (response.has("message")) {
-                String mensaje = response.getString("message");
+            if (response.has("mensaje")) {
+                String mensaje = response.getString("mensaje");
                 listener.onCitaNoEncontrada(mensaje);
             } else {
                 long idCita = response.optLong("idCita",-1);
