@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".gui.consulta.Fragment_consulta_virtual_especialista">
+    tools:context=".gui.consulta.chat.Fragment_consulta_virtual_especialista">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        tools:listitem="@layout/item_message"
+
         android:layout_marginBottom="8dp" />
 
     <LinearLayout

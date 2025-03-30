@@ -1,4 +1,4 @@
-package com.example.healthysmile.gui.gestion;
+package com.example.healthysmile.gui.gestion.paciente;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.example.healthysmile.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_gestion_especialista_citas#newInstance} factory method to
+ * Use the {@link Fragment_gestion_paciente_compras#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_gestion_especialista_citas extends Fragment {
+public class Fragment_gestion_paciente_compras extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class Fragment_gestion_especialista_citas extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Fragment_gestion_especialista_citas() {
+    public Fragment_gestion_paciente_compras() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class Fragment_gestion_especialista_citas extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_gestion_especialista_citas.
+     * @return A new instance of fragment fragment_gestion_paciente_compras.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment_gestion_especialista_citas newInstance(String param1, String param2) {
-        Fragment_gestion_especialista_citas fragment = new Fragment_gestion_especialista_citas();
+    public static Fragment_gestion_paciente_compras newInstance(String param1, String param2) {
+        Fragment_gestion_paciente_compras fragment = new Fragment_gestion_paciente_compras();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class Fragment_gestion_especialista_citas extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gestion_especialista_citas, container, false);
+        return inflater.inflate(R.layout.fragment_gestion_paciente_compras, container, false);
     }
 }

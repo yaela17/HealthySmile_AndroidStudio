@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.gestion.paciente.Fragment_gestion_paciente_compras">
+    tools:context=".gui.tiendavirtual.Fragment_tienda_virtual_buscar_producto_nombre">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tienda_buscar_producto_por_nombre_RV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:scrollbars="vertical" />
 
 </FrameLayout>

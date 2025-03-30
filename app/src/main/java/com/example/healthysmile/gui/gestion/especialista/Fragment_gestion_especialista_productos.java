@@ -1,4 +1,4 @@
-package com.example.healthysmile.gui.gestion;
+package com.example.healthysmile.gui.gestion.especialista;
 
 import android.os.Bundle;
 

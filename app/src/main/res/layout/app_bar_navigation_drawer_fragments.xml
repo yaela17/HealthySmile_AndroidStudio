@@ -21,12 +21,29 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:titleTextColor="@color/color_blanco"/>
-
+                app:titleTextColor="@color/color_blanco">
+                <EditText
+                    android:id="@+id/top_bar_input_search"
+                    android:layout_width="265dp"
+                    android:layout_height="33dp"
+                    android:hint="Buscar..."
+                    android:drawableLeft="@drawable/icon_buscar"
+                    android:drawableTint="@color/color_negro"
+                    android:background="@drawable/rounded_edit_text_background"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:visibility="gone"
+                    android:drawablePadding="10dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:inputType="text"
+                    android:gravity="start|center_vertical"
+                    android:cursorVisible="true"/>
+            </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <include layout="@layout/content_navigation_drawer_fragments" />
-
     </LinearLayout>
-
 </FrameLayout>

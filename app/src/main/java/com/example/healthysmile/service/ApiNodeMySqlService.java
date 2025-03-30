@@ -44,4 +44,5 @@ public interface ApiNodeMySqlService {
 
     @POST("actualizarProducto")
     Call<ApiNodeMySqlRespuesta> actualizarProducto(@Body Producto producto);
+
 }

@@ -1,7 +1,6 @@
 package com.example.healthysmile.gui.extraAndroid.adaptadores;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,7 +83,7 @@ public class AdaptadorLVProductos extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.plantilla_list_view_producto, parent, false);
+            convertView = inflater.inflate(R.layout.plantilla_vertical_producto, parent, false);
         }
 
         ImageView imageView = convertView.findViewById(R.id.plantilla_producto_imagenProducto);

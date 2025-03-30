@@ -1,4 +1,4 @@
-package com.example.healthysmile.gui.consulta;
+package com.example.healthysmile.gui.consulta.citas;
 
 import android.app.DatePickerDialog;
 import android.content.Context;

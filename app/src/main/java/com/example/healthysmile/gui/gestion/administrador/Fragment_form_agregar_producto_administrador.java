@@ -1,4 +1,4 @@
-package com.example.healthysmile.gui.gestion;
+package com.example.healthysmile.gui.gestion.administrador;
 
 import android.app.Activity;
 import android.content.Context;
@@ -26,7 +26,7 @@ import com.example.healthysmile.R;
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.model.entities.Producto;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
-import com.example.healthysmile.service.ActualizarFotoProductoService;
+import com.example.healthysmile.service.gestion.ActualizarFotoProductoService;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 import com.example.healthysmile.utils.ImageUtils;
 
@@ -39,7 +39,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Fragment_form_agregar_producto extends Fragment {
+public class Fragment_form_agregar_producto_administrador extends Fragment {
 
     ImageView fotoProducto;
     Button btnCambiarFoto, btnAgregarProducto,btnEditarProducto;
@@ -63,7 +63,7 @@ public class Fragment_form_agregar_producto extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_form_agregar_producto, container, false);
+        View view = inflater.inflate(R.layout.fragment_form_agregar_producto_administrador, container, false);
 
         fotoProducto = view.findViewById(R.id.form_agregar_producto_foto_producto);
         btnCambiarFoto = view.findViewById(R.id.form_agregar_producto_btn_cambiar_foto);
@@ -284,6 +284,9 @@ public class Fragment_form_agregar_producto extends Fragment {
                         Log.d("API_RESPONSE", "Producto actualizado correctamente");
                         Toast.makeText(getContext(), "Producto actualizado correctamente", Toast.LENGTH_SHORT).show();
                         habilitarInputs(false);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.remove("urlFotoProducto");
+                        editor.apply();
                     }
                 } else {
                     // Si la respuesta no es exitosa, mostramos un mensaje de error

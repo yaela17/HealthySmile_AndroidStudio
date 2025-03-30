@@ -30,6 +30,7 @@ import java.util.List;
 public class Home extends Fragment implements View.OnClickListener {
 
     RecyclerView recyclerViewEspecialistasInfo;
+    public int MAXIMOS_ESPECIALISTAS_MOSTRADOS = 2;
 
     // ArrayLists para almacenar los datos
     ArrayList<String> listaNombres = new ArrayList<>();
@@ -82,11 +83,13 @@ public class Home extends Fragment implements View.OnClickListener {
                 listaCedulas.clear();
                 listaFotos.clear();
 
-                listaNombres.addAll(nombres);
-                listaEspecialidades.addAll(especialidades);
-                listaDescripciones.addAll(descripciones);
-                listaCedulas.addAll(cedulasProfesional);
-                listaFotos.addAll(fotos);
+                int maxItems = Math.min(nombres.size(), MAXIMOS_ESPECIALISTAS_MOSTRADOS);
+
+                listaNombres.addAll(nombres.subList(0, maxItems));
+                listaEspecialidades.addAll(especialidades.subList(0, maxItems));
+                listaDescripciones.addAll(descripciones.subList(0, maxItems));
+                listaCedulas.addAll(cedulasProfesional.subList(0, maxItems));
+                listaFotos.addAll(fotos.subList(0, maxItems));
 
                 // Configurar el adaptador con los datos obtenidos
                 AdaptadorRecyclerViewEspecialistas adaptador = new AdaptadorRecyclerViewEspecialistas(

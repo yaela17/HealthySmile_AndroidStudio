@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/en_construccion"
+    android:id="@+id/tienda_virtual_init_fragments_container"
     tools:context=".gui.tiendavirtual.Fragment_tienda_virtual_init">
-
 </FrameLayout>

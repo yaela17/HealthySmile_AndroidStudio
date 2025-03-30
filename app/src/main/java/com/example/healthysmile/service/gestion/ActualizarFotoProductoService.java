@@ -1,4 +1,4 @@
-package com.example.healthysmile.service;
+package com.example.healthysmile.service.gestion;
 
 import static com.example.healthysmile.service.SupabaseFileStorageService.SUPABASE_URL;
 
@@ -6,7 +6,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
-import com.example.healthysmile.controller.SubirArchivoResponseListener;
+import com.example.healthysmile.controller.extraAndroid.SubirArchivoResponseListener;
+import com.example.healthysmile.service.SupabaseFileStorageService;
 
 import org.json.JSONException;
 import org.json.JSONObject;

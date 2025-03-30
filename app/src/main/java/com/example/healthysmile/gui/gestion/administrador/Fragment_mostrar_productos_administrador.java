@@ -1,4 +1,4 @@
-package com.example.healthysmile.gui.gestion;
+package com.example.healthysmile.gui.gestion.administrador;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -21,7 +21,7 @@ import com.example.healthysmile.utils.SharedPreferencesHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fragment_mostrar_productos extends Fragment implements AdapterView.OnItemClickListener {
+public class Fragment_mostrar_productos_administrador extends Fragment implements AdapterView.OnItemClickListener {
 
     ListView productosLV, productosNoDisponiblesLV;
     ObtenerProductosService obtenerProductosService;
@@ -30,7 +30,7 @@ public class Fragment_mostrar_productos extends Fragment implements AdapterView.
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mostrar_productos, container, false);
+        View view = inflater.inflate(R.layout.fragment_mostrar_productos_administrador, container, false);
 
         productosLV = view.findViewById(R.id.mostrar_productos_disponibles_administrador_list_view);
         productosNoDisponiblesLV = view.findViewById(R.id.mostrar_productos_no_disponibles_administrador_list_view);
@@ -124,7 +124,7 @@ public class Fragment_mostrar_productos extends Fragment implements AdapterView.
         AdaptadorLVProductos adaptador = (AdaptadorLVProductos) parent.getAdapter();
         Producto productoSeleccionado = adaptador.getItem(position);
         // Crear el nuevo fragmento y pasar los datos
-        Fragment_form_agregar_producto fragmentoDetalle = new Fragment_form_agregar_producto();
+        Fragment_form_agregar_producto_administrador fragmentoDetalle = new Fragment_form_agregar_producto_administrador();
         Bundle args = new Bundle();
         args.putLong("idProducto", productoSeleccionado.getIdProd());
         args.putString("nombre", productoSeleccionado.getNombreProd());

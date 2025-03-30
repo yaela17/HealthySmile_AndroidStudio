@@ -11,6 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.healthysmile.R;
+import com.example.healthysmile.gui.gestion.administrador.Fragment_gestion_administrador_especialistas;
+import com.example.healthysmile.gui.gestion.administrador.Fragment_gestion_administrador_productos;
+import com.example.healthysmile.gui.gestion.especialista.Fragment_gestion_especialista_citas;
+import com.example.healthysmile.gui.gestion.especialista.Fragment_gestion_especialista_productos;
+import com.example.healthysmile.gui.gestion.paciente.Fragment_gestion_paciente_citas;
+import com.example.healthysmile.gui.gestion.paciente.Fragment_gestion_paciente_compras;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.HashMap;

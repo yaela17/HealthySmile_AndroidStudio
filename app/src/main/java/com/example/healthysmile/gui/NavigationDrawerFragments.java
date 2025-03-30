@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;  // Importa Toast
@@ -114,6 +115,11 @@ public class NavigationDrawerFragments extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 NavController navController = Navigation.findNavController(NavigationDrawerFragments.this, R.id.nav_host_fragment_content_navigation_drawer_fragments);
 
+                EditText inputSearch = findViewById(R.id.top_bar_input_search);
+                androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+
+                inputSearch.setVisibility(View.GONE);
+
                 // Manejar la opción nav_ConsultaVirtual
                 if (item.getItemId() == R.id.nav_ConsultaVirtual) {
                     navController.popBackStack(R.id.nav_ConsultaVirtual, false);
@@ -144,6 +150,8 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_TiendaVirutal) {
                     navController.popBackStack(R.id.nav_TiendaVirutal, false);
                     navController.navigate(R.id.nav_TiendaVirutal);
+                    toolbar.setTitle("");
+                    inputSearch.setVisibility(View.VISIBLE);
                     return true;
                 }
 

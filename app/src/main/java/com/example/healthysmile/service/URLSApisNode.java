@@ -23,4 +23,5 @@ public class URLSApisNode {
 
     //Productos
     public static final String URL_OBTENER_PRODUCTOS = BASE_URL_APIs_Node + "obtenerProductos";
+    public static final String URL_BUSCAR_PRODUCTO_POR_NOMBRE = BASE_URL_APIs_Node + "buscarProductoPorNombre";
 }

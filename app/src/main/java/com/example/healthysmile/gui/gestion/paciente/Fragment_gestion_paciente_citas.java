@@ -1,4 +1,4 @@
-package com.example.healthysmile.gui.gestion;
+package com.example.healthysmile.gui.gestion.paciente;
 
 import android.os.Bundle;
 import android.util.Log;

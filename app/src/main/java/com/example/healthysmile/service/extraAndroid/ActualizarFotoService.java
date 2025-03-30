@@ -11,7 +11,7 @@ import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 import com.example.healthysmile.service.SupabaseFileStorageService;
-import com.example.healthysmile.controller.SubirArchivoResponseListener;
+import com.example.healthysmile.controller.extraAndroid.SubirArchivoResponseListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;

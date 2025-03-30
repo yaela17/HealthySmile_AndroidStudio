@@ -1,4 +1,4 @@
-package com.example.healthysmile.gui.gestion;
+package com.example.healthysmile.gui.gestion.administrador;
 
 import android.os.Bundle;
 
@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.healthysmile.R;
 
@@ -36,20 +35,20 @@ public class Fragment_gestion_administrador_productos extends Fragment {
         // Set click listeners
         fabVerProductos.setOnClickListener(v -> {
             sharedPreferencesHelper.guardarAccionSeleccionadaLVProductos(false);
-            cargarFragment(new Fragment_mostrar_productos());
+            cargarFragment(new Fragment_mostrar_productos_administrador());
             fabMenu.close(true);
         });
         fabAgregarProducto.setOnClickListener(v -> {
-            cargarFragment(new Fragment_form_agregar_producto());
+            cargarFragment(new Fragment_form_agregar_producto_administrador());
             fabMenu.close(true); // Cierra el menú después de seleccionar
         });
         fabEliminarProducto.setOnClickListener(v -> {
             sharedPreferencesHelper.guardarAccionSeleccionadaLVProductos(true);
-            cargarFragment(new Fragment_mostrar_productos());
+            cargarFragment(new Fragment_mostrar_productos_administrador());
             fabMenu.close(true); // Cierra el menú después de seleccionar
         });
         sharedPreferencesHelper.guardarAccionSeleccionadaLVProductos(false);
-        cargarFragment(new Fragment_mostrar_productos());
+        cargarFragment(new Fragment_mostrar_productos_administrador());
         return view;
     }
 

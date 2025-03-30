@@ -1,4 +1,4 @@
-package com.example.healthysmile.gui.consulta;
+package com.example.healthysmile.gui.consulta.chat.paciente;
 
 import android.content.Context;
 import android.content.SharedPreferences;

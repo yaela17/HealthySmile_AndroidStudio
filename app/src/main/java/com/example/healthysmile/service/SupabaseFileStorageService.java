@@ -7,8 +7,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;  // Asegúrate de importar la clase correcta
 import android.os.Looper;
 
-import com.example.healthysmile.controller.CargarFotoResponseListener;
-import com.example.healthysmile.controller.SubirArchivoResponseListener;
+import com.example.healthysmile.controller.extraAndroid.CargarFotoResponseListener;
+import com.example.healthysmile.controller.extraAndroid.SubirArchivoResponseListener;
 
 import okhttp3.*;
 

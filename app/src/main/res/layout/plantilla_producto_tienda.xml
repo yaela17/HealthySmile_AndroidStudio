@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!-- Contenedor Principal -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/white">
+
+        <!-- Imagen del Producto -->
+        <ImageView
+            android:id="@+id/plantilla_producto_tienda_imagenProducto"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/foto_a_seleccionar" />
+
+        <!-- Nombre del Producto -->
+        <TextView
+            android:id="@+id/plantilla_producto_tienda_nombreProducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Producto"
+            android:textStyle="bold"
+            android:textColor="@color/color_comun_text"
+            android:textSize="14sp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <!-- Precio del Producto -->
+        <TextView
+            android:id="@+id/plantilla_producto_tienda_costoProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$109.50"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_green_dark" />
+
+        <!-- Cantidad Disponible -->
+        <TextView
+            android:id="@+id/plantilla_producto_tienda_cantidadProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cantidad: 10"
+            android:textSize="12sp"
+            android:textColor="@android:color/black" />
+
+        <!-- Descripción del Producto -->
+        <TextView
+            android:id="@+id/plantilla_producto_tienda_descripcionProducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción breve del producto"
+            android:textSize="12sp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- Etiqueta "No Disponible" sobrepuesta -->
+    <TextView
+        android:id="@+id/plantilla_producto_tienda_disponible"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_red_dark"
+        android:text="A\n\G\nO\nT\n\A\nD\nO"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="16dp"
+        android:rotation="-20"/>
+</FrameLayout>
