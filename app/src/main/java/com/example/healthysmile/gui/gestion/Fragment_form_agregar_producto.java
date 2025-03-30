@@ -1,6 +1,5 @@
 package com.example.healthysmile.gui.gestion;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
-import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,12 +28,10 @@ import com.example.healthysmile.model.entities.Producto;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ActualizarFotoProductoService;
 import com.example.healthysmile.service.ApiNodeMySqlService;
-import com.example.healthysmile.service.extraAndroid.ActualizarFotoService;
 import com.example.healthysmile.utils.ImageUtils;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.IOException;
 
 import javax.annotation.Nullable;
 
@@ -53,7 +49,7 @@ public class Fragment_form_agregar_producto extends Fragment {
     //Caso en que sea modificar
     long idProductoModificar;
     String nombreProductoModificar, descripcionProductoModificar, imagenUrlProductoModificar;
-    Integer numerosProductoModificar;
+    Integer numerosProductoModificar,comprasProductoModificar;
     double costoProductoModificar;
     boolean disponibleProductoModificar;
     LinearLayout layoutDisponibilidad;
@@ -100,6 +96,7 @@ public class Fragment_form_agregar_producto extends Fragment {
             costoProductoModificar = args.getDouble("costo");
             imagenUrlProductoModificar = args.getString("imagenUrl");
             disponibleProductoModificar = args.getBoolean("disponible");
+            comprasProductoModificar = args.getInt("compras");
 
             inputNombreProd.setText(nombreProductoModificar);
             inputNumProd.setText(String.valueOf(numerosProductoModificar));
@@ -208,24 +205,115 @@ public class Fragment_form_agregar_producto extends Fragment {
                         Toast.makeText(getContext(), "Producto agregado correctamente", Toast.LENGTH_SHORT).show();
                         vaciarCampos();
                     }
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.remove("urlFotoProducto");
+                    editor.apply();
                 } else {
                     // Si la respuesta no es exitosa, mostramos un mensaje de error
                     Toast.makeText(getContext(), "Error al agregar el producto", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<ApiNodeMySqlRespuesta> call, Throwable t) {
-                // Si la llamada a Retrofit falla (por ejemplo, problemas de red), mostramos un mensaje de error
                 Toast.makeText(getContext(), "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void actualizarProducto(){
+    public void actualizarProducto() {
+        if (verificarCamposVacios()) return;
+        if (!verificarDatosNumericos()) return;
+
+        int idProductoModificarFormated = (int) idProductoModificar;
+        String nombreProducto = inputNombreProd.getText().toString().trim();
+        String cantidadProducto = inputNumProd.getText().toString().trim();
+        String descripcionProducto = inputDescProd.getText().toString().trim();
+        String costoProducto = inputCostProd.getText().toString().trim();
+        boolean disponibilidadProducto = switchDisponibilidad.isChecked();
+
+        // Obtener la URL de la foto del producto desde SharedPreferences
+        SharedPreferences prefs = getContext().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        String urlFotoProducto = prefs.getString("urlFotoProducto", null);
+
+        if (urlFotoProducto == null) {
+            urlFotoProducto = imagenUrlProductoModificar;
+        }
+
+        // Crear el objeto Producto con los datos actualizados
+        Producto producto = new Producto();
+        producto.setIdProd(idProductoModificarFormated); // ID del producto que se va a actualizar
+        producto.setNombreProd(nombreProducto);
+        producto.setNumProd(Integer.parseInt(cantidadProducto)); // Asumimos que la cantidad es un número entero
+        producto.setDescriProd(descripcionProducto);
+        producto.setCostoProd(Double.parseDouble(costoProducto)); // Asumimos que el costo es un número decimal
+        producto.setImagen(urlFotoProducto); // URL de la foto del producto
+        producto.setCompras(comprasProductoModificar);
+        producto.setDisponible(disponibilidadProducto); // Disponibilidad del producto
+
+        // Obtener el servicio Retrofit
+        ApiNodeMySqlService apiService = NodeApiRetrofitClient.getApiService();
+        Log.d("API_REQUEST", "Producto: " + producto.toString());
+
+        // Llamar al servicio Retrofit para actualizar el producto
+        Call<ApiNodeMySqlRespuesta> call = apiService.actualizarProducto(producto);
+
+        call.enqueue(new Callback<ApiNodeMySqlRespuesta>() {
+            @Override
+            public void onResponse(Call<ApiNodeMySqlRespuesta> call, Response<ApiNodeMySqlRespuesta> response) {
+                // Log para el código de respuesta HTTP
+                Log.d("API_RESPONSE", "Código de respuesta: " + response.code());  // Mostrar el código de respuesta HTTP
+
+                // Log del cuerpo de la respuesta de error (si está disponible)
+                try {
+                    if (response.errorBody() != null) {
+                        String errorBody = response.errorBody().string();  // Leer el cuerpo de error si existe
+                        Log.d("API_RESPONSE", "Cuerpo de la respuesta de error: " + errorBody);
+                    }
+                } catch (IOException e) {
+                    Log.e("API_RESPONSE", "Error al leer el cuerpo de la respuesta de error: " + e.getMessage());
+                }
+
+                // Revisar si la respuesta fue exitosa
+                if (response.isSuccessful()) {
+                    // Si la respuesta es exitosa, mostramos un mensaje
+                    ApiNodeMySqlRespuesta respuesta = response.body();
+                    if (respuesta != null && respuesta.getMensaje() != null) {
+                        Log.d("API_RESPONSE", "Mensaje del servidor: " + respuesta.getMensaje());
+                        Toast.makeText(getContext(), respuesta.getMensaje(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.d("API_RESPONSE", "Producto actualizado correctamente");
+                        Toast.makeText(getContext(), "Producto actualizado correctamente", Toast.LENGTH_SHORT).show();
+                        habilitarInputs(false);
+                    }
+                } else {
+                    // Si la respuesta no es exitosa, mostramos un mensaje de error
+                    Log.d("API_RESPONSE", "Error al actualizar el producto, código: " + response.code());
+
+                    // Verificar si hay detalles adicionales en la respuesta de error
+                    try {
+                        String errorResponseBody = response.errorBody() != null ? response.errorBody().string() : "No hay cuerpo de error";
+                        Log.d("API_RESPONSE", "Cuerpo de la respuesta de error detallado: " + errorResponseBody);
+                    } catch (IOException e) {
+                        Log.e("API_RESPONSE", "Error al leer el cuerpo de la respuesta de error: " + e.getMessage());
+                    }
+
+                    Toast.makeText(getContext(), "Error al actualizar el producto", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiNodeMySqlRespuesta> call, Throwable t) {
+                Log.e("API_ERROR", "Error de conexión: " + t.getMessage());  // Log de error si ocurre una falla
+
+                // Log adicional para detalles de la excepción
+                Log.e("API_ERROR", "Excepción completa: ", t);
+
+                Toast.makeText(getContext(), "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
-
     // Método para verificar campos vacíos
     public boolean verificarCamposVacios() {
         if (inputNombreProd.getText().toString().isEmpty() ||

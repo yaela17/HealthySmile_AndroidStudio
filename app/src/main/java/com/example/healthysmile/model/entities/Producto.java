@@ -87,4 +87,18 @@ public class Producto {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "compras=" + compras +
+                ", idProd=" + idProd +
+                ", nombreProd='" + nombreProd + '\'' +
+                ", numProd=" + numProd +
+                ", descriProd='" + descriProd + '\'' +
+                ", costoProd=" + costoProd +
+                ", imagen='" + imagen + '\'' +
+                ", disponible=" + disponible +
+                '}';
+    }
 }

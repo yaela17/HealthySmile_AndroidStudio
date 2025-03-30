@@ -41,4 +41,7 @@ public interface ApiNodeMySqlService {
 
     @POST("deshabilitarProducto")
     Call<ApiNodeMySqlRespuesta> deshabilitarProducto(@Body Producto producto);
+
+    @POST("actualizarProducto")
+    Call<ApiNodeMySqlRespuesta> actualizarProducto(@Body Producto producto);
 }

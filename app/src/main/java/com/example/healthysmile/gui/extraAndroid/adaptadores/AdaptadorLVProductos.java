@@ -35,6 +35,7 @@ public class AdaptadorLVProductos extends BaseAdapter {
     private List<Double> costosProd;
     private List<String> urlsImagen;
     private List<Boolean> disponibles;
+    private List<Integer> compras;
     private LayoutInflater inflater;
     private SupabaseFileStorageService supabaseService;
     private ImageUtils imageUtils;  // Añadimos ImageUtils como un objeto
@@ -42,7 +43,7 @@ public class AdaptadorLVProductos extends BaseAdapter {
 
     public AdaptadorLVProductos(Context contexto, List<Long> idsProducto, List<String> nombresProd,
                                 List<Long> numerosProd, List<String> descripcionesProd,
-                                List<Double> costosProd, List<String> urlsImagen,List<Boolean>disponibles, boolean eliminar) {
+                                List<Double> costosProd, List<String> urlsImagen,List<Boolean>disponibles, boolean eliminar,List<Integer> compras) {
         this.contexto = contexto;
         this.idsProducto = idsProducto;
         this.nombresProd = nombresProd;
@@ -55,6 +56,7 @@ public class AdaptadorLVProductos extends BaseAdapter {
         this.imageUtils = new ImageUtils();
         this.eliminar = eliminar;
         this.disponibles = disponibles;
+        this.compras = compras;
     }
 
     @Override
@@ -65,8 +67,13 @@ public class AdaptadorLVProductos extends BaseAdapter {
     @Override
     public Producto getItem(int position) {
         return new Producto(nombresProd.get(position),
-                0,costosProd.get(position),descripcionesProd.get(position),idsProducto.get(position).intValue(),
-                urlsImagen.get(position),numerosProd.get(position).intValue(),disponibles.get(position));
+                compras.get(position),
+                costosProd.get(position),
+                descripcionesProd.get(position),
+                idsProducto.get(position).intValue(),
+                urlsImagen.get(position),
+                numerosProd.get(position).intValue(),
+                disponibles.get(position));
     }
 
     @Override
@@ -130,6 +137,7 @@ public class AdaptadorLVProductos extends BaseAdapter {
                     descripcionesProd.remove(position);
                     costosProd.remove(position);
                     urlsImagen.remove(position);
+                    disponibles.remove(position);
                     notifyDataSetChanged();
                 } else {
                     Log.e("EliminarProducto", "Error en la respuesta del servidor");

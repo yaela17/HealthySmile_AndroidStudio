@@ -2,6 +2,8 @@ package com.example.healthysmile.gui.gestion;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +61,7 @@ public class Fragment_mostrar_productos extends Fragment implements AdapterView.
                 List<Double> costosProdDisponibles = new ArrayList<>();
                 List<String> urlsImagenDisponibles = new ArrayList<>();
                 List<Boolean> sonDisponible = new ArrayList<>();
+                List<Integer> comprasDisponibles = new ArrayList<>();
 
                 List<Long> idsProductoNODisponibles = new ArrayList<>();
                 List<String> nombresProdNODisponibles = new ArrayList<>();
@@ -67,6 +70,7 @@ public class Fragment_mostrar_productos extends Fragment implements AdapterView.
                 List<Double> costosProdNODisponibles = new ArrayList<>();
                 List<String> urlsImagenNODisponibles = new ArrayList<>();
                 List<Boolean> noSonDisponibles = new ArrayList<>();
+                List<Integer> comprasNoDisponibles = new ArrayList<>();
 
                 // Filtrar los productos disponibles
                 for (int i = 0; i < disponibles.size(); i++) {
@@ -78,6 +82,7 @@ public class Fragment_mostrar_productos extends Fragment implements AdapterView.
                         costosProdDisponibles.add(costosProd.get(i));
                         urlsImagenDisponibles.add(urlsImagen.get(i));
                         sonDisponible.add(true);
+                        comprasDisponibles.add(compras.get(i));
                     }else {
                         idsProductoNODisponibles.add(idsProducto.get(i));
                         nombresProdNODisponibles.add(nombresProd.get(i));
@@ -86,16 +91,17 @@ public class Fragment_mostrar_productos extends Fragment implements AdapterView.
                         costosProdNODisponibles.add(costosProd.get(i));
                         urlsImagenNODisponibles.add(urlsImagen.get(i));
                         noSonDisponibles.add(false);
+                        comprasNoDisponibles.add(compras.get(i));
                     }
                 }
                 if (getActivity() != null) {
                     getActivity().runOnUiThread(() -> {
                         AdaptadorLVProductos adaptador = new AdaptadorLVProductos(
                                 requireContext(), idsProductoDisponibles, nombresProdDisponibles, numerosProdDisponibles,
-                                descripcionesProdDisponibles, costosProdDisponibles, urlsImagenDisponibles,disponibles, eliminar
+                                descripcionesProdDisponibles, costosProdDisponibles, urlsImagenDisponibles,disponibles, eliminar,comprasDisponibles
                         );
                         AdaptadorLVProductos adaptador2 = new AdaptadorLVProductos(requireContext(),idsProductoNODisponibles, nombresProdNODisponibles,
-                                numerosProdNODisponibles,descripcionesProdNODisponibles,costosProdNODisponibles,urlsImagenNODisponibles,disponibles,eliminar);
+                                numerosProdNODisponibles,descripcionesProdNODisponibles,costosProdNODisponibles,urlsImagenNODisponibles,disponibles,eliminar, comprasNoDisponibles);
                         productosLV.setAdapter(adaptador);
                         productosNoDisponiblesLV.setAdapter(adaptador2);
                     });
@@ -127,7 +133,10 @@ public class Fragment_mostrar_productos extends Fragment implements AdapterView.
         args.putDouble("costo", productoSeleccionado.getCostoProd());
         args.putString("imagenUrl", productoSeleccionado.getImagen());
         args.putBoolean("disponible",productoSeleccionado.isDisponible());
+        args.putInt("compras",productoSeleccionado.getCompras());
         fragmentoDetalle.setArguments(args);
+
+        Log.d("Compras LV : ",String.valueOf(productoSeleccionado.getCompras()));
 
         Fragment parentFragment = getParentFragment();
         if (parentFragment instanceof Fragment_gestion_administrador_productos) {
