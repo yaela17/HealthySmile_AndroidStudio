@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthysmile.R;
+import com.example.healthysmile.controller.adaptadores.OnProductoClickListener;
 import com.example.healthysmile.service.SupabaseFileStorageService;
 import com.example.healthysmile.utils.ImageUtils;
 
@@ -31,11 +32,12 @@ public class AdaptadorRVProductosVertical extends RecyclerView.Adapter<Adaptador
     private List<Integer> compras;
     private SupabaseFileStorageService supabaseService;
     private ImageUtils imageUtils;
+    private OnProductoClickListener listener;
 
     public AdaptadorRVProductosVertical(Context contexto, List<Long> idsProducto, List<String> nombresProd,
                                 List<Long> numerosProd, List<String> descripcionesProd,
                                 List<Double> costosProd, List<String> urlsImagen, List<Boolean> disponibles,
-                                List<Integer> compras) {
+                                List<Integer> compras,OnProductoClickListener listener) {
         this.contexto = contexto;
         this.idsProducto = idsProducto;
         this.nombresProd = nombresProd;
@@ -47,6 +49,7 @@ public class AdaptadorRVProductosVertical extends RecyclerView.Adapter<Adaptador
         this.compras = compras;
         this.supabaseService = new SupabaseFileStorageService();
         this.imageUtils = new ImageUtils();
+        this.listener = listener;
     }
 
     @NonNull
@@ -78,6 +81,13 @@ public class AdaptadorRVProductosVertical extends RecyclerView.Adapter<Adaptador
         } else {
             holder.agotadoLabel.setVisibility(View.VISIBLE);
         }
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onProductoClick(position, idsProducto.get(position),nombresProd.get(position),numerosProd.get(position),
+                        descripcionesProd.get(position),costosProd.get(position),urlsImagen.get(position),disponibles.get(position),compras.get(position));
+            }
+        });
     }
 
     @Override

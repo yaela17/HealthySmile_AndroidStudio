@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -98,4 +99,14 @@ public class Fragment_tienda_virtual_init extends Fragment {
         inflater.inflate(R.menu.tool_bar_tienda_virtual, menu); // Inflar el menú del fragmento
         super.onCreateOptionsMenu(menu, inflater);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.toolbar_tienda_init_carrito_compra) {
+            loadFragment(new Fragment_tienda_virtual_carrito_compra());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

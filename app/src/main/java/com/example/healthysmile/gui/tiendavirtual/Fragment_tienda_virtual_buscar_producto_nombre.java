@@ -1,15 +1,13 @@
 package com.example.healthysmile.gui.tiendavirtual;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -18,7 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthysmile.R;
-import com.example.healthysmile.controller.ObtenerProductosResponseListener;
+import com.example.healthysmile.controller.tiendaVirtual.ObtenerProductosResponseListener;
+import com.example.healthysmile.controller.adaptadores.OnProductoClickListener;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.AdaptadorRVProductosVertical;
 import com.example.healthysmile.service.tiendaVirtual.ObtenerProductoPorNombreService;
 
@@ -27,9 +26,7 @@ import java.util.List;
 public class Fragment_tienda_virtual_buscar_producto_nombre extends Fragment {
 
     private RecyclerView recyclerView;
-    private EditText inputSearch;
-    private Handler handler = new Handler(Looper.getMainLooper());
-    private Runnable buscarRunnable;
+    String tipoUsuario;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,8 +36,10 @@ public class Fragment_tienda_virtual_buscar_producto_nombre extends Fragment {
         recyclerView = view.findViewById(R.id.tienda_buscar_producto_por_nombre_RV);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        androidx.appcompat.widget.Toolbar toolbar = requireActivity().findViewById(R.id.toolbar);
-        inputSearch = toolbar.findViewById(R.id.top_bar_input_search);
+
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        tipoUsuario = sharedPreferences.getString("tipoUsuario", "Paciente");
+
 
         // Verificar si hay un query pasado por Bundle
         Bundle args = getArguments();
@@ -49,37 +48,7 @@ public class Fragment_tienda_virtual_buscar_producto_nombre extends Fragment {
             llenarRecyclerView(query);
         }
 
-        inputSearch.addTextChangedListener(new android.text.TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {}
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                handler.removeCallbacks(buscarRunnable);
-                if (editable.length() > 0) {
-                    buscarRunnable = new Runnable() {
-                        @Override
-                        public void run() {
-                            buscarProducto();
-                        }
-                    };
-                    handler.postDelayed(buscarRunnable, 500);
-                }else {
-                    loadFragment(new Fragment_tienda_virtual_default());
-                }
-            }
-        });
         return view;
-    }
-
-    private void buscarProducto() {
-        String query = inputSearch.getText().toString().trim();
-        if (!query.isEmpty()) {
-            llenarRecyclerView(query);
-        }
     }
 
     private void llenarRecyclerView(String nombreProducto) {
@@ -95,9 +64,34 @@ public class Fragment_tienda_virtual_buscar_producto_nombre extends Fragment {
                                            List<Integer> compras, List<String> urlsImagen, List<Boolean> disponibles) {
                 if (getActivity() != null && isAdded()) {
                     AdaptadorRVProductosVertical adaptadorRVProductosVertical = new AdaptadorRVProductosVertical(
-                            getActivity(), idsProducto, nombresProd, numerosProd, descripcionesProd, costosProd, urlsImagen, disponibles, compras
+                            getActivity(), idsProducto, nombresProd, numerosProd, descripcionesProd, costosProd, urlsImagen, disponibles, compras, new OnProductoClickListener() {
+                        @Override
+                        public void onProductoClick(int position, long idProducto, String nombreProducto, long numerosProducto,
+                                                    String descripcionProducto, double costoProducto, String urlImagenProducto,
+                                                    boolean disponibleProducto, Integer comprasProducto) {
+                            // Crear el bundle con los datos del producto
+                            Bundle bundle = new Bundle();
+                            bundle.putLong("idProducto", idProducto);
+                            bundle.putString("nombreProducto", nombreProducto);
+                            bundle.putLong("numerosProducto", numerosProducto);
+                            bundle.putString("descripcionProducto", descripcionProducto);
+                            bundle.putDouble("costoProducto", costoProducto);
+                            bundle.putString("urlImagenProducto", urlImagenProducto);
+                            bundle.putBoolean("disponibleProducto", disponibleProducto);
+                            bundle.putInt("comprasProducto", comprasProducto);
+
+                            Fragment fragment = switch (tipoUsuario) {
+                                case "Paciente" -> new Fragment_tienda_virtual_producto();
+                                case "Especialista" -> new Fragment_tienda_virtual_producto();
+                                case "Administrador" -> new Fragment_tienda_virtual_producto();
+                                default -> new Fragment_tienda_virtual_producto();
+                            };
+                            fragment.setArguments(bundle);
+                            loadFragment(fragment);
+                        }
+                    }
                     );
-                    recyclerView.setAdapter(adaptadorRVProductosVertical); // Setea el adaptador al RecyclerView
+                    recyclerView.setAdapter(adaptadorRVProductosVertical);
                 }
             }
 
@@ -117,6 +111,7 @@ public class Fragment_tienda_virtual_buscar_producto_nombre extends Fragment {
                     .commit();
         }
     }
+
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         menu.clear();

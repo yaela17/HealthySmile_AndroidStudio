@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Imagen del producto -->
+        <ImageView
+            android:id="@+id/tienda_vitual_producto_imagen_producto"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/foto_a_seleccionar"
+            android:contentDescription="Imagen del producto" />
+
+        <!-- Nombre del producto -->
+        <TextView
+            android:id="@+id/tienda_vitual_producto_nombre_producto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Nombre del producto"
+            android:paddingTop="8dp"/>
+
+        <!-- Descripción del producto -->
+        <TextView
+            android:id="@+id/tienda_vitual_producto_descripcion_producto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Descripcion del producto"
+            android:paddingTop="4dp"/>
+
+        <!-- Precio -->
+        <TextView
+            android:id="@+id/tienda_vitual_producto_precio_producto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_red_dark"
+            android:text="$ Precio del producto"
+            android:paddingTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tienda_vitual_producto_cantidad_producto_inventario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_blue_dark"
+            android:text="Cantidad actual en inventario : "
+            android:paddingTop="8dp"/>
+
+        <!-- Selección de cantidad -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp">
+
+            <Button
+                android:id="@+id/tienda_vitual_producto_btn_disminuir"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:text="-" />
+            <EditText
+                android:id="@+id/tienda_vitual_producto_cantidad_producto"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="1" />
+            <Button
+                android:id="@+id/tienda_vitual_producto_btn_aumentar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:text="+" />
+        </LinearLayout>
+
+        <!-- Botones de acción -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="16dp">
+
+            <Button
+                android:id="@+id/tienda_vitual_producto_btn_agregar_carrito"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Agregar al carrito" />
+
+            <Button
+                android:id="@+id/tienda_vitual_producto_btn_comprar"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Comprar ahora" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

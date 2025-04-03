@@ -15,7 +15,7 @@ import com.example.healthysmile.R;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.AdaptadorLVProductos;
 import com.example.healthysmile.model.entities.Producto;
 import com.example.healthysmile.service.ObtenerProductosService;
-import com.example.healthysmile.controller.ObtenerProductosResponseListener;
+import com.example.healthysmile.controller.tiendaVirtual.ObtenerProductosResponseListener;
 import com.example.healthysmile.utils.SharedPreferencesHelper;
 
 import java.util.ArrayList;

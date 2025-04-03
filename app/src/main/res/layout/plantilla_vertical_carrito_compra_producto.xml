@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Contenedor Principal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/white">
+
+        <!-- Imagen del Producto -->
+        <ImageView
+            android:id="@+id/plantilla_vertical_carrito_compra_producto_imagenProducto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/foto_a_seleccionar" />
+
+        <!-- Contenedor con la información del Producto -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/plantilla_vertical_carrito_compra_producto_nombreProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre del Producto"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/plantilla_vertical_carrito_compra_producto_descripcionProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripción del Producto"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/plantilla_vertical_carrito_compra_producto_costoProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Costo: $0.00" />
+
+            <TextView
+                android:id="@+id/plantilla_vertical_carrito_compra_producto_disponibilidadProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disponibilidad: Disponible"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Contenedor para la cantidad y los controles (centrado a la derecha) -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="end|center_vertical"
+        android:padding="5dp">
+
+        <!-- Contenedor para los botones de cantidad -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Botón para disminuir cantidad -->
+            <Button
+                android:id="@+id/plantilla_vertical_carrito_compra_producto_boton_disminuir"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:text="-"
+                android:textSize="12sp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginEnd="5dp"/>
+
+            <!-- EditText para mostrar y editar la cantidad -->
+            <EditText
+                android:id="@+id/plantilla_vertical_carrito_compra_producto_editText_cantidad"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="0"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:enabled="true"
+                android:focusable="false"
+                android:editable="true"
+                android:maxLength="3"
+                android:layout_marginHorizontal="5dp"/>
+
+            <!-- Botón para aumentar cantidad -->
+            <Button
+                android:id="@+id/plantilla_vertical_carrito_compra_producto_boton_aumentar"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:text="+"
+                android:textSize="12sp"
+                android:background="?android:attr/selectableItemBackground" />
+        </LinearLayout>
+
+        <!-- Texto "Eliminar" debajo de los controles de cantidad, centrado -->
+        <TextView
+            android:id="@+id/plantilla_vertical_carrito_compra_producto_textoEliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="14sp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal|bottom"/>
+
+    </LinearLayout>
+
+    <!-- Etiqueta de Agotado (si aplica) -->
+    <TextView
+        android:id="@+id/plantilla_vertical_carrito_compra_producto_agotado_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:text="AGOTADO"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="16dp"/>
+</FrameLayout>

@@ -1,4 +1,4 @@
-package com.example.healthysmile.controller;
+package com.example.healthysmile.controller.tiendaVirtual;
 
 import java.util.List;
 

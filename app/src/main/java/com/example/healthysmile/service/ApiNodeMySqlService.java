@@ -5,12 +5,15 @@ import com.example.healthysmile.model.TemplateParams;
 import com.example.healthysmile.model.entities.Especialista;
 import com.example.healthysmile.model.entities.Producto;
 import com.example.healthysmile.model.entities.Usuario;
+import com.example.healthysmile.model.relationships.RelProdCarritoUser;
 
 import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -45,4 +48,16 @@ public interface ApiNodeMySqlService {
     @POST("actualizarProducto")
     Call<ApiNodeMySqlRespuesta> actualizarProducto(@Body Producto producto);
 
+    @POST("agregarProductoCarrito")
+    Call<ApiNodeMySqlRespuesta> agregarProductoCarrito(@Body Map<String,Object> parametros);
+
+    @PUT("actualizarProductoCarrito")
+    Call<ApiNodeMySqlRespuesta> actualizarProductoCarrito(@Body RelProdCarritoUser relProdCarritoUser);
+
+    @DELETE("eliminarProductoCarrito")
+    Call<ApiNodeMySqlRespuesta> eliminarProductoCarrito(
+            @Query("idUsuario") String idUsuario,
+            @Query("idProd") String idProd,
+            @Query("idCarritoCompra") String idCarritoCompra
+    );
 }

@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.healthysmile"
-        minSdk = 26
+        minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -39,6 +39,9 @@ android {
     buildFeatures{
         viewBinding = true
         buildConfig = true
+    }
+    packagingOptions{
+        exclude ("META-INF/DEPENDENCIES")
     }
 }
 
@@ -88,4 +91,14 @@ dependencies {
     implementation("com.google.android.filament:filament-utils-android:1.32.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
     implementation ("com.github.clans:fab:1.6.4")
+    implementation(files("libs/openpay-android-release.aar"))
+    implementation ("com.android.support:support-fragment:28.0.0")
+    implementation ("com.google.http-client:google-http-client:1.28.0")
+    implementation ("com.google.http-client:google-http-client-android:1.28.0")
+    implementation ("com.google.http-client:google-http-client-jackson2:1.28.0")
+    implementation ("com.fasterxml.jackson.core:jackson-core:2.9.8")
+    implementation ("org.slf4j:slf4j-log4j12:1.7.25")
+
+
+
 }

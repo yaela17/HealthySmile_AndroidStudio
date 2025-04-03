@@ -78,6 +78,7 @@ public class SharedPreferencesHelper {
         editor.remove("especialidadEsp");
         editor.remove("idUsuario");
         editor.remove("idEspecialista");
+        editor.remove("idCarritoCompra");
         editor.apply();
     }
 

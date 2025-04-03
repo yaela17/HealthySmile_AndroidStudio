@@ -5,9 +5,8 @@ import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.healthysmile.controller.ObtenerProductosResponseListener;
+import com.example.healthysmile.controller.tiendaVirtual.ObtenerProductosResponseListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;

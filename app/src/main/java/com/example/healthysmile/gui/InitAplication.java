@@ -17,6 +17,8 @@ import com.example.healthysmile.gui.iniciarSesion.sign_up.Sing_Up;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import mx.openpay.android.Openpay;
+
 public class InitAplication extends AppCompatActivity implements View.OnClickListener {
 
     MaterialCardView cardPaciente, cardEspecialista;
