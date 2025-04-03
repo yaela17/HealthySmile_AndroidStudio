@@ -7,12 +7,15 @@ import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.healthysmile.controller.ayudaYSoporte.BuscarPreguntaResponse;
 
+import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BuscarPreguntaFrecuenteService {
     private final RequestQueue requestQueue;
@@ -22,45 +25,46 @@ public class BuscarPreguntaFrecuenteService {
     }
 
     public void buscarPreguntaFrecuente(String pregunta, final BuscarPreguntaResponse listener) {
-        JSONObject requestBody = new JSONObject();
-        try {
-            requestBody.put("pregunta", pregunta);
-        } catch (JSONException e) {
-            Log.e("Volley", "Error al crear JSON de solicitud", e);
-            listener.onError("Error al crear solicitud de cita");
-            return;
-        }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST,
-                URL_BUSCAR_PREGUNTA_FRECUENTE,
-                requestBody,
+        String url = URL_BUSCAR_PREGUNTA_FRECUENTE + "?pregunta=" + pregunta;
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                url,
+                null,
                 response -> procesarRespuestaBuscarPregunta(response, listener),
                 error -> {
-                    Log.e("Volley", "Error al obtener cita", error);
-                    listener.onError("Error al obtener cita");
+                    Log.e("Volley", "Error al obtener preguntas frecuentes", error);
+                    listener.onError("Error al obtener preguntas frecuentes");
                 }
         );
 
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(jsonArrayRequest);
     }
 
-    private void procesarRespuestaBuscarPregunta(JSONObject response, BuscarPreguntaResponse listener) {
+    private void procesarRespuestaBuscarPregunta(JSONArray response, BuscarPreguntaResponse listener) {
         try {
-            if (response.has("mensaje")) {
-                String mensaje = response.getString("mensaje");
-                listener.onPreguntaNoEncontrada(mensaje);
+            if (response.length() == 0) {
+                listener.onPreguntasNoEncontradas("No se encontraron preguntas frecuentes");
             } else {
-                long idPreguntaFrecuente = response.getLong("idPreguntaFrecuente");
-                String pregunta = response.getString("pregunta");
-                String respuesta = response.getString("respuesta");
-                String nombreUsuario = response.getString("nombreUsuario");
-                String nombreEspecialista = response.getString("nombreEspecialista");
+                List<Long> idPreguntasFrecuentes = new ArrayList<>();
+                List<String> preguntas = new ArrayList<>();
+                List<String> respuestas = new ArrayList<>();
+                List<Long> idsUsuarios = new ArrayList<>();
+                List<Long> idsEspecialistas = new ArrayList<>();
 
-                listener.onResponse(idPreguntaFrecuente, pregunta, respuesta,nombreUsuario,nombreEspecialista);
+                for (int i = 0; i < response.length(); i++) {
+                    idPreguntasFrecuentes.add(response.getJSONObject(i).getLong("idPreguntaFrecuente"));
+                    preguntas.add(response.getJSONObject(i).getString("pregunta"));
+                    respuestas.add(response.getJSONObject(i).getString("respuesta"));
+                    idsUsuarios.add(response.getJSONObject(i).getLong("idUsuario"));
+                    idsEspecialistas.add(response.getJSONObject(i).optLong("idEspecialista",-1));
+                }
+
+                listener.onResponse(idPreguntasFrecuentes, preguntas, respuestas, idsUsuarios, idsEspecialistas);
             }
         } catch (JSONException e) {
             Log.e("Volley", "Error al procesar JSON", e);
-            listener.onError("Error al procesar datos de la cita.");
+            listener.onError("Error al procesar datos de las preguntas frecuentes.");
         }
     }
 }
