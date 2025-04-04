@@ -29,6 +29,7 @@ public class Fragment_consulta_list_chat_especialista extends Fragment {
     private List<String> especialidades;
     private List<String> descripciones;
     private List<Long> idsEspecialista;
+    private List<String> fotosPerfil;
 
     private EspecialistaService especialistaService;
 
@@ -54,11 +55,12 @@ public class Fragment_consulta_list_chat_especialista extends Fragment {
     private void cargarEspecialistas() {
         especialistaService.obtenerEspecialistasChat(new EspecialistaResponseListenerChat() {
             @Override
-            public void onResponse(List<String> nombres, List<String> especialidades, List<String> descripciones, List<Long> idsEspecialista) {
+            public void onResponse(List<String> nombres, List<String> especialidades, List<String> descripciones, List<Long> idsEspecialista,List<String> fotosPerfil) {
                 Fragment_consulta_list_chat_especialista.this.nombres = nombres;
                 Fragment_consulta_list_chat_especialista.this.especialidades = especialidades;
                 Fragment_consulta_list_chat_especialista.this.descripciones = descripciones;
                 Fragment_consulta_list_chat_especialista.this.idsEspecialista = idsEspecialista;
+                Fragment_consulta_list_chat_especialista.this.fotosPerfil = fotosPerfil;
                 cargarListView();
             }
             @Override
@@ -74,6 +76,7 @@ public class Fragment_consulta_list_chat_especialista extends Fragment {
         String[] especialidadesArray = especialidades.toArray(new String[0]);
         String[] descripcionesArray = descripciones.toArray(new String[0]);
         long[] idsArray = idsEspecialista.stream().mapToLong(Long::longValue).toArray();
+        String[] fotosPerfilArray = fotosPerfil.toArray(new String[0]);
 
         // Crear e inicializar el adaptador
         AdaptadorListaEspecialistas adaptador = new AdaptadorListaEspecialistas(
@@ -82,9 +85,9 @@ public class Fragment_consulta_list_chat_especialista extends Fragment {
                 nombresArray,
                 especialidadesArray,
                 descripcionesArray,
-                idsArray
+                idsArray,
+                fotosPerfilArray
         );
-
         // Asignar el adaptador al ListView
         listaChat.setAdapter(adaptador);
     }

@@ -22,6 +22,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:titleTextColor="@color/color_blanco">
+
+                <LinearLayout
+                    android:id="@+id/top_bar_contenedor_perfil_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="start"
+                    android:visibility="gone"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
+
+                    <ImageView
+                        android:id="@+id/top_bar_foto_perfil"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/foto_a_seleccionar"
+                        android:background="@drawable/custom_circle_image"
+                        android:scaleType="centerCrop"
+                        android:clipToOutline="true"
+                        android:contentDescription="Foto de perfil" />
+
+                    <TextView
+                        android:id="@+id/top_bar_nombre_chat_receptor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre del receptor"
+                        android:textColor="@color/color_blanco"
+                        android:textSize="20sp"
+                        android:layout_marginStart="8dp"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+                </LinearLayout>
+
                 <EditText
                     android:id="@+id/top_bar_input_search"
                     android:layout_width="265dp"

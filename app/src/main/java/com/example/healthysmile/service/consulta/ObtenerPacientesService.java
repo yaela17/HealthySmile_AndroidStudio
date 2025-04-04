@@ -49,6 +49,7 @@ public class ObtenerPacientesService {
         List<String> nombres = new ArrayList<>();
         List<String> correos = new ArrayList<>();
         List<Long> idsPacientes = new ArrayList<>();
+        List<String> fotosPerfil = new ArrayList<>();
 
         try {
             for (int i = 0; i < response.length(); i++) {
@@ -56,12 +57,18 @@ public class ObtenerPacientesService {
                 long id = paciente.getLong("idUsuario");
                 String nombre = paciente.getString("nombre");
                 String correo = paciente.getString("correo");
+                String fotoPerfil = paciente.optString("fotoPerfil","No disponible");
+
+                if(fotoPerfil.equals("null")){
+                    fotoPerfil = "No disponible";
+                }
 
                 nombres.add(nombre);
                 correos.add(correo);
                 idsPacientes.add(id);
+                fotosPerfil.add(fotoPerfil);
             }
-            listener.onResponse(nombres, correos, idsPacientes);
+            listener.onResponse(nombres, correos, idsPacientes,fotosPerfil);
         } catch (JSONException e) {
             Log.e("Volley", "Error al procesar JSON", e);
             listener.onError("Error al procesar datos de pacientes.");

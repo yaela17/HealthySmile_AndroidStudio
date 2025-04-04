@@ -34,6 +34,7 @@ public class Fragment_consulta_list_chat_paciente extends Fragment {
 
     private List<String> nombresLV = new ArrayList<>();
     private List<String> correosLV = new ArrayList<>();
+    private List<String> fotosPerfilLV = new ArrayList<>();
     private List<Long> idsPacientesLV = new ArrayList<>();
 
 
@@ -61,7 +62,7 @@ public class Fragment_consulta_list_chat_paciente extends Fragment {
         nombresLV.clear();
         correosLV.clear();
         idsPacientesLV.clear();
-
+        fotosPerfilLV.clear();
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         long idEspecialista = sharedPreferences.getLong("idEspecialista", -1);
 
@@ -101,12 +102,13 @@ public class Fragment_consulta_list_chat_paciente extends Fragment {
 
         pacientesService.obtenerPacientesChat(new ObtenerPacientesResponseListener() {
             @Override
-            public void onResponse(List<String> nombres, List<String> correos, List<Long> idsPacientes) {
+            public void onResponse(List<String> nombres, List<String> correos, List<Long> idsPacientes,List<String> fotosPerfil) {
                 idsPacientesLV.clear();
                 for (int i = 0; i < nombres.size(); i++) {
                     nombresLV.add(nombres.get(i));
                     correosLV.add(correos.get(i));
                     idsPacientesLV.add(idsPacientes.get(i));
+                    fotosPerfilLV.add(fotosPerfil.get(i));
                 }
                 cargarListView();
             }
@@ -122,15 +124,16 @@ public class Fragment_consulta_list_chat_paciente extends Fragment {
         String[] nombresArray = nombresLV.toArray(new String[0]);
         String[] correosArray = correosLV.toArray(new String[0]);
         long[] idsArray = idsPacientesLV.stream().mapToLong(Long::longValue).toArray();
+        String[] fotosPerfil = fotosPerfilLV.toArray(new String[0]);
 
         AdaptadorListaPacientes adaptador = new AdaptadorListaPacientes(
                 getContext(),
                 correosArray,
                 idsArray,
                 this,
-                nombresArray
+                nombresArray,
+                fotosPerfil
         );
-
         listaChatUsuarios.setAdapter(adaptador);
     }
 }

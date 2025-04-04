@@ -49,6 +49,7 @@ public class EspecialistaService {
         List<String> especialidades = new ArrayList<>();
         List<String> descripciones = new ArrayList<>();
         List<Long> idsEspecialista = new ArrayList<>();
+        List<String> fotosPerfil = new ArrayList<>();
 
         try {
             for (int i = 0; i < response.length(); i++) {
@@ -57,13 +58,21 @@ public class EspecialistaService {
                 String nombre = especialista.getString("nombre");
                 String especialidad = especialista.optString("especialidad", "No especificado");
                 String descripcion = especialista.optString("descripcion", "No disponible");
+                String fotoPerfil = especialista.optString("fotoPerfil","No disponible");
+
+                if(fotoPerfil.equals("null")){
+                    fotoPerfil = "No disponible";
+                }
+
+                Log.d("FotoPerfil", "Valor obtenido: " + fotoPerfil);
 
                 nombres.add(nombre);
                 idsEspecialista.add(idEspecialista);
                 especialidades.add(especialidad);
                 descripciones.add(descripcion);
+                fotosPerfil.add(fotoPerfil);
             }
-            listener.onResponse(nombres, especialidades, descripciones, idsEspecialista);
+            listener.onResponse(nombres, especialidades, descripciones, idsEspecialista,fotosPerfil);
         } catch (JSONException e) {
             Log.e("Volley", "Error al procesar JSON", e);
             listener.onError("Error al procesar datos de especialistas.");

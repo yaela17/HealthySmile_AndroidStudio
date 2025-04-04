@@ -40,7 +40,7 @@
         <fragment
             android:id="@+id/fragment_consulta_virtual_especialista"
             android:name="com.example.healthysmile.gui.consulta.chat.Fragment_consulta_virtual_especialista"
-            android:label="@string/label_menu_consultavirtualespecialista"
+            android:label="@null"
             tools:layout="@layout/fragment_consulta_virtual_especialista" />
 
     <fragment

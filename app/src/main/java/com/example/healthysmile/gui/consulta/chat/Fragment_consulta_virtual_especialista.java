@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.healthysmile.model.entities.Message;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.MessageAdapter;
 import com.example.healthysmile.R;
+import com.example.healthysmile.utils.ImageUtils;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
@@ -40,7 +44,10 @@ public class Fragment_consulta_virtual_especialista extends Fragment {
     private Button sendButton;
 
     long idUsuarioChat, idEspecialistaChat;
-    String tipoUsuario, nombreReceptorChat;
+    String tipoUsuario, nombreReceptorChat,fotoPerfilReceptorChat;
+    ImageView fotoPerfilChat;
+    LinearLayout contenedorToolBarFotoPerfil;
+    TextView nombreToolBarReceptor;
 
     private ListenerRegistration messagesListener;
 
@@ -49,15 +56,36 @@ public class Fragment_consulta_virtual_especialista extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_consulta_virtual_especialista, container, false);
 
+        androidx.appcompat.widget.Toolbar toolbar = requireActivity().findViewById(R.id.toolbar);
+        contenedorToolBarFotoPerfil = toolbar.findViewById(R.id.top_bar_contenedor_perfil_chat);
+        fotoPerfilChat = toolbar.findViewById(R.id.top_bar_foto_perfil);
+        nombreToolBarReceptor = toolbar.findViewById(R.id.top_bar_nombre_chat_receptor);
+        contenedorToolBarFotoPerfil.setVisibility(View.VISIBLE);
+
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         idUsuarioChat = sharedPreferences.getLong("idUsuario", 0);
         idEspecialistaChat = sharedPreferences.getLong("idEspecialistaChat", 0);
         nombreReceptorChat = sharedPreferences.getString("nombreReceptorChat","null");
         tipoUsuario = sharedPreferences.getString("tipoUsuario","Paciente");
+        fotoPerfilReceptorChat = sharedPreferences.getString("fotoPerfilReceptorChat","No disponible");
+
+        nombreToolBarReceptor.setText(nombreReceptorChat);
+        ImageUtils imageUtils = new ImageUtils();
 
         if(tipoUsuario.equals("Especialista")){
             idUsuarioChat = sharedPreferences.getLong("idEspecialistaChat",0);
             idEspecialistaChat = sharedPreferences.getLong("idEspecialista",0);
+            if("No disponible".equals(fotoPerfilReceptorChat)){
+                fotoPerfilChat.setImageResource(R.drawable.default_photo_perfil_paciente);
+            }else {
+                imageUtils.cargarImagenConGlide(getContext(),fotoPerfilReceptorChat,fotoPerfilChat);
+            }
+        }else if(tipoUsuario.equals("Paciente")){
+            if("No disponible".equals(fotoPerfilReceptorChat)){
+                fotoPerfilChat.setImageResource(R.drawable.default_photo_perfil_especialista);
+            }else {
+                imageUtils.cargarImagenConGlide(getContext(),fotoPerfilReceptorChat,fotoPerfilChat);
+            }
         }
 
         long idEmisorActual = 0;
@@ -102,7 +130,7 @@ public class Fragment_consulta_virtual_especialista extends Fragment {
         if (getActivity() != null) {
             AppCompatActivity activity = (AppCompatActivity) getActivity();
             if (activity.getSupportActionBar() != null) {
-                activity.getSupportActionBar().setTitle(nombreReceptorChat);
+                activity.getSupportActionBar().setTitle("");
             }
         }
 
@@ -226,9 +254,13 @@ public class Fragment_consulta_virtual_especialista extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
         if (messagesListener != null) {
             messagesListener.remove();
         }
-    }
 
+        if (contenedorToolBarFotoPerfil != null) {
+            contenedorToolBarFotoPerfil.setVisibility(View.GONE);
+        }
+    }
 }

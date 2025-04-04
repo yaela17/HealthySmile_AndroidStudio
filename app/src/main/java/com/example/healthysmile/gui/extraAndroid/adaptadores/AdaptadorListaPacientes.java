@@ -15,22 +15,27 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.healthysmile.R;
+import com.example.healthysmile.utils.ImageUtils;
 
 public class AdaptadorListaPacientes extends BaseAdapter {
     private Context contexto;
     private String[] nombres;
     private String[] correos;
     private long[] idsUsuario;
+    private String[] fotosPerfil;
     private LayoutInflater inflater;
     private Fragment fragment;
+    ImageUtils imageUtils;
 
-    public AdaptadorListaPacientes(Context contexto, String[] correos, long[] idsUsuario, Fragment fragment, String[] nombres) {
+    public AdaptadorListaPacientes(Context contexto, String[] correos, long[] idsUsuario, Fragment fragment, String[] nombres, String[] fotosPerfil) {
         this.contexto = contexto;
         this.correos = correos;
         this.idsUsuario = idsUsuario;
         this.fragment = fragment;
         this.inflater = LayoutInflater.from(contexto);
         this.nombres = nombres;
+        this.fotosPerfil = fotosPerfil;
+        this.imageUtils = new ImageUtils();
     }
 
     @Override
@@ -60,6 +65,11 @@ public class AdaptadorListaPacientes extends BaseAdapter {
 
         textNombre.setText(nombres[position]);
         textCorreo.setText(correos[position]);
+        if("No disponible".equals(fotosPerfil[position])){
+            imageView.setImageResource(R.drawable.default_photo_perfil_paciente);
+        } else {
+            imageUtils.cargarImagenConGlide(contexto, fotosPerfil[position], imageView);
+        }
 
         convertView.setOnClickListener(v -> {
             Log.d("Adaptador", "ID seleccionado: " + idsUsuario[position]);
@@ -68,6 +78,7 @@ public class AdaptadorListaPacientes extends BaseAdapter {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putLong("idEspecialistaChat", idsUsuario[position]);
             editor.putString("nombreReceptorChat", nombres[position]);
+            editor.putString("fotoPerfilReceptorChat",fotosPerfil[position]);
             editor.apply();
             NavController navController = NavHostFragment.findNavController(fragment);
             navController.navigate(R.id.fragment_consulta_virtual_especialista,null);
