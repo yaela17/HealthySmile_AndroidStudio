@@ -80,6 +80,9 @@
         <action
             android:id="@+id/action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_periodontitis"
             app:destination="@id/fragment_visualizacion_modelos_3d_periodontitis"/>
+        <action
+            android:id="@+id/action_nav_EducacionDental_to_modelo3dPrueba"
+            app:destination="@id/modelo3dPrueba" />
 
     </fragment>
         <fragment
@@ -162,4 +165,12 @@
         android:name="com.example.healthysmile.gui.consulta.citas.Fragment_consulta_citas"
         android:label="fragment_consulta_citas"
         tools:layout="@layout/fragment_consulta_citas" />
+    <fragment
+        android:id="@+id/modelo3dPrueba"
+        android:name="com.example.healthysmile.gui.educacionDental.Modelo3dPrueba"
+        android:label="Modelo3dPrueba" >
+        <action
+            android:id="@+id/action_modelo3dPrueba_to_fragment_visualizacion_modelos_3d_periodontitis"
+            app:destination="@id/fragment_visualizacion_modelos_3d_periodontitis" />
+    </fragment>
 </navigation>

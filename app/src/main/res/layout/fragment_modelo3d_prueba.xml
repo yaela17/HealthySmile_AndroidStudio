@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.educacionDental.Fragment_visualizacion_modelos_3d_cancer_bucal">
+    tools:context=".gui.educacionDental.modelo3d_prueba">
 
+    <!-- SceneView para mostrar el modelo 3D -->
     <io.github.sceneview.SceneView
         android:id="@+id/sceneView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!-- Vista de carga -->
     <View
         android:id="@+id/loadingView"
         android:layout_width="wrap_content"

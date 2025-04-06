@@ -26,7 +26,7 @@ public class ActualizarFotoProductoService {
     public void actualizarFotoProducto(final File file) {
         SupabaseFileStorageService supabaseFileStorageService = new SupabaseFileStorageService();
 
-        supabaseFileStorageService.subirArchivoEnSegundoPlano(context, file, new SubirArchivoResponseListener() {
+        supabaseFileStorageService.subirArchivoEnSegundoPlano(context, file,"fotoProducto", new SubirArchivoResponseListener() {
             @Override
             public void onSubidaExitosa(String fotoUrl) {
                 Log.d("FotoProducto", "Archivo subido exitosamente, URL: " + fotoUrl);
@@ -35,7 +35,6 @@ public class ActualizarFotoProductoService {
             @Override
             public void onError(String error) {
                 Log.e("FotoProducto", "Error al subir archivo: " + error);
-                Toast.makeText(context, "Error al subir la foto del producto", Toast.LENGTH_SHORT).show();
             }
         });
     }

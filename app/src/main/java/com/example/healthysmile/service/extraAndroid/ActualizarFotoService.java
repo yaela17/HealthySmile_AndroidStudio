@@ -38,7 +38,7 @@ public class ActualizarFotoService {
         SupabaseFileStorageService supabaseFileStorageService = new SupabaseFileStorageService();
 
         // Usamos el método asincrónico para subir el archivo
-        supabaseFileStorageService.subirArchivoEnSegundoPlano(context, file, new SubirArchivoResponseListener() {
+        supabaseFileStorageService.subirArchivoEnSegundoPlano(context, file,"fotoPerfil",new SubirArchivoResponseListener() {
             @Override
             public void onSubidaExitosa(String fotoUrl) {
                 // Una vez que el archivo ha sido subido, se obtiene la URL
@@ -50,7 +50,6 @@ public class ActualizarFotoService {
             public void onError(String error) {
                 // Si ocurre un error en la subida
                 Log.e("FotoPerfil", "Error al subir archivo: " + error);
-                Toast.makeText(context, "Error al subir la foto", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -71,10 +71,9 @@ dependencies {
     implementation("io.socket:socket.io-client:2.0.1")
     implementation("org.rajawali3d:rajawali:1.0.325@aar")
     implementation("org.nanohttpd:nanohttpd:2.3.1")
-    implementation("io.github.sceneview:sceneview:0.2.0")
+    implementation ("io.github.sceneview:arsceneview:2.2.1")
     implementation("com.google.ar:core:1.30.0")
     implementation("io.github.sceneview:arsceneview:1.2.2")
-    implementation("io.github.sceneview:sceneview:1.0.0")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -98,7 +97,4 @@ dependencies {
     implementation ("com.google.http-client:google-http-client-jackson2:1.28.0")
     implementation ("com.fasterxml.jackson.core:jackson-core:2.9.8")
     implementation ("org.slf4j:slf4j-log4j12:1.7.25")
-
-
-
 }

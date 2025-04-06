@@ -48,7 +48,7 @@ public class Fragment_visualizacion_modelos_3d_init extends Fragment implements 
     public void onClick(View v) {
         NavController navController = NavHostFragment.findNavController(Fragment_visualizacion_modelos_3d_init.this);
         if(v.getId() == R.id.modelos_init_imagen_gingivitis){
-            navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_gingivitis);
+            navController.navigate(R.id.action_nav_EducacionDental_to_modelo3dPrueba);
         }else
             if(v.getId() == R.id.modelos_init_imagen_caries_dentales){
                 navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_caries_dentales);
