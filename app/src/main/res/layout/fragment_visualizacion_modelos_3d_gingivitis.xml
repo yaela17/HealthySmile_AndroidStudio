@@ -13,23 +13,29 @@
         android:hint="Nombre" />
 
     <EditText
-        android:id="@+id/edtCorreo"
+        android:id="@+id/edtPrimerApellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo" />
+        android:hint="Primer Apellido" />
 
     <EditText
-        android:id="@+id/edtContrasena"
+        android:id="@+id/edtSegundoApellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:inputType="textPassword" />
+        android:hint="Segundo Apellido" />
+
+
+    <EditText
+        android:id="@+id/edtCedula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cédula Profesional" />
 
     <Button
-        android:id="@+id/btnEnviarPaciente"
+        android:id="@+id/btnVerificarCedula"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crear Paciente" />
+        android:text="Verificar Cédula" />
 
     <TextView
         android:id="@+id/txtResultado"
@@ -38,5 +44,5 @@
         android:text="Esperando respuesta..."
         android:textSize="18sp"
         android:padding="10dp"/>
-
 </LinearLayout>
+

@@ -52,17 +52,22 @@ public class Fragment_sign__up__verificacion_correo extends Fragment implements 
     @Override
     public void onClick(View v) {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("AppPrefs", getContext().MODE_PRIVATE);
-        String codigoGuardado = sharedPreferences.getString("codigoVerificacion"," ");
+        codigoGuardado = sharedPreferences.getString("codigoVerificacion"," ");
         String codigoIngresado = inputCodigoVerificacion.getText().toString().trim();
+        Toast.makeText(getContext(), "Código correcto" + codigoGuardado , Toast.LENGTH_SHORT).show();
 
         if (codigoIngresado.equals(codigoGuardado)) {
             sharedPreferencesHelper.eliminarCodigoVerificacion();
             cronometro.setText("Código correcto. Iniciando sesión...");
             Toast.makeText(getContext(), "Código correcto", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(getActivity(), NavigationDrawerFragments.class);
-            startActivity(intent);
-            getActivity().finish();
+            Fragment nuevoFragmento = new Fragment_sign_up_foto_perfil(); // Tu destino
+
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.signUpFragmentContainer, nuevoFragmento)
+                    .addToBackStack(null)
+                    .commit();
         } else {
             Toast.makeText(getContext(), "Código incorrecto, inténtelo de nuevo", Toast.LENGTH_SHORT).show();
         }

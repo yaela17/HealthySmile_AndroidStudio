@@ -49,26 +49,23 @@ public class Default_fragment_settings extends Fragment implements AdapterView.O
             String especialidad = sharedPreferences.getString("especialidadEsp", null);
         }
 
-        Drawable fotoPerfil =  obtenerFotoPerfil();
-
         // Inicializamos los arrays de iconos
         listLeftIcon = new Drawable[]{
-                fotoPerfil
+                getResources().getDrawable(R.drawable.dentistaaa),
+                getResources().getDrawable(R.drawable.icon_person)
         };
 
         lisRightIcon = new Drawable[]{
-                null,
-                null,
-                null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
+                null,null
         };
 
         // Configurar el ListView y el adaptador
         listTitleInputFile = new String[]{
-                nombre
+                nombre, "sigma"
         };
 
         listDescriptionInputFile = new String[]{
-                correo
+                correo, "sigma"
         };
 
         listaDefaultSettings = view.findViewById(R.id.listViewDefaultSettings);
@@ -88,17 +85,6 @@ public class Default_fragment_settings extends Fragment implements AdapterView.O
             transaction.commit();
         }
     }
-
-    private Drawable obtenerFotoPerfil() {
-        // Si la foto de paciente o especialista es nula, se usa una foto predeterminada
-
-            if ("Paciente".equals(tipoUsuario)) {
-                return getResources().getDrawable(R.drawable.default_photo_perfil_paciente);
-            } else {
-                return getResources().getDrawable(R.drawable.default_photo_perfil_especialista);
-            }
-    }
-
 
 }
 

@@ -3,6 +3,7 @@ package com.example.healthysmile.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.core.content.ContextCompat;
@@ -12,6 +13,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.healthysmile.R;
 
 public class ReutilizableMethods {
+
     public void cargarFotoPerfil(Context context, ImageView imageView) {
 
         Log.d("ReutilizableMethods", "Iniciando carga de foto de perfil");
@@ -44,13 +46,11 @@ public class ReutilizableMethods {
                     .placeholder(defaultImage)
                     .error(defaultImage)
                     .into(imageView);
-
             Log.d("ReutilizableMethods", "Carga de imagen desde URL completada.");
         } else {
             Log.d("ReutilizableMethods", "Foto URL es nula o 'null', usando imagen por defecto.");
             imageView.setImageDrawable(ContextCompat.getDrawable(context, defaultImage));
         }
-
         Log.d("ReutilizableMethods", "Carga de foto de perfil finalizada");
     }
 

@@ -16,10 +16,13 @@ import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.model.TemplateParams;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 import com.example.healthysmile.service.EmailServiceJS;
+import com.example.healthysmile.utils.IconUtils;
+import com.example.healthysmile.utils.ReutilizableMethods;
 import com.example.healthysmile.utils.SharedPreferencesHelper;
 import com.example.healthysmile.model.entities.Usuario;
 import com.example.healthysmile.R;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
+import com.example.healthysmile.utils.ValidationUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +33,7 @@ public class Sign_Up_Paciente extends Fragment {
     private EditText fragSignUpInputNombreUsuario, fragSignUpInputCorreo, fragSignUpInputContrasena;
     private Button fragSignUpBtnRegistrarse;
     private SharedPreferencesHelper manejadorShadPreferences;
+    ValidationUtils validationUtils;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +48,11 @@ public class Sign_Up_Paciente extends Fragment {
 
         fragSignUpBtnRegistrarse.setOnClickListener(v -> registrarUsuario());
 
+        validationUtils = new ValidationUtils();
+
+        IconUtils icono = new IconUtils();
+        icono.setupPasswordVisibility(fragSignUpInputContrasena);
+
         return view;
     }
 
@@ -54,10 +63,7 @@ public class Sign_Up_Paciente extends Fragment {
         int nivelPermisos = 1;
         String tipoUser = "Paciente";
 
-        if (nombre.isEmpty() || correo.isEmpty() || contrasena.isEmpty()) {
-            Toast.makeText(getActivity(), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        if (!validationUtils.validarRegistroPaciente(fragSignUpInputNombreUsuario,fragSignUpInputCorreo,fragSignUpInputContrasena)) return;
 
         Usuario paciente = new Usuario(contrasena, correo, null, null, nivelPermisos, nombre,"Paciente");
         ApiNodeMySqlService apiService = NodeApiRetrofitClient.getApiService();
@@ -105,5 +111,4 @@ public class Sign_Up_Paciente extends Fragment {
         int code = (int) (100000 + Math.random() * 900000);
         return String.valueOf(code);
     }
-
 }

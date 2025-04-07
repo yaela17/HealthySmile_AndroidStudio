@@ -46,7 +46,7 @@ public class Fragment_consulta_citas extends Fragment implements View.OnClickLis
     private EditText inputDate, inputMotivoCita;
     Button btnGuardar;
     private MaterialCalendarView calendarView;
-    private int selectedYear, selectedMonth, selectedDay, selectedHour, selectedMinute;
+    private int selectedYear, selectedMonth, selectedDay;
     Spinner comboEspecialidad,comboHorariosDisponibles;
     long idUsuario = -1;
     long idEspecialistaSeleccionado = -1;
@@ -76,8 +76,6 @@ public class Fragment_consulta_citas extends Fragment implements View.OnClickLis
         selectedYear = calendar.get(Calendar.YEAR);
         selectedMonth = calendar.get(Calendar.MONTH);
         selectedDay = calendar.get(Calendar.DAY_OF_MONTH);
-        selectedHour = calendar.get(Calendar.HOUR_OF_DAY);
-        selectedMinute = calendar.get(Calendar.MINUTE);
 
         calendarView.state().edit()
                 .setMinimumDate(CalendarDay.today())

@@ -8,20 +8,11 @@
     android:orientation="vertical"
     tools:context=".gui.iniciarSesion.sign_up.Sing_Up">
 
-    <ImageView
-        android:id="@+id/flechaRegresar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="start"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/icon_arrow_back"
-        android:contentDescription="@string/content_description_imagen_arrow_back"
-        app:tint="@color/color_comun_text" />
-
     <FrameLayout
         android:id="@+id/signUpFragmentContainer"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"/>
 
 </LinearLayout>

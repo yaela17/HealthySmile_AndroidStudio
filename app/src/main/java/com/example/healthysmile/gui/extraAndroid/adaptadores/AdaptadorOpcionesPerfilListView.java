@@ -1,7 +1,9 @@
 package com.example.healthysmile.gui.extraAndroid.adaptadores;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.healthysmile.R;
+import com.example.healthysmile.utils.ImageUtils;
 import com.example.healthysmile.utils.ReutilizableMethods;
 
 public class AdaptadorOpcionesPerfilListView extends BaseAdapter {
@@ -62,18 +65,22 @@ public class AdaptadorOpcionesPerfilListView extends BaseAdapter {
         TextView inputTitle = view.findViewById(R.id.plantillaOpcionesPerfilTitleInputFile);
         TextView inputDesc = view.findViewById(R.id.plantillaOpcionesPerfilDescriptionInputFile);
         ImageView rightIcon = view.findViewById(R.id.plantillaOpcionesPerfilRightIcon);
+
         leftIcon.setImageDrawable(listLeftIcon[position]);
         inputTitle.setText(listTitleInputFile[position]);
         inputDesc.setText(listDescriptionInputFile[position]);
         if (position == 0) {
+            leftIcon.setImageTintList(null);
+
             ReutilizableMethods reutilizableMethods = new ReutilizableMethods();
-            reutilizableMethods.cargarFotoPerfil(view.getContext(), leftIcon);
+            reutilizableMethods.cargarFotoPerfil(contexto,leftIcon);
 
             // Configurar el tamaño de la imagen
             leftIcon.setLayoutParams(new LinearLayout.LayoutParams(250, 250));
 
             // Establecer padding
             leftIcon.setPadding(0, 8, 0, 0);
+
 
 
             // Establecer el fondo circular (asegurate de tener un drawable de fondo circular)
@@ -84,7 +91,6 @@ public class AdaptadorOpcionesPerfilListView extends BaseAdapter {
 
             // Establecer el clip a los bordes (solo es necesario si el fondo es circular)
             leftIcon.setClipToOutline(true);
-
         }
         if(lisRightIcon[position] != null){
             rightIcon.setImageDrawable(lisRightIcon[position]);

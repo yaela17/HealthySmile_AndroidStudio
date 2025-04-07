@@ -23,6 +23,7 @@ import com.example.healthysmile.model.entities.Especialista;
 import com.example.healthysmile.R;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.CustomSpinnerAdapter;
+import com.example.healthysmile.utils.ValidationUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +37,7 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
     Spinner comboEspecialidad;
     Button btnRegistrarse;
     SharedPreferencesHelper manejadorShadPreferences;
+    ValidationUtils validationUtils;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +54,8 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
         inputDescripcion = view.findViewById(R.id.SignUpEspecialistaInputDescripcion);
         btnRegistrarse = view.findViewById(R.id.SignUpEspecialistaBtnRegistrarse);
         btnRegistrarse.setOnClickListener(this);
+
+        validationUtils = new ValidationUtils();
 
         // Inicializa las opciones del spinner
         opComboEspecialidad = new String[]{
@@ -117,11 +121,7 @@ public class Sign_Up_Especialista extends Fragment implements View.OnClickListen
         int nivelPermisos = 2;
         String tipoUser = "Especialista";
 
-        if (nombre.isEmpty() || correo.isEmpty() || contrasena.isEmpty() || cedulaProfesional.isEmpty() ||
-                especialidad.equals(getString(R.string.opcion_combo_especialidad_selecciona_tu_especialidad))) {
-            Toast.makeText(getActivity(), "Por favor completa todos los campos obligatorios", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        if (!validationUtils.validarRegistroEspecialista(inputNombre,inputCorreo,inputContrasena,inputCedulaProfesional,comboEspecialidad,getContext())) return;
 
         Especialista especialista = new Especialista(contrasena, correo, null, null, nivelPermisos, nombre, tipoUser, cedulaProfesional, descripcion, especialidad, null);
         ApiNodeMySqlService apiService = NodeApiRetrofitClient.getApiService();

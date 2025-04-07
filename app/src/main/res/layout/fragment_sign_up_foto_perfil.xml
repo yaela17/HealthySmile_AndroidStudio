@@ -8,18 +8,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- Fragmento con selector de imagen -->
         <FrameLayout
             android:id="@+id/fragmentProfileImageSelectorLogIng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/fragmentProfileImageSelectorLogIng_btnGuardar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Guardar"/>
+            android:text="Guardar"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Botón Ir sin guardar -->
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/fragmentProfileImageSelectorLogIng_btnIrSinGuardar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ir sin guardar"/>
+            android:text="Ir sin guardar" />
     </LinearLayout>
 </FrameLayout>

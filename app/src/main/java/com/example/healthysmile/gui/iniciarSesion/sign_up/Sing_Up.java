@@ -14,8 +14,6 @@ import com.example.healthysmile.R;
 
 public class Sing_Up extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView imagenRegresar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +32,6 @@ public class Sing_Up extends AppCompatActivity implements View.OnClickListener {
             Intent intentitoInitAplication = new Intent(this, InitAplication.class);
             startActivity(intentitoInitAplication);
         }
-        imagenRegresar = findViewById(R.id.flechaRegresar);
-        imagenRegresar.setOnClickListener(this);
     }
 
     public void cambiarFragmento(Fragment fragment) {
