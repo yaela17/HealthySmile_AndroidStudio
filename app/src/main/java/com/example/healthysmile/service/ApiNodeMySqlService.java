@@ -2,6 +2,7 @@ package com.example.healthysmile.service;
 
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.controller.CedulaResultado;
+import com.example.healthysmile.model.TemplanteParamsCorreoCompra;
 import com.example.healthysmile.model.TemplateParams;
 import com.example.healthysmile.model.entities.Especialista;
 import com.example.healthysmile.model.entities.Producto;
@@ -70,4 +71,12 @@ public interface ApiNodeMySqlService {
             @Query("primerApellido") String primerApellido,
             @Query("segundoApellido") String segundoApellido
     );
+
+    @POST("crearCargo")
+    Call<ApiNodeMySqlRespuesta> crearCargo(@Body Map<String, Object> datosCargo);
+
+    @POST("enviarCorreoCompra")
+    Call<ApiNodeMySqlRespuesta> enviarCorreoCompra(@Body TemplanteParamsCorreoCompra templateParams);
+
+
 }

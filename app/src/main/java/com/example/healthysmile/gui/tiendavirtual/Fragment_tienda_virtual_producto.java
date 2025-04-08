@@ -25,11 +25,14 @@ import androidx.fragment.app.Fragment;
 import com.example.healthysmile.R;
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.gui.extraAndroid.dialog.MetodoPagoDialogFragment;
+import com.example.healthysmile.model.ItemCarrito;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 import com.example.healthysmile.utils.ImageUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -144,13 +147,18 @@ public class Fragment_tienda_virtual_producto extends Fragment {
         return view;
     }
 
-    private void comprarProducto(){
-        MetodoPagoDialogFragment metodoPagoDialog = new MetodoPagoDialogFragment();
-        metodoPagoDialog.show(getFragmentManager(), "MetodoPagoDialog");
+    private void comprarProducto() {
+        int cantidad = obtenerCantidad();
+        double total = cantidad * costo;
+        List<ItemCarrito> carrito = new ArrayList<>();
+        ItemCarrito producto = new ItemCarrito();
+        producto.setNombre(nombre);
+        producto.setCantidad(Integer.parseInt(cantidadProducto.getText().toString().trim()));
+        producto.setPrecio(costo);
+        carrito.add(producto);
+        MetodoPagoDialogFragment dialog = new MetodoPagoDialogFragment(getContext(),total,carrito);
+        dialog.show(requireActivity().getSupportFragmentManager(), "MetodoPagoDialog");
     }
-
-
-
 
     private void agregarCarrito(int cantidad) {
         Map<String, Object> parametros = new HashMap<>();
