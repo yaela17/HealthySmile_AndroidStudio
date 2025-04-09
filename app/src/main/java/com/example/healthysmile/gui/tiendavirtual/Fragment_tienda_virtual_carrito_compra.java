@@ -79,7 +79,7 @@ public class Fragment_tienda_virtual_carrito_compra extends Fragment {
     }
 
     private void comprarCarrito(){
-        MetodoPagoDialogFragment dialog = new MetodoPagoDialogFragment(getContext(),montoTotal,carrito);
+        MetodoPagoDialogFragment dialog = new MetodoPagoDialogFragment(getContext(),montoTotal,carrito,-1,false);
         dialog.show(requireActivity().getSupportFragmentManager(), "MetodoPagoDialog");
     }
 

@@ -21,10 +21,13 @@ import com.example.healthysmile.model.ItemCarrito;
 import com.example.healthysmile.model.TemplanteParamsCorreoCompra;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
+import com.example.healthysmile.service.tiendaVirtual.CrearCompraService;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import mx.openpay.android.Openpay;
@@ -42,17 +45,22 @@ public class MetodoPagoDialogFragment extends DialogFragment {
 
     private EditText cardNumberEditText, holderNameEditText, cvvEditText, expiryMonthEditText, expiryYearEditText;
     private Button btnRealizarPago;
-    private double montoTotal;
-    private Context context;
-    private List<ItemCarrito> carrito;
+    private final double montoTotal;
+    private final Context context;
+    private final List<ItemCarrito> carrito;
+    private final int idProducto;
+    private final boolean esProducto;
+    Map<String, Object> datosCargo;
     String deviceSessionId;
 
     private Openpay openpay;
 
-    public MetodoPagoDialogFragment(Context context,double montoTotal,List<ItemCarrito> carrito) {
+    public MetodoPagoDialogFragment(Context context,double montoTotal,List<ItemCarrito> carrito, int idProducto,boolean esProducto) {
         this.context = context;
         this.montoTotal = montoTotal;
         this.carrito = carrito;
+        this.idProducto = idProducto;
+        this.esProducto = esProducto;
     }
 
     @Nullable
@@ -72,7 +80,18 @@ public class MetodoPagoDialogFragment extends DialogFragment {
         openpay = new Openpay("m5moicorylwarp8ause3", "pk_7e96ffe11a59420693d1382b3fb15367", false); // Cambia false por true si estás en producción
         deviceSessionId = openpay.getDeviceCollectorDefaultImpl().setup(getActivity());
 
-        btnRealizarPago.setOnClickListener(v -> procesarPago());
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        String tipoUsuario = sharedPreferences.getString("tipoUsuario", "Paciente");
+        boolean peticion = !"Paciente".equals(tipoUsuario);
+
+        btnRealizarPago.setOnClickListener(v -> {
+            if (peticion) {
+                crearCompra(true);
+            } else {
+                procesarPago();
+            }
+        });
+
 
         return view;
     }
@@ -102,13 +121,13 @@ public class MetodoPagoDialogFragment extends DialogFragment {
         Toast.makeText(getContext(), "Generando token...", Toast.LENGTH_SHORT).show();
 
         // Usando OperationCallback para crear el token
-        openpay.createToken(card, new OperationCallBack<Token>() {
+        openpay.createToken(card, new OperationCallBack<>() {
             @Override
             public void onSuccess(OperationResult<Token> operationResult) {
                 Token token = operationResult.getResult();
                 String tokenId = token.getId();
                 Log.d("TOKEN_OK", "Token generado: " + tokenId);
-                realizarCargoBackend(tokenId,holderName,context);
+                realizarCargoBackend(tokenId, holderName, context);
             }
 
             @Override
@@ -134,7 +153,7 @@ public class MetodoPagoDialogFragment extends DialogFragment {
             return;
         }
 
-        Map<String, Object> datosCargo = new HashMap<>();
+        datosCargo = new HashMap<>();
         datosCargo.put("token_id", tokenId);
         datosCargo.put("amount", montoTotal);
         datosCargo.put("descripcion", "Compra desde app Android");
@@ -150,14 +169,16 @@ public class MetodoPagoDialogFragment extends DialogFragment {
         ApiNodeMySqlService service = NodeApiRetrofitClient.getApiService();
         Call<ApiNodeMySqlRespuesta> call = service.crearCargo(datosCargo);
 
-        call.enqueue(new Callback<ApiNodeMySqlRespuesta>() {
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<ApiNodeMySqlRespuesta> call, Response<ApiNodeMySqlRespuesta> response) {
+            public void onResponse(@NonNull Call<ApiNodeMySqlRespuesta> call, @NonNull Response<ApiNodeMySqlRespuesta> response) {
                 if (response.isSuccessful()) {
                     ApiNodeMySqlRespuesta resultado = response.body();
+                    assert resultado != null;
                     Log.d("CARGO_OK", "Cargo realizado: " + resultado.getMensaje());
                     Toast.makeText(getContext(), "Pago exitoso", Toast.LENGTH_SHORT).show();
-                    enviarCorreoCompra(name,correoUsuario);
+                    enviarCorreoCompra(name, correoUsuario);
+                    crearCompra(false);
                     dismiss();
                 } else {
                     Log.e("CARGO_ERROR", "Respuesta fallida: " + response.code());
@@ -166,11 +187,28 @@ public class MetodoPagoDialogFragment extends DialogFragment {
             }
 
             @Override
-            public void onFailure(Call<ApiNodeMySqlRespuesta> call, Throwable t) {
+            public void onFailure(@NonNull Call<ApiNodeMySqlRespuesta> call, @NonNull Throwable t) {
                 Log.e("CARGO_FAIL", "Fallo conexión: " + t.getMessage());
                 Toast.makeText(getContext(), "Fallo de conexión", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void crearCompra(boolean peticion){
+        CrearCompraService crearCompraService = new CrearCompraService();
+        String metodoPago = "Tarjeta";
+        // Obtener la fecha actual solo con día, mes y año
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String fechaCompra = dateFormat.format(new Date());
+        // Obtener tipo de usuario desde SharedPreferences
+
+        if (esProducto) {
+            int cantidadProducto = carrito.get(0).getCantidad();
+            Log.d("CARGO_OK", "Cantidad producto: " + cantidadProducto);
+            crearCompraService.crearCompra(context, true, cantidadProducto, fechaCompra, metodoPago, peticion,idProducto);
+        } else{
+            crearCompraService.crearCompra(context,false,0,fechaCompra,metodoPago,peticion,idProducto);
+        }
     }
 
     private void enviarCorreoCompra(String userName, String user_email) {
@@ -187,10 +225,11 @@ public class MetodoPagoDialogFragment extends DialogFragment {
             ApiNodeMySqlService service = NodeApiRetrofitClient.getApiService();
             Call<ApiNodeMySqlRespuesta> call = service.enviarCorreoCompra(templateParams);
 
-            call.enqueue(new Callback<ApiNodeMySqlRespuesta>() {
+            call.enqueue(new Callback<>() {
                 @Override
-                public void onResponse(Call<ApiNodeMySqlRespuesta> call, Response<ApiNodeMySqlRespuesta> response) {
+                public void onResponse(@NonNull Call<ApiNodeMySqlRespuesta> call, @NonNull Response<ApiNodeMySqlRespuesta> response) {
                     if (response.isSuccessful()) {
+                        assert response.body() != null;
                         Log.d("EMAIL_OK", "Correo enviado: " + response.body().getMensaje());
                     } else {
                         Log.e("EMAIL_ERROR", "Error al enviar correo: " + response.code());
@@ -198,7 +237,7 @@ public class MetodoPagoDialogFragment extends DialogFragment {
                 }
 
                 @Override
-                public void onFailure(Call<ApiNodeMySqlRespuesta> call, Throwable t) {
+                public void onFailure(@NonNull Call<ApiNodeMySqlRespuesta> call, @NonNull Throwable t) {
                     Log.e("EMAIL_FAIL", "Fallo al enviar correo: " + t.getMessage());
                 }
             });
@@ -208,7 +247,7 @@ public class MetodoPagoDialogFragment extends DialogFragment {
     }
 
     private boolean validarCampos(String cardNumber, String holderName, String cvv, String expMonth, String expYear) {
-        if (cardNumber.isEmpty() || cardNumber.length() != 16) {
+        if (cardNumber.length() != 16) {
             Toast.makeText(getContext(), "Número de tarjeta inválido", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -216,7 +255,7 @@ public class MetodoPagoDialogFragment extends DialogFragment {
             Toast.makeText(getContext(), "Nombre del titular es obligatorio", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (cvv.isEmpty() || cvv.length() != 3) {
+        if (cvv.length() != 3) {
             Toast.makeText(getContext(), "CVV inválido", Toast.LENGTH_SHORT).show();
             return false;
         }

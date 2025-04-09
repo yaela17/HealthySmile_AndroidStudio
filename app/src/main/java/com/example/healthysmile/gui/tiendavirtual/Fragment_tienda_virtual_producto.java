@@ -156,7 +156,7 @@ public class Fragment_tienda_virtual_producto extends Fragment {
         producto.setCantidad(Integer.parseInt(cantidadProducto.getText().toString().trim()));
         producto.setPrecio(costo);
         carrito.add(producto);
-        MetodoPagoDialogFragment dialog = new MetodoPagoDialogFragment(getContext(),total,carrito);
+        MetodoPagoDialogFragment dialog = new MetodoPagoDialogFragment(getContext(),total,carrito,(int) idProducto,true);
         dialog.show(requireActivity().getSupportFragmentManager(), "MetodoPagoDialog");
     }
 

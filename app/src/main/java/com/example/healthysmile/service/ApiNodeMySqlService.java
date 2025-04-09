@@ -1,5 +1,6 @@
 package com.example.healthysmile.service;
 
+import com.example.healthysmile.controller.APINodeMySqlRespuestaMensaje;
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.controller.CedulaResultado;
 import com.example.healthysmile.model.TemplanteParamsCorreoCompra;
@@ -8,6 +9,8 @@ import com.example.healthysmile.model.entities.Especialista;
 import com.example.healthysmile.model.entities.Producto;
 import com.example.healthysmile.model.entities.Usuario;
 import com.example.healthysmile.model.relationships.RelProdCarritoUser;
+import com.example.healthysmile.model.requests.CrearCompraRequest;
+import com.example.healthysmile.model.requests.CrearPreguntaFrecuenteRequest;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +21,6 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiNodeMySqlService {
@@ -29,7 +31,7 @@ public interface ApiNodeMySqlService {
     Call<ApiNodeMySqlRespuesta> crearEspecialista(@Body Especialista especialista);
 
     @POST("crearPregunta")
-    Call<ApiNodeMySqlRespuesta> crearPreguntaFrecuente(@Body Map<String, Object> preguntaFrecuente);
+    Call<ApiNodeMySqlRespuesta> crearPreguntaFrecuente(@Body CrearPreguntaFrecuenteRequest crearPreguntaFrecuenteRequest);
 
     @POST("crearCita")
     Call<ApiNodeMySqlRespuesta> crearCita(@Body Map<String, Object> citaDatos);
@@ -78,5 +80,7 @@ public interface ApiNodeMySqlService {
     @POST("enviarCorreoCompra")
     Call<ApiNodeMySqlRespuesta> enviarCorreoCompra(@Body TemplanteParamsCorreoCompra templateParams);
 
+    @POST("crearCompra")
+    Call<APINodeMySqlRespuestaMensaje> crearCompra(@Body CrearCompraRequest crearCompraRequest);
 
 }

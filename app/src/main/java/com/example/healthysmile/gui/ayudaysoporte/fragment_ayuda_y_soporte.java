@@ -24,6 +24,7 @@ import com.example.healthysmile.gui.extraAndroid.adaptadores.AdaptadorExpandible
 import com.example.healthysmile.gui.extraAndroid.adaptadores.FormularioAgregarPreguntaFrecuente;
 import com.example.healthysmile.gui.tiendavirtual.Fragment_tienda_virtual_buscar_producto_nombre;
 import com.example.healthysmile.gui.tiendavirtual.Fragment_tienda_virtual_default;
+import com.example.healthysmile.model.requests.CrearPreguntaFrecuenteRequest;
 import com.example.healthysmile.repository.FirebaseMessageRepository;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
@@ -165,13 +166,11 @@ public class Fragment_ayuda_y_soporte extends Fragment {
     }
 
     public void insertarPreguntaFrecuente(long idUsuario, String pregunta) {
-        Map<String, Object> preguntaFrecuente = new HashMap<>();
-        preguntaFrecuente.put("pregunta", pregunta);
-        preguntaFrecuente.put("idUsuario", idUsuario);
 
+        CrearPreguntaFrecuenteRequest crearPreguntaFrecuenteRequest = new CrearPreguntaFrecuenteRequest((int) idUsuario,pregunta);
         ApiNodeMySqlService apiService = NodeApiRetrofitClient.getApiService();
 
-        apiService.crearPreguntaFrecuente(preguntaFrecuente)
+        apiService.crearPreguntaFrecuente(crearPreguntaFrecuenteRequest)
                 .enqueue(new retrofit2.Callback<ApiNodeMySqlRespuesta>() {
                     @Override
                     public void onResponse(Call<ApiNodeMySqlRespuesta> call, Response<ApiNodeMySqlRespuesta> response) {
