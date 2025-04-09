@@ -16,6 +16,7 @@ import com.example.healthysmile.R;
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.gui.extraAndroid.settings.FragmentProfileImageSelector;
 import com.example.healthysmile.gui.NavigationDrawerFragments; // Asegúrate que esta sea tu actividad principal
+import com.example.healthysmile.model.requests.ActualizarFotoPerfilRequest;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 
@@ -74,14 +75,11 @@ public class Fragment_sign_up_foto_perfil extends Fragment {
             return;
         }
 
-        // 3. Crear parámetros para actualizar la base de datos (foto = null)
-        Map<String, Object> params = new HashMap<>();
-        params.put("idUsuario", idUsuario);
-        params.put("foto", null); // Esto enviará un valor null al backend
+        ActualizarFotoPerfilRequest actualizarFotoPerfilRequest = new ActualizarFotoPerfilRequest(null,(int)idUsuario);
 
         // 4. Llamada a la API para actualizar la foto
         ApiNodeMySqlService apiService = NodeApiRetrofitClient.getApiService();
-        Call<ApiNodeMySqlRespuesta> call = apiService.actualizarFotoPerfil(params);
+        Call<ApiNodeMySqlRespuesta> call = apiService.actualizarFotoPerfil(actualizarFotoPerfilRequest);
 
         call.enqueue(new Callback<ApiNodeMySqlRespuesta>() {
             @Override

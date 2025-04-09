@@ -19,6 +19,8 @@ import com.example.healthysmile.R;
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.model.ItemCarrito;
 import com.example.healthysmile.model.TemplanteParamsCorreoCompra;
+import com.example.healthysmile.model.requests.CrearCargoRequest;
+import com.example.healthysmile.model.requests.Customer;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 import com.example.healthysmile.service.tiendaVirtual.CrearCompraService;
@@ -50,7 +52,6 @@ public class MetodoPagoDialogFragment extends DialogFragment {
     private final List<ItemCarrito> carrito;
     private final int idProducto;
     private final boolean esProducto;
-    Map<String, Object> datosCargo;
     String deviceSessionId;
 
     private Openpay openpay;
@@ -153,21 +154,11 @@ public class MetodoPagoDialogFragment extends DialogFragment {
             return;
         }
 
-        datosCargo = new HashMap<>();
-        datosCargo.put("token_id", tokenId);
-        datosCargo.put("amount", montoTotal);
-        datosCargo.put("descripcion", "Compra desde app Android");
-        datosCargo.put("device_session_id", deviceSessionId);
-
-        // Crear el objeto customer
-        Map<String, String> customer = new HashMap<>();
-        customer.put("name", name);
-        customer.put("email", "yaelangelvv@gmail.com");
-        // Agregar el customer al cuerpo
-        datosCargo.put("customer", customer);
+        Customer customer = new Customer(name,"yaelangelvv@gmail.com");
+        CrearCargoRequest crearCargoRequest = new CrearCargoRequest(tokenId,montoTotal,"Compra desde app Android",deviceSessionId,customer);
 
         ApiNodeMySqlService service = NodeApiRetrofitClient.getApiService();
-        Call<ApiNodeMySqlRespuesta> call = service.crearCargo(datosCargo);
+        Call<ApiNodeMySqlRespuesta> call = service.crearCargo(crearCargoRequest);
 
         call.enqueue(new Callback<>() {
             @Override

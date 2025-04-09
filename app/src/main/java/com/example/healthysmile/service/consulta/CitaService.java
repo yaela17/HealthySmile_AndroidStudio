@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.controller.consulta.ModifyCitaResponseListener;
+import com.example.healthysmile.model.requests.CrearCitaRequest;
+import com.example.healthysmile.model.requests.CrearCompraRequest;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 
@@ -31,14 +33,10 @@ public class CitaService {
     }
 
     public void crearCita(String fecha, String hora, String motivo, long idUsuario, long idEspecialista) {
-        Map<String, Object> citaDatos = new HashMap<>();
-        citaDatos.put("fecha", fecha);
-        citaDatos.put("hora", hora);
-        citaDatos.put("motivo", motivo);
-        citaDatos.put("idUsuario", idUsuario);
-        citaDatos.put("idEspecialista", idEspecialista);
 
-        apiService.crearCita(citaDatos).enqueue(new Callback<ApiNodeMySqlRespuesta>() {
+        CrearCitaRequest crearCitaRequest = new CrearCitaRequest(fecha,hora,(int)idEspecialista,(int)idUsuario,motivo);
+
+        apiService.crearCita(crearCitaRequest).enqueue(new Callback<ApiNodeMySqlRespuesta>() {
             @Override
             public void onResponse(Call<ApiNodeMySqlRespuesta> call, Response<ApiNodeMySqlRespuesta> response) {
                 if (response.isSuccessful() && response.body() != null) {

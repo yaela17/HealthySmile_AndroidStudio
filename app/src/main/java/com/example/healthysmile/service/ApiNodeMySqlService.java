@@ -9,6 +9,10 @@ import com.example.healthysmile.model.entities.Especialista;
 import com.example.healthysmile.model.entities.Producto;
 import com.example.healthysmile.model.entities.Usuario;
 import com.example.healthysmile.model.relationships.RelProdCarritoUser;
+import com.example.healthysmile.model.requests.ActualizarFotoPerfilRequest;
+import com.example.healthysmile.model.requests.AgregarProductoCarritoRequest;
+import com.example.healthysmile.model.requests.CrearCargoRequest;
+import com.example.healthysmile.model.requests.CrearCitaRequest;
 import com.example.healthysmile.model.requests.CrearCompraRequest;
 import com.example.healthysmile.model.requests.CrearPreguntaFrecuenteRequest;
 
@@ -34,7 +38,7 @@ public interface ApiNodeMySqlService {
     Call<ApiNodeMySqlRespuesta> crearPreguntaFrecuente(@Body CrearPreguntaFrecuenteRequest crearPreguntaFrecuenteRequest);
 
     @POST("crearCita")
-    Call<ApiNodeMySqlRespuesta> crearCita(@Body Map<String, Object> citaDatos);
+    Call<ApiNodeMySqlRespuesta> crearCita(@Body CrearCitaRequest crearCitaRequest);
 
     @POST("verificarCorreo")
     Call<ApiNodeMySqlRespuesta> verificarCorreo(@Query("correoUser") String correo);
@@ -43,7 +47,7 @@ public interface ApiNodeMySqlService {
     Call<ApiNodeMySqlRespuesta> enviarCorreoVerificacion(@Body TemplateParams templateParams);
 
     @POST("actualizarFotoPerfil")
-    Call<ApiNodeMySqlRespuesta> actualizarFotoPerfil(@Body Map<String, Object> params);
+    Call<ApiNodeMySqlRespuesta> actualizarFotoPerfil(@Body ActualizarFotoPerfilRequest actualizarFotoPerfilRequest);
 
     @POST("agregarProducto")
     Call<ApiNodeMySqlRespuesta> agregarProducto(@Body Producto producto);
@@ -55,7 +59,7 @@ public interface ApiNodeMySqlService {
     Call<ApiNodeMySqlRespuesta> actualizarProducto(@Body Producto producto);
 
     @POST("agregarProductoCarrito")
-    Call<ApiNodeMySqlRespuesta> agregarProductoCarrito(@Body Map<String,Object> parametros);
+    Call<ApiNodeMySqlRespuesta> agregarProductoCarrito(@Body AgregarProductoCarritoRequest agregarProductoCarritoRequest);
 
     @PUT("actualizarProductoCarrito")
     Call<ApiNodeMySqlRespuesta> actualizarProductoCarrito(@Body RelProdCarritoUser relProdCarritoUser);
@@ -75,7 +79,7 @@ public interface ApiNodeMySqlService {
     );
 
     @POST("crearCargo")
-    Call<ApiNodeMySqlRespuesta> crearCargo(@Body Map<String, Object> datosCargo);
+    Call<ApiNodeMySqlRespuesta> crearCargo(@Body CrearCargoRequest crearCargoRequest);
 
     @POST("enviarCorreoCompra")
     Call<ApiNodeMySqlRespuesta> enviarCorreoCompra(@Body TemplanteParamsCorreoCompra templateParams);

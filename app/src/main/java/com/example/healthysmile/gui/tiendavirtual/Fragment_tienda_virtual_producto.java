@@ -26,6 +26,7 @@ import com.example.healthysmile.R;
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
 import com.example.healthysmile.gui.extraAndroid.dialog.MetodoPagoDialogFragment;
 import com.example.healthysmile.model.ItemCarrito;
+import com.example.healthysmile.model.requests.AgregarProductoCarritoRequest;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 import com.example.healthysmile.utils.ImageUtils;
@@ -161,16 +162,10 @@ public class Fragment_tienda_virtual_producto extends Fragment {
     }
 
     private void agregarCarrito(int cantidad) {
-        Map<String, Object> parametros = new HashMap<>();
-        parametros.put("p_idUsuario", idUsuario);
-        parametros.put("p_numProd", cantidad);
-        parametros.put("p_costoProd", costo);
-        parametros.put("p_idProd", idProducto);
-        parametros.put("p_idCarritoCompra", idCarritoCompra);
-
+        AgregarProductoCarritoRequest agregarProductoCarritoRequest = new AgregarProductoCarritoRequest(costo,(int)idCarritoCompra,
+                (int)idProducto,(int)idUsuario,cantidad);
         ApiNodeMySqlService apiService = NodeApiRetrofitClient.getApiService();
-
-        apiService.agregarProductoCarrito(parametros).enqueue(new Callback<ApiNodeMySqlRespuesta>() {
+        apiService.agregarProductoCarrito(agregarProductoCarritoRequest).enqueue(new Callback<ApiNodeMySqlRespuesta>() {
             @Override
             public void onResponse(Call<ApiNodeMySqlRespuesta> call, Response<ApiNodeMySqlRespuesta> response) {
                 if (response.isSuccessful() && response.body() != null) {

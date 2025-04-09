@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.healthysmile.controller.ApiNodeMySqlRespuesta;
+import com.example.healthysmile.model.requests.ActualizarFotoPerfilRequest;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
 import com.example.healthysmile.service.SupabaseFileStorageService;
@@ -85,13 +86,11 @@ public class ActualizarFotoService {
             }
 
             // Paso 5: Crear parámetros para la actualización en la base de datos
-            Map<String, Object> params = new HashMap<>();
-            params.put("idUsuario", idUsuario);
-            params.put("foto", fotoUrlCompleta);
+            ActualizarFotoPerfilRequest actualizarFotoPerfilRequest = new ActualizarFotoPerfilRequest(fotoUrlCompleta,(int)idUsuario);
 
             // Paso 6: Llamar al servicio Retrofit para actualizar la foto de perfil en la base de datos
             ApiNodeMySqlService apiService = NodeApiRetrofitClient.getApiService();
-            Call<ApiNodeMySqlRespuesta> call = apiService.actualizarFotoPerfil(params);
+            Call<ApiNodeMySqlRespuesta> call = apiService.actualizarFotoPerfil(actualizarFotoPerfilRequest);
 
             call.enqueue(new Callback<ApiNodeMySqlRespuesta>() {
                 @Override
