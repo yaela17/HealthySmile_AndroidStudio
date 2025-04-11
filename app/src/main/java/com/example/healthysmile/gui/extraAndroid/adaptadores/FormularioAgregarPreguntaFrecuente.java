@@ -15,7 +15,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.healthysmile.R;
-import com.example.healthysmile.gui.ayudaYSoporte.Fragment_ayuda_y_soporte;
+import com.example.healthysmile.gui.ayudaysoporte.Fragment_ayuda_y_soporte;
 import com.example.healthysmile.utils.SharedPreferencesHelper;
 
 public class FormularioAgregarPreguntaFrecuente extends DialogFragment {

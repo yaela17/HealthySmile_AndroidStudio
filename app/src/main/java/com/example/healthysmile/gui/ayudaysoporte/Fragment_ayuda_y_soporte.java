@@ -1,4 +1,4 @@
-package com.example.healthysmile.gui.ayudaYSoporte;
+package com.example.healthysmile.gui.ayudaysoporte;
 
 import android.os.Bundle;
 import android.os.Handler;

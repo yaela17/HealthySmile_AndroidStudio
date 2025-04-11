@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".gui.gestion.paciente.Fragment_gestion_paciente_compras">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/gestion_paciente_compras_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:layout_margin="8dp" />
 </FrameLayout>

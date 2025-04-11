@@ -15,7 +15,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_ayudaYSoporte"
-        android:name="com.example.healthysmile.gui.ayudaYSoporte.Fragment_ayuda_y_soporte"
+        android:name="com.example.healthysmile.gui.ayudaysoporte.Fragment_ayuda_y_soporte"
         android:label="@string/label_menu_ayudaysoporte"
         tools:layout="@layout/fragment_ayuda_y_soporte" />
 

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:backgroundTint="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Contenedor superior con información de la compra -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <!-- Icono de compra -->
+            <ImageView
+                android:id="@+id/plantilla_gestion_paciente_compras_rv_iconoCompra"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/icon_carrito_compra"
+                android:contentDescription="Icono de compra"
+                app:tint="@color/color_azul_acantilado" />
+
+            <!-- Título con el ID de la compra -->
+            <TextView
+                android:id="@+id/plantilla_gestion_paciente_compras_rv_idCompra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Compra #1"
+                android:textSize="20sp"
+                android:textColor="@color/color_azul_medianoche"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="8dp" />
+        </LinearLayout>
+
+        <!-- Información de la compra -->
+        <TextView
+            android:id="@+id/plantilla_gestion_paciente_compras_rv_fechaCompra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha: 2025-04-09"
+            android:textSize="16sp"
+            android:textColor="@color/color_azul_acantilado"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/plantilla_gestion_paciente_compras_rv_metodoPago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Método de pago: Tarjeta"
+            android:textSize="16sp"
+            android:textColor="@color/color_azul_acantilado"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/plantilla_gestion_paciente_compras_rv_estadoCompra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado: Pendiente"
+            android:textSize="16sp"
+            android:textColor="@color/color_azul_acantilado"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/plantilla_gestion_paciente_compras_rv_numProdTot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total de productos: 0"
+            android:textSize="16sp"
+            android:textColor="@color/color_azul_acantilado"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/plantilla_gestion_paciente_compras_rv_costTot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Costo total: $0"
+            android:textSize="16sp"
+            android:textColor="@color/color_azul_acantilado"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Estado de la compra con un icono -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/plantilla_gestion_paciente_compras_rv_iconoEstado"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/icon_check_circle"
+                android:contentDescription="Icono de estado"
+                app:tint="@color/color_turquesa_medio" />
+
+            <TextView
+                android:id="@+id/plantilla_gestion_paciente_compras_rv_estadoCompraConIcono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estado: Pendiente"
+                android:textSize="16sp"
+                android:textColor="@color/color_azul_acantilado"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
