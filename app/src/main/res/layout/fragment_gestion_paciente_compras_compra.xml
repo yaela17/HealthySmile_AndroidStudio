@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.gestion.paciente.Fragment_gestion_paciente_compras">
+    tools:context=".gui.gestion.paciente.Fragment_gestion_paciente_compras_compra">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gestion_paciente_compras_rv"
+        android:id="@+id/gestion_paciente_compras_compra_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/plantilla_gestion_paciente_compras_rv"
-        android:orientation="vertical"
-        android:layout_margin="8dp" />
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
 </FrameLayout>

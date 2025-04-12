@@ -15,6 +15,7 @@ import com.example.healthysmile.gui.gestion.administrador.Fragment_gestion_admin
 import com.example.healthysmile.gui.gestion.administrador.Fragment_gestion_administrador_productos;
 import com.example.healthysmile.gui.gestion.especialista.Fragment_gestion_especialista_citas;
 import com.example.healthysmile.gui.gestion.especialista.Fragment_gestion_especialista_productos;
+import com.example.healthysmile.gui.gestion.paciente.Fragment_gestion_compras_init;
 import com.example.healthysmile.gui.gestion.paciente.Fragment_gestion_paciente_citas;
 import com.example.healthysmile.gui.gestion.paciente.Fragment_gestion_paciente_compras;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -56,7 +57,7 @@ public class Fragment_gestion_init extends Fragment {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Map<Integer, Fragment> fragmentMap = new HashMap<>();
             fragmentMap.put(R.id.nav_bottom_paciente_citas, new Fragment_gestion_paciente_citas());
-            fragmentMap.put(R.id.nav_bottom_paciente_compras, new Fragment_gestion_paciente_compras());
+            fragmentMap.put(R.id.nav_bottom_paciente_compras, new Fragment_gestion_compras_init());
             fragmentMap.put(R.id.nav_bottom_especialista_citas, new Fragment_gestion_especialista_citas());
             fragmentMap.put(R.id.nav_bottom_especialista_productos, new Fragment_gestion_especialista_productos());
             fragmentMap.put(R.id.nav_bottom_admiministrador_citas, new Fragment_gestion_especialista_citas());

@@ -15,8 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ResponderPreguntaFrecuenteService {
-
-
     private RequestQueue requestQueue;
 
     public ResponderPreguntaFrecuenteService(Context context) {
@@ -35,7 +33,7 @@ public class ResponderPreguntaFrecuenteService {
             return;
         }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST,
+                Request.Method.PUT,
                 URL_RESPONDER_PREGUNTA_FRECUENTE,
                 requestBody,
                 response -> procesarRespuestaResponderPregunta(response, listener),

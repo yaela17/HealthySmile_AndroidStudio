@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.healthysmile.R;
+import com.example.healthysmile.gui.gestion.Fragment_gestion_init;
+import com.example.healthysmile.gui.gestion.administrador.Fragment_gestion_administrador_productos;
 import com.example.healthysmile.model.responses.ObtenerCarritosCompraResponse;
 import com.example.healthysmile.repository.NodeApiRetrofitClient;
 import com.example.healthysmile.service.ApiNodeMySqlService;
@@ -71,8 +73,18 @@ public class Fragment_gestion_paciente_compras extends Fragment {
 
                     // Configurar el adaptador con los datos obtenidos
                     adaptador = new AdaptadorGestionCarritosCompraRV(listaCompras, compra -> {
-                        // Acción al hacer clic en un item, puedes hacer lo que necesites aquí
-                        Log.d("Compra seleccionada", "ID de compra: " + compra.getIdCompra());
+                        int idCompra = compra.getIdCompra();
+                        Log.d("Compra seleccionada", "ID de compra: " + idCompra);
+
+                        Fragment_gestion_paciente_compras_compra fragment = new Fragment_gestion_paciente_compras_compra();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("idCompra", idCompra);
+                        fragment.setArguments(bundle);
+
+                        Fragment parentFragment = getParentFragment();
+                        if (parentFragment instanceof Fragment_gestion_compras_init) {
+                            ((Fragment_gestion_compras_init) parentFragment).cargarFragment(fragment);
+                        }
                     });
 
                     // Asegúrate de configurar un LayoutManager en el RecyclerView

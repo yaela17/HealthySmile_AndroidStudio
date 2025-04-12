@@ -16,6 +16,7 @@ import com.example.healthysmile.model.requests.CrearCitaRequest;
 import com.example.healthysmile.model.requests.CrearCompraRequest;
 import com.example.healthysmile.model.requests.CrearPreguntaFrecuenteRequest;
 import com.example.healthysmile.model.responses.ObtenerCarritosCompraResponse;
+import com.example.healthysmile.model.responses.ProductoCompra;
 
 import java.util.List;
 import java.util.Map;
@@ -91,5 +92,7 @@ public interface ApiNodeMySqlService {
     @GET("obtenerCarritosCompra")
     Call<List<ObtenerCarritosCompraResponse>> obtenerCarritosCompra(@Query("idUsuario") Integer idUsuario);
 
+    @GET("obtenerCompra")
+    Call<List<ProductoCompra>> obtenerCompra(@Query("idCompra") Integer idCompra);
 
 }
