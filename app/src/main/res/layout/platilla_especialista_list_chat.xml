@@ -5,47 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    android:background="@color/color_formulario_background_tint_card_view">
+    android:background="@color/color_azul_alice"
+    android:layout_marginBottom="10dp"
+    android:elevation="2dp"
+    android:clickable="true"
+    android:focusable="true">
 
+    <!-- Imagen de perfil -->
     <ImageView
         android:id="@+id/plantillaListaEspecialistaFotoPerfil"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:src="@drawable/default_photo_perfil_especialista"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="center_vertical"
         android:background="@drawable/custom_circle_image"
         android:scaleType="centerCrop"
         android:clipToOutline="true"
-        tools:ignore="UnusedAttribute"
         android:contentDescription="@string/content_description_imagen_foto_perfil_especialista"/>
 
+    <!-- Información del especialista -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:padding="15dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <!-- Nombre del especialista -->
         <TextView
             android:id="@+id/plantillaListaEspecialistaNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/texto_plantilla_especialista_list_chat_ejemplo_nombre_especialista"
-            android:textSize="15sp"
-            android:textColor="@color/color_comun_text"/>
+            android:textSize="16sp"
+            android:textColor="@color/color_azul_acero"
+            android:textStyle="bold"/>
+
+        <!-- Especialidad -->
         <TextView
             android:id="@+id/plantillaListaEspecialistaEspecialidad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/texto_plantilla_especialista_list_chat_ejemplo_especialidad_especialista"
-            android:textSize="11sp"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/color_comun_text"/>
+            android:textSize="12sp"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/color_azul_marino_profundo"/>
+
+        <!-- Descripción breve -->
         <TextView
             android:id="@+id/plantillaListaEspecialistaDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/texto_plantilla_especialista_list_chat_ejemplo_descripcion_especialista"
-            android:textSize="11sp"
+            android:textSize="12sp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/color_comun_text"/>
+            android:textColor="@color/color_azul_acantilado"/>
+
     </LinearLayout>
 </LinearLayout>

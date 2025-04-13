@@ -6,11 +6,11 @@
     tools:context=".gui.educacionDental.Fragment_visualizacion_modelos_3d_init">
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -30,266 +30,214 @@
                     android:textSize="37sp"/>
             </LinearLayout>
 
+            <!-- Contenedor de imágenes 1 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <FrameLayout
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/modelos_init_imagen_gingivitis"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:id="@+id/modelos_init_imagen_gingivitis"
-                            android:layout_width="230dp"
-                            android:layout_height="230dp"
-                            android:layout_gravity="start"
-                            android:background="@drawable/custom_square_image"
-                            android:clipToOutline="true"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/gingivitis" />
-                        <View
-                            android:layout_width="145dp"
-                            android:layout_height="5dp"
-                            android:background="@drawable/custom_linear_vizualizacion_de_modelos_3d"
-                            android:layout_gravity="start|bottom"
-                            android:layout_marginBottom="30dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Gingivitis"
-                            android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:layout_gravity="start|bottom"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="5dp"/>
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_square_image"
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/gingivitis" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gingivitis"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+                </FrameLayout>
 
-                        <ImageView
-                            android:id="@+id/modelos_init_imagen_caries_dentales"
-                            android:layout_width="230dp"
-                            android:layout_height="230dp"
-                            android:layout_gravity="end"
-                            android:background="@drawable/custom_square_image"
-                            android:clipToOutline="true"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/caries" />
-                        <View
-                            android:layout_width="145dp"
-                            android:layout_height="5dp"
-                            android:background="@drawable/custom_linear_vizualizacion_de_modelos_3d"
-                            android:layout_gravity="center_horizontal|bottom"
-                            android:layout_marginBottom="30dp"
-                            android:layout_marginLeft="71dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Caries Dentales"
-                            android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:layout_gravity="bottom|center_horizontal"
-                            android:layout_marginLeft="78dp"
-                            android:layout_marginBottom="5dp"/>
-                    </FrameLayout>
-                </LinearLayout>
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_weight="1">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <FrameLayout
+                    <ImageView
+                        android:id="@+id/modelos_init_imagen_caries_dentales"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:id="@+id/modelos_init_imagen_cancer_bucal"
-                            android:layout_width="230dp"
-                            android:layout_height="230dp"
-                            android:layout_gravity="start"
-                            android:background="@drawable/custom_square_image"
-                            android:clipToOutline="true"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/cancer" />
-                        <View
-                            android:layout_width="145dp"
-                            android:layout_height="5dp"
-                            android:background="@drawable/custom_linear_vizualizacion_de_modelos_3d"
-                            android:layout_gravity="start|bottom"
-                            android:layout_marginBottom="30dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Cancer Bucal"
-                            android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:layout_gravity="start|bottom"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="5dp"/>
-
-                        <ImageView
-                            android:id="@+id/modelos_init_imagen_traumatismos_bucodentales"
-                            android:layout_width="230dp"
-                            android:layout_height="230dp"
-                            android:layout_gravity="end"
-                            android:background="@drawable/custom_square_image"
-                            android:clipToOutline="true"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/traumatismo" />
-                        <View
-                            android:layout_width="145dp"
-                            android:layout_height="5dp"
-                            android:background="@drawable/custom_linear_vizualizacion_de_modelos_3d"
-                            android:layout_gravity="center_horizontal|bottom"
-                            android:layout_marginBottom="60dp"
-                            android:layout_marginLeft="71dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Traumatismos"
-                            android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:layout_gravity="bottom|center_horizontal"
-                            android:layout_marginLeft="70dp"
-                            android:layout_marginBottom="25dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Bucodentales"
-                            android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:layout_gravity="bottom|center_horizontal"
-                            android:layout_marginLeft="70dp"
-                            android:layout_marginBottom="5dp"/>
-                    </FrameLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:id="@+id/modelos_init_imagen_halitosis"
-                            android:layout_width="230dp"
-                            android:layout_height="230dp"
-                            android:layout_gravity="start"
-                            android:background="@drawable/custom_square_image"
-                            android:clipToOutline="true"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/halitosis" />
-                        <View
-                            android:layout_width="145dp"
-                            android:layout_height="5dp"
-                            android:background="@drawable/custom_linear_vizualizacion_de_modelos_3d"
-                            android:layout_gravity="start|bottom"
-                            android:layout_marginBottom="30dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Halitosis"
-                            android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:layout_gravity="start|bottom"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="5dp"/>
-
-                        <ImageView
-                            android:id="@+id/modelos_init_imagen_sensibilidad_dental"
-                            android:layout_width="230dp"
-                            android:layout_height="230dp"
-                            android:layout_gravity="end"
-                            android:background="@drawable/custom_square_image"
-                            android:clipToOutline="true"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/sensibilidad" />
-                        <View
-                            android:layout_width="145dp"
-                            android:layout_height="5dp"
-                            android:background="@drawable/custom_linear_vizualizacion_de_modelos_3d"
-                            android:layout_gravity="center_horizontal|bottom"
-                            android:layout_marginBottom="60dp"
-                            android:layout_marginLeft="71dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sensibilidad"
-                            android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:layout_gravity="bottom|center_horizontal"
-                            android:layout_marginLeft="70dp"
-                            android:layout_marginBottom="25dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Dental"
-                            android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:layout_gravity="bottom|center_horizontal"
-                            android:layout_marginLeft="45dp"
-                            android:layout_marginBottom="5dp"/>
-                    </FrameLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:id="@+id/modelos_init_imagen_implantes"
-                            android:layout_width="230dp"
-                            android:layout_height="230dp"
-                            android:layout_gravity="start"
-                            android:background="@drawable/custom_square_image"
-                            android:clipToOutline="true"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/implantes" />
-                        <View
-                            android:layout_width="145dp"
-                            android:layout_height="5dp"
-                            android:background="@drawable/custom_linear_vizualizacion_de_modelos_3d"
-                            android:layout_gravity="start|bottom"
-                            android:layout_marginBottom="30dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Implantes"
-                            android:textSize="20dp"
-                            android:textColor="@color/white"
-                            android:layout_gravity="start|bottom"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="5dp"/>
-
-                        <ImageView
-                            android:id="@+id/modelos_init_imagen_periodontitis"
-                            android:layout_width="230dp"
-                            android:layout_height="230dp"
-                            android:layout_gravity="end"
-                            android:background="@drawable/custom_square_image"
-                            android:clipToOutline="true"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/periodontitis" />
-                        <View
-                            android:layout_width="145dp"
-                            android:layout_height="5dp"
-                            android:background="@drawable/custom_linear_vizualizacion_de_modelos_3d"
-                            android:layout_gravity="center_horizontal|bottom"
-                            android:layout_marginBottom="30dp"
-                            android:layout_marginLeft="71dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Periodontitis"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
-                            android:layout_gravity="bottom|center_horizontal"
-                            android:layout_marginEnd="78dp"
-                            android:layout_marginBottom="5dp"/>
-                    </FrameLayout>
-                </LinearLayout>
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_square_image"
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/caries" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Caries Dentales"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+                </FrameLayout>
             </LinearLayout>
+
+            <!-- Contenedor de imágenes 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/modelos_init_imagen_cancer_bucal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_square_image"
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/cancer" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancer Bucal"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/modelos_init_imagen_traumatismos_bucodentales"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_square_image"
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/traumatismo" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Traumatismos Bucodentales"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Contenedor de imágenes 3 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/modelos_init_imagen_halitosis"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_square_image"
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/halitosis" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Halitosis"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/modelos_init_imagen_sensibilidad_dental"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_square_image"
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/sensibilidad" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sensibilidad Dental"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Contenedor de imágenes 4 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/modelos_init_imagen_implantes"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_square_image"
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/implantes" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Implantes"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/modelos_init_imagen_periodontitis"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_square_image"
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/periodontitis" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Periodontitis"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+                </FrameLayout>
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

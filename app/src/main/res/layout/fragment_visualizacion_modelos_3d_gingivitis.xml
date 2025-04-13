@@ -1,48 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center">
+    tools:context=".gui.educacionDental.Fragment_visualizacion_modelos_3d_gingivitis">
 
-    <EditText
-        android:id="@+id/edtNombre"
+    <!-- SceneView para mostrar el modelo 3D -->
+    <io.github.sceneview.SceneView
+        android:id="@+id/sceneView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre" />
+        android:layout_height="match_parent" />
 
-    <EditText
-        android:id="@+id/edtPrimerApellido"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Primer Apellido" />
-
-    <EditText
-        android:id="@+id/edtSegundoApellido"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Segundo Apellido" />
-
-
-    <EditText
-        android:id="@+id/edtCedula"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Cédula Profesional" />
-
-    <Button
-        android:id="@+id/btnVerificarCedula"
+    <!-- Vista de carga -->
+    <View
+        android:id="@+id/loadingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Verificar Cédula" />
-
-    <TextView
-        android:id="@+id/txtResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Esperando respuesta..."
-        android:textSize="18sp"
-        android:padding="10dp"/>
-</LinearLayout>
-
+        android:background="@android:color/white"
+        android:visibility="gone" />
+</FrameLayout>

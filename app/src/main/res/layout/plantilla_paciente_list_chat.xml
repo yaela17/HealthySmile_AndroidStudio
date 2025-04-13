@@ -1,47 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@color/color_azul_alice"
+    android:layout_marginBottom="10dp"
+    android:elevation="2dp"
+    android:clickable="true"
+    android:focusable="true">
 
+    <!-- Imagen de perfil del paciente -->
+    <ImageView
+        android:id="@+id/plantillaListaPacienteFotoPerfil"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/default_photo_perfil_paciente"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/custom_circle_image"
+        android:scaleType="centerCrop"
+        android:clipToOutline="true"
+        android:contentDescription="@string/content_description_imagen_foto_perfil_paciente" />
+
+    <!-- Información del paciente -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="horizontal"
-        android:background="@color/color_formulario_background_tint_card_view">
-        <ImageView
-            android:id="@+id/plantillaListaPacienteFotoPerfil"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/default_photo_perfil_paciente"
-            android:background="@drawable/custom_circle_image"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/content_description_imagen_foto_perfil_paciente"
-            android:clipToOutline="true"
-            tools:ignore="UnusedAttribute" />
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-        <LinearLayout
+        <!-- Nombre del paciente -->
+        <TextView
+            android:id="@+id/plantillaListaPacienteNombre"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/plantillaListaPacienteNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/texto_plantilla_paciente_list_chat_ejemplo_nombre_paciente"
-                android:textSize="15sp"
-                android:textColor="@color/color_comun_text"/>
-            <TextView
-                android:id="@+id/plantillaListaPacienteCorreo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/texto_plantilla_paciente_list_chat_ejemplo_correo_paciente"
-                android:textSize="11sp"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/color_comun_text"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:text="@string/texto_plantilla_paciente_list_chat_ejemplo_nombre_paciente"
+            android:textSize="16sp"
+            android:textColor="@color/color_azul_acero"
+            android:textStyle="bold" />
+
+        <!-- Correo del paciente -->
+        <TextView
+            android:id="@+id/plantillaListaPacienteCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_plantilla_paciente_list_chat_ejemplo_correo_paciente"
+            android:textSize="12sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/color_azul_marino_profundo" />
     </LinearLayout>
 </LinearLayout>

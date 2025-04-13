@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp">
 
     <!-- Contenedor Principal -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:padding="12dp"
         android:layout_margin="5dp"
-        android:background="@android:color/white">
+        android:background="@color/color_azul_polvo"
+        android:elevation="2dp"
+        android:layout_gravity="center_vertical"
+        android:shape="rectangle">
 
         <!-- Imagen del Producto -->
         <ImageView
             android:id="@+id/plantilla_producto_imagenProducto"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/foto_a_seleccionar" />
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/foto_a_seleccionar"
+            android:scaleType="centerCrop"/>
 
         <!-- Contenedor con la información del Producto -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="5dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/plantilla_producto_nombreProducto"
@@ -34,41 +40,56 @@
                 android:layout_height="wrap_content"
                 android:text="Nombre del Producto"
                 android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/color_azul_medianoche"
+                android:maxLines="1"
+                android:ellipsize="end"/>
 
             <TextView
                 android:id="@+id/plantilla_producto_cantidadProducto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cantidad: 0" />
+                android:text="Cantidad: 0"
+                android:textSize="14sp"
+                android:textColor="@color/color_azul_acantilado"
+                android:maxLines="1"
+                android:ellipsize="end"/>
 
             <TextView
                 android:id="@+id/plantilla_producto_costoProducto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Costo: $0.00" />
+                android:text="Costo: $0.00"
+                android:textSize="14sp"
+                android:textColor="@color/color_turquesa_medio"
+                android:maxLines="1"
+                android:ellipsize="end"/>
 
             <TextView
                 android:id="@+id/plantilla_producto_descripcionProducto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Descripción del Producto"
+                android:textSize="12sp"
                 android:maxLines="2"
-                android:ellipsize="end" />
+                android:ellipsize="end"
+                android:textColor="@color/color_azul_acantilado" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <!-- Botón de eliminar producto (invisible por defecto) -->
+    <!-- Botón de eliminar producto (visible por defecto) -->
     <ImageButton
         android:id="@+id/plantilla_producto_boton_eliminar_producto"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="end|center_vertical"
         android:visibility="gone"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/icon_delete"/>
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/icon_delete"
+        android:elevation="4dp"/>
 
+    <!-- Etiqueta Agotado -->
     <TextView
         android:id="@+id/plantilla_producto_agotado_label"
         android:layout_width="match_parent"
@@ -81,6 +102,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:visibility="gone"
-        android:padding="16dp"/>
+        android:padding="12dp"
+        android:elevation="5dp"/>
 
 </FrameLayout>

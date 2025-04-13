@@ -1,22 +1,12 @@
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Fondo redondeado del mensaje -->
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/color_principal_claro" /> <!-- Color del mensaje (verde claro de WhatsApp) -->
-            <corners android:radius="16dp" /> <!-- Bordes redondeados -->
-            <padding android:left="16dp" android:right="16dp" android:bottom="8dp" /> <!-- Espaciado interior para el mensaje y la cola -->
-        </shape>
-    </item>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
 
-    <!-- Triángulo (cola del mensaje) -->
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/color_principal_claro" /> <!-- Color del mensaje (mismo color) -->
-            <corners android:radius="0dp" /> <!-- Sin bordes redondeados para el triángulo -->
-            <size android:height="8dp" /> <!-- Altura del triángulo -->
-            <solid android:color="@color/color_principal_claro" /> <!-- Color relleno del triángulo -->
-            <stroke android:width="0dp" /> <!-- Sin bordes visibles -->
-            <padding android:left="16dp" android:right="0dp" /> <!-- Ajustar la posición del triángulo a la derecha -->
-        </shape>
-    </item>
-</layer-list>
+    <solid android:color="@color/color_azul_polvo" />
+
+    <corners
+        android:topLeftRadius="2dp"
+        android:topRightRadius="20dp"
+        android:bottomLeftRadius="20dp"
+        android:bottomRightRadius="20dp" />
+</shape>
+

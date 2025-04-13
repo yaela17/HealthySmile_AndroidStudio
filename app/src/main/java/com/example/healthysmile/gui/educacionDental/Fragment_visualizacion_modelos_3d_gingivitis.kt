@@ -11,7 +11,7 @@ import io.github.sceneview.math.Scale
 import io.github.sceneview.node.ModelNode
 import kotlinx.coroutines.launch
 
-class Modelo3dPrueba : Fragment(R.layout.fragment_modelo3d_prueba) {
+class Fragment_visualizacion_modelos_3d_gingivitis : Fragment(R.layout.fragment_visualizacion_modelos_3d_gingivitis) {
 
     private lateinit var sceneView: SceneView
     private lateinit var loadingView: View

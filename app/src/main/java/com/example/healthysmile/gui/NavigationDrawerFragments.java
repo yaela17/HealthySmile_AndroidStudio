@@ -68,17 +68,7 @@ public class NavigationDrawerFragments extends AppCompatActivity {
                 R.id.nav_ConsultaVirtual,
                 R.id.nav_EducacionDental,
                 R.id.nav_TiendaVirutal,
-                R.id.nav_gestionAdmin,
-                R.id.fragment_visualizacion_modelos_3d_gingivitis,
-                R.id.fragment_visualizacion_modelos_3d_caries_dentales,
-                R.id.fragment_visualizacion_modelos_3d_cancer_bucal,
-                R.id.fragment_visualizacion_modelos_3d_traumatismos_bucodentales,
-                R.id.fragment_visualizacion_modelos_3d_halitosis,
-                R.id.fragment_visualizacion_modelos_3d_sensibilidad_dental,
-                R.id.fragment_visualizacion_modelos_3d_implantes,
-                R.id.fragment_visualizacion_modelos_3d_periodontitis,
-                R.id.fragment_consulta_list_chat,
-                R.id.fragment_consulta_list_chat_paciente)
+                R.id.nav_gestionAdmin)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer_fragments);
@@ -122,43 +112,31 @@ public class NavigationDrawerFragments extends AppCompatActivity {
 
                 // Manejar la opción nav_ConsultaVirtual
                 if (item.getItemId() == R.id.nav_ConsultaVirtual) {
-                    navController.popBackStack(R.id.nav_ConsultaVirtual, false);
-                    navController.navigate(R.id.nav_ConsultaVirtual);
-                    return true;
+                    return navegarConPopBackStack(navController,drawer, R.id.nav_ConsultaVirtual);
                 }
 
                 // Manejar la opción nav_home
                 if (item.getItemId() == R.id.nav_home) {
-                    navController.popBackStack(R.id.nav_home, false);
-                    navController.navigate(R.id.nav_home);
-                    return true;
+                    return navegarConPopBackStack(navController,drawer, R.id.nav_home);
                 }
 
                 // Manejar la opción nav_ayudaYSoporte
                 if (item.getItemId() == R.id.nav_ayudaYSoporte) {
-                    navController.popBackStack(R.id.nav_ayudaYSoporte, false);
-                    navController.navigate(R.id.nav_ayudaYSoporte);
-                    return true;
+                    return navegarConPopBackStack(navController,drawer, R.id.nav_ayudaYSoporte);
                 }
 
                 if (item.getItemId() == R.id.nav_EducacionDental) {
-                    navController.popBackStack(R.id.nav_EducacionDental, false);
-                    navController.navigate(R.id.nav_EducacionDental);
-                    return true;
+                    return navegarConPopBackStack(navController,drawer, R.id.nav_EducacionDental);
                 }
 
                 if (item.getItemId() == R.id.nav_TiendaVirutal) {
-                    navController.popBackStack(R.id.nav_TiendaVirutal, false);
-                    navController.navigate(R.id.nav_TiendaVirutal);
                     toolbar.setTitle("");
                     inputSearch.setVisibility(View.VISIBLE);
-                    return true;
+                    return navegarConPopBackStack(navController,drawer, R.id.nav_TiendaVirutal);
                 }
 
                 if (item.getItemId() == R.id.nav_gestionAdmin) {
-                    navController.popBackStack(R.id.nav_gestionAdmin, false);
-                    navController.navigate(R.id.nav_gestionAdmin);
-                    return true;
+                    return navegarConPopBackStack(navController,drawer, R.id.nav_gestionAdmin);
                 }
 
                 if(item.getItemId() == R.id.nav_logout){
@@ -231,5 +209,12 @@ public class NavigationDrawerFragments extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer_fragments);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private boolean navegarConPopBackStack(NavController navController, DrawerLayout drawer, int destinoId) {
+        navController.popBackStack(destinoId, false);
+        navController.navigate(destinoId);
+        drawer.closeDrawers();
+        return true;
     }
 }

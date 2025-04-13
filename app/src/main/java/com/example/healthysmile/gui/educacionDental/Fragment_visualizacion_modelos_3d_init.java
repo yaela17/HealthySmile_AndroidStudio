@@ -48,28 +48,29 @@ public class Fragment_visualizacion_modelos_3d_init extends Fragment implements 
     public void onClick(View v) {
         NavController navController = NavHostFragment.findNavController(Fragment_visualizacion_modelos_3d_init.this);
         if(v.getId() == R.id.modelos_init_imagen_gingivitis){
-            navController.navigate(R.id.action_nav_EducacionDental_to_modelo3dPrueba);
+            navController.navigate(R.id.action_nav_EducacionDental_to_fragment_visualizacion_modelos_3d_gingivitis);
         }else
             if(v.getId() == R.id.modelos_init_imagen_caries_dentales){
-                navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_gingivitis);
+                navController.navigate(R.id.action_nav_EducacionDental_to_fragment_visualizacion_modelos_3d_caries_dentales);
             }else
                 if(v.getId() == R.id.modelos_init_imagen_cancer_bucal){
-                    navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_cancer_bucal);
+                    navController.navigate(R.id.action_nav_EducacionDental_to_fragment_visualizacion_modelos_3d_cancer_bucal);
                 }else
                     if(v.getId() == R.id.modelos_init_imagen_traumatismos_bucodentales){
-                        navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_traumatismos_bucodentales);
+                        navController.navigate(R.id.action_nav_EducacionDental_to_fragment_visualizacion_modelos_3d_traumatismos_bucodentales);
                     }else
                         if(v.getId() == R.id.modelos_init_imagen_sensibilidad_dental){
-                            navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_sensibilidad_dental);
+                            navController.navigate(R.id.action_nav_EducacionDental_to_fragment_visualizacion_modelos_3d_sensibilidad_dental);
                         }else
                             if(v.getId() == R.id.modelos_init_imagen_implantes){
-                                navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_implantes);
+                                navController.navigate(R.id.action_nav_EducacionDental_to_fragment_visualizacion_modelos_3d_implantes);
                             }else
                                 if(v.getId() == R.id.modelos_init_imagen_periodontitis){
-                                    navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_periodontitis);
+                                    navController.navigate(R.id.action_nav_EducacionDental_to_fragment_visualizacion_modelos_3d_periodontitis);
+
                                 }else
                                     if(v.getId() == R.id.modelos_init_imagen_halitosis){
-                                        navController.navigate(R.id.action_fragment_vizualizacion_modelos_3d_init_to_fragment_visualizacion_modelos_3d_halitosis);
+                                        navController.navigate(R.id.action_nav_EducacionDental_to_fragment_visualizacion_modelos_3d_halitosis);
                                     }
     }
 }

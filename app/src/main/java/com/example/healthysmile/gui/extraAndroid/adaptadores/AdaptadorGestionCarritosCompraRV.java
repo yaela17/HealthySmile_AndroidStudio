@@ -72,7 +72,7 @@ public class AdaptadorGestionCarritosCompraRV extends RecyclerView.Adapter<Adapt
             idCompra = itemView.findViewById(R.id.plantilla_gestion_paciente_compras_rv_idCompra);
             fechaCompra = itemView.findViewById(R.id.plantilla_gestion_paciente_compras_rv_fechaCompra);
             metodoPago = itemView.findViewById(R.id.plantilla_gestion_paciente_compras_rv_metodoPago);
-            estadoCompra = itemView.findViewById(R.id.plantilla_gestion_paciente_compras_rv_estadoCompra);
+            estadoCompra = itemView.findViewById(R.id.plantilla_gestion_paciente_compras_rv_estadoCompraConIcono);
             numProdTot = itemView.findViewById(R.id.plantilla_gestion_paciente_compras_rv_numProdTot);
             costTot = itemView.findViewById(R.id.plantilla_gestion_paciente_compras_rv_costTot);
             iconoEstado = itemView.findViewById(R.id.plantilla_gestion_paciente_compras_rv_iconoEstado);

@@ -50,8 +50,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         if (message.getEmisor() == idUsuarioActual) {
             layoutParams.gravity = Gravity.END; // Alineación a la derecha
+            holder.messageContainer.setBackgroundResource(R.drawable.mensaje_background_emisor); // Cambiar el fondo del mensaje
         } else {
             layoutParams.gravity = Gravity.START; // Alineación a la izquierda
+            holder.messageContainer.setBackgroundResource(R.drawable.mensaje_background_receptor); // Cambiar el fondo del mensaje
         }
 
         holder.messageContainer.setLayoutParams(layoutParams);

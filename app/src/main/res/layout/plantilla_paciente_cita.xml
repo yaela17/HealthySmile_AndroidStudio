@@ -1,76 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:orientation="vertical">
+    android:layout_margin="12dp"
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="6dp"
+    card_view:cardBackgroundColor="@color/color_azul_alice">
 
-    <!-- Fila para fecha, hora y botón modificar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="start">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/plantilla_paciente_cita_fecha"
-            android:layout_width="wrap_content"
+        <!-- Fila de Fecha, Hora y Modificar -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha (YYYY-MM-DD)"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/plantilla_paciente_cita_hora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Hora (HH:MM AM)"/>
+            <TextView
+                android:id="@+id/plantilla_paciente_cita_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2025-04-14"
+                android:textStyle="bold"
+                android:textColor="@color/color_azul_medianoche"
+                android:textSize="15sp" />
 
-        <!-- Usamos layout_weight para que el botón se alinee a la derecha -->
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            <TextView
+                android:id="@+id/plantilla_paciente_cita_hora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="10:30 AM"
+                android:textColor="@color/color_azul_acero"
+                android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/plantilla_paciente_btn_modificar"
-            android:layout_width="100dp"
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/plantilla_paciente_btn_modificar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/color_azul_acantilado"
+                android:text="Modificar"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp" />
+        </LinearLayout>
+
+        <!-- Espaciador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <!-- Fila de Motivo, Especialista y Eliminar -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:text="Modificar"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/plantilla_paciente_cita_motivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Consulta general"
+                android:textColor="@color/color_azul_marino_profundo"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/plantilla_paciente_nombreEspecialista"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="con Dr. López"
+                android:textColor="@color/color_azul_acero"
+                android:textSize="14sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/plantilla_paciente_cita_btn_eliminar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:text="Eliminar"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp" />
+        </LinearLayout>
     </LinearLayout>
-
-    <!-- Fila para motivo, nombre especialista y botón eliminar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="start">
-
-        <TextView
-            android:id="@+id/plantilla_paciente_cita_motivo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Motivo cita"/>
-
-        <TextView
-            android:id="@+id/plantilla_paciente_nombreEspecialista"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="con + nombreEspecialista"/>
-
-        <!-- Usamos layout_weight para que el botón se alinee a la derecha -->
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/plantilla_paciente_cita_btn_eliminar"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:text="Eliminar"/>
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.cardview.widget.CardView>

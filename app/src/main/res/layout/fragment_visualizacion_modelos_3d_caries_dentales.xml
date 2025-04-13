@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.educacionDental.Fragment_vizualizacion_modelos_3d_caries_dentales">
+    tools:context=".gui.educacionDental.Fragment_visualizacion_modelos_3d_caries_dentales">
 
-    <android.view.SurfaceView
-        android:id="@+id/modelo3dprueba"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

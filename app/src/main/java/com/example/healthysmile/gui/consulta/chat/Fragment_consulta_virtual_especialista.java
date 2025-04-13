@@ -231,7 +231,7 @@ public class Fragment_consulta_virtual_especialista extends Fragment {
         messagesListener = db.collection("chats")
                 .document(chatId)
                 .collection("mensajes")
-                .orderBy("fecha", Query.Direction.DESCENDING)
+                .orderBy("fecha", Query.Direction.ASCENDING)
                 .addSnapshotListener((snapshots, e) -> {
                     if (e != null) {
                         Log.e("Firestore", "Error en el listener de mensajes", e);
