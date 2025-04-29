@@ -13,99 +13,108 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/sp3"
+                    android:layout_height="175dp"
                     android:scaleType="centerCrop"
+                    android:src="@drawable/sp3"
                     android:contentDescription="@string/content_description_imagen_fondo_preguntas_frecuentes"
-                    android:alpha="0.5" />
+                    android:alpha="0.7"/>
 
-                <LinearLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:gravity="center">
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="@string/label_menu_ayudaysoporte"
-                        android:textColor="@color/white"
-                        android:textSize="35sp" />
-                </LinearLayout>
-            </LinearLayout>
+                        android:orientation="vertical"
+                        android:padding="9dp">
 
-            <EditText
-                android:id="@+id/ayuda_y_soporte_input_search"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="Buscar..."
-                android:drawableLeft="@drawable/icon_buscar"
-                android:drawableTint="@color/color_negro"
-                android:background="@drawable/rounded_edit_text_background"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray"
-                android:drawablePadding="10dp"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:inputType="text"
-                android:gravity="start|center_vertical"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:cursorVisible="true"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_menu_ayudaysoporte"
+                            android:textSize="42dp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/white"
+                            android:gravity="center"
+                            android:layout_marginTop="80dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="680dp"
-                android:background="@drawable/custom_edittext"
-                android:layout_margin="20dp"
-                android:padding="10dp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/titulo_preguntas_frecuentes"
-                    android:textSize="30sp" />
+                        <EditText
+                            android:id="@+id/ayuda_y_soporte_input_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:hint="Buscar..."
+                            android:drawableLeft="@drawable/icon_buscar"
+                            android:drawableTint="@color/color_negro"
+                            android:background="@drawable/rounded_edit_text_background"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:layout_marginTop="30dp"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@android:color/darker_gray"
+                            android:drawablePadding="10dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:inputType="text"
+                            android:gravity="start|center_vertical"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:cursorVisible="true"/>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:src="@drawable/sp2"
-                    android:contentDescription="@string/content_description_imagen_preguntas_frecuentes"
-                    android:scaleType="fitCenter" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="680dp"
+                            android:background="@drawable/custom_edittext"
+                            android:layout_margin="20dp"
+                            android:padding="10dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/titulo_preguntas_frecuentes"
+                                android:textSize="28sp" />
 
-                <ExpandableListView
-                    android:id="@+id/expandableListViewPreguntasFrecuentes"
-                    android:layout_margin="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="@android:color/darker_gray"
-                    android:scrollbars="vertical"
-                    android:nestedScrollingEnabled="true"
-                    android:dividerHeight="0.5dp"
-                    android:indicatorRight="?android:attr/expandableListPreferredChildIndicatorRight" />
-            </LinearLayout>
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:src="@drawable/sp2"
+                                android:contentDescription="@string/content_description_imagen_preguntas_frecuentes"
+                                android:scaleType="fitCenter" />
+
+                            <ExpandableListView
+                                android:id="@+id/expandableListViewPreguntasFrecuentes"
+                                android:layout_margin="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:divider="@android:color/darker_gray"
+                                android:scrollbars="vertical"
+                                android:nestedScrollingEnabled="true"
+                                android:dividerHeight="0.5dp"
+                                android:indicatorRight="?android:attr/expandableListPreferredChildIndicatorRight" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </ScrollView>
+            </FrameLayout>
+
+
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ayuda_y_soporte_action_button_pregunta_frecuente"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="53dp"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="20dp"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/icon_add"
-        android:backgroundTint="@color/color_formulario_background_tint_card_view"/>
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/color_formulario_background_tint_card_view"
+        android:src="@drawable/icon_add" />
 </FrameLayout>
