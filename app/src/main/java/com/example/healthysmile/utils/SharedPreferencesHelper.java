@@ -94,6 +94,7 @@ public class SharedPreferencesHelper {
         SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove("codigoVerificacion");
+        editor.apply();
     }
 
     public void imprimirDatosSharedPreferences() {

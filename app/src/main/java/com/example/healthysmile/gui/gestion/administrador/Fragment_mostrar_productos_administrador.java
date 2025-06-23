@@ -143,4 +143,114 @@ public class Fragment_mostrar_productos_administrador extends Fragment implement
             ((Fragment_gestion_administrador_productos) parentFragment).cargarFragment(fragmentoDetalle);
         }
     }
+
+    /**
+     * A simple {@link Fragment} subclass.
+     * Use the {@link Fragment_mostrar_especialistas_administrador#newInstance} factory method to
+     * create an instance of this fragment.
+     */
+    public static class Fragment_mostrar_especialistas_administrador extends Fragment {
+
+        // TODO: Rename parameter arguments, choose names that match
+        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+        private static final String ARG_PARAM1 = "param1";
+        private static final String ARG_PARAM2 = "param2";
+
+        // TODO: Rename and change types of parameters
+        private String mParam1;
+        private String mParam2;
+
+        public Fragment_mostrar_especialistas_administrador() {
+            // Required empty public constructor
+        }
+
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment Fragment_mostrar_especialistas_administrador.
+         */
+        // TODO: Rename and change types and number of parameters
+        public static Fragment_mostrar_especialistas_administrador newInstance(String param1, String param2) {
+            Fragment_mostrar_especialistas_administrador fragment = new Fragment_mostrar_especialistas_administrador();
+            Bundle args = new Bundle();
+            args.putString(ARG_PARAM1, param1);
+            args.putString(ARG_PARAM2, param2);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            if (getArguments() != null) {
+                mParam1 = getArguments().getString(ARG_PARAM1);
+                mParam2 = getArguments().getString(ARG_PARAM2);
+            }
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            return inflater.inflate(R.layout.fragment_mostrar_productos_administrador, container, false);
+        }
+    }
+
+    /**
+     * A simple {@link Fragment} subclass.
+     * Use the {@link Fragment_gestion_administrador_citas#newInstance} factory method to
+     * create an instance of this fragment.
+     */
+    public static class Fragment_gestion_administrador_citas extends Fragment {
+
+        // TODO: Rename parameter arguments, choose names that match
+        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+        private static final String ARG_PARAM1 = "param1";
+        private static final String ARG_PARAM2 = "param2";
+
+        // TODO: Rename and change types of parameters
+        private String mParam1;
+        private String mParam2;
+
+        public Fragment_gestion_administrador_citas() {
+            // Required empty public constructor
+        }
+
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment Fragment_gestion_administrador_citas.
+         */
+        // TODO: Rename and change types and number of parameters
+        public static Fragment_gestion_administrador_citas newInstance(String param1, String param2) {
+            Fragment_gestion_administrador_citas fragment = new Fragment_gestion_administrador_citas();
+            Bundle args = new Bundle();
+            args.putString(ARG_PARAM1, param1);
+            args.putString(ARG_PARAM2, param2);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            if (getArguments() != null) {
+                mParam1 = getArguments().getString(ARG_PARAM1);
+                mParam2 = getArguments().getString(ARG_PARAM2);
+            }
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            return inflater.inflate(R.layout.fragment_gestion_administrador_citas, container, false);
+        }
+    }
 }
