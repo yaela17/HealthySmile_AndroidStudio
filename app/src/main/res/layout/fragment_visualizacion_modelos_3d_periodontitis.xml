@@ -1,14 +1,554 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.educacionDental.Fragment_visualizacion_modelos_3d_periodontitis">
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <!-- Sección Título -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
 
-</FrameLayout>
+            <!-- Cuadro azul -->
+            <View
+                android:id="@+id/cuadroAzul"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="27dp"
+                android:background="#0088A8" />
+
+            <!-- Cuadro beige detrás del texto -->
+            <View
+                android:id="@+id/cuadroBeige"
+                android:layout_width="250dp"
+                android:layout_height="140dp"
+                android:layout_below="@id/cuadroAzul"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:background="#E6D5A3" />
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Qué es la periodontitis?"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentStart="true" />
+
+            <!-- Descripción (encima del cuadro beige) -->
+            <TextView
+                android:id="@+id/descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titulo"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="20dp"
+                android:text="La periodontitis es una enfermedad avanzada de las encías que afecta los tejidos que rodean y sostienen los dientes. Ocurre cuando la gingivitis no se trata, lo que causa una pérdida de los huesos y tejidos que sostienen los dientes. Si no se trata, puede provocar la pérdida de los dientes."
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:justificationMode="inter_word" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textoModelo3D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modelo 3D"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp" />
+
+
+        <!-- Modelo -->
+        <io.github.sceneview.SceneView
+            android:id="@+id/sceneViewPeriodontitis"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <!-- Vista de carga -->
+        <View
+            android:id="@+id/loadingViewPeriodontitis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:visibility="gone" />
+
+        <!-- Sección Factores de Riesgo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D8C9E1"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Factores de riesgo"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/white"
+                android:layout_marginVertical="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Higiene bucal deficiente.\n• Fumar.\n• Edad avanzada.\n• Enfermedades sistémicas como la diabetes.\n• Cambios hormonales (embarazo, menopausia)."
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+        <!-- Sección Síntomas -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Síntomas"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Los síntomas de la periodontitis incluyen:"
+            android:textSize="18sp"
+            android:paddingTop="8dp"
+            android:textColor="@android:color/black"/>
+
+        <!-- Grid de imágenes y textos -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:paddingTop="8dp"
+            android:rowCount="3">
+
+            <!-- Síntoma 1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ps1"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pus entre los dientes y las encías."
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 2 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ps2"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recesión de las encías"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 3 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ps3"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dientes flojos o separados."
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 4 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ps4"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encías inflamadas, enrojecidas o dolorosas."
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+        </GridLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Causas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="6dp">
+        </TextView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            android:layout_marginVertical="4dp"/>
+
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_background"
+                    android:gravity="center"
+                    android:text="01"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fumar o usar productos de tabaco."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_blue"
+                    android:gravity="center"
+                    android:text="02"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diabetes no controlada."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_blue"
+                    android:gravity="center"
+                    android:text="03"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cambios hormonales."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_background"
+                    android:gravity="center"
+                    android:text="04"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Genética (historial familiar de enfermedad periodontal)."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </GridLayout>
+
+
+        <!-- Sección Complicaciones -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E6D5A3"
+            android:padding="16dp">
+
+            <!-- Imagen superior izquierda -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|start"
+                android:src="@drawable/pc1"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Imagen superior derecha -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/pc2"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- Imagen inferior izquierda -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom|start"
+                android:src="@drawable/pc3"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Imagen inferior derecha -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom|end"
+                android:src="@drawable/pc4"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="10dp"/>
+
+            <!-- Contenedor blanco con texto al centro -->
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_white_bg"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:elevation="8dp">
+
+
+                <!-- Título -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Complicaciones"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <!-- Descripción -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Si no se trata, la periodontitis puede provocar:"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+
+                <!-- Lista -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Pérdida de dientes.\n• Infecciones graves en el hueso maxilar.\n• Aumento del riesgo de enfermedades sistémicas como enfermedades cardíacas y diabetes mal controlada."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Sección de Prevención -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Contenedor de texto -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prevención"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <!-- Lista de prevención -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Cepíllate los dientes al menos dos veces al día.\n• Usa hilo dental diariamente para eliminar la placa entre los dientes.\n• No fumes ni uses tabaco.\n• Visita regularmente al dentista para limpiezas y chequeos."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Contenedor de imágenes -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="42dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="152dp"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pp1" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="134dp"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pp2" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Sección Tratamiento -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#7A944E"
+            android:padding="16dp"
+            android:layout_marginTop="20dp">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tratamiento"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+            <!-- Subtítulo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="El tratamiento de la periodontitis incluye:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:paddingTop="4dp"
+                android:paddingBottom="12dp" />
+
+            <!-- Lista de tratamientos -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Raspado y alisado radicular: Limpieza profunda para eliminar el sarro y las bacterias debajo de la línea de las encías.\n\n• Antibióticos: Para controlar la infección.\n\n• Cirugía periodontal: En casos graves, se puede realizar cirugía para limpiar las bolsas profundas y reducir la recesión de las encías.\n\n• Injerto óseo o de encía: Para restaurar las áreas afectadas."
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

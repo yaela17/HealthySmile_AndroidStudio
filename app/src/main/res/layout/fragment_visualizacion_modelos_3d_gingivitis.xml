@@ -1,21 +1,450 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.educacionDental.Fragment_visualizacion_modelos_3d_gingivitis">
+    android:fillViewport="true">
 
-    <!-- SceneView para mostrar el modelo 3D -->
-    <io.github.sceneview.SceneView
-        android:id="@+id/sceneView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <!-- Vista de carga -->
-    <View
-        android:id="@+id/loadingView"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:visibility="gone" />
-</FrameLayout>
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Aquí va TODO tu contenido bonito: cuadros, título, textos, etc. -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+
+            <!-- Cuadro azul -->
+            <View
+                android:id="@+id/cuadroAzul"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="27dp"
+                android:background="#0088A8" />
+
+            <!-- Cuadro beige detrás del texto -->
+            <View
+                android:id="@+id/cuadroBeige"
+                android:layout_width="250dp"
+                android:layout_height="140dp"
+                android:layout_below="@id/cuadroAzul"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:background="#E6D5A3" />
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Qué es la gingivitis?"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentStart="true" />
+
+            <!-- Descripción (encima del cuadro beige) -->
+            <TextView
+                android:id="@+id/descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titulo"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="20dp"
+                android:text="La gingivitis es una forma común y leve de enfermedad de las encías (enfermedad periodontal) que causa irritación, enrojecimiento e hinchazón (inflamación) de la parte de las encías que rodea la base de los dientes. La gingivitis es común, y es importante tratarla a tiempo, ya que puede llevar a formas más graves de enfermedad de las encías (periodontitis) y, finalmente, a la pérdida de dientes."
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:justificationMode="inter_word" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/textoModelo3D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modelo 3D"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp" />
+
+        <!-- Modelo 3D arriba -->
+        <io.github.sceneview.SceneView
+            android:id="@+id/sceneView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <!-- Vista de carga (opcional, puedes moverla donde te convenga) -->
+        <View
+            android:id="@+id/loadingView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:visibility="gone" />
+
+        <!-- Sección Factores de Riesgo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D8C9E1"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Factores de riesgo"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/white"
+                android:layout_marginVertical="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Las personas con mayor riesgo son aquellas que participan en deportes de contacto sin protectores bucales, los niños pequeños, y las personas con condiciones médicas que afectan la coordinación o el equilibrio."
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:textColor="@android:color/black"/>
+
+        </LinearLayout>
+
+        <!-- Sección Síntomas -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Síntomas"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Los síntomas de la gingivitis pueden ser leves, por lo que es posible que no te des cuenta de que tienes la afección. Sin embargo, los signos y síntomas comunes de la gingivitis incluyen:"
+            android:textSize="18sp"
+            android:paddingTop="8dp"
+            android:textColor="@android:color/black"/>
+
+        <!-- Grid de imágenes y textos -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:paddingTop="8dp"
+            android:rowCount="3">
+
+            <!-- Síntoma 1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/sg1"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encías inflamadas o hinchadas"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 2 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/sg2"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encías de color rojo oscuro o violáceo."
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 3 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/sg3"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encías retraídas (las encías que se han separado de los dientes)."
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 4 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/sg4"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encías que sangran fácilmente al cepillarte o usar hilo dental."
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+        </GridLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Causas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="6dp">
+        </TextView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="La causa más común de la gingivitis es la acumulación de placa bacteriana en los dientes. La placa es una película pegajosa e incolora que se forma en los dientes cuando las bacterias en la boca interactúan con los alimentos y bebidas. Si no se elimina con el cepillado y el uso de hilo dental, la placa puede endurecerse y convertirse en sarro, lo que irrita las encías y provoca gingivitis."
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="12dp" />
+
+
+        <!-- Sección Complicaciones -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E6D5A3"
+            android:padding="16dp">
+
+            <!-- Imagen superior izquierda -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|start"
+                android:src="@drawable/cg1"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Imagen superior derecha -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/cg2"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- Imagen inferior izquierda -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom|start"
+                android:src="@drawable/cg3"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Imagen inferior derecha -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom|end"
+                android:src="@drawable/cg4"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="10dp"/>
+
+            <!-- Contenedor blanco con texto al centro -->
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_white_bg"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:elevation="8dp">
+
+
+                <!-- Título -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Complicaciones"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <!-- Descripción -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Si no se trata, la gingivitis puede avanzar a periodontitis, una condición más grave que puede provocar la pérdida de dientes. Las complicaciones adicionales pueden incluir:"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+
+                <!-- Lista -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Abscesos en las encías.\n• Recesión de las encías. \n• Daño a los tejidos blandos y los huesos que sostienen los dientes."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Sección de Prevención -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Contenedor de texto -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prevención"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <!-- Lista de prevención -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Cepíllate los dientes al menos dos veces al día con pasta dental con flúor.\n• Usa hilo dental diariamente para eliminar residuos entre los dientes.\n• Acude al dentista para limpiezas profesionales cada seis meses."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Contenedor de imágenes -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="55dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="152dp"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pg1" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="134dp"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pg2" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Sección Tratamiento -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#7A944E"
+            android:padding="16dp"
+            android:layout_marginTop="20dp">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tratamiento"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+            <!-- Subtítulo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="El tratamiento para la gingivitis es sencillo si se detecta en una etapa temprana. Los pasos comunes incluyen:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:paddingTop="4dp"
+                android:paddingBottom="12dp" />
+
+            <!-- Lista de tratamientos -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Limpieza profesional: El dentista o higienista eliminará toda la placa, el sarro y las bacterias de la boca.\n\n• Instrucciones de higiene oral: Te enseñarán a mantener una buena rutina de limpieza en casa.\n\n• Cuidado en el hogar: Mejorar tus hábitos de cepillado y uso de hilo dental es clave para revertir la gingivitis.\n\n• En casos avanzados, puede requerirse un tratamiento más agresivo, como raspado y alisado radicular.\n\n• Si sigues estas recomendaciones, la gingivitis suele desaparecer en unos días o semanas."
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

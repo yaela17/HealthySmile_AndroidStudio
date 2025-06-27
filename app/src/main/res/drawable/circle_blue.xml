@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <solid android:color="#ADD8E6"/> <!-- Azul pastel -->
+
+    <size android:width="40dp" android:height="40dp"/>
+
+    <!-- corners opcional porque ya es oval, pero lo dejamos si prefieres una cápsula -->
+    <corners android:radius="20dp"/>
+</shape>
