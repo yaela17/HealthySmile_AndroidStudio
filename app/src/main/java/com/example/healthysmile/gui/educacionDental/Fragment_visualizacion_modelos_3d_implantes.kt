@@ -1,64 +1,44 @@
 package com.example.healthysmile.gui.educacionDental
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.healthysmile.R
+import io.github.sceneview.SceneView
+import io.github.sceneview.math.Position
+import io.github.sceneview.math.Scale
+import io.github.sceneview.node.ModelNode
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class Fragment_visualizacion_modelos_3d_implantes : Fragment(R.layout.fragment_visualizacion_modelos_3d_implantes) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Fragment_visualizacion_modelos_3d_implantes.newInstance] factory method to
- * create an instance of this fragment.
- */
-class Fragment_visualizacion_modelos_3d_implantes : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var sceneView: SceneView
+    private lateinit var loadingView: View
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        sceneView = view.findViewById(R.id.sceneViewImplantes)
+        loadingView = view.findViewById(R.id.loadingViewImplantes)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+
+            // Configuración de la cámara para mantenerla alejada
+            sceneView.cameraNode.position = Position(0f, 0f, 20f)
+
+            // Cargar el modelo 3D
+            val modelFile = "implantes.glb"
+            val modelNode = ModelNode(
+                sceneView.modelLoader.createModelInstance(modelFile),
+                scaleToUnits = 2f
+            )
+            modelNode.scale = Scale(0.005f)
+            sceneView.addChildNode(modelNode)
+
+            sceneView.cameraNode.lookAt(Position(0f, 0f, 20f))
+
+            loadingView.visibility = View.GONE
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(
-            R.layout.fragment_visualizacion_modelos_3d_implantes,
-            container,
-            false
-        )
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Fragment_visualizacion_modelos_3d_implantes.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Fragment_visualizacion_modelos_3d_implantes().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

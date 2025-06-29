@@ -1,14 +1,613 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.educacionDental.Fragment_visualizacion_modelos_3d_cancer_bucal">
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <!-- Sección Título -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
 
-</FrameLayout>
+            <!-- Cuadro azul -->
+            <View
+                android:id="@+id/cuadroAzul"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="27dp"
+                android:background="#0088A8" />
+
+            <!-- Cuadro beige detrás del texto -->
+            <View
+                android:id="@+id/cuadroBeige"
+                android:layout_width="250dp"
+                android:layout_height="140dp"
+                android:layout_below="@id/cuadroAzul"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:background="#E6D5A3" />
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Qué es el cáncer bucal?"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentStart="true" />
+
+            <!-- Descripción (encima del cuadro beige) -->
+            <TextView
+                android:id="@+id/descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titulo"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="20dp"
+                android:text="El cáncer bucal se refiere a los tumores malignos que pueden desarrollarse en los tejidos de la boca, incluidos los labios, la lengua, las encías, el paladar, las mejillas y la garganta. Es una enfermedad seria que requiere un diagnóstico temprano para mejorar las probabilidades de tratamiento exitoso."
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:justificationMode="inter_word" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textoModelo3D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modelo 3D"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp" />
+
+        <!-- Modelo -->
+        <io.github.sceneview.SceneView
+            android:id="@+id/sceneViewCancer"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <!-- Vista de carga -->
+        <View
+            android:id="@+id/loadingViewCancer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:visibility="gone" />
+
+        <!-- Sección Factores de Riesgo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D8C9E1"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Factores de riesgo"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/white"
+                android:layout_marginVertical="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Algunos factores que aumentan el riesgo de desarrollar cáncer bucal son:"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Consumo de tabaco o alcohol.\n• Exposición a infecciones por VPH.\n• Antecedentes familiares de cáncer.\n• Dieta pobre en frutas y verduras.\n• Edad avanzada (mayores de 50 años)."
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+        <!-- Sección Síntomas -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Síntomas"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Los síntomas más comunes del cáncer bucal incluyen:"
+            android:textSize="18sp"
+            android:paddingTop="8dp"
+            android:textColor="@android:color/black"/>
+
+        <!-- Grid de imágenes y textos -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:paddingTop="8dp"
+            android:rowCount="3">
+
+            <!-- Síntoma 1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cs1"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Llagas o úlceras en la boca que no sanan"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 2 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cs2"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bultos o áreas engrosadas en los labios, encías o dentro de la boca"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 3 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cs3"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manchas blancas o rojas en el interior de la boca"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 4 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cs4"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dolor o dificultad para tragar"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 5 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cs5"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pérdida de dientes sin razón aparente"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 6 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cs6"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dolor en la mandíbula o rigidez"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+        </GridLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Causas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="6dp">
+        </TextView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="El cáncer bucal se desarrolla cuando las células en la boca sufren mutaciones en su ADN, lo que permite que crezcan de manera descontrolada. Las causas exactas no siempre son claras, pero los factores de riesgo incluyen:"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="12dp" />
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_background"
+                    android:gravity="center"
+                    android:text="01"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tabaquismo o consumo de tabaco en cualquier forma."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_blue"
+                    android:gravity="center"
+                    android:text="02"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Consumo excesivo de alcohol."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_blue"
+                    android:gravity="center"
+                    android:text="03"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Infección por el virus del papiloma humano (VPH)."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_background"
+                    android:gravity="center"
+                    android:text="04"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Exposición excesiva al sol (para el cáncer en los labios)."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </GridLayout>
+
+
+        <!-- Sección Complicaciones -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E6D5A3"
+            android:padding="16dp">
+
+            <!-- Imagen superior izquierda -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|start"
+                android:src="@drawable/cac1"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Imagen superior derecha -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/cac2"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- Imagen inferior izquierda -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom|start"
+                android:src="@drawable/cac3"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Imagen inferior derecha -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom|end"
+                android:src="@drawable/cac4"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="10dp"/>
+
+            <!-- Contenedor blanco con texto al centro -->
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_white_bg"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:elevation="8dp">
+
+
+                <!-- Título -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Complicaciones"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <!-- Descripción -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="El cáncer bucal puede extenderse a otras partes de la boca y cuerpo si no se trata a tiempo. Las complicaciones incluyen:"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+
+                <!-- Lista -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Pérdida de tejidos y órganos afectados.\n• Dificultades para hablar o tragar.\n• Desfiguración facial."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Sección de Prevención -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Contenedor de texto -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prevención"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+
+                <!-- Lista de prevención -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Evita el consumo de tabaco y alcohol.\n• Protege tus labios del sol usando protector solar labial.\n• Mantén una dieta rica en frutas y verduras.\n• Vacúnate contra el VPH.\n• Realiza autoexámenes y visita regularmente a tu dentista para chequeos."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Contenedor de imágenes -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="80dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="152dp"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cp1" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="134dp"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cp2" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Sección Tratamiento -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#7A944E"
+            android:padding="16dp"
+            android:layout_marginTop="20dp">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tratamiento"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+            <!-- Subtítulo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="El tratamiento depende de la gravedad del traumatismo:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:paddingTop="4dp"
+                android:paddingBottom="12dp" />
+
+            <!-- Lista de tratamientos -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Cirugía: Para extirpar el tumor y los tejidos afectados.\n\n• Radioterapia: Uso de rayos X de alta energía para destruir las células cancerosas.\n\n• Quimioterapia: Uso de medicamentos para eliminar células cancerosas.\n\n• Terapia dirigida: Uso de medicamentos que atacan características específicas de las células cancerosas."
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

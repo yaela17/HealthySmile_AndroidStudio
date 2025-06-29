@@ -1,14 +1,562 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.educacionDental.Fragment_visualizacion_modelos_3d_caries_dentales">
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <!-- Sección Título -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
 
-</FrameLayout>
+            <!-- Cuadro azul -->
+            <View
+                android:id="@+id/cuadroAzul"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="27dp"
+                android:background="#0088A8" />
+
+            <!-- Cuadro beige detrás del texto -->
+            <View
+                android:id="@+id/cuadroBeige"
+                android:layout_width="250dp"
+                android:layout_height="140dp"
+                android:layout_below="@id/cuadroAzul"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:background="#E6D5A3" />
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Qué son las caries?"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentStart="true" />
+
+            <!-- Descripción (encima del cuadro beige) -->
+            <TextView
+                android:id="@+id/descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titulo"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="20dp"
+                android:text="La caries dental es el daño que ocurre cuando los ácidos producidos por las bacterias en la boca descomponen el esmalte dental, lo que lleva a la formación de pequeños agujeros o cavidades. Es uno de los problemas dentales más comunes, pero puede prevenirse y tratarse si se detecta a tiempo."
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:justificationMode="inter_word" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textoModelo3D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modelo 3D"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp" />
+
+        <!-- Modelo -->
+        <io.github.sceneview.SceneView
+            android:id="@+id/sceneViewCaries"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <!-- Vista de carga -->
+        <View
+            android:id="@+id/loadingViewCaries"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:visibility="gone" />
+
+        <!-- Sección Factores de Riesgo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D8C9E1"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Factores de riesgo"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/white"
+                android:layout_marginVertical="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Algunos factores que aumentan el riesgo de desarrollar caries son:"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Consumo frecuente de alimentos y bebidas con alto contenido de azúcar.\n• Inadecuada higiene bucal.\n• Boca seca, que puede ser causada por ciertos medicamentos o condiciones médicas.\n• Reflujo gástrico, que puede exponer los dientes a ácidos estomacales."
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+        <!-- Sección Síntomas -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Síntomas"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="En las primeras etapas, la caries puede no mostrar síntomas. A medida que avanza, los síntomas pueden incluir:"
+            android:textSize="18sp"
+            android:paddingTop="8dp"
+            android:textColor="@android:color/black"/>
+
+        <!-- Grid de imágenes y textos -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:paddingTop="8dp"
+            android:rowCount="3">
+
+            <!-- Síntoma 1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cas1"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sensibilidad dental, particularmente con alimentos o bebidas calientes, frías o dulces"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 2 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cas2"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manchas marrones, negras o blancas en la superficie de los dientes"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 3 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cas3"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mal aliento persistente"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 4 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cas4"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agujeros visibles o cavidades en los dientes"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+        </GridLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Causas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="6dp">
+        </TextView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            android:layout_marginVertical="4dp"/>
+
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_background"
+                    android:gravity="center"
+                    android:text="01"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Caídas accidentales"
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_blue"
+                    android:gravity="center"
+                    android:text="02"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Golpes durante actividades deportivas."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_blue"
+                    android:gravity="center"
+                    android:text="03"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accidentes automovilísticos."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_background"
+                    android:gravity="center"
+                    android:text="04"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mordeduras a objetos duros."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </GridLayout>
+
+
+        <!-- Sección Complicaciones -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E6D5A3"
+            android:padding="16dp">
+
+            <!-- Imagen superior izquierda -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|start"
+                android:src="@drawable/cac1"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Imagen superior derecha -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/cac2"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- Imagen inferior izquierda -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom|start"
+                android:src="@drawable/cac3"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Imagen inferior derecha -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom|end"
+                android:src="@drawable/cac4"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="10dp"/>
+
+            <!-- Contenedor blanco con texto al centro -->
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_white_bg"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:elevation="8dp">
+
+
+                <!-- Título -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Complicaciones"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <!-- Descripción -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Si no se trata, la caries puede causar complicaciones graves, como:"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+
+                <!-- Lista -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Dolor intenso de dientes.\n• Infecciones en la raíz del diente.\n• Problemas en la masticación y en la alineación de los dientes.\n• Abscesos dentales.\n• Pérdida de dientes."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Sección de Prevención -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Contenedor de texto -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prevención"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+
+                <!-- Lista de prevención -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Cepíllate los dientes al menos dos veces al día con pasta dental con flúor.\n• Usa hilo dental diariamente para limpiar entre los dientes.\n• Limita el consumo de alimentos y bebidas azucaradas.\n• Bebe suficiente agua, especialmente agua fluorada."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Contenedor de imágenes -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="90dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="152dp"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cap1" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="134dp"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cap2" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Sección Tratamiento -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#7A944E"
+            android:padding="16dp"
+            android:layout_marginTop="20dp">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tratamiento"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+            <!-- Subtítulo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="El tratamiento de la caries varía según la gravedad:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:paddingTop="4dp"
+                android:paddingBottom="12dp" />
+
+            <!-- Lista de tratamientos -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Flúor: En las etapas iniciales, el flúor puede ayudar a revertir el daño en el esmalte.\n\n• Empastes dentales: Si la caries ha avanzado y ha causado cavidades, el dentista eliminará el tejido dañado y lo rellenará con un material como resina o amalgama.\n\n• Coronas: Si la caries ha destruido una gran parte del diente, puede ser necesario cubrirlo con una corona dental.\n\n• Endodoncia: Si la infección llega al nervio del diente, puede ser necesario realizar una endodoncia (tratamiento de conductos).\n\n• Extracción dental: En casos graves, cuando el diente está muy dañado para ser restaurado, puede ser necesario extraerlo."
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
