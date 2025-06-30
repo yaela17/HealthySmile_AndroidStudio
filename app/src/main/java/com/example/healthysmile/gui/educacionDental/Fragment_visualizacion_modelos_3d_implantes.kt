@@ -18,27 +18,24 @@ class Fragment_visualizacion_modelos_3d_implantes : Fragment(R.layout.fragment_v
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        sceneView = view.findViewById(R.id.sceneView)
-        loadingView = view.findViewById(R.id.loadingView)
+        sceneView = view.findViewById(R.id.sceneViewImplantes)
+        loadingView = view.findViewById(R.id.loadingViewImplantes)
 
         viewLifecycleOwner.lifecycleScope.launch {
+            sceneView.cameraNode.position = Position(0f, 0f, 1.2f)
 
-            // Configuración de la cámara para mantenerla alejada
-            sceneView.cameraNode.position = Position(0f, 0f, 20f)
-
-            // Cargar el modelo 3D
             val modelFile = "implantes.glb"
             val modelNode = ModelNode(
                 sceneView.modelLoader.createModelInstance(modelFile),
                 scaleToUnits = 2f
             )
-            modelNode.scale = Scale(0.005f)
+            modelNode.scale = Scale(0.15f)
             sceneView.addChildNode(modelNode)
 
-            sceneView.cameraNode.lookAt(Position(0f, 0f, 20f))
+            sceneView.cameraNode.lookAt(modelNode)
 
             loadingView.visibility = View.GONE
         }
+
     }
 }
