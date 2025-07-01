@@ -65,10 +65,14 @@ public class AdaptadorListaPacientes extends BaseAdapter {
 
         textNombre.setText(nombres[position]);
         textCorreo.setText(correos[position]);
-        if("No disponible".equals(fotosPerfil[position])){
-            imageView.setImageResource(R.drawable.default_photo_perfil_paciente);
-        } else {
-            imageUtils.cargarImagenConGlide(contexto, fotosPerfil[position], imageView);
+        if(!hayInternet()){
+            imageUtils.cargarImagenEnInterno(contexto,nombres[position],imageView);
+        }else {
+            if("No disponible".equals(fotosPerfil[position])){
+                imageView.setImageResource(R.drawable.default_photo_perfil_paciente);
+            } else {
+                imageUtils.cargarImagenConGlide(contexto, fotosPerfil[position], imageView,"Perfil");
+            }
         }
 
         convertView.setOnClickListener(v -> {
@@ -84,5 +88,9 @@ public class AdaptadorListaPacientes extends BaseAdapter {
             navController.navigate(R.id.fragment_consulta_virtual_especialista,null);
         });
         return convertView;
+    }
+
+    private boolean hayInternet(){
+        return false;
     }
 }

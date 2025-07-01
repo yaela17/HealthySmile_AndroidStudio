@@ -93,7 +93,7 @@ public class Fragment_tienda_virtual_producto extends Fragment {
             cantidadProducto.setText("1");
 
             if (urlImagen != null && !urlImagen.isEmpty()) {
-                imageUtils.cargarImagenConGlide(requireContext(), urlImagen, imagenProducto);
+                imageUtils.cargarImagenConGlide(requireContext(), urlImagen, imagenProducto,"Producto");
             }
         }
 

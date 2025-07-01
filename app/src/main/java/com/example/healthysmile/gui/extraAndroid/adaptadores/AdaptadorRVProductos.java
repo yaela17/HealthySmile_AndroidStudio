@@ -69,7 +69,7 @@ public class AdaptadorRVProductos extends RecyclerView.Adapter<AdaptadorRVProduc
         String urlImagen = urlsImagen.get(position);
         if (urlImagen != null && !urlImagen.isEmpty()) {
             Log.d("CargarImagen", "URL de la imagen: " + urlImagen);
-            imageUtils.cargarImagenConGlide(contexto, urlImagen, holder.imageView);
+            imageUtils.cargarImagenConGlide(contexto, urlImagen, holder.imageView,"Producto");
         } else {
             Log.d("CargarImagen", "La URL de la imagen está vacía o nula.");
             holder.imageView.setImageResource(R.drawable.foto_a_seleccionar);

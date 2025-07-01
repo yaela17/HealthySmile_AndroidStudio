@@ -16,6 +16,8 @@ import com.example.healthysmile.gui.iniciarSesion.login.LogIn;
 import com.example.healthysmile.gui.iniciarSesion.sign_up.Sing_Up;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import mx.openpay.android.Openpay;
 
@@ -44,11 +46,18 @@ public class InitAplication extends AppCompatActivity implements View.OnClickLis
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Test event");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
 
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        FirebaseFirestore.getInstance().setFirestoreSettings(settings);
+
+
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         Boolean estaLogueado = sharedPreferences.getBoolean("sesionActiva",false);
         if(estaLogueado){
             Intent intentoIrHome = new Intent(this, NavigationDrawerFragments.class);
             startActivity(intentoIrHome);
+            finish();
         }
     }
 

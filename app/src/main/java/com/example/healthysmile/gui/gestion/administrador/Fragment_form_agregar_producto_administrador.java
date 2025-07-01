@@ -103,7 +103,7 @@ public class Fragment_form_agregar_producto_administrador extends Fragment {
             inputDescProd.setText(descripcionProductoModificar);
             inputCostProd.setText(String.valueOf(costoProductoModificar));
             ImageUtils imageUtils = new ImageUtils();
-            imageUtils.cargarImagenConGlide(getContext(),imagenUrlProductoModificar,fotoProducto);
+            imageUtils.cargarImagenConGlide(getContext(),imagenUrlProductoModificar,fotoProducto,"Producto");
             switchDisponibilidad.setChecked(disponibleProductoModificar);
             habilitarInputs(false);
         }

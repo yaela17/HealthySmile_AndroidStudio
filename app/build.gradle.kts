@@ -97,4 +97,11 @@ dependencies {
     implementation ("com.google.http-client:google-http-client-jackson2:1.28.0")
     implementation ("com.fasterxml.jackson.core:jackson-core:2.9.8")
     implementation ("org.slf4j:slf4j-log4j12:1.7.25")
+
+    implementation ("androidx.room:room-runtime:2.6.1")
+    annotationProcessor ("androidx.room:room-compiler:2.6.1")
+
+    // Lombok
+    implementation ("org.projectlombok:lombok:1.18.30")
+    annotationProcessor ("org.projectlombok:lombok:1.18.30")
 }

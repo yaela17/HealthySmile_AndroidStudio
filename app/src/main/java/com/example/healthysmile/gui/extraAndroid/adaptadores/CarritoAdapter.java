@@ -80,7 +80,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
         holder.costoProd.setText("$" + costosProd.get(position));
         holder.numProd.setText(String.valueOf(numerosProd.get(position)));
         holder.disponibilidad.setText(disponibles.get(position) ? "Disponible" : "No disponible");
-        imageUtils.cargarImagenConGlide(context,urlsImagen.get(position),holder.imagenProd);
+        imageUtils.cargarImagenConGlide(context,urlsImagen.get(position),holder.imagenProd,"Producto");
 
         if (!disponibles.get(position)) {
             holder.etiquetaAgotado.setVisibility(View.VISIBLE);
@@ -304,7 +304,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
             costTot.add(originalPosition, costTotProducto);
 
             // Cargar la imagen usando Glide a través de imageUtils
-            imageUtils.cargarImagenConGlide(context, urlImagen, holder.imagenProd);
+            imageUtils.cargarImagenConGlide(context, urlImagen, holder.imagenProd,"Producto");
 
             // Notificar que el producto ha sido restablecido en la misma posición
             notifyItemInserted(originalPosition);

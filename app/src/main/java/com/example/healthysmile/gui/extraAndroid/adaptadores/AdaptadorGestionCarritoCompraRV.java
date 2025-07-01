@@ -44,7 +44,7 @@ public class AdaptadorGestionCarritoCompraRV extends RecyclerView.Adapter<Adapta
         holder.txtDescripcion.setText(producto.getDescriProd());
         holder.txtCosto.setText("$" + String.format("%.2f", producto.getCostoProd()));
         holder.txtCantidad.setText("x" + producto.getNumProd());
-        imageUtils.cargarImagenConGlide(context,producto.getImagen(),holder.imgProducto);
+        imageUtils.cargarImagenConGlide(context,producto.getImagen(),holder.imgProducto,"Producto");
     }
 
     @Override

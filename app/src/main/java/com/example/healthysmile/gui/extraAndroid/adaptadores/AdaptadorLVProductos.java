@@ -103,7 +103,7 @@ public class AdaptadorLVProductos extends BaseAdapter {
             Log.d("CargarImagen", "URL de la imagen: " + urlImagen); // Log para verificar la URL
 
             // Usamos ImageUtils para cargar la imagen con Glide
-            imageUtils.cargarImagenConGlide(contexto, urlImagen, imageView); // Llamada a Glide
+            imageUtils.cargarImagenConGlide(contexto, urlImagen, imageView,"Producto"); // Llamada a Glide
         } else {
             Log.d("CargarImagen", "La URL de la imagen está vacía o nula.");
             imageView.setImageResource(R.drawable.foto_a_seleccionar); // Imagen por defecto

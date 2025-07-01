@@ -72,7 +72,7 @@ public class AdaptadorListaEspecialistas extends BaseAdapter {
         if("No disponible".equals(fotosPerfil[position])){
             imageView.setImageResource(R.drawable.default_photo_perfil_especialista);
         } else {
-            imageUtils.cargarImagenConGlide(contexto, fotosPerfil[position], imageView);
+            imageUtils.cargarImagenConGlide(contexto, fotosPerfil[position], imageView,"Producto");
         }
 
 
