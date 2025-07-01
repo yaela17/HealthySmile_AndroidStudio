@@ -47,7 +47,7 @@
                         android:background="@drawable/custom_square_image"
                         android:clipToOutline="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/gingivitis" />
+                        android:src="@drawable/gingivitisita" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                         android:background="@drawable/custom_square_image"
                         android:clipToOutline="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/caries" />
+                        android:src="@drawable/cariesitas" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

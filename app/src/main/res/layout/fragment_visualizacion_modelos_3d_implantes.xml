@@ -1,14 +1,540 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.educacionDental.Fragment_visualizacion_modelos_3d_implantes">
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <!-- Sección Título -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
 
-</FrameLayout>
+            <!-- Cuadro azul -->
+            <View
+                android:id="@+id/cuadroAzul"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="27dp"
+                android:background="#0088A8" />
+
+            <!-- Cuadro beige detrás del texto -->
+            <View
+                android:id="@+id/cuadroBeige"
+                android:layout_width="250dp"
+                android:layout_height="140dp"
+                android:layout_below="@id/cuadroAzul"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:background="#E6D5A3" />
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Qué son los implantes?"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentStart="true" />
+
+            <!-- Descripción (encima del cuadro beige) -->
+            <TextView
+                android:id="@+id/descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titulo"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="20dp"
+                android:text="Los implantes dentales son dispositivos de titanio que se insertan en el hueso maxilar para reemplazar la raíz de un diente perdido. Una vez integrados, sirven como base para coronas, puentes o dentaduras postizas, proporcionando una solución permanente para la pérdida de dientes."
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:justificationMode="inter_word" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textoModelo3D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modelo 3D"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp" />
+
+
+        <!-- Modelo -->
+        <io.github.sceneview.SceneView
+            android:id="@+id/sceneViewImplantes"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <!-- Vista de carga -->
+        <View
+            android:id="@+id/loadingViewImplantes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:visibility="gone" />
+
+        <!-- Sección Factores de Riesgo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D8C9E1"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Factores de riesgo"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/white"
+                android:layout_marginVertical="4dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Fumar puede afectar la cicatrización del implante.\n• Enfermedades sistémicas como la diabetes no controlada pueden interferir en la integración del implante.\n• Falta de suficiente hueso maxilar para sostener el implante.\n• Mala higiene oral que puede llevar a infecciones alrededor del implante."
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+        <!-- Sección Síntomas -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Síntomas"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Los implantes dentales no presentan síntomas propiamente dichos, ya que son una solución para la pérdida de dientes. Sin embargo, después de la colocación de un implante, pueden aparecer síntomas temporales como:​"
+            android:textSize="18sp"
+            android:paddingTop="8dp"
+            android:textColor="@android:color/black"/>
+
+        <!-- Grid de imágenes y textos -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:paddingTop="8dp"
+            android:rowCount="3">
+
+            <!-- Síntoma 1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/is1"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dolor o incomodidad en el sitio del implante."
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 2 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/is2"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hinchazón de las encías."
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Síntoma 3 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/is3"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sangrado leve después de la cirugía."
+                    android:textSize="16sp"
+                    android:paddingTop="4dp" />
+            </LinearLayout>
+        </GridLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Causas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="6dp">
+        </TextView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Los implantes se utilizan para reemplazar dientes que se han perdido por:"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="12dp" />
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_background"
+                    android:gravity="center"
+                    android:text="01"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enfermedad periodontal avanzada."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_blue"
+                    android:gravity="center"
+                    android:text="02"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Traumatismos dentales."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_blue"
+                    android:gravity="center"
+                    android:text="03"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Caries severas."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_background"
+                    android:gravity="center"
+                    android:text="04"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pérdida de dientes por envejecimiento o desgaste."
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </GridLayout>
+
+
+        <!-- Sección Complicaciones -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E6D5A3"
+            android:padding="16dp">
+
+            <!-- Imagen superior izquierda -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|start"
+                android:src="@drawable/ic1"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Imagen superior derecha -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/ic2"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- Imagen inferior izquierda -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom|start"
+                android:src="@drawable/ic3"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="8dp"/>
+
+            <!-- Imagen inferior derecha -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom|end"
+                android:src="@drawable/ic4"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="10dp"/>
+
+            <!-- Contenedor blanco con texto al centro -->
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_white_bg"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:elevation="8dp">
+
+
+                <!-- Título -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Complicaciones"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <!-- Descripción -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Las complicaciones pueden incluir:"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+
+                <!-- Lista -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Infección en el sitio del implante.\n• Daño a estructuras cercanas, como otros dientes o nervios.\n• Falla en la integración del implante con el hueso (implante flojo).\n• Periimplantitis (inflamación alrededor del implante)."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Sección de Prevención -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Contenedor de texto -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prevención"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <!-- Lista de prevención -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Mantén una excelente higiene oral, cepillando alrededor del implante y usando hilo dental.\n• Evita fumar, ya que afecta la cicatrización.\n• Visita regularmente al dentista para chequeos y limpiezas."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Contenedor de imágenes -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="40dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="152dp"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ip1" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="134dp"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ip2" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Sección Tratamiento -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#7A944E"
+            android:padding="16dp"
+            android:layout_marginTop="20dp">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tratamiento"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+            <!-- Subtítulo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="El proceso de colocación del implante incluye:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:paddingTop="4dp"
+                android:paddingBottom="12dp" />
+
+            <!-- Lista de tratamientos -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Evaluación previa: Un examen detallado de la boca y los huesos para asegurarse de que puedes recibir un implante.\n\n• Cirugía de colocación: El implante de titanio se inserta en el hueso maxilar.\n\n• Integración ósea: Se permite que el implante se fusione con el hueso durante varios meses.\n\n• Colocación de la corona: Una vez integrado, se coloca una corona que imita la apariencia de un diente natural."
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
