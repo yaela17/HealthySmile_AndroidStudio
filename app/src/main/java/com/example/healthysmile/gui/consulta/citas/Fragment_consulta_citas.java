@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import com.example.healthysmile.controller.consulta.ObtenerCitasPorDiaResponseListener;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.CustomDateDecorator;
 import com.example.healthysmile.gui.extraAndroid.adaptadores.CustomSpinnerAdapter;
+import com.example.healthysmile.gui.extraAndroid.adaptadores.FechaColorDecorator;
 import com.example.healthysmile.service.consulta.CitaService;
 import com.example.healthysmile.controller.consulta.EspecialistaResponseListenerSpinnerCitas;
 import com.example.healthysmile.controller.consulta.ModifyCitaResponseListener;
@@ -58,6 +59,20 @@ public class Fragment_consulta_citas extends Fragment implements View.OnClickLis
         View view = inflater.inflate(R.layout.fragment_consulta_citas, container, false);
 
         calendarView = view.findViewById(R.id.consultas_calendario_citas);
+        // 🔴 Lista de fechas ocupadas
+        List<CalendarDay> fechasOcupadas = new ArrayList<>();
+        fechasOcupadas.add(CalendarDay.from(2025, 7, 1));
+        fechasOcupadas.add(CalendarDay.from(2025, 7, 2));
+
+// 🟢 Lista de fechas disponibles
+        List<CalendarDay> fechasDisponibles = new ArrayList<>();
+        fechasDisponibles.add(CalendarDay.from(2025, 7, 3));
+        fechasDisponibles.add(CalendarDay.from(2025, 7, 4));
+
+// ✨ Decoradores de color
+        calendarView.addDecorator(new FechaColorDecorator(fechasOcupadas, getResources().getColor(R.color.calendario_ocupado)));
+        calendarView.addDecorator(new FechaColorDecorator(fechasDisponibles, getResources().getColor(R.color.calendario_disponible)));
+
         calendarView.setOnDateChangedListener(this);
         inputDate = view.findViewById(R.id.ConsultaCitaInputDate);
         inputMotivoCita = view.findViewById(R.id.ConsultaCitasInputMotivoCita);
