@@ -113,5 +113,8 @@
     <color name="color_drawable_custom_spinner_text_item_selected">@color/color_azul_celeste_profundo</color>
     <color name="color_drawable_plantilla_informacion_background">@color/color_blanco</color>
     <color name="color_drawable_plantilla_informacion_selected_background">@color/color_azul_alice</color>
+    <color name="calendario_ocupado">#FF4C4C</color>
+    <color name="calendario_disponible">#4CAF50</color>
+
 
 </resources>
