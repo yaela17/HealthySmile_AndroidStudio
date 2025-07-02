@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.extraAndroid.settings.Settings_change_user_type">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <RadioGroup
+            android:id="@+id/rgTipoUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbPaciente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Paciente"
+                android:textSize="23sp"
+                android:textColor="@color/color_comun_text"
+                android:drawablePadding="16dp"
+                android:buttonTint="@color/color_radio_button" />
+
+            <RadioButton
+                android:id="@+id/rbOtroTipoUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Especialista / Administrador"
+                android:textSize="23sp"
+                android:textColor="@color/color_comun_text"
+                android:drawablePadding="16dp"
+                android:buttonTint="@color/color_radio_button" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+</FrameLayout>

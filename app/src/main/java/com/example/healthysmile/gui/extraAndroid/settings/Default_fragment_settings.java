@@ -40,19 +40,12 @@ public class Default_fragment_settings extends Fragment implements AdapterView.O
         foto = sharedPreferences.getString("fotoUsuario", null);
         tipoUsuario = sharedPreferences.getString("tipoUsuario", null);
 
-        if ("Paciente".equals(tipoUsuario)) {
-        } else {
-            // Si es Especialista, obtenemos los datos específicos
-            long idEspecialista = sharedPreferences.getLong("idEspecialista", 0);
-            String cedulaProfesional = sharedPreferences.getString("cedulaProfesionalEsp", null);
-            String descripcion = sharedPreferences.getString("descripcionEsp", null);
-            String especialidad = sharedPreferences.getString("especialidadEsp", null);
-        }
+
 
         // Inicializamos los arrays de iconos
         listLeftIcon = new Drawable[]{
                 getResources().getDrawable(R.drawable.dentistaaa),
-                getResources().getDrawable(R.drawable.icon_person)
+                getResources().getDrawable(R.drawable.icon_cedulaprofesional)
         };
 
         lisRightIcon = new Drawable[]{
@@ -61,11 +54,11 @@ public class Default_fragment_settings extends Fragment implements AdapterView.O
 
         // Configurar el ListView y el adaptador
         listTitleInputFile = new String[]{
-                nombre, "sigma"
+                nombre, "Tipo usuario actual"
         };
 
         listDescriptionInputFile = new String[]{
-                correo, "sigma"
+                correo, tipoUsuario
         };
 
         listaDefaultSettings = view.findViewById(R.id.listViewDefaultSettings);
@@ -81,6 +74,11 @@ public class Default_fragment_settings extends Fragment implements AdapterView.O
         if (position == 0) {
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
             transaction.replace(R.id.settingsFrameListViewContainer, new Settings_perfil());
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else if (position == 1) {
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.settingsFrameListViewContainer, new Settings_change_user_type());
             transaction.addToBackStack(null);
             transaction.commit();
         }

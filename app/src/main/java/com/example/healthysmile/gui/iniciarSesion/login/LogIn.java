@@ -56,26 +56,13 @@ public class LogIn extends AppCompatActivity {
 
         logInService.logIn(correoUsuario, contrasenaUsuario, new LogInResponseListener() {
             @Override
-            public void onSuccess(Usuario usuario) {
+            public void logInUsuario(Usuario usuario) {
                 if (usuario != null) {
-                    if (usuario instanceof Especialista) {
-                        Especialista especialistaAutenticado = (Especialista) usuario;
-                        manejadorShadPreferences.guardarEspecialista(especialistaAutenticado.getNomUser(),
-                                especialistaAutenticado.getCorreoUser(), especialistaAutenticado.getTipoUser(), especialistaAutenticado.getNivelPermisos(),
-                                especialistaAutenticado.getCedulaProfesional(),
-                                especialistaAutenticado.getDescripcion(),
-                                especialistaAutenticado.getEspecialidad());
-                        manejadorShadPreferences.guardarIdUsuario(especialistaAutenticado.getIdUsuario());
-                        manejadorShadPreferences.guardarIdEspecialista(especialistaAutenticado.getIdEspecialista());
-                        manejadorShadPreferences.guardarfotoUsuario(especialistaAutenticado.getFotoPerfil());
-                        Log.d("LogIn", "Usuario Especialista autenticado");
-                    } else {
                         manejadorShadPreferences.guardarPaciente(usuario.getNomUser(),
                                 usuario.getCorreoUser(), usuario.getTipoUser(), usuario.getNivelPermisos());
                         manejadorShadPreferences.guardarIdUsuario(usuario.getIdUsuario());
                         manejadorShadPreferences.guardarfotoUsuario(usuario.getFotoPerfil());
                         Log.d("LogIn", "Usuario Paciente autenticado");
-                    }
                     Intent intentIrHome = new Intent(LogIn.this, NavigationDrawerFragments.class);
                     startActivity(intentIrHome);
                 } else {
@@ -83,6 +70,27 @@ public class LogIn extends AppCompatActivity {
                     Log.d("LogIn", "Error: El usuario es nulo");
                 }
             }
+
+            @Override
+            public void logInEspecialista(Especialista especialista) {
+                if(especialista != null) {
+                    manejadorShadPreferences.guardarEspecialista(especialista.getNomUser(),
+                            especialista.getCorreoUser(), especialista.getTipoUser(), especialista.getNivelPermisos(),
+                            especialista.getCedulaProfesional(),
+                            especialista.getDescripcion(),
+                            especialista.getEspecialidad());
+                    manejadorShadPreferences.guardarIdUsuario(especialista.getIdUsuario());
+                    manejadorShadPreferences.guardarIdEspecialista(especialista.getIdEspecialista());
+                    manejadorShadPreferences.guardarfotoUsuario(especialista.getFotoPerfil());
+                    Log.d("LogIn", "Usuario Especialista autenticado");
+                    Intent intentIrHome = new Intent(LogIn.this, NavigationDrawerFragments.class);
+                    startActivity(intentIrHome);
+                }else {
+                    Toast.makeText(LogIn.this, "Error al iniciar sesión", Toast.LENGTH_SHORT).show();
+                    Log.d("LogIn", "Error: El usuario es nulo");
+                }
+            }
+
             @Override
             public void onError(String error) {
                 Toast.makeText(LogIn.this, error, Toast.LENGTH_SHORT).show();

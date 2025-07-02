@@ -224,7 +224,7 @@ public class Fragment_consulta_list_chat_paciente extends Fragment {
 
     private boolean hayConexion() {
         // Aquí tu lógica para detectar conexión real
-        return false;
+        return true;
     }
 
     private void cargarListView() {

@@ -116,5 +116,9 @@
     <color name="calendario_ocupado">#FF4C4C</color>
     <color name="calendario_disponible">#4CAF50</color>
 
+    <!--Colores para cosas -->
+    <color name="color_fondo_camara">#2196F3</color>
+    <color name="color_radio_button">@color/color_azul_medianoche</color>
+
 
 </resources>

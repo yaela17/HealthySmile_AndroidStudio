@@ -31,7 +31,7 @@
             android:padding="5dp"
             android:layout_gravity="bottom|end"
             android:background="@drawable/custom_circle_image"
-            android:backgroundTint="#4CAF50"
+            android:backgroundTint="@color/color_fondo_camara"
             android:scaleType="centerCrop"
             android:clipToOutline="true"
             android:src="@drawable/icon_camera"

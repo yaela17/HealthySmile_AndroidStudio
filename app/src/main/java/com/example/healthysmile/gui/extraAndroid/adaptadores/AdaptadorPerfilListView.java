@@ -40,6 +40,16 @@ public class AdaptadorPerfilListView extends BaseAdapter {
     }
 
     @Override
+    public boolean areAllItemsEnabled() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return lisRightIcon[position] != null ;
+    }
+
+    @Override
     public int getCount() {
         return listTitleInputFile.length;
     }
@@ -66,6 +76,7 @@ public class AdaptadorPerfilListView extends BaseAdapter {
         inputTitle.setText(listTitleInputFile[position]);
         inputDesc.setText(listDescriptionInputFile[position]);
         LinearLayout.LayoutParams params;
+
         if(lisRightIcon[position] != null){
             rightIcon.setImageDrawable(lisRightIcon[position]);
         }else {
@@ -76,6 +87,10 @@ public class AdaptadorPerfilListView extends BaseAdapter {
         }
         if(listDescriptionInputFile[position].isEmpty()){
             inputDesc.setVisibility(View.GONE);
+        }
+        if(position > 0){
+            plantilla.setClickable(false);
+            plantilla.setEnabled(true);
         }
         return view;
     }

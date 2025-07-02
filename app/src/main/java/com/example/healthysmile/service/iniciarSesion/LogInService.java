@@ -54,11 +54,11 @@ public class LogInService {
             Gson gson = new Gson();
             Usuario usuario = gson.fromJson(response.toString(), Usuario.class);
 
-            if (usuario != null && usuario.getNivelPermisos() == 2) {
+            if (usuario != null && usuario.getNivelPermisos() > 1) {
                 Especialista especialista = gson.fromJson(response.toString(), Especialista.class);
-                listener.onSuccess(especialista);
+                listener.logInEspecialista(especialista);
             } else {
-                listener.onSuccess(usuario);
+                listener.logInUsuario(usuario);
             }
         }catch (Exception e) {
             Log.e("LogInService", "Error general en login", e);

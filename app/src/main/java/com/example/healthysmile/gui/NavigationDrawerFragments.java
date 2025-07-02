@@ -84,8 +84,13 @@ public class NavigationDrawerFragments extends AppCompatActivity {
             public void onDrawerOpened(@NonNull View drawerView) {
                 // Cargar la foto de perfil cuando el drawer se despliegue
                 ImageView fotoPerfil = navigationView.getHeaderView(0).findViewById(R.id.nav_header_navigation_drawer_lateral_foto_perfil);
+                TextView tipoUser = navigationView.getHeaderView(0).findViewById(R.id.nav_header_navigation_drawer_lateral_tipo_user);
+
                 ReutilizableMethods reutilizableMethods = new ReutilizableMethods();
                 reutilizableMethods.cargarFotoPerfil(getApplicationContext(), fotoPerfil);
+                SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+                String tipoUsuario = sharedPreferences.getString("tipoUsuario",null);
+                tipoUser.setText(tipoUsuario);
             }
 
             @Override

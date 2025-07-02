@@ -34,6 +34,8 @@ public class SharedPreferencesHelper {
         editor.putString("cedulaProfesionalEsp", cedulaProfesionalEsp);
         editor.putString("descripcionEsp", descripcionEsp);
         editor.putString("especialidadEsp",especialidadEsp);
+        editor.putString("otroTiposUsuario","Paciente");
+        editor.putLong("otroNivelPermisos",1);
         editor.apply();
     }
 
@@ -80,6 +82,8 @@ public class SharedPreferencesHelper {
         editor.remove("idEspecialista");
         editor.remove("idCarritoCompra");
         editor.remove("idProducto");
+        editor.remove("otroTiposUsuario");
+        editor.remove("otroNivelPermisos");
         editor.apply();
     }
 

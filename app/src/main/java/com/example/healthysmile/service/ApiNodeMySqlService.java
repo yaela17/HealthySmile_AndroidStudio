@@ -9,7 +9,9 @@ import com.example.healthysmile.model.entities.Especialista;
 import com.example.healthysmile.model.entities.Producto;
 import com.example.healthysmile.model.entities.Usuario;
 import com.example.healthysmile.model.relationships.RelProdCarritoUser;
+import com.example.healthysmile.model.requests.ActualizarDescripcionRequest;
 import com.example.healthysmile.model.requests.ActualizarFotoPerfilRequest;
+import com.example.healthysmile.model.requests.ActualizarNombreRequest;
 import com.example.healthysmile.model.requests.AgregarProductoCarritoRequest;
 import com.example.healthysmile.model.requests.CrearCargoRequest;
 import com.example.healthysmile.model.requests.CrearCitaRequest;
@@ -94,5 +96,11 @@ public interface ApiNodeMySqlService {
 
     @GET("obtenerCompra")
     Call<List<ProductoCompra>> obtenerCompra(@Query("idCompra") Integer idCompra);
+
+    @POST("actualizarNombre")
+    Call<ApiNodeMySqlRespuesta> actualizarNombre(@Body ActualizarNombreRequest usuario);
+
+    @POST("actualizarDescripcion")
+    Call<ApiNodeMySqlRespuesta> actualizarDescripcion(@Body ActualizarDescripcionRequest usuario);
 
 }

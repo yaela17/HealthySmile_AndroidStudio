@@ -362,7 +362,7 @@ public class Fragment_consulta_virtual_especialista extends Fragment {
     }
 
     private boolean hayConexionInternet() {
-        return false;
+        return true;
     }
 
 }

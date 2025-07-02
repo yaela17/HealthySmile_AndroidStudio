@@ -31,7 +31,9 @@
     <color name="color_drawable_plantilla_informacion_background">@color/color_negro</color>
     <color name="color_drawable_plantilla_informacion_selected_background">@color/color_purpura_neon</color>
 
-
+    <!--Colores para cosas -->
+    <color name="color_fondo_camara">#673AB7</color>
+    <color name="color_radio_button">@color/color_purpura_oscuro</color>
 
 
 

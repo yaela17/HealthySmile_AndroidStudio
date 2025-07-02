@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/color_formulario_background_tint_card_view"
-        android:layout_margin="30dp">
+        android:layout_margin="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,7 +83,8 @@
                 android:paddingTop="20dp"
                 android:paddingEnd="20dp"
                 android:autofillHints="none"
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
                 android:textColor="@color/color_azul_acero"/>
 
             <Button
