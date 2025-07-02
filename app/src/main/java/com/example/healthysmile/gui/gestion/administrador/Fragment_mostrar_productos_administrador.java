@@ -143,4 +143,5 @@ public class Fragment_mostrar_productos_administrador extends Fragment implement
             ((Fragment_gestion_administrador_productos) parentFragment).cargarFragment(fragmentoDetalle);
         }
     }
+
 }
