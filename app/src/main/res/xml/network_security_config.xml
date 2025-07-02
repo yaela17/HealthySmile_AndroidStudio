@@ -7,7 +7,7 @@
         <domain includeSubdomains= "true">10.107.98.29</domain>
         <domain includeSubdomains= "true">192.168.223.63</domain>
         <domain includeSubdomains= "true">192.168.0.5</domain>
+        <domain includeSubdomains= "true">192.168.0.15</domain>
         <!--Emulador, Celular, Wifi IPN, Mis datos -->
-        <!--La ultima es la de Max ALA ala Ala-->
     </domain-config>
 </network-security-config>

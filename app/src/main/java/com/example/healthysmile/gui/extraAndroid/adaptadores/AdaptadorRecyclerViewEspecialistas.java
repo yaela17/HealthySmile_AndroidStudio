@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.healthysmile.R;
+import com.example.healthysmile.model.entities.Especialista;
 
 import java.util.ArrayList;
 
@@ -88,6 +89,10 @@ public class AdaptadorRecyclerViewEspecialistas extends RecyclerView.Adapter<Ada
     @Override
     public int getItemCount() {
         return listaNombres.size(); // Todas las listas deben tener el mismo tamaño
+    }
+
+    public Especialista getItem(int position) {
+        return new Especialista(listaNombres.get(position), listaEspecialidades.get(position).intValue(), listaCedulas.get(position), listaFotos.get(position), listaDescripciones.get(position));
     }
 
     // ViewHolder

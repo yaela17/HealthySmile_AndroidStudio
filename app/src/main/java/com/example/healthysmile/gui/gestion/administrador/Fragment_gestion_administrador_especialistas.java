@@ -34,7 +34,7 @@ public class Fragment_gestion_administrador_especialistas extends Fragment {
 
         // Set click listeners
         fabVerEspecialistas.setOnClickListener(v -> {
-            sharedPreferencesHelper.guardarAccionSeleccionadaLVProductos(false);
+            sharedPreferencesHelper.guardarAccionSeleccionadaLVEspecialista(false);
             cargarFragment(new Fragment_mostrar_productos_administrador());
             fabMenu2.close(true);
         });

@@ -138,6 +138,13 @@ public class SharedPreferencesHelper {
         editor.apply();
     }
 
+    public void guardarAccionSeleccionadaLVEspecialista(boolean valor) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("eliminar", valor);
+        editor.apply();
+    }
+
     public void eliminarAccionSeleccionadaLVProductos() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
